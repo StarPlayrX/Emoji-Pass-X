@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="17709" systemVersion="20D64" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithCloudKit="YES" userDefinedModelVersionIdentifier="">
+    <entity name="ListItem" representedClassName=".ListItem" syncable="YES">
+        <attribute name="catDesc" optional="YES" attributeType="Binary"/>
+        <attribute name="category" optional="YES" attributeType="String"/>
+        <attribute name="cBankname" optional="YES" attributeType="Binary"/>
+        <attribute name="cCardnumber" optional="YES" attributeType="Binary"/>
+        <attribute name="cCvc" optional="YES" attributeType="Binary"/>
+        <attribute name="cExpdate" optional="YES" attributeType="Binary"/>
+        <attribute name="cFullname" optional="YES" attributeType="Binary"/>
+        <attribute name="cNotes" optional="YES" attributeType="Binary"/>
+        <attribute name="dateString" optional="YES" attributeType="String"/>
+        <attribute name="desc" optional="YES" attributeType="String"/>
+        <attribute name="emoji" optional="YES" attributeType="String"/>
+        <attribute name="icloud" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="id" optional="YES" attributeType="Binary"/>
+        <attribute name="isParent" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="kEmailaddress" optional="YES" attributeType="Binary"/>
+        <attribute name="kLicensekey" optional="YES" attributeType="Binary"/>
+        <attribute name="kNotes" optional="YES" attributeType="Binary"/>
+        <attribute name="kSeats" optional="YES" attributeType="Binary"/>
+        <attribute name="kSoftwarepkg" optional="YES" attributeType="Binary"/>
+        <attribute name="kWebaddress" optional="YES" attributeType="Binary"/>
+        <attribute name="lock" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="name" attributeType="String" defaultValueString="Item Name"/>
+        <attribute name="order" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="pNotes" optional="YES" attributeType="Binary"/>
+        <attribute name="pPassword" optional="YES" attributeType="Binary"/>
+        <attribute name="pPhone" optional="YES" attributeType="Binary"/>
+        <attribute name="pPin" optional="YES" attributeType="Binary"/>
+        <attribute name="pUsername" optional="YES" attributeType="Binary"/>
+        <attribute name="pWebsite" optional="YES" attributeType="Binary"/>
+        <attribute name="star" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="templateId" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="uuidString" optional="YES" attributeType="String"/>
+    </entity>
+    <elements>
+        <element name="ListItem" positionX="-227.8888549804688" positionY="125.7972412109375" width="128" height="509"/>
+    </elements>
+</model>
