@@ -10,8 +10,7 @@ import AuthenticationServices
 
 private class Security: ObservableObject {
     @Published var lockScreen = true
-    @Published var cloudDebug = true
-
+    @Published var cloudDebug = false
 }
 
 struct CatView: View {
@@ -127,7 +126,6 @@ struct CatView: View {
                                 .font(.title)
                             
                         }
-                        
                         .overlay (
                             HStack {
                                 Spacer()

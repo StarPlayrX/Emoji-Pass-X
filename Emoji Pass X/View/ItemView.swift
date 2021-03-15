@@ -8,8 +8,6 @@
 import SwiftUI
 import Combine
 
-
-
 struct ItemView: View {
     @Environment(\.managedObjectContext) var managedObjectContext
     @Environment(\.presentationMode) var presentationMode
