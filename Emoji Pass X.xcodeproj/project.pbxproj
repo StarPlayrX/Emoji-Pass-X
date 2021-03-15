@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2D5DFCDF25FE6B3900561C99 /* Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D5DFCDE25FE6B3900561C99 /* Device.swift */; };
 		2D7D2E2F25EDDF0D004FDB8F /* passlist.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2D7D2E2D25EDDF0D004FDB8F /* passlist.xcdatamodeld */; };
 		2D7D2E3625EEEEAD004FDB8F /* CatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D7D2E3525EEEEAD004FDB8F /* CatView.swift */; };
 		2D7D2E3A25EEFDA7004FDB8F /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D7D2E3925EEFDA7004FDB8F /* Extensions.swift */; };
@@ -25,6 +26,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2D5DFCDE25FE6B3900561C99 /* Device.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Device.swift; sourceTree = "<group>"; };
 		2D7D2E2E25EDDF0D004FDB8F /* OrderedList.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = OrderedList.xcdatamodel; sourceTree = "<group>"; };
 		2D7D2E3525EEEEAD004FDB8F /* CatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatView.swift; sourceTree = "<group>"; };
 		2D7D2E3925EEFDA7004FDB8F /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
@@ -131,6 +133,7 @@
 				2D89E09F25EAD68E00939877 /* ListItem.swift */,
 				2D7D2E2D25EDDF0D004FDB8F /* passlist.xcdatamodeld */,
 				2D7D2E3925EEFDA7004FDB8F /* Extensions.swift */,
+				2D5DFCDE25FE6B3900561C99 /* Device.swift */,
 				2D8D534925F41A3B00A5F397 /* Emojis.swift */,
 				2DA9AD5625EB158E00A2633F /* StandardCryto.swift */,
 			);
@@ -210,6 +213,7 @@
 				2D7D2E2F25EDDF0D004FDB8F /* passlist.xcdatamodeld in Sources */,
 				2D7D2E3A25EEFDA7004FDB8F /* Extensions.swift in Sources */,
 				2D89E0A225EAD68E00939877 /* ItemView.swift in Sources */,
+				2D5DFCDF25FE6B3900561C99 /* Device.swift in Sources */,
 				2DA9AD5725EB158E00A2633F /* StandardCryto.swift in Sources */,
 				2D7D2E3625EEEEAD004FDB8F /* CatView.swift in Sources */,
 				2D7D2E3D25EEFED4004FDB8F /* CatEditView.swift in Sources */,
@@ -358,7 +362,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = "Emoji Pass X/Emoji Pass X.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 24;
+				CURRENT_PROJECT_VERSION = 28;
 				DEVELOPMENT_ASSET_PATHS = "\"Emoji Pass X/Preview Content\"";
 				DEVELOPMENT_TEAM = 469UCUB275;
 				ENABLE_PREVIEWS = YES;
@@ -371,7 +375,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_ENFORCE_EXCLUSIVE_ACCESS = "debug-only";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -382,7 +386,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = "Emoji Pass X/Emoji Pass X.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 24;
+				CURRENT_PROJECT_VERSION = 28;
 				DEVELOPMENT_ASSET_PATHS = "\"Emoji Pass X/Preview Content\"";
 				DEVELOPMENT_TEAM = 469UCUB275;
 				ENABLE_PREVIEWS = YES;
@@ -395,7 +399,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_ENFORCE_EXCLUSIVE_ACCESS = "debug-only";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};

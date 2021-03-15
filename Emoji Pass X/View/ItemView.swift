@@ -8,16 +8,18 @@
 import SwiftUI
 import Combine
 
+
+
 struct ItemView: View {
     @Environment(\.managedObjectContext) var managedObjectContext
     @Environment(\.presentationMode) var presentationMode
     @Environment(\.colorScheme) var colorScheme
-    @EnvironmentObject var security: Security
+    //@EnvironmentObject var security: Security
     @StateObject private var privateKey = privateParts()
      
     @ObservedObject var catItem: ListItem
     @ObservedObject var listItem: ListItem
-        
+
     //MARK: New Password Items
     @State var pUsername: String = ""
     @State var pPassword: String = ""
@@ -25,7 +27,7 @@ struct ItemView: View {
     @State var pPhone   : String = ""
     @State var pPin     : String = ""
     @State var pNotes   : String = ""
-    
+
     //MARK: New Password Items
     @State var cBankname  : String = ""
     @State var cCardnumber: String = ""
@@ -33,7 +35,7 @@ struct ItemView: View {
     @State var cCvc       : String = ""
     @State var cExpdate   : String = ""
     @State var cNotes     : String = ""
-    
+
     //MARK: New License Key Items
     @State var kSoftwarepkg  : String = ""
     @State var kLicensekey   : String = ""
@@ -41,7 +43,7 @@ struct ItemView: View {
     @State var kWebaddress   : String = ""
     @State var kSeats        : String = ""
     @State var kNotes        : String = ""
-    
+
     //MARK: Function to keep text length in limits
     func limitText(_ upper: Int) {
         if listItem.emoji.count > upper {
@@ -339,11 +341,12 @@ struct ItemView: View {
         return VStack(spacing: spacing) {
 
             VStack {
-                if !hideLabels { notesLabel(text) }
+                notesLabel(text)
                 if !listItem.lock {
 
                     TextEditor(text: note)
                         .lineSpacing(3)
+                        .multilineTextAlignment(.leading)
                         .textContentType(textContentType)
                         .keyboardType(keyboard)
                         .autocapitalization(.none)
@@ -366,6 +369,7 @@ struct ItemView: View {
                 } else {
                     SecureField("",text: note)
                         .textContentType(textContentType)
+                        .multilineTextAlignment(.leading)
                         .allowsHitTesting(!listItem.lock)
                         .padding(.top, 7)
                         .padding(.bottom, 1)
@@ -378,10 +382,7 @@ struct ItemView: View {
                         )
                         .padding()
                         .padding(.leading, -4)
-
                 }
-
-                
             }
         }
     }
@@ -470,6 +471,8 @@ struct ItemView: View {
     
     //MARK: Password Stack
     private func passwordStack(_ hideLabels: Bool) -> some View {
+
+   
         return VStack() {
             Group {
                 notesEditor("pNotes", note: $pNotes, keyboard: UIKeyboardType.alphabet, textContentType: UITextContentType.sublocality, hideLabels: hideLabels)
@@ -506,6 +509,8 @@ struct ItemView: View {
     
     //MARK: CreditCardStack
     private func creditCardStack(_ hideLabels: Bool) -> some View {
+        
+        
         return VStack {
             Group {
                 notesEditor("cNotes", note: $cNotes, keyboard: UIKeyboardType.alphabet, textContentType: UITextContentType.sublocality, hideLabels: hideLabels)
@@ -535,6 +540,8 @@ struct ItemView: View {
     
     //MARK: licenseKeyStack
     private func licenseKeyStack(_ hideLabels: Bool) -> some View {
+        
+
         return VStack {
             Group {
                 notesEditor("kNotes", note: $kNotes, keyboard: UIKeyboardType.alphabet, textContentType: UITextContentType.sublocality, hideLabels: hideLabels)
@@ -561,11 +568,11 @@ struct ItemView: View {
         }
     }
     
+    
     var body: some View {
-        
+      
         GeometryReader { geometry in
             ScrollView {
-                ScrollViewReader { value in
                     VStack() {
                         HStack() {
                             TextField(emoji, text: $listItem.emoji)
@@ -589,34 +596,22 @@ struct ItemView: View {
                             Spacer()
                         }
                         //MARK: let template = ["💳 Cards", "🔒 Passwords", "🔑 Keys"]
+                        
+                     
+                        
                         if listItem.templateId == 1  {
-                            if geometry.size.width == smallestWidth {
-                                passwordStack(true)
-                            } else {
-                                passwordStack(false)
-                            }
+                            geometry.size.height <= 568 ? passwordStack(!isIPhoneX()) : passwordStack(false)
                         } else if listItem.templateId == 0  {
-                            if geometry.size.width == smallestWidth {
-                                creditCardStack(true)
-                            } else {
-                                creditCardStack(false)
-                            }
+                            geometry.size.height <= 568 ? creditCardStack(!isIPhoneX()) : creditCardStack(false)
                         } else if listItem.templateId == 2  {
-                            if geometry.size.width == smallestWidth {
-                                licenseKeyStack(true)
-                            } else {
-                                licenseKeyStack(false)
-                            }
+                            geometry.size.height <= 568 ? licenseKeyStack(!isIPhoneX()) : licenseKeyStack(false)
                         }
                     }
                     .onDisappear(perform: { save() })
                     .onAppear(perform: { clearNewText() })
                     .toolbar {
                         ToolbarItemGroup(placement: .navigationBarTrailing) {
-                           /* Button(action: { save();presentationMode.wrappedValue.dismiss(); security.lockScreen = true })
-                            {
-                                Image(systemName: "lock.shield.fill")
-                            }*/
+                            
                             Button(action: { listItem.lock = !listItem.lock;save() })
                             {
                                 if !listItem.lock {
@@ -642,17 +637,15 @@ struct ItemView: View {
                                     
                                     geometry.size.width == smallestWidth ? Text(template[$0].prefix(1)) : Text(template[$0].prefix(6))
                                     
-                                }.font(Font.custom("Apple Color Emoji", size: 72))
+                                }
+                                .font(.largeTitle)
                                 .pickerStyle(SegmentedPickerStyle())
                             }
                         }
                     }
-                    
-                    
-                }
-            }
+            } .navigationBarTitle( geometry.size.width <= 374 ? "Pass X" : "🛡 Emoji Pass X", displayMode: .inline)
         }
-        
+
         .onTapGesture {
             hideKeyboard()
         }.onReceive(NotificationCenter.default.publisher(for: UIApplication.didEnterBackgroundNotification)) { _ in
@@ -697,14 +690,3 @@ struct ItemView: View {
         return a
     }
 }
-
-
-/*
- 
- .onChange(of: inputText, perform: { value in
- value.scrollTo(0, anchor: .bottom)
- })
- 
- 
- 
- */

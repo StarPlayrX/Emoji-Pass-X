@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="17709" systemVersion="20D64" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithCloudKit="YES" userDefinedModelVersionIdentifier="">
     <entity name="ListItem" representedClassName=".ListItem" syncable="YES">
-        <attribute name="catDesc" optional="YES" attributeType="Binary"/>
-        <attribute name="category" optional="YES" attributeType="String"/>
         <attribute name="cBankname" optional="YES" attributeType="Binary"/>
         <attribute name="cCardnumber" optional="YES" attributeType="Binary"/>
         <attribute name="cCvc" optional="YES" attributeType="Binary"/>
@@ -12,7 +10,6 @@
         <attribute name="dateString" optional="YES" attributeType="String"/>
         <attribute name="desc" optional="YES" attributeType="String"/>
         <attribute name="emoji" optional="YES" attributeType="String"/>
-        <attribute name="icloud" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="id" optional="YES" attributeType="Binary"/>
         <attribute name="isParent" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="kEmailaddress" optional="YES" attributeType="Binary"/>
@@ -35,6 +32,6 @@
         <attribute name="uuidString" optional="YES" attributeType="String"/>
     </entity>
     <elements>
-        <element name="ListItem" positionX="-227.8888549804688" positionY="125.7972412109375" width="128" height="509"/>
+        <element name="ListItem" positionX="-227.8888549804688" positionY="125.7972412109375" width="128" height="464"/>
     </elements>
 </model>

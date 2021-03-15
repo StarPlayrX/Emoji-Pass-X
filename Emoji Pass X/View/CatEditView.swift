@@ -13,19 +13,15 @@ struct CatEditView: View {
     @Environment(\.presentationMode) var presentationMode
     @Environment(\.managedObjectContext) var managedObjectContext
     
-    @EnvironmentObject var security: Security
-    
-    @State var itemName: String = ""
-    @State var itemEmoji: String = ""
-    @State var itemDesc: String = ""
-    @State var itemUUID: String = ""
+    //@EnvironmentObject var security: Security
     
     @ObservedObject var listItem: ListItem
     
     //Function to keep text length in limits
     func limitText(_ upper: Int) {
-        if itemEmoji.count > upper {
-            itemEmoji = String(itemEmoji.prefix(upper))
+        if listItem.emoji.count > upper {
+            listItem.emoji = String(listItem.emoji.prefix(upper))
+            hideKeyboard()
         }
     }
     
@@ -62,39 +58,28 @@ struct CatEditView: View {
 
         //New Item detected, so we clear this out (otherwise fill it in!)
         if listItem.emoji == pencil && listItem.name == newRecord {
-            itemName  = ""
-            itemEmoji = ""
-        } else {
-            itemName = listItem.name
-            itemEmoji = listItem.emoji
-            itemDesc = listItem.desc
-        }
-        
-        if !listItem.uuidString.isEmpty {
-            itemUUID = listItem.uuidString
+            listItem.name  = ""
+            listItem.emoji = ""
         }
     }
     
     let pasteboard = UIPasteboard.general
     
     func copyDesc() {
-        pasteboard.string = itemDesc
+        pasteboard.string = listItem.desc
     }
     
     func save() {
         //epoche date used to break cache and force a save
         listItem.dateString = String(Int(Date().timeIntervalSinceReferenceDate))
-        if itemName.isEmpty {
-            itemName = newRecord
+        if  listItem.name.isEmpty {
+            listItem.name = newRecord
         }
         
-        if itemEmoji.isEmpty {
-            itemEmoji = pencil
+        if listItem.emoji.isEmpty {
+            listItem.emoji  = pencil
         }
-        
-        listItem.name       = itemName
-        listItem.emoji      = itemEmoji
-        listItem.desc       = itemDesc
+    
         listItem.templateId = selectedTemplate
                 
         if listItem.uuidString.isEmpty {
@@ -145,7 +130,7 @@ struct CatEditView: View {
             //MARK: Description
             if !hideLabels { label(desc) }
             
-            field(desc, item: $itemDesc, keyboard: UIKeyboardType.asciiCapable, textContentType: UITextContentType.organizationName)
+            field(desc, item: $listItem.desc, keyboard: UIKeyboardType.asciiCapable, textContentType: UITextContentType.organizationName)
         }
     }
     
@@ -158,11 +143,11 @@ struct CatEditView: View {
             
             VStack {
                 HStack() {
-                    TextField(emoji, text: $itemEmoji)
-                        .background(labelColor)
+                    TextField(emoji, text: $listItem.emoji)
+                        .background(labelColor2)
                         .cornerRadius(radius)
                         .fixedSize(horizontal: false, vertical: true)
-                        .onReceive(Just(itemEmoji)) { _ in limitText(textLimit) }
+                        .onReceive(Just(listItem.emoji)) { _ in limitText(textLimit) }
                         .font(.system(size: geometry.size.width == smallestWidth ? emojiFontSize - 10 : emojiFontSize))
                         .minimumScaleFactor(1)
                         .multilineTextAlignment(.center)
@@ -171,7 +156,7 @@ struct CatEditView: View {
                         .padding(.bottom, geometry.size.width == smallestWidth ? -10 : -10)
                         .padding(.leading, geometry.size.width == smallestWidth ? 10 : 10 )
                         .padding(.trailing, geometry.size.width == smallestWidth ? 10 : 10 )
-                    TextField(name, text: $itemName)
+                    TextField(name, text: $listItem.name)
                         .font(.largeTitle)
                         .padding(.bottom, geometry.size.width == smallestWidth ? -20 : -20)
                         .keyboardType(.asciiCapable)
@@ -211,18 +196,7 @@ struct CatEditView: View {
             .onAppear(perform: {
                 clearNewText()
             })
-            
             .onDisappear(perform: { save() })
-            
-            .toolbar {
-               /* ToolbarItemGroup(placement: .navigationBarTrailing) {
-                    
-                   /* Button(action: { save(); security.lockScreen = true })
-                    {
-                        Image(systemName: "lock.shield.fill")
-                    }*/
-                }*/
-            }
             
         }.onReceive(NotificationCenter.default.publisher(for: UIApplication.didEnterBackgroundNotification)) { _ in
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {

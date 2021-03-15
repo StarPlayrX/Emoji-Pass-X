@@ -46,6 +46,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     lazy var persistentContainer: NSPersistentCloudKitContainer = {
         
         
+        let u = UUID().uuidString.count
+        
+        print(u)
+        
+        
         
         
         let container = NSPersistentCloudKitContainer(name: "passlist")

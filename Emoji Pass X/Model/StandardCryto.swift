@@ -9,29 +9,34 @@ import CommonCrypto
 import Foundation
 import UIKit
 
-public class Security: ObservableObject {
-    @Published var lockScreen = true
-}
 
 func encryptData(string: String, key: Data) -> Data {
+    let emptyData = Data()
     
-    //MARK: Do not record data if String is empty. Save 32 bytes per field
+    //MARK: Do no encrypt empty Strings (Saves disk space time)
     if string.isEmpty {
-        return Data()
+        return emptyData
     }
     
     if let secret = string.data(using: .utf8), let encrypted = secret.encryptAES256_CBC_PKCS7_IV(key: key) {
         return encrypted
     } else {
-        return Data()
+        return emptyData
     }
 }
 
 func decryptData(data: Data, key: Data) -> String {
-    if let decrypted = data.decryptAES256_CBC_PKCS7_IV(key: key), let string = String(data: decrypted, encoding: .utf8) {
-        return string
+    let emptyString = ""
+    
+    //MARK: Do not decrypt empty Data (Saves processing time)
+    if data.isEmpty {
+        return emptyString
+    }
+    
+    if let decryptedBytes = data.decryptAES256_CBC_PKCS7_IV(key: key), let decrypted = String(data: decryptedBytes, encoding: .utf8) {
+        return decrypted
     } else {
-        return ""
+        return emptyString
     }
 }
 

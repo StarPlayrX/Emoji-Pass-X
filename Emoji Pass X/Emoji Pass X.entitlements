@@ -3,14 +3,14 @@
 <plist version="1.0">
 <dict>
 	<key>aps-environment</key>
-	<string>development</string>
+	<string>production</string>
 	<key>com.apple.developer.applesignin</key>
 	<array>
 		<string>Default</string>
 	</array>
 	<key>com.apple.developer.icloud-container-identifiers</key>
 	<array>
-		<string>iCloud.Emoji-Pass-X</string>
+		<string>iCloud.com.brusstodd.EmojiPass.database</string>
 	</array>
 	<key>com.apple.developer.icloud-services</key>
 	<array>

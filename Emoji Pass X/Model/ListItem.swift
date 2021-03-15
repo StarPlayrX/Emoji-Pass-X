@@ -9,7 +9,6 @@ import CoreData
 
 class ListItem: NSManagedObject {
     @NSManaged var order: Int
-    @NSManaged var category: String
     @NSManaged var dateString: String
     @NSManaged var emoji: String
     @NSManaged var name: String
@@ -18,10 +17,9 @@ class ListItem: NSManagedObject {
     @NSManaged var isParent: Bool
     @NSManaged var star: Bool
     @NSManaged var lock: Bool
-    @NSManaged var icloud: Bool
     @NSManaged var desc: String //Cat Desc, plain text, to be used for accessibility
-    @NSManaged var catDesc: Data //New category Description
-    @NSManaged var id: Data //Encrpyted Private Key (Changes randomly)
+    
+    @NSManaged var id: Data //Random Encrypted Private Key
   
     //MARK: Replacement Password Encrpyted Items
     @NSManaged var pUsername: Data

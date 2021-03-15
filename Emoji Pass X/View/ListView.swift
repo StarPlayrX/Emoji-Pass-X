@@ -15,7 +15,7 @@ struct ListView: View {
     @Environment(\.managedObjectContext) var managedObjectContext
     @FetchRequest(fetchRequest: ListItem.getFetchRequest()) var detailListItemss: FetchedResults<ListItem>
     @ObservedObject var catItem: ListItem
-    @EnvironmentObject var security: Security
+    //@EnvironmentObject var security: Security
     
     let name = "Name"
     let emoji = ":)"
@@ -24,12 +24,15 @@ struct ListView: View {
     
     @State var searchText: String = ""
     @State var isSearching = false
-    
+    @State var leader = CGFloat.zero
+
     let generator = UINotificationFeedbackGenerator()
     
     init(catItem: ListItem) {
         self.catItem = catItem
     }
+    
+  
     
     //MARK: https://www.youtube.com/watch?v=vgvbrBX2FnE (Search Bar How to Reference in SwiftUI)
     
@@ -41,7 +44,7 @@ struct ListView: View {
     func searchStack() -> some View {
         return HStack {
             TextField("Search", text: $searchText)
-                .padding(.leading, 32)
+                .padding(.leading, iPhoneXSearch())
                 .padding(.trailing, 64)
                 .listRowBackground(Color(UIColor.systemBackground))
         }
@@ -54,7 +57,7 @@ struct ListView: View {
         .overlay (
             HStack {
                 Image(systemName: "magnifyingglass")
-                    .padding(.leading, 8)
+                    .padding(.leading, iPhoneXMag())
                 
                 Spacer()
                     .padding(.trailing, 16)
@@ -75,12 +78,16 @@ struct ListView: View {
                 if item.emoji.isEmpty || item.name.isEmpty {
                     Text("\(pencil) \(newRecord)")
                         .padding(.trailing, 18)
+                        .padding(.leading, iPhoneXCell())
+                        
                 } else {
                     Text("\(item.emoji) \(item.name)")
                         .padding(.trailing, 18)
-                    
+                        .padding(.leading, iPhoneXCell())
+
                 }
             }
+            .isDetailLink(true)
             .overlay (
                 HStack {
                     Spacer()
@@ -89,7 +96,6 @@ struct ListView: View {
                             .resizable()
                             .aspectRatio(contentMode: .fit)
                             .frame(width: 20, height: 20)
-                            
                             .padding(.trailing, 18)
                     }
                 }
@@ -110,18 +116,17 @@ struct ListView: View {
                 searchStack()
                 forEach(detailListItemss)
             }
-            .padding(.leading, -16)
+            .padding(.leading, iPhoneXLeading())
             .listStyle(PlainListStyle())
         }
         
         .navigationBarTitle(catItem.name, displayMode: .inline)
         .toolbar {
             
-            ToolbarItemGroup(placement: .navigationBarLeading) {
-                canEdit()
-            }
-            
+          
             ToolbarItemGroup(placement: .navigationBarTrailing) {
+                canEdit()
+
                 canCreate()
             }
         }
@@ -129,10 +134,10 @@ struct ListView: View {
     
     
     func detailListView() -> some View {
-        return NavigationView {
+        return ZStack {
             listViewStack()
         }
-        .environmentObject(security)
+        //.environmentObject(security)
         .onReceive(NotificationCenter.default.publisher(for: UIApplication.didEnterBackgroundNotification)) { _ in
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                 saveItems()
@@ -147,8 +152,10 @@ struct ListView: View {
         detailListView()
             .onDisappear(perform: { saveItems() })
             .onAppear(perform: {  saveItems() })
-        
+            .onAppear(perform: {  saveItems() })
+
     }
+    
     
     func canEdit() -> EditButton? {
         
