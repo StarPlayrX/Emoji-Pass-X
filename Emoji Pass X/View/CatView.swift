@@ -250,11 +250,13 @@ struct CatView: View {
                                         break
                                     }
                                   })
-                .padding(.bottom, 100)
+                .padding(.horizontal, 50)
+                .padding(.vertical, 100)
+                .frame(maxWidth: 500,  maxHeight: 260, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
                 .background(Color(UIColor.systemBackground))
             
         }
-        .signInWithAppleButtonStyle(colorScheme == .dark ? .black : .white)
+        .signInWithAppleButtonStyle(colorScheme == .dark ? .white : .black)
         .background(Color(UIColor.systemBackground))
     }
 
