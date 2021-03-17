@@ -13,7 +13,7 @@ struct CatEditView: View {
     @Environment(\.presentationMode) var presentationMode
     @Environment(\.managedObjectContext) var managedObjectContext
     
-    //@EnvironmentObject var security: Security
+    @EnvironmentObject var security: Security
     
     @ObservedObject var listItem: ListItem
     
@@ -70,6 +70,8 @@ struct CatEditView: View {
     }
     
     func save() {
+        security.catLock = true
+        
         //epoche date used to break cache and force a save
         listItem.dateString = String(Int(Date().timeIntervalSinceReferenceDate))
         if  listItem.name.isEmpty {

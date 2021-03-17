@@ -641,7 +641,7 @@ struct ItemView: View {
                             }
                         }
                     }
-            } .navigationBarTitle( geometry.size.width <= 374 ? "Pass X" : "🛡 Emoji Pass X", displayMode: .inline)
+            } .navigationBarTitle( geometry.size.width <= 374 ? "Pass X" : "Emoji Pass X", displayMode: .inline)
         }
 
         .onTapGesture {

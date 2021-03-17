@@ -124,11 +124,14 @@ struct ListView: View {
         .toolbar {
             
           
+            
             ToolbarItemGroup(placement: .navigationBarTrailing) {
                 canEdit()
 
                 canCreate()
             }
+            
+        
         }
     }
     

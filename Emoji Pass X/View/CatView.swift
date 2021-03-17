@@ -8,9 +8,13 @@ import SwiftUI
 import CoreData
 import AuthenticationServices
 
-private class Security: ObservableObject {
+class Security: ObservableObject {
     @Published var lockScreen = true
+    @Published var signOn = false
     @Published var cloudDebug = false
+    @Published var isSimulator = false
+    @Published var checkForSim = true
+    @Published var catLock = true
 }
 
 struct CatView: View {
@@ -37,16 +41,12 @@ struct CatView: View {
     let uuidCount = 36
     
     @State var searchText: String = ""
-    @State var catLock: Bool = true
     
     @State var isSearching = false
     let generator = UINotificationFeedbackGenerator()
 
     //MARK: https://www.youtube.com/watch?v=vgvbrBX2FnE (Search Bar How to Reference in SwiftUI)
-    
-   
 
-    
     func getCount(_ a: FetchedResults<ListItem>, _ b: ListItem) -> String {
         
         if b.uuidString == stars {
@@ -115,7 +115,7 @@ struct CatView: View {
                 ForEach( getList(category), id: \.self ) { item in
                     
                     
-                    if !catLock {
+                    if !security.catLock {
                         
                         //let gc = getCount(a: listItems, b: item)
                         NavigationLink(destination: CatEditView(listItem: item)) {
@@ -183,23 +183,34 @@ struct CatView: View {
         .toolbar {
             
             ToolbarItemGroup(placement: .navigationBarLeading) {
-                
-                Button(action: { catLock = !catLock })
+                Button(action: { security.catLock = !security.catLock })
                 {
-                    if !catLock {
+                    if !security.catLock {
                         Image(systemName: "lock.open")
                     } else {
                         Image(systemName: "lock.fill")
                     }
                 }
-                
-                
             }
+            
+           /* ToolbarItemGroup(placement: .bottomBar) {
+                HStack {
+                    
+                    Spacer()
+                    
+                    Button("Save") { saveItems();catLock = true
+                    }
+                        .padding(.horizontal, 50)
+                        .padding(.vertical, 100)
+                        .frame(maxWidth: 375,  maxHeight: 266, alignment: .center
+                        )
+                    Spacer()
+                }
+            }*/
             
             ToolbarItemGroup(placement: .navigationBarTrailing) {
                 EditButton()
 
-                
                 Button(action: addItem)
                     { Image(systemName: "plus") }
             }
@@ -228,99 +239,51 @@ struct CatView: View {
             
             Text("© 2021 Todd Bruss").font(.callout).minimumScaleFactor(0.1).padding(.top, 10)
             
-            if let destination = URL(string: "https://starplayrx.com") {
-                Link("StarPlayrX.com", destination: destination ).font(.callout).minimumScaleFactor(0.1).padding(.top, 5)
-            }
-            
-            
-            SignInWithAppleButton(.signIn,
-                                  onRequest: { (request) in
-                                    //Set up request
-                                    //MARK: We are only using Sign on with Apple as a controlled Gateway
-                                  },
-                                  onCompletion: { (result) in
-                                    switch result {
-                                    case .success(_):
-                                        //MARK: print(authorization)
-                                        //MARK: to use authorization add: let authorization to (_)
-                                        security.lockScreen = false
-                                        break
-                                    case .failure(let error):
-                                        print(error)
-                                        break
-                                    }
-                                  })
-                .padding(.horizontal, 50)
-                .padding(.vertical, 100)
-                .frame(maxWidth: 500,  maxHeight: 260, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
-                .background(Color(UIColor.systemBackground))
-            
-        }
-        .signInWithAppleButtonStyle(colorScheme == .dark ? .white : .black)
-        .background(Color(UIColor.systemBackground))
-    }
-
-    func cloudStack() -> some View {
-        return VStack {
-            
-            Spacer()
-
-            Text("Emoji Pass X").font(.largeTitle).minimumScaleFactor(0.8).padding(.top, 10)
-
-            HStack {
-                
-                Image("Emoji Pass X_logo4")
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: 230.0,height:230)
-                    .background(Color.clear)
-            }
-            
-            Text("© 2021 Todd Bruss").font(.callout).minimumScaleFactor(0.8).padding(.top, 10)
-            
-            if let destination = URL(string: "https://starplayrx.com") {
-                Link("StarPlayrX.com", destination: destination ).font(.callout).minimumScaleFactor(0.1).padding(.top, 5)
-            }
-            
-            if UIDevice.current.userInterfaceIdiom == .pad {
-                Text(settingsMsgiPad).foregroundColor(Color.red).font(.body).minimumScaleFactor(0.5).multilineTextAlignment(.center)
-                    .padding(15)
-                
+          
+            if security.signOn {
+                SignInWithAppleButton(.signIn,
+                                      onRequest: { (request) in
+                                        //Set up request
+                                        //MARK: We are only using Sign on with Apple as a controlled Gateway
+                                      },
+                                      onCompletion: { (result) in
+                                        switch result {
+                                        case .success(_):
+                                            //MARK: print(authorization)
+                                            //MARK: to use authorization add: let authorization to (_)
+                                            security.lockScreen = false
+                                            break
+                                        case .failure(let error):
+                                            print(error)
+                                            break
+                                        }
+                                      })
+                    .padding(.horizontal, 50)
+                    .padding(.vertical, 100)
+                    .frame(maxWidth: 375,  maxHeight: 266, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+                    .background(Color(UIColor.systemBackground))
+                    .signInWithAppleButtonStyle(colorScheme == .dark ? .white : .black)
             } else {
-                Text(settingsMsg).foregroundColor(Color.red).font(.body).minimumScaleFactor(0.5).multilineTextAlignment(.center)
-                    .padding(15)
-            }
-            
-            Button("Try again") {
                 
-                showingAlert = false
-
-                let icloud = checkForCloudKit()
-                
-                if icloud {
-                    _ = ListItem.getFetchRequest()
-                    
-                    checkForSimulator()
-                    showingAlert = false
+                if security.isSimulator {
+                    Button("Connect via Simulator") {
+                        security.lockScreen = false
+                    }
+                        .padding(.horizontal, 50)
+                        .padding(.vertical, 100)
+                        .frame(maxWidth: 375,  maxHeight: 266, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
                 } else {
-                    showingAlert = true
+                    Button("Connect via Device") {
+                        security.lockScreen = false
+                    }
+                        .padding(.horizontal, 50)
+                        .padding(.vertical, 100)
+                        .frame(maxWidth: 375,  maxHeight: 266, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
                 }
-            }.alert(isPresented: $showingAlert) {
-                
-                #if targetEnvironment(simulator)
-                    return Alert(title: Text("iCloud Sign On Error"), message: Text(settingsMsg),
-                          dismissButton: .default(Text("Ok")))
-                #else
-                    return Alert(title: Text("iCloud Sign On Error"), message: Text(settingsMsg),
-                                 primaryButton: .cancel(Text("Open Settings")) { openIcloud() },
-                                 secondaryButton: .default(Text("Ok")))
-                #endif
-                
-            }.padding(10)
-                
-            Spacer()
-         
+            }
         }
+        
+        .background(Color(UIColor.systemBackground))
     }
 
     
@@ -403,21 +366,18 @@ struct CatView: View {
         saveItems()
     }
     
-    func checkForSimulator() {
+    func showLockScreen() {
+        security.lockScreen = true
+        
         #if targetEnvironment(simulator)
-            DispatchQueue.main.async() {
-                security.lockScreen = false
-            }
+            security.isSimulator = true
         #else
-            DispatchQueue.main.async() {
-                security.lockScreen = true
-            }
+            security.isSimulator = false
         #endif
     }
     
     
-    func freshCats() {        
-        #if !targetEnvironment(simulator)
+    func freshCats() {
             DispatchQueue.main.async() {
                 let starLite = listItems.filter( { $0.isParent == true && $0.uuidString == stars })
                 
@@ -433,9 +393,10 @@ struct CatView: View {
             
                 saveItems()
             }
-        #else
+        
             _ = ListItem.getFetchRequest()
-        #endif
+        
+
     }
     
     func addStars() {
@@ -474,28 +435,31 @@ struct CatView: View {
                 try? managedObjectContext.save()
             }
         }
+        
+
     }
     
     
     //MARK: Main Body Content View
     var body: some View {
-        if security.cloudDebug {
+        if security.lockScreen  {
             lockStack()
-        } else if security.lockScreen && checkForCloudKit() {
-            lockStack()
-            .onAppear(perform: checkForSimulator)
-
-        } else if !security.lockScreen && checkForCloudKit() {
-            NavigationView {
-                catViewStack()
+            .onAppear(perform: showLockScreen)
+        } else {
+            ZStack {
+                
+                NavigationView {
+                    catViewStack()
+                }
+                
             }
-            .navigationViewStyle(StackNavigationViewStyle())
+            //.navigationViewStyle(StackNavigationViewStyle())
             .environmentObject(security)
             .onAppear(perform: freshCats)
             .onDisappear(perform: freshCats)
             .onReceive(NotificationCenter.default.publisher(for: UIApplication.didEnterBackgroundNotification)) { _ in
                 
-                checkForSimulator()
+                showLockScreen()
             
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
                     saveItems()
@@ -506,8 +470,6 @@ struct CatView: View {
                     freshCats()
                 }
             }
-        } else if !checkForCloudKit() {
-            cloudStack()
         }
     }
 }
