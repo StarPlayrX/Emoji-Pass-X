@@ -22,6 +22,7 @@
 		2D89E0A225EAD68E00939877 /* ItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D89E0A025EAD68E00939877 /* ItemView.swift */; };
 		2D89E0B125EAD87700939877 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D89E0B025EAD87700939877 /* CloudKit.framework */; };
 		2D8D534A25F41A3B00A5F397 /* Emojis.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D8D534925F41A3B00A5F397 /* Emojis.swift */; };
+		2D9ADA5726038CFD00304049 /* AuthenticationServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D9ADA5626038CFD00304049 /* AuthenticationServices.framework */; };
 		2DA9AD5725EB158E00A2633F /* StandardCryto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA9AD5625EB158E00A2633F /* StandardCryto.swift */; };
 /* End PBXBuildFile section */
 
@@ -44,6 +45,7 @@
 		2D89E0AD25EAD87500939877 /* Emoji Pass X.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Emoji Pass X.entitlements"; sourceTree = "<group>"; };
 		2D89E0B025EAD87700939877 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		2D8D534925F41A3B00A5F397 /* Emojis.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Emojis.swift; sourceTree = "<group>"; };
+		2D9ADA5626038CFD00304049 /* AuthenticationServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AuthenticationServices.framework; path = System/Library/Frameworks/AuthenticationServices.framework; sourceTree = SDKROOT; };
 		2DA9AD5625EB158E00A2633F /* StandardCryto.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StandardCryto.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -52,6 +54,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2D9ADA5726038CFD00304049 /* AuthenticationServices.framework in Frameworks */,
 				2D89E0B125EAD87700939877 /* CloudKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -102,6 +105,7 @@
 		2D89E0AF25EAD87700939877 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				2D9ADA5626038CFD00304049 /* AuthenticationServices.framework */,
 				2D89E0B025EAD87700939877 /* CloudKit.framework */,
 			);
 			name = Frameworks;

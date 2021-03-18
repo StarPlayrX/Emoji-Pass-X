@@ -13,9 +13,9 @@ struct ListView: View {
     
     @Environment(\.presentationMode) var presentationMode
     @Environment(\.managedObjectContext) var managedObjectContext
-    @FetchRequest(fetchRequest: ListItem.getFetchRequest()) var detailListItemss: FetchedResults<ListItem>
+    @FetchRequest(fetchRequest: ListItem.getFetchRequest()) var detailListItems: FetchedResults<ListItem>
     @ObservedObject var catItem: ListItem
-    //@EnvironmentObject var security: Security
+    @EnvironmentObject var security: Security
     
     let name = "Name"
     let emoji = ":)"
@@ -25,14 +25,14 @@ struct ListView: View {
     @State var searchText: String = ""
     @State var isSearching = false
     @State var leader = CGFloat.zero
-
+    
     let generator = UINotificationFeedbackGenerator()
     
     init(catItem: ListItem) {
         self.catItem = catItem
     }
     
-  
+    
     
     //MARK: https://www.youtube.com/watch?v=vgvbrBX2FnE (Search Bar How to Reference in SwiftUI)
     
@@ -79,12 +79,12 @@ struct ListView: View {
                     Text("\(pencil) \(newRecord)")
                         .padding(.trailing, 18)
                         .padding(.leading, iPhoneXCell())
-                        
+                    
                 } else {
                     Text("\(item.emoji) \(item.name)")
                         .padding(.trailing, 18)
                         .padding(.leading, iPhoneXCell())
-
+                    
                 }
             }
             .isDetailLink(true)
@@ -104,7 +104,7 @@ struct ListView: View {
             .listRowBackground(Color(UIColor.systemBackground))
             
         }
-        .onDelete(perform: deleteItem)
+        .onDelete(perform: security.isEditing ? deleteItem : nil )
         .onMove(perform: moveItem)
         .padding(.trailing, 0)
         .frame(height:40)
@@ -114,7 +114,7 @@ struct ListView: View {
         return VStack {
             List {
                 searchStack()
-                forEach(detailListItemss)
+                forEach(detailListItems)
             }
             .padding(.leading, iPhoneXLeading())
             .listStyle(PlainListStyle())
@@ -123,15 +123,33 @@ struct ListView: View {
         .navigationBarTitle(catItem.name, displayMode: .inline)
         .toolbar {
             
-          
+            ToolbarItemGroup(placement: .bottomBar) {
+                
+                if UIDevice.current.userInterfaceIdiom == .pad {
+                    Spacer()
+                    Button(action: { saveItems();security.isEditing = false;security.isListItemViewSaved = true; })
+                    {
+                        Text("Save")
+                    }
+                    Spacer()
+                }
+            }
+            
+            
             
             ToolbarItemGroup(placement: .navigationBarTrailing) {
-                canEdit()
-
+                Button(action: {  security.isEditing = !security.isEditing  })
+                {
+                    if security.isEditing  {
+                        Image(systemName: "hammer")
+                    } else {
+                        Image(systemName: "hammer.fill")
+                    }
+                }
                 canCreate()
             }
             
-        
+            
         }
     }
     
@@ -141,6 +159,7 @@ struct ListView: View {
             listViewStack()
         }
         //.environmentObject(security)
+        .environment(\.editMode, .constant(security.isEditing ? EditMode.active : EditMode.inactive)).animation(security.isEditing ? .easeInOut : .none)
         .onReceive(NotificationCenter.default.publisher(for: UIApplication.didEnterBackgroundNotification)) { _ in
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                 saveItems()
@@ -153,16 +172,26 @@ struct ListView: View {
     //MARK: BODY
     var body: some View {
         detailListView()
+            .alert(isPresented: $security.isDeleteListViewValid, content: {
+                Alert(title: Text("We're sorry."),
+                      message: Text("This item is locked and cannot be deleted."),
+                      dismissButton: .default(Text("OK")) { security.isDeleteListViewValid = false })
+            })
+            .alert(isPresented: $security.isListItemViewSaved, content: {
+                        Alert(title: Text("Save"),
+                              message: Text("Items have been saved."),
+                              dismissButton: .default(Text("OK")) { security.isListItemViewSaved = false })
+                    })
             .onDisappear(perform: { saveItems() })
             .onAppear(perform: {  saveItems() })
             .onAppear(perform: {  saveItems() })
-
+        
     }
     
     
     func canEdit() -> EditButton? {
         
-        let cf = coldFilter(detailListItemss)
+        let cf = coldFilter(detailListItems)
         
         if !cf.isEmpty {
             return EditButton()
@@ -188,7 +217,7 @@ struct ListView: View {
     func reindex() {
         // reorder items
         
-        let x = coldFilter(detailListItemss);
+        let x = coldFilter(detailListItems);
         
         x.enumerated().forEach { index, item in
             if item.order != index {
@@ -211,7 +240,7 @@ struct ListView: View {
     
     func moveItem(from source: IndexSet, to destination: Int) {
         
-        var item = coldFilter(detailListItemss)
+        var item = coldFilter(detailListItems)
         item = getList(item)
         
         item.move(fromOffsets: source, toOffset: destination)
@@ -219,9 +248,9 @@ struct ListView: View {
         for i in 0..<item.count {
             item[i].order = i
             
-            for j in 0..<detailListItemss.count {
-                if item[i].objectID == detailListItemss[j].objectID {
-                    detailListItemss[j].order = item[i].order
+            for j in 0..<detailListItems.count {
+                if item[i].objectID == detailListItems[j].objectID {
+                    detailListItems[j].order = item[i].order
                     break
                 }
             }
@@ -232,7 +261,7 @@ struct ListView: View {
     
     func deleteItem(indexSet: IndexSet) {
         
-        var cf = coldFilter(detailListItemss)
+        var cf = coldFilter(detailListItems)
         
         cf = getList(cf)
         
@@ -247,10 +276,11 @@ struct ListView: View {
             return
         }
         
-        if indexIsValid, let source = indexSet.first, let detailListItems = Optional(cf[source]), !detailListItems.lock {
-            managedObjectContext.delete(detailListItems)
+        if indexIsValid, let source = indexSet.first, let dli = Optional(cf[source]), !dli.lock {
+            managedObjectContext.delete(dli)
         } else {
             generator.notificationOccurred(.error)
+            security.isDeleteListViewValid = true
         }
         
         saveItems()
@@ -262,7 +292,7 @@ struct ListView: View {
         newItem.name = newRecord
         newItem.isParent = false
         newItem.uuidString = catItem.uuidString
-        newItem.order = (detailListItemss.last?.order ?? 0) + 1
+        newItem.order = (detailListItems.last?.order ?? 0) + 1
         saveItems()
     }
     

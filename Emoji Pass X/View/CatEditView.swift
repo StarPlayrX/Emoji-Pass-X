@@ -70,7 +70,6 @@ struct CatEditView: View {
     }
     
     func save() {
-        security.catLock = true
         
         //epoche date used to break cache and force a save
         listItem.dateString = String(Int(Date().timeIntervalSinceReferenceDate))

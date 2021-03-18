@@ -12,7 +12,7 @@ struct ItemView: View {
     @Environment(\.managedObjectContext) var managedObjectContext
     @Environment(\.presentationMode) var presentationMode
     @Environment(\.colorScheme) var colorScheme
-    //@EnvironmentObject var security: Security
+    @EnvironmentObject var security: Security
     @StateObject private var privateKey = privateParts()
      
     @ObservedObject var catItem: ListItem

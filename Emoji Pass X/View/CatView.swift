@@ -10,11 +10,17 @@ import AuthenticationServices
 
 class Security: ObservableObject {
     @Published var lockScreen = true
-    @Published var signOn = false
+    @Published var signOn = true
     @Published var cloudDebug = false
     @Published var isSimulator = false
     @Published var checkForSim = true
     @Published var catLock = true
+    @Published var isValid = false
+    @Published var isDeleteListViewValid = false
+    @Published var isEditing = false
+    @Published var isCatViewSaved = false
+    @Published var isListItemViewSaved = false
+
 }
 
 struct CatView: View {
@@ -104,7 +110,7 @@ struct CatView: View {
     
     //MARK: catViewStack
     func catViewStack() -> some View {
-        return VStack {
+        return Group {
             
             let category = listItems.filter( { $0.isParent == true })
             
@@ -117,14 +123,20 @@ struct CatView: View {
                     
                     if !security.catLock {
                         
-                        //let gc = getCount(a: listItems, b: item)
                         NavigationLink(destination: CatEditView(listItem: item)) {
-                            Text("\(pencil) \(item.name)")
-                                .padding(.trailing, 18)
-                                .padding(.leading, iPhoneXCell())
-
-                                .font(.title)
                             
+                            if !item.name.isEmpty {
+                                Text("\(pencil) \(item.name)")
+                                    .padding(.trailing, 18)
+                                    .padding(.leading, iPhoneXCell())
+                                    .font(.title)
+                            } else {
+                                Text("\(pencil) \(newCategory)")
+                                    .padding(.trailing, 18)
+                                    .padding(.leading, iPhoneXCell())
+                                    .font(.title)
+                            }
+                           
                         }
                         .overlay (
                             HStack {
@@ -134,7 +146,7 @@ struct CatView: View {
                             }
                         )
                         
-                    } else if item.name == newCategory  {
+                    } else if item.name == newCategory || item.name.isEmpty  {
                         
                         //let gc = getCount(a: listItems, b: item)
                         NavigationLink(destination: CatEditView(listItem: item)) {
@@ -169,20 +181,54 @@ struct CatView: View {
                             }
                         )
                     }
+
                     
                 }
-                .onDelete(perform: deleteItem)
+                .onDelete(perform: security.isEditing ? deleteItem : nil )
                 .onMove(perform: moveItem)
                 .padding(.trailing, 0)
                 .frame(height:40)
             }
+            
             .padding(.leading, iPhoneXLeading())
             .listStyle(PlainListStyle())
+
         }
+        .environment(\.editMode, .constant(security.isEditing ? EditMode.active : EditMode.inactive)).animation(security.isEditing ? .easeInOut : .none)
         .navigationBarTitle("Categories", displayMode: .inline)
         .toolbar {
             
+            
+                ToolbarItemGroup(placement: .bottomBar) {
+                    
+                    if UIDevice.current.userInterfaceIdiom == .pad {
+                        Spacer()
+                        Button(action: { saveItems();security.isEditing = false;security.catLock = true;security.isCatViewSaved = true})
+                        {
+                            Text("Save")
+                        }
+                        Spacer()
+                }
+            }
+            
+            
+          
+            
+            
             ToolbarItemGroup(placement: .navigationBarLeading) {
+            
+                Button(action: {  security.isEditing = !security.isEditing  })
+                {
+                    if security.isEditing  {
+                        Image(systemName: "hammer")
+                    } else {
+                        Image(systemName: "hammer.fill")
+                    }
+                }
+
+            }
+            
+            ToolbarItemGroup(placement: .navigationBarTrailing) {
                 Button(action: { security.catLock = !security.catLock })
                 {
                     if !security.catLock {
@@ -191,28 +237,10 @@ struct CatView: View {
                         Image(systemName: "lock.fill")
                     }
                 }
-            }
-            
-           /* ToolbarItemGroup(placement: .bottomBar) {
-                HStack {
-                    
-                    Spacer()
-                    
-                    Button("Save") { saveItems();catLock = true
-                    }
-                        .padding(.horizontal, 50)
-                        .padding(.vertical, 100)
-                        .frame(maxWidth: 375,  maxHeight: 266, alignment: .center
-                        )
-                    Spacer()
-                }
-            }*/
-            
-            ToolbarItemGroup(placement: .navigationBarTrailing) {
-                EditButton()
-
+                
                 Button(action: addItem)
                     { Image(systemName: "plus") }
+                  
             }
         }
     }
@@ -240,8 +268,8 @@ struct CatView: View {
             Text("© 2021 Todd Bruss").font(.callout).minimumScaleFactor(0.1).padding(.top, 10)
             
           
-            if security.signOn {
-                SignInWithAppleButton(.signIn,
+            if security.signOn && !security.isSimulator {
+                SignInWithAppleButton(.continue,
                                       onRequest: { (request) in
                                         //Set up request
                                         //MARK: We are only using Sign on with Apple as a controlled Gateway
@@ -260,20 +288,20 @@ struct CatView: View {
                                       })
                     .padding(.horizontal, 50)
                     .padding(.vertical, 100)
-                    .frame(maxWidth: 375,  maxHeight: 266, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+                    .frame(maxWidth: 375,  maxHeight: 265, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
                     .background(Color(UIColor.systemBackground))
                     .signInWithAppleButtonStyle(colorScheme == .dark ? .white : .black)
             } else {
                 
                 if security.isSimulator {
-                    Button("Connect via Simulator") {
+                    Button("Continue with Simulator") {
                         security.lockScreen = false
                     }
                         .padding(.horizontal, 50)
                         .padding(.vertical, 100)
                         .frame(maxWidth: 375,  maxHeight: 266, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
                 } else {
-                    Button("Connect via Device") {
+                    Button("Continue with Device") {
                         security.lockScreen = false
                     }
                         .padding(.horizontal, 50)
@@ -331,7 +359,7 @@ struct CatView: View {
         
         if !indexIsValid {
             generator.notificationOccurred(.error)
-            return
+           
         }
         
         if let source = indexSet.first, let listItem = Optional(cf[source]) {
@@ -360,10 +388,13 @@ struct CatView: View {
                 managedObjectContext.delete(listItem)
             } else {
                 generator.notificationOccurred(.error)
+                security.isValid = true
             }
+            
+            saveItems()
+
         }
         
-        saveItems()
     }
     
     func showLockScreen() {
@@ -453,7 +484,18 @@ struct CatView: View {
                 }
                 
             }
-            //.navigationViewStyle(StackNavigationViewStyle())
+            .alert(isPresented: $security.isValid, content: {
+                        Alert(title: Text("We're sorry."),
+                              message: Text("This category cannot be deleted."),
+                              dismissButton: .default(Text("OK")) { security.isValid = false })
+                    })
+            .alert(isPresented: $security.isCatViewSaved, content: {
+                        Alert(title: Text("Save"),
+                              message: Text("Changes have been saved."),
+                              dismissButton: .default(Text("OK")) { security.isCatViewSaved = false })
+                    })
+            .navigationViewStyle(DoubleColumnNavigationViewStyle())
+
             .environmentObject(security)
             .onAppear(perform: freshCats)
             .onDisappear(perform: freshCats)
