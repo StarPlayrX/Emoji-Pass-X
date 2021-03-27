@@ -106,6 +106,11 @@ struct ListView: View {
         }
         .onDelete(perform: security.isEditing ? deleteItem : nil )
         .onMove(perform: moveItem)
+        .alert(isPresented: $security.isDeleteListViewValid, content: {
+            Alert(title: Text("We're sorry."),
+                  message: Text("This item is locked and cannot be deleted."),
+                  dismissButton: .default(Text("OK")) { security.isDeleteListViewValid = false })
+        })
         .padding(.trailing, 0)
         .frame(height:40)
     }
@@ -123,14 +128,18 @@ struct ListView: View {
         .navigationBarTitle(catItem.name, displayMode: .inline)
         .toolbar {
             
+            //MARK: To do - please clean this up
             ToolbarItemGroup(placement: .bottomBar) {
                 
                 if UIDevice.current.userInterfaceIdiom == .pad {
                     Spacer()
                     Button(action: { saveItems();security.isEditing = false;security.isListItemViewSaved = true; })
-                    {
-                        Text("Save")
-                    }
+                        { Text("Save") }
+                        .alert(isPresented: $security.isListItemViewSaved, content: {
+                            Alert(title: Text("Save"),
+                                  message: Text("Items have been saved."),
+                                  dismissButton: .default(Text("OK")) { security.isListItemViewSaved = false })
+                        })
                     Spacer()
                 }
             }
@@ -172,16 +181,8 @@ struct ListView: View {
     //MARK: BODY
     var body: some View {
         detailListView()
-            .alert(isPresented: $security.isDeleteListViewValid, content: {
-                Alert(title: Text("We're sorry."),
-                      message: Text("This item is locked and cannot be deleted."),
-                      dismissButton: .default(Text("OK")) { security.isDeleteListViewValid = false })
-            })
-            .alert(isPresented: $security.isListItemViewSaved, content: {
-                        Alert(title: Text("Save"),
-                              message: Text("Items have been saved."),
-                              dismissButton: .default(Text("OK")) { security.isListItemViewSaved = false })
-                    })
+            
+            
             .onDisappear(perform: { saveItems() })
             .onAppear(perform: {  saveItems() })
             .onAppear(perform: {  saveItems() })

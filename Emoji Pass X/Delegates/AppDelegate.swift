@@ -13,17 +13,34 @@ import CoreData
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
+    override func buildMenu(with builder: UIMenuBuilder) {
+        super.buildMenu(with: builder)
 
-  
+        builder.remove(menu: .services)
+        builder.remove(menu: .format)
+        builder.remove(menu: .toolbar)
+        
+        let refreshCommand = UIKeyCommand(input: "S", modifierFlags: [.command], action: #selector(save))
+        refreshCommand.title = "Save"
+        let saveDataMenu = UIMenu(title: "Save", image: nil, identifier: UIMenu.Identifier("Save"), options: .displayInline, children: [refreshCommand])
+        builder.insertChild(saveDataMenu, atStartOfMenu: .file)
+    }
+    
+    
+    //MARK: Save Object
+    @objc func save() {
+        NotificationCenter.default.post(name: .save, object: nil)
+    }
+
+    
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        
         //Turns off UI Contraint warnings
         UserDefaults.standard.set(false, forKey: "_UIConstraintBasedLayoutLogUnsatisfiable")
         
-        Thread.sleep(forTimeInterval: 0)
-             // Override point for customization after application launch.
-         return true
+        
+        return true
         
     }
 
@@ -69,6 +86,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }()
 
     // MARK: - Core Data Saving support
+    @objc
     func saveContext () {
         let context = persistentContainer.viewContext
         if context.hasChanges {
@@ -91,7 +109,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     
                     DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
                         // do something
-                        try? context.save()
+                        context.refreshAllObjects()
                     }
                  
                 }

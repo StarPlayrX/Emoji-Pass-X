@@ -110,12 +110,10 @@ struct ItemView: View {
         privateKey.parentKey = emojiParentKey()
         
         //New Item detected, so we clear this out (otherwise fill it in!)
-        if ( listItem.emoji == pencil && listItem.name == newRecord ) {
+        if ( listItem.emoji == pencil && listItem.name == newRecord) {
             listItem.name  = ""
             listItem.emoji = ""
             listItem.templateId = catItem.templateId
-            listItem.lock = false
-            listItem.star = false
         }
         
         if listItem.uuidString.isEmpty {
@@ -595,14 +593,13 @@ struct ItemView: View {
                         }
                         //MARK: let template = ["💳 Cards", "🔒 Passwords", "🔑 Keys"]
                         
-                     
                         
-                        if listItem.templateId == 1  {
-                            geometry.size.height <= 568 ? passwordStack(!isIPhoneX()) : passwordStack(false)
-                        } else if listItem.templateId == 0  {
-                            geometry.size.height <= 568 ? creditCardStack(!isIPhoneX()) : creditCardStack(false)
-                        } else if listItem.templateId == 2  {
+                        
+                        if UIDevice.current.userInterfaceIdiom == .pad ||  UIDevice.current.userInterfaceIdiom == .mac {
+                            geometry.size.height <= 512 ? creditCardStack(true) : creditCardStack(false)
+                        } else {
                             geometry.size.height <= 568 ? licenseKeyStack(!isIPhoneX()) : licenseKeyStack(false)
+
                         }
                     }
                     .onDisappear(perform: { save() })

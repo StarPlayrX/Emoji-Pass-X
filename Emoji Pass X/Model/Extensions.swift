@@ -15,17 +15,21 @@ public extension UITextField {
     }
 }
 
-public extension StringProtocol {
+extension StringProtocol {
     var data: Data { .init(utf8) }
     var bytes: [UInt8] { .init(utf8) }
 }
 
-public extension Data {
+extension Data {
     var bytes: [UInt8] { [UInt8](self) }
 }
 
-public extension View {
+extension View {
     func hideKeyboard() {
         UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
     }
+}
+
+extension Notification.Name {
+    static let save = Notification.Name("save")
 }
