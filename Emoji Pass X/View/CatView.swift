@@ -10,16 +10,16 @@ import AuthenticationServices
 
 
 struct CatView: View {
-
+    
     @State private var showingAlert = false
     @State var searchText: String = ""
     @State var isSearching = false
-
+    
     @StateObject var security = Security()
     
     @Environment(\.managedObjectContext) var managedObjectContext
     @Environment(\.colorScheme) var colorScheme
-
+    
     @FetchRequest(fetchRequest: ListItem.getFetchRequest()) var listItems: FetchedResults<ListItem>
     
     let name = "Name"
@@ -30,7 +30,7 @@ struct CatView: View {
     let pencil = "✏️"
     let star = "⭐️"
     let magnifier = "🔍"
-
+    
     let stars = "Stars"
     let everything = "Everything"
     let uuidCount = 36
@@ -42,7 +42,7 @@ struct CatView: View {
     var body: some View {
         if security.lockScreen  {
             catViewLockStack()
-            .onAppear(perform: showLockScreen)
+                .onAppear(perform: showLockScreen)
         } else {
             ZStack {
                 NavigationView {
@@ -55,7 +55,7 @@ struct CatView: View {
             .onDisappear(perform: freshCats)
             .onReceive(NotificationCenter.default.publisher(for: UIApplication.didEnterBackgroundNotification)) { _ in
                 showLockScreen()
-            
+                
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
                     saveItems()
                 }

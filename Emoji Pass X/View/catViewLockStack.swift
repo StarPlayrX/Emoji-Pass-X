@@ -17,7 +17,7 @@ extension CatView {
         return VStack {
             
             Text("Emoji Pass X").font(.largeTitle).minimumScaleFactor(0.75).padding(.top, 100)
-
+            
             HStack {
                 
                 Image("Emoji Pass X_logo4")
@@ -27,12 +27,12 @@ extension CatView {
                     
                     .background(Color.clear)
             }.overlay(
-            RoundedRectangle(cornerRadius: 48)
-                .stroke(  UITraitCollection.current.userInterfaceStyle == .dark ? Color.gray : Color.black, lineWidth: 2)
-        )
+                RoundedRectangle(cornerRadius: 48)
+                    .stroke(  UITraitCollection.current.userInterfaceStyle == .dark ? Color.gray : Color.black, lineWidth: 2)
+            )
             
             Text(copyright).font(.callout).minimumScaleFactor(0.75).padding(.top, 10)
-                    
+            
             if security.signOn && !security.isSimulator {
                 SignInWithAppleButton(.continue,
                                       onRequest: { (request) in
@@ -57,32 +57,40 @@ extension CatView {
                                         }
                                       }).overlay(
                                         RoundedRectangle(cornerRadius: 9)
-                                        .stroke( UITraitCollection.current.userInterfaceStyle == .dark ? Color.white : Color.black, lineWidth: 1)
-                                    )
+                                            .stroke( UITraitCollection.current.userInterfaceStyle == .dark ? Color.white : Color.black, lineWidth: 1)
+                                      )
                     .padding(.horizontal, 50)
                     .padding(.vertical, 100)
                     .frame(maxWidth: 320,  maxHeight: 220, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
-                    
-                   
+                
+                
             } else {
                 
                 if security.isSimulator {
                     Button("Continue with Simulator") {
                         security.lockScreen = false
                     }
-                        .padding(.horizontal, 50)
-                        .padding(.vertical, 100)
-                        .frame(maxWidth: 375,  maxHeight: 266, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+                    .padding(.horizontal, 50)
+                    .padding(.vertical, 100)
+                    .frame(maxWidth: 375,  maxHeight: 266, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+                    
+                    
                 } else {
-                    Button("Continue with Device") {
-                        security.lockScreen = false
-                    }
-                        .padding(.horizontal, 50)
-                        .padding(.vertical, 100)
+                    Group {
+                        Button("Continue with Device") {
+                            security.lockScreen = false
+                        }
                         .frame(maxWidth: 375,  maxHeight: 266, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+                        .keyboardShortcut(.defaultAction)
+                    }
+                    
+                    .padding(.horizontal, 50)
+                    .padding(.vertical, 100)
                 }
             }
             
         }.signInWithAppleButtonStyle( UITraitCollection.current.userInterfaceStyle == .dark ? .white : .black)
     }
 }
+
+
