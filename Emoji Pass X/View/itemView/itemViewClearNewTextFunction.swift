@@ -13,10 +13,14 @@ extension ItemView {
         privateKey.parentKey = emojiParentKey()
         
         //New Item detected, so we clear this out (otherwise fill it in!)
-        if ( listItem.emoji == pencil && listItem.name == newRecord) {
-            listItem.name  = ""
-            listItem.emoji = ""
+        if ( listItem.name == newRecord) {
             listItem.templateId = catItem.templateId
+            listItem.name = ""
+
+        }
+        
+        if !listItem.emoji.isEmpty && listItem.emoji.count == 1 {
+            security.previousEmoji = listItem.emoji
         }
         
         if listItem.uuidString.isEmpty {

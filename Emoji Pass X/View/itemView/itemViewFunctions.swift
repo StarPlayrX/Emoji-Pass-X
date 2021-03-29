@@ -21,10 +21,33 @@ extension ItemView {
 
     
     //MARK: Function to keep text length in limits
-    func limitText(_ upper: Int) {
-        if listItem.emoji.count > upper {
-            listItem.emoji = String(listItem.emoji.prefix(upper))
-            hideKeyboard()
+    func limitText() {
+   
+        let limiter = 1
+        
+        var usePrefix = true
+        
+        if security.previousEmoji.count == limiter {
+            if security.previousEmoji == listItem.emoji.prefix(limiter) {
+                usePrefix = false
+            } else if  security.previousEmoji == listItem.emoji.suffix(limiter)  {
+               usePrefix = true
+            }
+        }
+      
+        if listItem.emoji.count > limiter {
+            
+            if usePrefix {
+                listItem.emoji = String(listItem.emoji.prefix(limiter))
+            } else {
+                listItem.emoji = String(listItem.emoji.suffix(limiter))
+            }
+            
+            if listItem.emoji.count == limiter {
+                security.previousEmoji = listItem.emoji
+            }
+            
+           // hideKeyboard()
         }
     }
     

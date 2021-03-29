@@ -19,4 +19,8 @@ public class Security: ObservableObject {
     @Published var isEditing = false
     @Published var isCatViewSaved = false
     @Published var isListItemViewSaved = false
+    @Published var isItemSaved = false
+    @Published var previousEmoji = ""
+
+
 }

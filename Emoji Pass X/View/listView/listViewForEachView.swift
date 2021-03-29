@@ -11,17 +11,10 @@ extension ListView {
     func forEach(_ a:  FetchedResults<ListItem>) -> some View {
         ForEach( getList(coldFilter(a) ) , id: \.self) { item in
             NavigationLink(destination: ItemView(catItem: catItem, listItem: item)) {
-                if item.emoji.isEmpty || item.name.isEmpty {
-                    Text("\(pencil) \(newRecord)")
-                        .padding(.trailing, 18)
-                        .padding(.leading, iPhoneXCell())
-                    
-                } else {
-                    Text("\(item.emoji) \(item.name)")
-                        .padding(.trailing, 18)
-                        .padding(.leading, iPhoneXCell())
-                    
-                }
+                Text("\(item.emoji) \(item.name)")
+                    .padding(.trailing, 18)
+                    .padding(.leading, iPhoneXCell())
+
             }
             .isDetailLink(true)
             .overlay (

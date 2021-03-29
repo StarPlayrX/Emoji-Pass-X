@@ -120,7 +120,7 @@ extension CatView {
 
             ToolbarItemGroup(placement: .navigationBarLeading) {
             
-                Button(action: {  security.isEditing = !security.isEditing  })
+                Button(action: {  security.isEditing = !security.isEditing; security.catLock = true  })
                 {
                     if security.isEditing  {
                         Image(systemName: "hammer")
@@ -131,7 +131,7 @@ extension CatView {
             }
             
             ToolbarItemGroup(placement: .navigationBarTrailing) {
-                Button(action: { security.catLock = !security.catLock })
+                Button(action: { security.catLock = !security.catLock; security.isEditing = false })
                 {
                     if !security.catLock {
                         Image(systemName: "lock.open")

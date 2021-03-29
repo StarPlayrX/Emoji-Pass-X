@@ -57,4 +57,4 @@ extension ListItem {
 
 let template = ["💳 Cards", "🔒 Passwords", "🔑 Keys"]
 let templateIds = [0, 1, 2]
-
+var isGlobalDark = true

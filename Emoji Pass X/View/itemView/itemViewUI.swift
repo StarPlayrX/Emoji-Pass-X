@@ -31,10 +31,10 @@ extension ItemView {
                 Button(action: copyPnotes) { Image(systemName: clipBoard) }
                     .padding(.horizontal, clipPadding)
             } else if text == "cNotes" {
-                Button(action: copyPass) { Image(systemName: clipBoard) }
+                Button(action: copyCnotes) { Image(systemName: clipBoard) }
                     .padding(.horizontal, clipPadding)
             } else if text == "kNotes" {
-                Button(action: copyPhone) { Image(systemName: clipBoard) }
+                Button(action: copyKnotes) { Image(systemName: clipBoard) }
                     .padding(.horizontal, clipPadding)
             }
             

@@ -18,13 +18,7 @@ struct CatEditView: View {
     
     @ObservedObject var listItem: ListItem
     
-    //Function to keep text length in limits
-    func limitText(_ upper: Int) {
-        if listItem.emoji.count > upper {
-            listItem.emoji = String(listItem.emoji.prefix(upper))
-            hideKeyboard()
-        }
-    }
+    
     
     //strings
     let name = "Category Name"

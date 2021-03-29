@@ -14,7 +14,7 @@ import AuthenticationServices
 
 extension CatView {
     func catViewLockStack() -> some View {
-        return VStack {
+        VStack {
             
             Text("Emoji Pass X").font(.largeTitle).minimumScaleFactor(0.75).padding(.top, 100)
             
@@ -24,11 +24,10 @@ extension CatView {
                     .resizable()
                     .scaledToFit()
                     .frame(width: 230.0,height:230)
-                    
                     .background(Color.clear)
-            }.overlay(
+            }.overlay (
                 RoundedRectangle(cornerRadius: 48)
-                    .stroke(  UITraitCollection.current.userInterfaceStyle == .dark ? Color.gray : Color.black, lineWidth: 2)
+                    .stroke(  isGlobalDark  ? Color.gray : Color.white, lineWidth: 2)
             )
             
             Text(copyright).font(.callout).minimumScaleFactor(0.75).padding(.top, 10)
@@ -55,13 +54,15 @@ extension CatView {
                                             print(error)
                                             break
                                         }
-                                      }).overlay(
-                                        RoundedRectangle(cornerRadius: 9)
-                                            .stroke( UITraitCollection.current.userInterfaceStyle == .dark ? Color.white : Color.black, lineWidth: 1)
+                                      })
+                                        .signInWithAppleButtonStyle( isGlobalDark ? .white : .black)
+                                        .overlay(
+                                        RoundedRectangle(cornerRadius: 6)
+                                            .stroke( isGlobalDark ? Color.black : Color.white, lineWidth: 2)
                                       )
                     .padding(.horizontal, 50)
                     .padding(.vertical, 100)
-                    .frame(maxWidth: 320,  maxHeight: 220, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+                    .frame(maxWidth: 350,  maxHeight: 250, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
                 
                 
             } else {
@@ -89,7 +90,9 @@ extension CatView {
                 }
             }
             
-        }.signInWithAppleButtonStyle( UITraitCollection.current.userInterfaceStyle == .dark ? .white : .black)
+        }
+        .onAppear(perform: { isGlobalDark = UIScreen.main.traitCollection.userInterfaceStyle == .dark }  )
+        .onDisappear(perform: { isGlobalDark = UIScreen.main.traitCollection.userInterfaceStyle == .dark } )
     }
 }
 

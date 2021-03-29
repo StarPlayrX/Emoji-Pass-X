@@ -24,6 +24,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         refreshCommand.title = "Save"
         let saveDataMenu = UIMenu(title: "Save", image: nil, identifier: UIMenu.Identifier("Save"), options: .displayInline, children: [refreshCommand])
         builder.insertChild(saveDataMenu, atStartOfMenu: .file)
+        
     }
     
     
@@ -32,14 +33,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         NotificationCenter.default.post(name: .save, object: nil)
     }
 
-    
-    
+ 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         //Turns off UI Contraint warnings
         UserDefaults.standard.set(false, forKey: "_UIConstraintBasedLayoutLogUnsatisfiable")
-        
-        
+        isGlobalDark = UIScreen.main.traitCollection.userInterfaceStyle == .dark
+
         return true
         
     }

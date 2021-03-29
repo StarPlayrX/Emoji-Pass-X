@@ -18,7 +18,6 @@ struct CatView: View {
     @StateObject var security = Security()
     
     @Environment(\.managedObjectContext) var managedObjectContext
-    @Environment(\.colorScheme) var colorScheme
     
     @FetchRequest(fetchRequest: ListItem.getFetchRequest()) var listItems: FetchedResults<ListItem>
     
@@ -64,6 +63,8 @@ struct CatView: View {
                 DispatchQueue.main.async() {
                     freshCats()
                 }
+                
+                
             }
             .onReceive(NotificationCenter.default.publisher(for: .save)) { _ in
                 DispatchQueue.main.async() {

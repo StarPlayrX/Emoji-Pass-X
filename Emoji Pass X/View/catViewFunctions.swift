@@ -8,7 +8,7 @@
 import SwiftUI
 
 extension CatView {
-
+    
     func getCount(_ a: FetchedResults<ListItem>, _ b: ListItem) -> String {
         if b.uuidString == stars {
             let j = a.filter {$0.star }.count
@@ -107,6 +107,11 @@ extension CatView {
         }
     }
     
+    
+    func setIsScreenDark() {
+        isGlobalDark = UIScreen.main.traitCollection.userInterfaceStyle == .dark
+    }
+    
     func showLockScreen() {
         security.lockScreen = true
         
@@ -114,6 +119,7 @@ extension CatView {
             security.isSimulator = true
         #else
             security.isSimulator = false
+            setIsScreenDark()
         #endif
     }
     
@@ -135,6 +141,7 @@ extension CatView {
                 saveItems()
             }
             _ = ListItem.getFetchRequest()
+            setIsScreenDark()
     }
     
     func addStars() {
@@ -173,6 +180,8 @@ extension CatView {
                 try? managedObjectContext.save()
             }
         }
+        
+        setIsScreenDark()
     }
   
 }
