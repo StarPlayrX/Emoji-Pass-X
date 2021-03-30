@@ -32,7 +32,7 @@ extension CatView {
 
     //MARK: See if iCloud is available
     func checkForCloudKit() -> Bool {
-        FileManager.default.ubiquityIdentityToken != nil ? true : false
+        FileManager.default.ubiquityIdentityToken != nil ? false : true
     }
 
 
@@ -115,6 +115,7 @@ extension CatView {
     func showLockScreen() {
         security.lockScreen = true
         
+     
         #if targetEnvironment(simulator)
             security.isSimulator = true
         #else
@@ -125,6 +126,7 @@ extension CatView {
     
     
     func freshCats() {
+        #if !targetEnvironment(simulator)
             DispatchQueue.main.async() {
                 let starLite = listItems.filter( { $0.isParent == true && $0.uuidString == stars })
                 
@@ -140,6 +142,7 @@ extension CatView {
             
                 saveItems()
             }
+        #endif
             _ = ListItem.getFetchRequest()
             setIsScreenDark()
     }

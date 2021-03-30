@@ -42,6 +42,7 @@ struct CatView: View {
         if security.lockScreen  {
             catViewLockStack()
                 .onAppear(perform: showLockScreen)
+                
         } else {
             ZStack {
                 NavigationView {
