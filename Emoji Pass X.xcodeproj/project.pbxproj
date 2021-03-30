@@ -22,6 +22,7 @@
 		2D89E0A225EAD68E00939877 /* ItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D89E0A025EAD68E00939877 /* ItemView.swift */; };
 		2D8D534A25F41A3B00A5F397 /* Emojis.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D8D534925F41A3B00A5F397 /* Emojis.swift */; };
 		2DA9AD5725EB158E00A2633F /* StandardCryto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA9AD5625EB158E00A2633F /* StandardCryto.swift */; };
+		6F08D839261399C80024B61A /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D89E0B025EAD87700939877 /* CloudKit.framework */; };
 		6F83C6F3260FCDEF007B0D8E /* catViewLockStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F83C6F2260FCDEF007B0D8E /* catViewLockStack.swift */; };
 		6F83C6FA260FD1F0007B0D8E /* catViewStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F83C6F9260FD1F0007B0D8E /* catViewStack.swift */; };
 		6F83C700260FD586007B0D8E /* SecurityClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F83C6FF260FD586007B0D8E /* SecurityClass.swift */; };
@@ -102,6 +103,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6F08D839261399C80024B61A /* CloudKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -511,7 +513,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = "Emoji Pass X/Emoji Pass X.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 42;
+				CURRENT_PROJECT_VERSION = 44;
 				DEVELOPMENT_ASSET_PATHS = "\"Emoji Pass X/Preview Content\"";
 				DEVELOPMENT_TEAM = 469UCUB275;
 				ENABLE_PREVIEWS = YES;
@@ -539,7 +541,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = "Emoji Pass X/Emoji Pass XRelease.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 42;
+				CURRENT_PROJECT_VERSION = 44;
 				DEVELOPMENT_ASSET_PATHS = "\"Emoji Pass X/Preview Content\"";
 				DEVELOPMENT_TEAM = 469UCUB275;
 				ENABLE_PREVIEWS = YES;
