@@ -20,11 +20,8 @@
 		2D89E09725EAD67700939877 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2D89E09525EAD67700939877 /* LaunchScreen.storyboard */; };
 		2D89E0A125EAD68E00939877 /* ListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D89E09F25EAD68E00939877 /* ListItem.swift */; };
 		2D89E0A225EAD68E00939877 /* ItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D89E0A025EAD68E00939877 /* ItemView.swift */; };
-		2D89E0B125EAD87700939877 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D89E0B025EAD87700939877 /* CloudKit.framework */; };
 		2D8D534A25F41A3B00A5F397 /* Emojis.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D8D534925F41A3B00A5F397 /* Emojis.swift */; };
-		2D9ADA5726038CFD00304049 /* AuthenticationServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D9ADA5626038CFD00304049 /* AuthenticationServices.framework */; };
 		2DA9AD5725EB158E00A2633F /* StandardCryto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA9AD5625EB158E00A2633F /* StandardCryto.swift */; };
-		6F07D6BE260A540300148869 /* NetworkExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F07D6BD260A540300148869 /* NetworkExtension.framework */; };
 		6F83C6F3260FCDEF007B0D8E /* catViewLockStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F83C6F2260FCDEF007B0D8E /* catViewLockStack.swift */; };
 		6F83C6FA260FD1F0007B0D8E /* catViewStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F83C6F9260FD1F0007B0D8E /* catViewStack.swift */; };
 		6F83C700260FD586007B0D8E /* SecurityClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F83C6FF260FD586007B0D8E /* SecurityClass.swift */; };
@@ -73,7 +70,7 @@
 		2D9ADA5626038CFD00304049 /* AuthenticationServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AuthenticationServices.framework; path = System/Library/Frameworks/AuthenticationServices.framework; sourceTree = SDKROOT; };
 		2DA9AD5625EB158E00A2633F /* StandardCryto.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StandardCryto.swift; sourceTree = "<group>"; };
 		6F07D6BD260A540300148869 /* NetworkExtension.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NetworkExtension.framework; path = System/Library/Frameworks/NetworkExtension.framework; sourceTree = SDKROOT; };
-		6F816EAD2612AE3600CF63AE /* Emoji Pass XRelease.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Emoji Pass XRelease.entitlements"; sourceTree = "<group>"; };
+		6F08D7CF2612CE960024B61A /* Emoji Pass XRelease.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = "Emoji Pass XRelease.entitlements"; sourceTree = "<group>"; };
 		6F83C6F2260FCDEF007B0D8E /* catViewLockStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = catViewLockStack.swift; sourceTree = "<group>"; };
 		6F83C6F9260FD1F0007B0D8E /* catViewStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = catViewStack.swift; sourceTree = "<group>"; };
 		6F83C6FF260FD586007B0D8E /* SecurityClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecurityClass.swift; sourceTree = "<group>"; };
@@ -105,9 +102,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2D9ADA5726038CFD00304049 /* AuthenticationServices.framework in Frameworks */,
-				6F07D6BE260A540300148869 /* NetworkExtension.framework in Frameworks */,
-				2D89E0B125EAD87700939877 /* CloudKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -134,7 +128,7 @@
 		2D89E08925EAD67600939877 /* Emoji Pass X */ = {
 			isa = PBXGroup;
 			children = (
-				6F816EAD2612AE3600CF63AE /* Emoji Pass XRelease.entitlements */,
+				6F08D7CF2612CE960024B61A /* Emoji Pass XRelease.entitlements */,
 				2D89E0AD25EAD87500939877 /* Emoji Pass X.entitlements */,
 				2D89E0BE25EB0BA600939877 /* Delegates */,
 				2D89E0C025EB0BB400939877 /* Model */,
@@ -517,17 +511,17 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = "Emoji Pass X/Emoji Pass X.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 34;
+				CURRENT_PROJECT_VERSION = 41;
 				DEVELOPMENT_ASSET_PATHS = "\"Emoji Pass X/Preview Content\"";
 				DEVELOPMENT_TEAM = 469UCUB275;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = "Emoji Pass X/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
-				"IPHONEOS_DEPLOYMENT_TARGET[sdk=macosx*]" = 14.3;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.brusstodd.EmojiPass;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTS_MACCATALYST = YES;
@@ -545,17 +539,17 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = "Emoji Pass X/Emoji Pass XRelease.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 34;
+				CURRENT_PROJECT_VERSION = 41;
 				DEVELOPMENT_ASSET_PATHS = "\"Emoji Pass X/Preview Content\"";
 				DEVELOPMENT_TEAM = 469UCUB275;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = "Emoji Pass X/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
-				"IPHONEOS_DEPLOYMENT_TARGET[sdk=macosx*]" = 14.3;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.brusstodd.EmojiPass;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTS_MACCATALYST = YES;
