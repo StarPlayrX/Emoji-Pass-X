@@ -12,7 +12,6 @@ public class Security: ObservableObject {
     @Published var signOn = true
     @Published var cloudDebug = false
     @Published var doesNotHaveIcloud = false
-
     @Published var isSimulator = false
     @Published var checkForSim = true
     @Published var catLock = true
@@ -23,6 +22,4 @@ public class Security: ObservableObject {
     @Published var isListItemViewSaved = false
     @Published var isItemSaved = false
     @Published var previousEmoji = ""
-
-
 }

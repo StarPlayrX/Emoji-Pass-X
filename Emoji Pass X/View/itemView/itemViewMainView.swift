@@ -20,7 +20,8 @@ extension ItemView {
                             .background(labelColor2)
                             .cornerRadius(radius)
                             .fixedSize(horizontal: false, vertical: true)
-                            .onReceive(Just(listItem.emoji)) { _ in limitText() }
+                            .onReceive(Just(listItem.emoji)) { x in limitText(x) }
+                           
                             .font(.system(size: geometry.size.width == smallestWidth ? emojiFontSize - 10 : emojiFontSize))
                             .minimumScaleFactor(1)
                             .multilineTextAlignment(.center)
@@ -82,7 +83,7 @@ extension ItemView {
                         }
                         
                     }
-                
+                    
                     ToolbarItemGroup(placement: .navigationBarTrailing) {
                         
                         Button(action: { listItem.lock = !listItem.lock;save() })
