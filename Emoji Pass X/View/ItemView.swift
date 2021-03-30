@@ -11,15 +11,13 @@ import UIKit
 
 
 struct ItemView: View {
-    
-   
 
     @Environment(\.managedObjectContext) var managedObjectContext
     @Environment(\.presentationMode) var presentationMode
     @Environment(\.colorScheme) var colorScheme
     @EnvironmentObject var security: Security
     @StateObject var privateKey = privateParts()
-     
+
     @ObservedObject var catItem: ListItem
     @ObservedObject var listItem: ListItem
 

@@ -48,10 +48,12 @@ class ListItem: NSManagedObject {
 }
 
 extension ListItem {
-    static func getFetchRequest() -> NSFetchRequest<ListItem>{
-        let request = ListItem.fetchRequest() as! NSFetchRequest<ListItem>
-        request.sortDescriptors = [NSSortDescriptor(key: "order", ascending: true)]
-        return request
+    static func getFetchRequest() -> NSFetchRequest<ListItem> {
+        if let request = ListItem.fetchRequest() as? NSFetchRequest<ListItem> {
+            request.entity = ListItem.entity()
+            request.sortDescriptors = [NSSortDescriptor(key: "order", ascending: true)]
+            return request
+        }
     }
 }
 

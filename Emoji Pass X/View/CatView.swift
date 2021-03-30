@@ -10,17 +10,17 @@ import AuthenticationServices
 
 
 struct CatView: View {
-    
+    @FetchRequest(fetchRequest: ListItem.getFetchRequest()) var listItems: FetchedResults<ListItem>
+    @Environment(\.managedObjectContext) var managedObjectContext
     @State private var showingAlert = false
     @State var searchText: String = ""
     @State var isSearching = false
     
     @StateObject var security = Security()
     
-    @Environment(\.managedObjectContext) var managedObjectContext
     
-    @FetchRequest(fetchRequest: ListItem.getFetchRequest()) var listItems: FetchedResults<ListItem>
-    
+    /*  request.entity = ListItem.entity()
+     request.sortDescriptors = [NSSortDescriptor(key: "order", ascending: true)] */
     let name = "Name"
     let emoji = ":)"
     let newCategory = "New Category"
@@ -39,6 +39,8 @@ struct CatView: View {
     
     //MARK: Main Body Content View
     var body: some View {
+        
+        
         if security.lockScreen  {
             catViewLockStack()
                 .onAppear(perform: showLockScreen)

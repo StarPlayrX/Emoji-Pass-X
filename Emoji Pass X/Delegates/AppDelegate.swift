@@ -63,7 +63,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     lazy var persistentContainer: NSPersistentCloudKitContainer = {
         
         let container = NSPersistentCloudKitContainer(name: "passlist")
-        
+    
         guard let description = container.persistentStoreDescriptions.first else {
             fatalError("No Descriptions found")
         }

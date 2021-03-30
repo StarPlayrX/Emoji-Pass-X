@@ -9,11 +9,10 @@ import SwiftUI
 import Combine
 
 struct CatEditView: View {
-    
-    @Environment(\.presentationMode) var presentationMode
     @Environment(\.managedObjectContext) var managedObjectContext
+    @Environment(\.presentationMode) var presentationMode
     @EnvironmentObject var security: Security
-    
+
     @State var selectedTemplate = 1
     
     @ObservedObject var listItem: ListItem

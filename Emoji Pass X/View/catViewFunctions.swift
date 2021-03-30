@@ -143,7 +143,6 @@ extension CatView {
                 saveItems()
             }
         #endif
-            _ = ListItem.getFetchRequest()
             setIsScreenDark()
     }
     
@@ -186,5 +185,22 @@ extension CatView {
         
         setIsScreenDark()
     }
+    
+    /*func fetchItems() {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+            if managedObjectContext.hasChanges {
+                
+                do {
+                    listItems = try managedObjectContext.fetch(ListItem.getFetchRequest() ) as [ListItem]
+                } catch  {
+                    print(error)
+                }
+            }
+        }
+        
+        setIsScreenDark()
+    }*/
+    
   
 }
+// (fetchRequest: ListItem.getFetchRequest()) var listItems: FetchedResults<ListItem>

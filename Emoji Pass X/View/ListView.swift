@@ -10,10 +10,10 @@ import CoreData
 import AuthenticationServices
 
 struct ListView: View {
-    
+    @FetchRequest(fetchRequest: ListItem.getFetchRequest()) var detailListItems: FetchedResults<ListItem>
+
     @Environment(\.presentationMode) var presentationMode
     @Environment(\.managedObjectContext) var managedObjectContext
-    @FetchRequest(fetchRequest: ListItem.getFetchRequest()) var detailListItems: FetchedResults<ListItem>
     @ObservedObject var catItem: ListItem
     @EnvironmentObject var security: Security
     
