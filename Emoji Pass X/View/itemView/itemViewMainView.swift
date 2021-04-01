@@ -10,7 +10,7 @@ import Combine
 
 extension ItemView {
     
-    func mainView() -> some View {
+    func ItemViewDetailView() -> some View {
         
         GeometryReader { geometry in
             ScrollView {
@@ -20,8 +20,7 @@ extension ItemView {
                             .background(labelColor2)
                             .cornerRadius(radius)
                             .fixedSize(horizontal: false, vertical: true)
-                            .onReceive(Just(listItem.emoji)) { x in limitText(x) }
-                           
+                            .onReceive(Just(prevEmoji)) { _ in limitText() }
                             .font(.system(size: geometry.size.width == smallestWidth ? emojiFontSize - 10 : emojiFontSize))
                             .minimumScaleFactor(1)
                             .multilineTextAlignment(.center)
@@ -38,12 +37,11 @@ extension ItemView {
                         Spacer()
                     }
                     
-                    
                     //MARK: let template = ["💳 Cards", "🔒 Passwords", "🔑 Keys"]
                     switch listItem.templateId {
                     
                     case 0:
-                        if UIDevice.current.userInterfaceIdiom == .pad ||  UIDevice.current.userInterfaceIdiom == .mac {
+                        if UIDevice.current.userInterfaceIdiom == .pad || UIDevice.current.userInterfaceIdiom == .mac {
                             geometry.size.height <= 512 ? creditCardStack(true) : creditCardStack(false)
                         } else {
                             geometry.size.height <= 568 ? creditCardStack(!isIPhoneX()) : creditCardStack(false)
@@ -61,7 +59,7 @@ extension ItemView {
                             geometry.size.height <= 568 ? licenseKeyStack(!isIPhoneX()) : licenseKeyStack(false)
                         }
                     default:
-                        if UIDevice.current.userInterfaceIdiom == .pad ||  UIDevice.current.userInterfaceIdiom == .mac {
+                        if UIDevice.current.userInterfaceIdiom == .pad || UIDevice.current.userInterfaceIdiom == .mac {
                             geometry.size.height <= 512 ? passwordStack(true) : passwordStack(false)
                         } else {
                             geometry.size.height <= 568 ? passwordStack(!isIPhoneX()) : passwordStack(false)
@@ -69,19 +67,19 @@ extension ItemView {
                     }
                     
                 }
-                .onDisappear(perform: { save() })
-                .onAppear(perform: { clearNewText() })
+                .onDisappear(perform: save )
+                .onAppear(perform: clearNewText )
                 .toolbar {
                     
                     ToolbarItemGroup(placement: .navigationBarLeading) {
-                        
-                        if UIDevice.current.userInterfaceIdiom == .mac {
-                            Button(action: save )
+                        if UIDevice.current.userInterfaceIdiom == .mac || UIDevice.current.userInterfaceIdiom == .pad {
+                            Button(action: {security.isListItemViewSaved = true; save()} )
                                 { Text("Save") }
+                            
                             Button(action: macEmojiSelector )
                                 { Text("Emoji") }
+                            
                         }
-                        
                     }
                     
                     ToolbarItemGroup(placement: .navigationBarTrailing) {
@@ -121,6 +119,11 @@ extension ItemView {
                         }
                     }
                 }
+                .alert(isPresented: $security.isListItemViewSaved, content: {
+                    Alert(title: Text("Save"),
+                          message: Text("Your changes have been saved."),
+                          dismissButton: .default(Text("OK")) { security.isListItemViewSaved = false })
+                })
             } .navigationBarTitle( geometry.size.width <= 374 ? "Pass X" : "Emoji Pass X", displayMode: .inline)
         }
         

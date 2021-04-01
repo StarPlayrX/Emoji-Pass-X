@@ -9,16 +9,15 @@ import SwiftUI
 import Combine
 
 struct CatEditView: View {
+    
     @Environment(\.managedObjectContext) var managedObjectContext
     @Environment(\.presentationMode) var presentationMode
     @EnvironmentObject var security: Security
-
     @State var selectedTemplate = 1
-    
     @ObservedObject var listItem: ListItem
     
-    
-    
+    @State var prevEmoji = ""
+
     //strings
     let name = "Category Name"
     let emoji = ":)"

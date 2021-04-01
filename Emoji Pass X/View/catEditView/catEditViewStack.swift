@@ -10,6 +10,22 @@ import Combine
 
 extension CatEditView {
     
+    func Stars() {
+        listItem.name = "All Stars"
+        listItem.uuidString = "Stars"
+        listItem.emoji = "⭐️"
+        security.previousEmoji =  listItem.emoji
+        listItem.desc = "A store for all my favorites."
+    }
+    
+    func Everything() {
+        listItem.name = "Flashlight"
+        listItem.uuidString = "Everything"
+        listItem.emoji = "🔦"
+        security.previousEmoji = listItem.emoji
+        listItem.desc = "A store for all my records."      
+    }
+    
     func catEditViewGroup() -> some View {
         Group {
             GeometryReader { geometry in
@@ -18,18 +34,19 @@ extension CatEditView {
                     HStack {
                         
                         TextField(emoji, text: $listItem.emoji)
-                        .background(labelColor2)
-                        .cornerRadius(radius)
-                        .fixedSize(horizontal: false, vertical: true)
-                            .onReceive(Just(listItem.emoji)) { x in limitText(x) }
-                        .font(.system(size: geometry.size.width == smallestWidth ? emojiFontSize - 10 : emojiFontSize))
-                        .minimumScaleFactor(1)
-                        .multilineTextAlignment(.center)
-                        .frame(height: geometry.size.width == smallestWidth ? emojiFrameWidth - 25 : emojiFrameWidth )
-                        .frame(width: geometry.size.width == smallestWidth ? emojiFrameWidth - 50 : emojiFrameWidth - 25 )
-                        .padding(.bottom, geometry.size.width == smallestWidth ? -10 : -10)
-                        .padding(.leading, geometry.size.width == smallestWidth ? 10 : 10 )
-                        .padding(.trailing, geometry.size.width == smallestWidth ? 10 : 10 )
+                            .background(labelColor2)
+                            .cornerRadius(radius)
+                            .fixedSize(horizontal: false, vertical: true)
+                        
+                            .onReceive(Just(prevEmoji)) { _ in limitText() }
+                            .font(.system(size: geometry.size.width == smallestWidth ? emojiFontSize - 10 : emojiFontSize))
+                            .minimumScaleFactor(1)
+                            .multilineTextAlignment(.center)
+                            .frame(height: geometry.size.width == smallestWidth ? emojiFrameWidth - 25 : emojiFrameWidth )
+                            .frame(width: geometry.size.width == smallestWidth ? emojiFrameWidth - 50 : emojiFrameWidth - 25 )
+                            .padding(.bottom, geometry.size.width == smallestWidth ? -10 : -10)
+                            .padding(.leading, geometry.size.width == smallestWidth ? 10 : 10 )
+                            .padding(.trailing, geometry.size.width == smallestWidth ? 10 : 10 )
                         
                         TextField(name, text: $listItem.name)
                             .font(.largeTitle)
@@ -46,6 +63,7 @@ extension CatEditView {
                         stack(false)
                     }
                     
+                    
                     if listItem.uuidString != "Stars" && listItem.uuidString != "Everything" {
                         
                         HStack {
@@ -60,28 +78,53 @@ extension CatEditView {
                             
                             
                         }
-                        
-                        Spacer()
+                        .padding(.bottom, 20)
                         
                     }
                     
-                    Spacer()
+                    if security.isCategoryNew {
+                        VStack() {
+                            
+                            if listItem.uuidString != "Stars" {
+                                HStack {
+                                    Button(action: Stars )
+                                        { Text("Create an All Stars Category") }
+                                        .padding(.top, 20)
+                                        .padding(.leading, 12)
+
+                                    Spacer()
+                                }
+                            }
+                            
+                            if listItem.uuidString != "Everything" {
+                                HStack {
+                                    
+                                    Button(action: Everything )
+                                        { Text("Create a Flashlight Category") }
+                                        .padding(.top, 20)
+                                        .padding(.leading, 12)
+                                    Spacer()
+                                }
+                            }
+                        }
+                    }
+                    
                     
                 }
                 .padding(.top, UIDevice.current.userInterfaceIdiom == .mac ? -52 : 0)
                 .toolbar {
                     
                     ToolbarItemGroup(placement: .navigationBarLeading) {
-                        if UIDevice.current.userInterfaceIdiom == .mac {
-                            Button(action: save )
+                        
+                        if UIDevice.current.userInterfaceIdiom == .mac || UIDevice.current.userInterfaceIdiom == .pad {
+                            Button(action: { security.isCatEditViewSaved = true; save(); } )
                                 { Text("Save") }
                             Button(action: macEmojiSelector )
                                 { Text("Emoji") }
                             
                         }
                     }
-                    
-                    
+                
                     ToolbarItemGroup(placement: .bottomBar) {
                         Picker("", selection: $selectedTemplate) {
                             ForEach(templateIds, id: \.self) {
@@ -98,10 +141,15 @@ extension CatEditView {
                         }
                     }
                 }
+                .alert(isPresented: $security.isCatEditViewSaved, content: {
+                    Alert(title: Text("Save"),
+                          message: Text("Changes have been saved."),
+                          dismissButton: .default(Text("OK")) { security.isCatEditViewSaved = false })
+                })
                 .onAppear(perform: {
                     clearNewText()
                 })
-                .onDisappear(perform: { save() })
+                .onDisappear(perform:  save )
             }
         }
     }

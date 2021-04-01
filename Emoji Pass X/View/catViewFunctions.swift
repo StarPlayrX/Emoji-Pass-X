@@ -124,47 +124,7 @@ extension CatView {
         #endif
     }
     
-    
-    func freshCats() {
-        #if !targetEnvironment(simulator)
-            DispatchQueue.main.async() {
-                let starLite = listItems.filter( { $0.isParent == true && $0.uuidString == stars })
-                
-                if starLite.isEmpty {
-                    addStars()
-                }
-                
-                let everythingBagel = listItems.filter( { $0.isParent == true && $0.uuidString == everything })
-                
-                if everythingBagel.isEmpty {
-                    addEverything()
-                }
-            
-                saveItems()
-            }
-        #endif
-            setIsScreenDark()
-    }
-    
-    func addStars() {
-        let newItem = ListItem(context: managedObjectContext)
-        newItem.emoji = star
-        newItem.name = stars
-        newItem.isParent = true
-        newItem.uuidString = stars
-        newItem.order = (listItems.last?.order ?? 0) + 1
-        saveItems()
-    }
-    
-    func addEverything() {
-        let newItem = ListItem(context: managedObjectContext)
-        newItem.emoji = magnifier
-        newItem.name = everything
-        newItem.isParent = true
-        newItem.uuidString = everything
-        newItem.order = (listItems.last?.order ?? 0) + 1
-        saveItems()
-    }
+   
     
     func addItem() {
         let newItem = ListItem(context: managedObjectContext)
@@ -182,25 +142,5 @@ extension CatView {
                 try? managedObjectContext.save()
             }
         }
-        
-        setIsScreenDark()
-    }
-    
-    /*func fetchItems() {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
-            if managedObjectContext.hasChanges {
-                
-                do {
-                    listItems = try managedObjectContext.fetch(ListItem.getFetchRequest() ) as [ListItem]
-                } catch  {
-                    print(error)
-                }
-            }
-        }
-        
-        setIsScreenDark()
-    }*/
-    
-  
+    } 
 }
-// (fetchRequest: ListItem.getFetchRequest()) var listItems: FetchedResults<ListItem>

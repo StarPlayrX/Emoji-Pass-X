@@ -21,6 +21,9 @@ struct ItemView: View {
     @ObservedObject var catItem: ListItem
     @ObservedObject var listItem: ListItem
 
+    @State var prevEmoji  : String = ""
+
+    
     //MARK: New Password Items
     @State var pUsername: String = ""
     @State var pPassword: String = ""
@@ -45,8 +48,6 @@ struct ItemView: View {
     @State var kSeats        : String = ""
     @State var kNotes        : String = ""
 
-  
-    
     //MARK: strings
     let name = "Name"
     let bank = "Bank Name"
@@ -55,7 +56,6 @@ struct ItemView: View {
     let pencil = "✏️"
     
     let textLimit = 1
-    
     let clipBoard = "doc.on.clipboard"
     let clipPadding = CGFloat(5)
     
@@ -98,6 +98,7 @@ struct ItemView: View {
     let pasteboard = UIPasteboard.general
 
     var body: some View {
-        mainView()
+        ItemViewDetailView()
+            .onAppear(perform: {prevEmoji = listItem.emoji})
     }
 }

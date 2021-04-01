@@ -19,10 +19,7 @@ extension ItemView {
 
         }
         
-        if !listItem.emoji.isEmpty && listItem.emoji.count == 1 {
-            security.previousEmoji = listItem.emoji
-        }
-        
+       
         if listItem.uuidString.isEmpty {
             listItem.uuidString = catItem.uuidString
         }
@@ -67,6 +64,6 @@ extension ItemView {
         kWebaddress   = decryptData(data: listItem.kWebaddress, key: privateKey.recordKey)
         kSeats        = decryptData(data: listItem.kSeats, key: privateKey.recordKey)
         kNotes        = decryptData(data: listItem.kNotes, key: privateKey.recordKey)
-
+        
     }
 }

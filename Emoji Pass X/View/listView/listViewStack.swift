@@ -22,22 +22,6 @@ extension ListView {
         .navigationBarTitle(catItem.name, displayMode: .inline)
         .toolbar {
             
-            //MARK: To do - please clean this up
-            ToolbarItemGroup(placement: .bottomBar) {
-                
-                if UIDevice.current.userInterfaceIdiom == .pad {
-                    Spacer()
-                    Button(action: { saveItems();security.isEditing = false;security.isListItemViewSaved = true; })
-                        { Text("Save") }
-                        .alert(isPresented: $security.isListItemViewSaved, content: {
-                            Alert(title: Text("Save"),
-                                  message: Text("Items have been saved."),
-                                  dismissButton: .default(Text("OK")) { security.isListItemViewSaved = false })
-                        })
-                    Spacer()
-                }
-            }
-            
             ToolbarItemGroup(placement: .navigationBarTrailing) {
                 Button(action: {  security.isEditing = !security.isEditing  })
                 {
@@ -50,5 +34,11 @@ extension ListView {
                 canCreate()
             }
         }
+        .alert(isPresented: $security.isDeleteListViewValid, content: {
+            Alert(title: Text("We're sorry."),
+                  message: Text("This item is locked and cannot be deleted."),
+                  dismissButton: .default(Text("OK")) { security.isDeleteListViewValid = false })
+        })
     }
+    
 }

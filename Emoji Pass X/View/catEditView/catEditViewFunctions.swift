@@ -8,40 +8,29 @@
 import SwiftUI
 
 extension CatEditView {
-        
+    
+    
     //MARK: Function to keep text length in limits
-    func limitText(_ str: String ) {
+    func limitText(_ charLimit : Int = 1 ) {
         
-        let limiter = 1
-        
-        var usePrefix = true
-        
-        if str.count == limiter && security.previousEmoji != str {
-            security.previousEmoji = str
-        }
-        
-        if security.previousEmoji.count == limiter {
-            if security.previousEmoji == listItem.emoji.prefix(limiter) {
-                usePrefix = false
-            } else if security.previousEmoji == listItem.emoji.suffix(limiter)  {
-               usePrefix = true
-            }
-        }
-        
-      
-        if listItem.emoji.count > limiter {
-            if usePrefix {
-                listItem.emoji = String(listItem.emoji.prefix(limiter))
-            } else {
-                listItem.emoji = String(listItem.emoji.suffix(limiter))
-            }
+        if listItem.emoji.count == charLimit  {
             
+            prevEmoji = listItem.emoji
+        
+        } else if listItem.emoji.count > charLimit {
             
-            if security.previousEmoji.count == limiter {
-                security.previousEmoji = listItem.emoji
-            }
+            let usePrefix = prevEmoji == listItem.emoji.suffix(charLimit) ? true : false
+            
+            //MARK: You can do alot with teranies. Notice how the String type is defined outside the terany
+            listItem.emoji = String( usePrefix ? listItem.emoji.prefix(charLimit) : listItem.emoji.suffix(charLimit) )
+            
+            prevEmoji = listItem.emoji
+        } else {
+            prevEmoji = listItem.emoji
+
         }
     }
+    
     
     
     func copyDesc() {
@@ -51,7 +40,8 @@ extension CatEditView {
     func save() {
         
         //epoche date used to break cache and force a save
-        listItem.dateString = String(Int(Date().timeIntervalSinceReferenceDate))
+        //listItem.dateString = String(Int(Date().timeIntervalSinceReferenceDate))
+        
         if  listItem.name.isEmpty {
             listItem.name = newRecord
         }
@@ -73,7 +63,10 @@ extension CatEditView {
             }
             
             hideKeyboard()
+          //  security.isCatEditViewSaved = false
+
         }
+        
     }
     
     func clearNewText() {
@@ -83,13 +76,14 @@ extension CatEditView {
         }
         
         //New Item detected, so we clear this out (otherwise fill it in!)
-        if listItem.name == newRecord {
+        if listItem.name == newRecord || listItem.name.isEmpty {
             listItem.name = ""
+            security.isCategoryNew = true
+        } else {
+            security.isCategoryNew = false
         }
         
-        if !listItem.emoji.isEmpty && listItem.emoji.count == 1 {
-            security.previousEmoji = listItem.emoji
-        }
+
     }
 
 }

@@ -18,8 +18,11 @@ public class Security: ObservableObject {
     @Published var isValid = false
     @Published var isDeleteListViewValid = false
     @Published var isEditing = false
-    @Published var isCatViewSaved = false
+    @Published var isCatEditViewSaved = false
     @Published var isListItemViewSaved = false
+
     @Published var isItemSaved = false
     @Published var previousEmoji = ""
+    @Published var isCategoryNew = false
+
 }

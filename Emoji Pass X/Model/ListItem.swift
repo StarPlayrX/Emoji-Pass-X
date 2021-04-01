@@ -9,7 +9,7 @@ import CoreData
 
 class ListItem: NSManagedObject {
     @NSManaged var order: Int
-    @NSManaged var dateString: String
+    //@NSManaged var dateString: String
     @NSManaged var emoji: String
     @NSManaged var name: String
     @NSManaged var templateId: Int

@@ -10,10 +10,10 @@ import CoreData
 import AuthenticationServices
 
 struct ListView: View {
-    @FetchRequest(fetchRequest: ListItem.getFetchRequest()) var detailListItems: FetchedResults<ListItem>
-
     @Environment(\.presentationMode) var presentationMode
     @Environment(\.managedObjectContext) var managedObjectContext
+    
+    var detailListItems: FetchedResults<ListItem>
     @ObservedObject var catItem: ListItem
     @EnvironmentObject var security: Security
     
@@ -28,14 +28,15 @@ struct ListView: View {
     
     let generator = UINotificationFeedbackGenerator()
     
-    init(catItem: ListItem) {
+    init(catItem: ListItem, detailListItems: FetchedResults<ListItem>) {
         self.catItem = catItem
+        self.detailListItems = detailListItems
     }
 
     //MARK: BODY
     var body: some View {
         detailListView()
-        .onDisappear(perform: { saveItems() })
-        .onAppear(perform: {  saveItems() })        
+        .onDisappear(perform: saveItems )
+        .onAppear(perform: saveItems )        
     }
 }

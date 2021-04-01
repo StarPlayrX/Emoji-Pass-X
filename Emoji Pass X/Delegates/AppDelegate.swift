@@ -16,21 +16,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     override func buildMenu(with builder: UIMenuBuilder) {
         super.buildMenu(with: builder)
 
-        builder.remove(menu: .services)
-        builder.remove(menu: .format)
-        builder.remove(menu: .toolbar)
+        //builder.remove(menu: .services)
+        //builder.remove(menu: .format)
+        //builder.remove(menu: .toolbar)
         
         let refreshCommand = UIKeyCommand(input: "S", modifierFlags: [.command], action: #selector(save))
         refreshCommand.title = "Save"
         let saveDataMenu = UIMenu(title: "Save", image: nil, identifier: UIMenu.Identifier("Save"), options: .displayInline, children: [refreshCommand])
         builder.insertChild(saveDataMenu, atStartOfMenu: .file)
         
+       
     }
     
     
     //MARK: Save Object
     @objc func save() {
         NotificationCenter.default.post(name: .save, object: nil)
+    }
+    
+    @objc func refresh() {
+        NotificationCenter.default.post(name: .refresh, object: nil)
     }
 
  

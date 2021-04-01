@@ -10,7 +10,7 @@ import SwiftUI
 extension ItemView {
     func save() {
         //epoche date used to break cache and force a save
-        listItem.dateString = String(Int(Date().timeIntervalSinceReferenceDate))
+        //listItem.dateString = String(Int(Date().timeIntervalSinceReferenceDate))
         
         //MARK: Save Encrypted Strings
         listItem.pUsername = encryptData(string: pUsername, key: privateKey.recordKey)
@@ -36,14 +36,15 @@ extension ItemView {
 
         
         DispatchQueue.main.async() {
+           
+            hideKeyboard()
+
+            listItem.name.isEmpty ? (listItem.name = newRecord) : (listItem.name = listItem.name)
+            listItem.emoji.isEmpty ? (listItem.emoji = pencil) : ( listItem.emoji = listItem.emoji)
+            
             if managedObjectContext.hasChanges {
                 try? managedObjectContext.save()
             }
-            
-            hideKeyboard()
-            listItem.dateString = String(Int(Date().timeIntervalSinceReferenceDate))
-            listItem.name.isEmpty ? (listItem.name = newRecord) : (listItem.name = listItem.name)
-            listItem.emoji.isEmpty ? (listItem.emoji = pencil) : ( listItem.emoji = listItem.emoji)
         }
     }
 
