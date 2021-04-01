@@ -11,7 +11,7 @@ import SwiftUI
 //MARK: catViewStack
 extension CatView {
     func catViewStack() -> some View {
-        Group {
+        VStack {
             
             let category = listItems.filter( { $0.isParent == true })
             
@@ -82,6 +82,7 @@ extension CatView {
                             }
                         )
                     }
+                    
                 }
                 .onDelete(perform: security.isEditing ? deleteItem : nil )
                 .onMove(perform: moveItem)
@@ -90,7 +91,7 @@ extension CatView {
             }
             .padding(.leading, iPhoneXLeading())
             .listStyle(PlainListStyle())
-            
+
         }
         .alert(isPresented: $security.isValid, content: {
             Alert(title: Text("We're sorry."),
@@ -99,6 +100,7 @@ extension CatView {
         })
         .environment(\.editMode, .constant(security.isEditing ? EditMode.active : EditMode.inactive)).animation(security.isEditing ? .easeInOut : .none)
         .navigationBarTitle("Categories", displayMode: .inline)
+ 
         .toolbar {
         
             ToolbarItemGroup(placement: .navigationBarLeading) {
@@ -127,5 +129,6 @@ extension CatView {
                     { Image(systemName: "plus") }
             }
         }
+
     }
 }

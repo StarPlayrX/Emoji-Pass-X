@@ -27,7 +27,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Use a UIHostingController as window root view controller.
         if let windowScene = scene as? UIWindowScene {
             let window = UIWindow(windowScene: windowScene)
-            windowScene.sizeRestrictions?.minimumSize = CGSize(width: 640, height: 640)
+            
+            if UIDevice.current.userInterfaceIdiom == .mac {
+                windowScene.sizeRestrictions?.minimumSize = CGSize(width: 640, height: 640)
+            }
+            
             window.rootViewController = UIHostingController(rootView: contentView)
             self.window = window
             window.makeKeyAndVisible()

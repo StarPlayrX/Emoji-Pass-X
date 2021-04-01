@@ -26,9 +26,12 @@ extension CatView {
                 ZStack {
                     NavigationView {
                         catViewStack()
+
                     }
+
+                   .navigationViewStyle(DoubleColumnNavigationViewStyle())
                 }
-                .navigationViewStyle(DoubleColumnNavigationViewStyle())
+
                 .environmentObject(security)
                 .onAppear(perform: saveItems)
                 .onDisappear(perform: saveItems)
@@ -63,6 +66,6 @@ extension CatView {
                     }
                 }
             }
-        }
+        }              
     }
 }

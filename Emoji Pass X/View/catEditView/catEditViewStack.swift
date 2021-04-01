@@ -14,7 +14,6 @@ extension CatEditView {
         listItem.name = "All Stars"
         listItem.uuidString = "Stars"
         listItem.emoji = "⭐️"
-        security.previousEmoji =  listItem.emoji
         listItem.desc = "A store for all my favorites."
     }
     
@@ -22,7 +21,6 @@ extension CatEditView {
         listItem.name = "Flashlight"
         listItem.uuidString = "Everything"
         listItem.emoji = "🔦"
-        security.previousEmoji = listItem.emoji
         listItem.desc = "A store for all my records."      
     }
     
@@ -37,7 +35,6 @@ extension CatEditView {
                             .background(labelColor2)
                             .cornerRadius(radius)
                             .fixedSize(horizontal: false, vertical: true)
-                        
                             .onReceive(Just(prevEmoji)) { _ in limitText() }
                             .font(.system(size: geometry.size.width == smallestWidth ? emojiFontSize - 10 : emojiFontSize))
                             .minimumScaleFactor(1)
@@ -53,7 +50,7 @@ extension CatEditView {
                             .padding(.bottom, geometry.size.width == smallestWidth ? -20 : -20)
                             .keyboardType(.asciiCapable)
                             .minimumScaleFactor(0.8)
-                        
+              
                         Spacer()
                     }
                     
@@ -75,11 +72,8 @@ extension CatEditView {
                                 .padding(.bottom, -32)
                                 .padding(.top, 16)
                             Spacer()
-                            
-                            
                         }
                         .padding(.bottom, 20)
-                        
                     }
                     
                     if security.isCategoryNew {
