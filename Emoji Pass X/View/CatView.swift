@@ -38,5 +38,6 @@ struct CatView: View {
     //MARK: Main Body Content View
     var body: some View {
         intialView()
+
     }
 }
