@@ -13,7 +13,7 @@ struct ListView: View {
     @Environment(\.presentationMode) var presentationMode
     @Environment(\.managedObjectContext) var managedObjectContext
     
-    var detailListItems: FetchedResults<ListItem>
+    @FetchRequest(fetchRequest: ListItem.getFetchRequest()) var detailListItems: FetchedResults<ListItem>
     @ObservedObject var catItem: ListItem
     @EnvironmentObject var security: Security
     
@@ -28,9 +28,8 @@ struct ListView: View {
     
     let generator = UINotificationFeedbackGenerator()
     
-    init(catItem: ListItem, detailListItems: FetchedResults<ListItem>) {
+    init(catItem: ListItem) {
         self.catItem = catItem
-        self.detailListItems = detailListItems
     }
 
     //MARK: BODY

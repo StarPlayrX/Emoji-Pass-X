@@ -9,7 +9,7 @@ import SwiftUI
 
 extension ListView {
     
-    func forEach(_ a:  FetchedResults<ListItem>) -> some View {
+    func repeatView(_ a:  FetchedResults<ListItem>) -> some View {
         ForEach( getList(coldFilter(a) ) , id: \.self) { item in
             NavigationLink(destination: ItemView(catItem: catItem, listItem: item)) {
                 

@@ -50,7 +50,7 @@ extension CatEditView {
                             .padding(.bottom, geometry.size.width == smallestWidth ? -20 : -20)
                             .keyboardType(.asciiCapable)
                             .minimumScaleFactor(0.8)
-              
+                        
                         Spacer()
                     }
                     
@@ -85,7 +85,7 @@ extension CatEditView {
                                         { Text("Create an All Stars Category") }
                                         .padding(.top, 20)
                                         .padding(.leading, 12)
-
+                                    
                                     Spacer()
                                 }
                             }
@@ -105,30 +105,37 @@ extension CatEditView {
                     
                     
                 }
-                .padding(.top, UIDevice.current.userInterfaceIdiom == .mac ? -52 : 0)
+                .navigationBarTitle( "Cat", displayMode: .inline)
                 .toolbar {
                     
                     ToolbarItemGroup(placement: .navigationBarLeading) {
-                        
-                        if UIDevice.current.userInterfaceIdiom == .mac || UIDevice.current.userInterfaceIdiom == .pad {
-                            Button(action: { security.isCatEditViewSaved = true; save(); } )
+                        Button(action: { security.isCatEditViewSaved = true; save(); } )
                                 { Text("Save") }
+                        
+                        if UIDevice.current.userInterfaceIdiom == .mac  {
                             Button(action: macEmojiSelector )
                                 { Text("Emoji") }
-                            
+                        }
+                        
+                     
+                    }
+                    
+                    ToolbarItemGroup(placement: .navigationBarTrailing) {
+                        if UIDevice.current.userInterfaceIdiom == .mac || UIDevice.current.userInterfaceIdiom == .pad {
+                            Picker("", selection: $selectedTemplate) {
+                                ForEach(templateIds, id: \.self) {
+                                    geometry.size.width == smallestWidth ? Text(template[$0].prefix(1)) : Text(template[$0].prefix(6))
+                                }
+                                .font(.largeTitle)
+                                .pickerStyle(SegmentedPickerStyle())
+                            }
                         }
                     }
-                
+                    
                     ToolbarItemGroup(placement: .bottomBar) {
                         Picker("", selection: $selectedTemplate) {
                             ForEach(templateIds, id: \.self) {
-                                
-                                if UIDevice.current.userInterfaceIdiom == .mac {
-                                    Text(template[$0])
-                                } else {
-                                    geometry.size.width == smallestWidth ? Text(template[$0].prefix(1)) : Text(template[$0].prefix(6))
-                                }
-                                
+                                geometry.size.width == smallestWidth ? Text(template[$0].prefix(1)) : Text(template[$0].prefix(6))
                             }
                             .font(.largeTitle)
                             .pickerStyle(SegmentedPickerStyle())

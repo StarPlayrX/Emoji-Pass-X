@@ -13,8 +13,6 @@ extension CatView {
         managedObjectContext.refreshAllObjects()
     }
     
-    
-    
     func intialView() -> some View {
         
         Group {
@@ -23,8 +21,6 @@ extension CatView {
                     .onAppear(perform: showLockScreen)
                     
             } else {
-
-             
                 ZStack {
                     NavigationView {
                         
@@ -50,17 +46,15 @@ extension CatView {
                                 Text(copyright).font(.callout).minimumScaleFactor(0.75).padding(.leading, 30).padding(.trailing, 30).padding(.top, 10).padding(.bottom, 10)
                                 Text("The premiere password manager for macOS, iPadOS and iOS").font(.callout).minimumScaleFactor(0.75).multilineTextAlignment(.center).padding(.leading, 30).padding(.trailing, 30).padding(.top, 20).padding(.bottom, 10)
                                 Text("Your data is stored privately in your own iCloud account.").font(.callout).minimumScaleFactor(0.75).multilineTextAlignment(.center).padding(.leading, 30).padding(.trailing, 30).padding(.top, 20).padding(.bottom, 10)
-
-
                             }
-                            
                             Spacer()
-
                         }
-                
-
-                        catViewStack()
-                        Text("")
+            
+                        catViewStack() //allows Wider column on iPad (workaround for SideBar bug)
+                            .onDisappear(perform: saveItems)
+                            .onAppear(perform: saveItems)
+                        
+                        Text("")//Dummy Detail View
 
                     }
                 }

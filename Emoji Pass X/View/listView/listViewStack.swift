@@ -13,7 +13,7 @@ extension ListView {
         VStack {
             List {
                 searchStack()
-                forEach(detailListItems)
+                repeatView(detailListItems)
             }
             .padding(.leading, iPhoneXLeading())
             .listStyle(PlainListStyle())

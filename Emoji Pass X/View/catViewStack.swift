@@ -66,7 +66,7 @@ extension CatView {
                         )
                     } else {
                         //let gc = getCount(a: listItems, b: item)
-                        NavigationLink(destination: ListView(catItem: item, detailListItems: listItems)) {
+                        NavigationLink(destination: ListView(catItem: item)) {
                             Text("\(item.emoji) \(item.name)")
                                 .padding(.trailing, 18)
                                 .padding(.leading, iPhoneXCell())

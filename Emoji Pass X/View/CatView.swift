@@ -12,7 +12,7 @@ import AuthenticationServices
 struct CatView: View {
     @FetchRequest(fetchRequest: ListItem.getFetchRequest()) var listItems: FetchedResults<ListItem>
 
-
+    
     @Environment(\.managedObjectContext) var managedObjectContext
     @State private var showingAlert = false
     @State var searchText: String = ""
@@ -38,6 +38,7 @@ struct CatView: View {
     //MARK: Main Body Content View
     var body: some View {
         intialView()
-
     }
 }
+//     var listItems =  (try? managedObjectContext.fetch(ListItem.getFetchRequest()) ) )
+
