@@ -91,9 +91,6 @@ extension CatView {
             }
             .padding(.leading, iPhoneXLeading())
             .listStyle(PlainListStyle())
-            .frame(maxWidth: .infinity, maxHeight: .infinity) // << here !!
-
-
 
         }
         .alert(isPresented: $security.isValid, content: {
@@ -134,5 +131,4 @@ extension CatView {
         }
 
     }
-    
 }

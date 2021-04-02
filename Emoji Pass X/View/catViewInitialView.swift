@@ -57,8 +57,9 @@ extension CatView {
                         Text("")//Dummy Detail View
 
                     }
+
+                   .navigationViewStyle(DoubleColumnNavigationViewStyle())
                 }
-                   
 
                 .environmentObject(security)
                 .onAppear(perform: saveItems)
@@ -94,6 +95,6 @@ extension CatView {
                     }
                 }
             }
-        }
+        }              
     }
 }
