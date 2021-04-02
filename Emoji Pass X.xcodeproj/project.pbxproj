@@ -520,8 +520,7 @@
 				DEVELOPMENT_TEAM = 469UCUB275;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = "Emoji Pass X/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
-				"IPHONEOS_DEPLOYMENT_TARGET[sdk=macosx*]" = 14.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -549,8 +548,7 @@
 				DEVELOPMENT_TEAM = 469UCUB275;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = "Emoji Pass X/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
-				"IPHONEOS_DEPLOYMENT_TARGET[sdk=macosx*]" = 14.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
