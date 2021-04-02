@@ -23,10 +23,8 @@ extension CatView {
             } else {
                 ZStack {
                     NavigationView {
-                        
-                        
+                    
                         //MARK: Allows a wider view on the middle column
-                        
                         if UIDevice.current.userInterfaceIdiom == .pad {
                             VStack {
                                 

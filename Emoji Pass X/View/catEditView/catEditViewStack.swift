@@ -111,19 +111,19 @@ extension CatEditView {
                     
                     
                 }
-                .navigationBarTitle( "Cat", displayMode: .inline)
+                .navigationBarTitle( "Category", displayMode: .inline)
                 .toolbar {
                     
                     ToolbarItemGroup(placement: .navigationBarLeading) {
-                        Button(action: { security.isCatEditViewSaved = true; save(); } )
-                                { Text("Save") }
-                        
+                        if UIDevice.current.userInterfaceIdiom == .mac || UIDevice.current.userInterfaceIdiom == .pad  {
+                            Button(action: { security.isCatEditViewSaved = true; save(); } )
+                                    { Text("Save") }
+                        }
+                     
                         if UIDevice.current.userInterfaceIdiom == .mac  {
                             Button(action: macEmojiSelector )
                                 { Text("Emoji") }
                         }
-                        
-                     
                     }
                     
                     ToolbarItemGroup(placement: .navigationBarTrailing) {

@@ -74,28 +74,14 @@ extension CatView {
         }
         
         if let source = indexSet.first, let listItem = Optional(cf[source]) {
-            var duplicateStars = false
-            var duplicateEverything = false
-            
-            let starLite = listItems.filter( { $0.isParent == true && $0.uuidString == stars }).count
-   
-            if starLite > 1 {
-                duplicateStars = true
-            }
-            
-            let everythingBagel = listItems.filter( { $0.isParent == true && $0.uuidString == everything }).count
-
-            if everythingBagel > 1 {
-                duplicateEverything = true
-            }
-            
+          
             let gc = getCount(listItems, listItem)
             
             if gc.isEmpty && listItem.uuidString.count == uuidCount {
                 managedObjectContext.delete(listItem)
-            } else if listItem.uuidString == stars && duplicateStars  {
+            } else if listItem.uuidString == stars {
                 managedObjectContext.delete(listItem)
-            } else if listItem.uuidString == everything && duplicateEverything {
+            } else if listItem.uuidString == everything {
                 managedObjectContext.delete(listItem)
             } else {
                 generator.notificationOccurred(.error)

@@ -72,19 +72,20 @@ extension ItemView {
                 .toolbar {
                     
                     ToolbarItemGroup(placement: .navigationBarLeading) {
-                        Button(action: {security.isListItemViewSaved = true; save()} )
-                                { Text("Save") }
                         
+                        if UIDevice.current.userInterfaceIdiom == .mac || UIDevice.current.userInterfaceIdiom == .pad {
+                            Button(action: {security.isListItemViewSaved = true; save()} )
+                                    { Text("Save") }
+                        }
+
                         if UIDevice.current.userInterfaceIdiom == .mac {
                             Button(action: macEmojiSelector )
                                 { Text("Emoji") }
                         }
-    
                     }
                     
                     ToolbarItemGroup(placement: .navigationBarTrailing) {
                        
-                        
                         Button(action: { listItem.lock = !listItem.lock;save() })
                         {
                             if !listItem.lock {
@@ -108,9 +109,7 @@ extension ItemView {
                         
                         Picker("", selection: $listItem.templateId) {
                             ForEach(templateIds, id: \.self) {
-                                
                                 geometry.size.width == smallestWidth ? Text(template[$0].prefix(1)) : Text(template[$0].prefix(6))
-                                
                             }
                             .font(.largeTitle)
                             .pickerStyle(SegmentedPickerStyle())
