@@ -67,7 +67,7 @@ extension ItemView {
                     }
                     
                 }
-                .onDisappear(perform: save )
+                .onDisappear(perform: {save(shouldHideKeyboard: true)} )
                 .onAppear(perform: clearNewText )
                 .toolbar {
                     

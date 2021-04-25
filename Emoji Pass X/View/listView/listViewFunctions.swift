@@ -111,6 +111,9 @@ extension ListView {
     func saveItems() {
         DispatchQueue.main.async() {
             // do something
+            
+            hideKeyboard()
+
             if managedObjectContext.hasChanges {
                 try? managedObjectContext.save()
             }

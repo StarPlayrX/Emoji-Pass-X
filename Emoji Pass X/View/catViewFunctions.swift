@@ -123,7 +123,10 @@ extension CatView {
     }
     
     func saveItems() {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+        DispatchQueue.main.async() {
+            
+            hideKeyboard()
+            
             if managedObjectContext.hasChanges {
                 try? managedObjectContext.save()
             }

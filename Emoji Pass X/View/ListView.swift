@@ -35,7 +35,5 @@ struct ListView: View {
     //MARK: BODY
     var body: some View {
         detailListView()
-        .onDisappear(perform: saveItems )
-        .onAppear(perform: saveItems )        
     }
 }

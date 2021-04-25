@@ -99,6 +99,5 @@ struct ItemView: View {
 
     var body: some View {
         ItemViewDetailView()
-            .onAppear(perform: {prevEmoji = listItem.emoji})
     }
 }

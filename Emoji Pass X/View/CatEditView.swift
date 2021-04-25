@@ -53,13 +53,6 @@ struct CatEditView: View {
     
     //MARK: Body View
     var body: some View {
-        
         catEditViewGroup()
-            .onReceive(NotificationCenter.default.publisher(for: UIApplication.didEnterBackgroundNotification)) { _ in
-                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                    save()
-                    presentationMode.wrappedValue.dismiss()
-                }
-            }
     }
 }

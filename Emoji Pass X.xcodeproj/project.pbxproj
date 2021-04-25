@@ -238,6 +238,7 @@
 				6F83C73B2610251A007B0D8E /* listViewForEachView.swift */,
 				6F83C73E2610255D007B0D8E /* listViewStack.swift */,
 				6F83C741261025B1007B0D8E /* listViewDetailListView.swift */,
+				6F83C75726102C39007B0D8E /* itemViewFunctions.swift */,
 				6F83C73326101DFC007B0D8E /* listViewFunctions.swift */,
 			);
 			path = listView;
@@ -253,7 +254,6 @@
 				6F83C76926102EA5007B0D8E /* itemViewMainView.swift */,
 				6F83C74B26102AF2007B0D8E /* itemViewClearNewTextFunction.swift */,
 				6F83C75326102BEF007B0D8E /* saveFunction.swift */,
-				6F83C75726102C39007B0D8E /* itemViewFunctions.swift */,
 				6F83C74726102A0A007B0D8E /* clipboard.swift */,
 			);
 			path = itemView;

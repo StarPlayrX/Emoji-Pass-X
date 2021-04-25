@@ -57,14 +57,15 @@ extension CatEditView {
         }
         
         DispatchQueue.main.async() {
+            
+            hideKeyboard()
+
             // do something
             if managedObjectContext.hasChanges {
                 try? managedObjectContext.save()
             }
             
-            hideKeyboard()
           //  security.isCatEditViewSaved = false
-
         }
         
     }

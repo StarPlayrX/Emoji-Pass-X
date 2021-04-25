@@ -157,6 +157,10 @@ extension CatEditView {
                     clearNewText()
                 })
                 .onDisappear(perform:  save )
+                .onReceive(NotificationCenter.default.publisher(for: UIApplication.didEnterBackgroundNotification)) { _ in
+                    presentationMode.wrappedValue.dismiss()
+                }
+                
             }
         }
     }

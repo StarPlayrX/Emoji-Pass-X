@@ -37,6 +37,8 @@ extension ListView {
                     }
                 }
             )
+            .onDisappear(perform: saveItems )
+            .onAppear(perform: saveItems )     
             .font(.title)
             .listRowBackground(Color(UIColor.systemBackground))
             

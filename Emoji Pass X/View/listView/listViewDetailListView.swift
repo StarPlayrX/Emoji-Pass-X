@@ -12,10 +12,12 @@ extension ListView {
     func detailListView() -> some View {
         ZStack {
             listViewStack()
+            
         }
         .environment(\.editMode, .constant(security.isEditing ? EditMode.active : EditMode.inactive)).animation(security.isEditing ? .easeInOut : .none)
         .onReceive(NotificationCenter.default.publisher(for: UIApplication.didEnterBackgroundNotification)) { _ in
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            DispatchQueue.main.async() {
+                hideKeyboard()
                 saveItems()
                 presentationMode.wrappedValue.dismiss()
             }

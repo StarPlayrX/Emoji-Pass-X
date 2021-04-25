@@ -83,40 +83,30 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         container.viewContext.automaticallyMergesChangesFromParent = true
         container.viewContext.mergePolicy = NSMergeByPropertyStoreTrumpMergePolicy
-        
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(self.processUpdate), name: .NSPersistentStoreRemoteChange, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.processUpdate), name: .NSManagedObjectContextObjectsDidChange, object: nil)
         
         return container
     }()
 
     // MARK: - Core Data Saving support
-    @objc
-    func saveContext () {
+    @objc func saveContext () {
         let context = persistentContainer.viewContext
         if context.hasChanges {
-            DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
-                // do something
-                try? context.save()
-            }
+            try? context.save()
+
         }
     }
     
-    @objc
-    func processUpdate(notification: NSNotification) {
+    @objc func processUpdate(notification: NSNotification) {
         operationQueue.addOperation {
             // get our context
-            let context = self.persistentContainer.newBackgroundContext()
+            let context = self.persistentContainer.viewContext
             context.performAndWait {
        
                 // save if we need to save
                 if context.hasChanges {
-                    
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
-                        // do something
-                        context.refreshAllObjects()
-                    }
-                 
+                    try? context.save()
+                    context.refreshAllObjects()
                 }
             }
             
@@ -126,7 +116,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     lazy var operationQueue: OperationQueue = {
        var queue = OperationQueue()
-        queue.maxConcurrentOperationCount = 1
+        queue.maxConcurrentOperationCount = 100
         return queue
     }()
 

@@ -54,7 +54,7 @@ extension CatView {
                             catViewStack() //allows Wider column on iPad (workaround for SideBar bug)
                                 .onDisappear(perform: saveItems)
                                 .onAppear(perform: saveItems)
-                            
+                                
                             Text("")//Dummy Detail View
                         } else {
                             catViewStack()
@@ -70,12 +70,14 @@ extension CatView {
                     
                     DispatchQueue.main.async() {
                         saveItems()
+                        hideKeyboard()
                         setIsScreenDark()
                     }
                 }
                 .onReceive(NotificationCenter.default.publisher(for: UIApplication.willEnterForegroundNotification)) { _ in
                     DispatchQueue.main.async() {
                         saveItems()
+                        hideKeyboard()
                         setIsScreenDark()
                     }
                 }
@@ -99,3 +101,15 @@ extension CatView {
         }
     }
 }
+
+
+/*
+ 
+ NotificationCenter.default
+   .publisher(for: .NSManagedObjectContextDidSave, object: backgroundMoc)
+   .sink(receiveValue: { notification in
+     // handle changes
+   })
+ 
+ 
+ */

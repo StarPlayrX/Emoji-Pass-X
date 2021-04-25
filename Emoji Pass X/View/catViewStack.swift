@@ -24,9 +24,11 @@ extension CatView {
                     
                     if !security.catLock {
                         
-                        NavigationLink(destination: CatEditView(listItem: item)) {
+                        NavigationLink(destination: CatEditView(listItem: item) ) {
                             
                             if !item.name.isEmpty {
+                                
+                                
                                 Text("\(pencil)\(item.emoji) \(item.name)")
                                     .padding(.trailing, 18)
                                     .padding(.leading, iPhoneXCell())
