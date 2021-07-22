@@ -95,7 +95,7 @@ extension ItemView {
         }
     }
     
-    func field(_ text: String, item: Binding<String>, keyboard: UIKeyboardType, textContentType: UITextContentType) -> some View {
+    func formFields(_ text: String, item: Binding<String>, keyboard: UIKeyboardType, textContentType: UITextContentType, action: @escaping () -> Void ) -> some View {
         
         HStack(spacing: spacing) {
             
@@ -112,54 +112,8 @@ extension ItemView {
                     .ignoresSafeArea(.keyboard, edges: .bottom)
             }
             
-            //MARK: Switch case did not place nice here - Type check error
-            if text == userName {
-                Button(action: copyUsername) { Image(systemName: clipBoard) }
-                    .padding(.horizontal, clipPadding)
-            } else if text == passWord {
-                Button(action: copyPass) { Image(systemName: clipBoard) }
-                    .padding(.horizontal, clipPadding)
-            } else if text == phone {
-                Button(action: copyPhone) { Image(systemName: clipBoard) }
-                    .padding(.horizontal, clipPadding)
-            } else if text == pin {
-                Button(action: copyPin) { Image(systemName: clipBoard) }
-                    .padding(.horizontal, clipPadding)
-            } else if text == web {
-                Button(action: copyWeb) { Image(systemName: clipBoard) }
-                    .padding(.horizontal, clipPadding)
-            } else if text == card {
-                Button(action: copyCard) { Image(systemName: clipBoard) }
-                    .padding(.horizontal, clipPadding)
-            } else if text == exp {
-                Button(action: copyExp) { Image(systemName: clipBoard) }
-                    .padding(.horizontal, clipPadding)
-            } else if text == fullName {
-                Button(action: copyFullName) { Image(systemName: clipBoard) }
-                    .padding(.horizontal, clipPadding)
-            } else if text == cvc {
-                Button(action: copyCVC) { Image(systemName: clipBoard) }
-                    .padding(.horizontal, clipPadding)
-            } else if text == bank {
-                Button(action: copyBank) { Image(systemName: clipBoard) }
-                    .padding(.horizontal, clipPadding)
-            } else if text == keypkg {
-                Button(action: copyKeypkg) { Image(systemName: clipBoard) }
-                    .padding(.horizontal, clipPadding)
-            } else if text == keylic {
-                Button(action: copyKeylic) { Image(systemName: clipBoard) }
-                    .padding(.horizontal, clipPadding)
-            } else if text == keyemail {
-                Button(action: copyKeyemail) { Image(systemName: clipBoard) }
-                    .padding(.horizontal, 5.0)
-                
-            } else if text == keyseats {
-                Button(action: copyKeyseats) { Image(systemName: clipBoard) }
-                    .padding(.horizontal, 5.0)
-            } else if text == keyweb {
-                Button(action: copyKeyweb) { Image(systemName: clipBoard) }
-                    .padding(.horizontal, 5.0)
-            }
+            Button(action: action) { Image(systemName: clipBoard) }.padding(.horizontal, clipPadding)
+            
         }
         .padding(.bottom, bottom)
         .padding(.horizontal, horizontal + (margin * 1.5))

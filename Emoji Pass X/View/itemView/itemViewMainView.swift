@@ -124,10 +124,10 @@ extension ItemView {
                 })
             } .navigationBarTitle( "Details", displayMode: .inline)
         }
-        
         .onTapGesture {
             hideKeyboard()
-        }.onReceive(NotificationCenter.default.publisher(for: UIApplication.didEnterBackgroundNotification)) { _ in
+        }
+        .onReceive(NotificationCenter.default.publisher(for: UIApplication.didEnterBackgroundNotification)) { _ in
             hideKeyboard()
             save()
             presentationMode.wrappedValue.dismiss()

@@ -19,6 +19,7 @@ extension CatView {
                     .onAppear(perform: showLockScreen)
             } else {
                 catViewMain()
+                    .onAppear(perform: hideKeyboard)
             }
         }
     }

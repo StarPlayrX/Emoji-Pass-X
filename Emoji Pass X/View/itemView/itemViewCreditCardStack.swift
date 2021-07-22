@@ -19,22 +19,22 @@ extension ItemView {
             
             Group {
                 if !hideLabels { label(bank) }
-                field(bank, item: $cBankname, keyboard: UIKeyboardType.asciiCapable, textContentType: UITextContentType.organizationName)
+                formFields(bank, item: $cBankname, keyboard: UIKeyboardType.asciiCapable, textContentType: UITextContentType.organizationName, action: copyBank)
                 
                 if !hideLabels {  label(card) }
-                field(card, item: $cCardnumber, keyboard: UIKeyboardType.numbersAndPunctuation, textContentType: UITextContentType.URL)
+                formFields(card, item: $cCardnumber, keyboard: UIKeyboardType.numbersAndPunctuation, textContentType: UITextContentType.URL, action: copyCard)
                 
                 if !hideLabels { label(fullName) }
                 
-                field(fullName, item: $cFullname, keyboard: UIKeyboardType.asciiCapable, textContentType: UITextContentType.givenName)
+                formFields(fullName, item: $cFullname, keyboard: UIKeyboardType.asciiCapable, textContentType: UITextContentType.givenName, action: copyFullName)
                 
                 if !hideLabels { label(cvc) }
                 
-                field(cvc, item: $cCvc, keyboard: UIKeyboardType.numbersAndPunctuation, textContentType: UITextContentType.oneTimeCode)
+                formFields(cvc, item: $cCvc, keyboard: UIKeyboardType.numbersAndPunctuation, textContentType: UITextContentType.oneTimeCode, action: copyCVC)
                 
                 //MARK: Exp
                 if !hideLabels { label(exp) }
-                field(exp, item: $cExpdate, keyboard: UIKeyboardType.numbersAndPunctuation, textContentType: UITextContentType.nickname)
+                formFields(exp, item: $cExpdate, keyboard: UIKeyboardType.numbersAndPunctuation, textContentType: UITextContentType.nickname, action: copyExp)
             }
         }
     }

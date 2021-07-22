@@ -76,7 +76,6 @@ extension CatView {
                 saveItems()
                 hideKeyboard()
                 setIsScreenDark()
-                
             }
         }
         .onReceive(NotificationCenter.default.publisher(for: UIApplication.willEnterForegroundNotification)) { _ in

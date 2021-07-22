@@ -18,26 +18,26 @@ extension ItemView {
             Group {
                 //MARK: Username
                 if !hideLabels { label(userName) }
-                field(userName, item: $pUsername, keyboard: UIKeyboardType.asciiCapable, textContentType: UITextContentType.username)
+                formFields(userName, item: $pUsername, keyboard: UIKeyboardType.asciiCapable, textContentType: UITextContentType.username, action: copyUsername)
                 
                 //MARK: Password
                 if !hideLabels {  label(passWord) }
-                field(passWord, item: $pPassword, keyboard: UIKeyboardType.asciiCapable, textContentType: UITextContentType.password)
+                formFields(passWord, item: $pPassword, keyboard: UIKeyboardType.asciiCapable, textContentType: UITextContentType.password, action: copyPass)
                 
                 //MARK: Web
                 if !hideLabels { label(web) }
                 
-                field(web, item: $pWebsite, keyboard: UIKeyboardType.asciiCapable, textContentType: UITextContentType.URL)
+                formFields(web, item: $pWebsite, keyboard: UIKeyboardType.asciiCapable, textContentType: UITextContentType.URL, action: copyWeb)
                 
                 //MARK: Phone
                 if !hideLabels { label(phone) }
                 
-                field(phone, item: $pPhone, keyboard: UIKeyboardType.numbersAndPunctuation, textContentType: UITextContentType.telephoneNumber)
+                formFields(phone, item: $pPhone, keyboard: UIKeyboardType.numbersAndPunctuation, textContentType: UITextContentType.telephoneNumber, action: copyPhone)
                 
                 //MARK: Pin
                 
                 if !hideLabels { label(pin) }
-                field(pin, item: $pPin, keyboard: UIKeyboardType.numbersAndPunctuation, textContentType: UITextContentType.oneTimeCode)
+                formFields(pin, item: $pPin, keyboard: UIKeyboardType.numbersAndPunctuation, textContentType: UITextContentType.oneTimeCode, action: copyPin)
             }
         }
     }

@@ -93,8 +93,7 @@ extension CatView {
     
     func showLockScreen() {
         security.lockScreen = true
-        
-     
+        hideKeyboard()
         #if targetEnvironment(simulator)
             security.isSimulator = true
         #else

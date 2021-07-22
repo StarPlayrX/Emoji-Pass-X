@@ -17,21 +17,19 @@ extension ItemView {
             
             Group {
                 if !hideLabels { label(keypkg) }
-                field(keypkg, item: $kSoftwarepkg, keyboard: UIKeyboardType.asciiCapable, textContentType: UITextContentType.organizationName)
+                formFields(keypkg, item: $kSoftwarepkg, keyboard: UIKeyboardType.asciiCapable, textContentType: UITextContentType.organizationName, action: copyUsername)
                 
                 if !hideLabels {  label(keylic) }
-                field(keylic, item: $kLicensekey, keyboard: UIKeyboardType.asciiCapable, textContentType: UITextContentType.givenName)
+                formFields(keylic, item: $kLicensekey, keyboard: UIKeyboardType.asciiCapable, textContentType: UITextContentType.givenName, action: copyKeylic)
                 
                 if !hideLabels { label(keyemail) }
-                
-                field(keyemail, item: $kEmailaddress, keyboard: UIKeyboardType.asciiCapable, textContentType: UITextContentType.emailAddress)
+                formFields(keyemail, item: $kEmailaddress, keyboard: UIKeyboardType.asciiCapable, textContentType: UITextContentType.emailAddress, action: copyKeyemail)
                 
                 if !hideLabels { label(keyweb) }
-                
-                field(keyweb, item: $kWebaddress, keyboard: UIKeyboardType.asciiCapable, textContentType: UITextContentType.URL)
+                formFields(keyweb, item: $kWebaddress, keyboard: UIKeyboardType.asciiCapable, textContentType: UITextContentType.URL, action: copyKeyweb)
                 
                 if !hideLabels { label(keyseats) }
-                field(keyseats, item: $kSeats, keyboard: UIKeyboardType.numbersAndPunctuation, textContentType: UITextContentType.nickname)
+                formFields(keyseats, item: $kSeats, keyboard: UIKeyboardType.numbersAndPunctuation, textContentType: UITextContentType.nickname, action: copyKeyseats)
             }
         }
     }
