@@ -29,16 +29,16 @@ extension ItemView {
             
             switch text {
             case "pNotes":
-                Button(action: copyPnotes) { Image(systemName: clipBoard) }
+                Button(action: { copyToClipboard(pNotes) }) { Image(systemName: clipBoard) }
                     .padding(.horizontal, clipPadding)
             case "cNotes":
-                Button(action: copyCnotes) { Image(systemName: clipBoard) }
+                Button(action: { copyToClipboard(cNotes) }) { Image(systemName: clipBoard) }
                     .padding(.horizontal, clipPadding)
             case "kNotes":
-                Button(action: copyKnotes) { Image(systemName: clipBoard) }
+                Button(action: { copyToClipboard(kNotes) }) { Image(systemName: clipBoard) }
                     .padding(.horizontal, clipPadding)
             default:
-                Button(action: copyPnotes) { Image(systemName: clipBoard) }
+                Button(action: { copyToClipboard(cNotes) }) { Image(systemName: clipBoard) }
                     .padding(.horizontal, clipPadding)
             }
         }

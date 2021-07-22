@@ -23,7 +23,7 @@ extension CatEditView {
     
     
     func stack(_ hideLabels: Bool) -> some View {
-        VStack() {
+        VStack {
             //MARK: Description
             if !hideLabels { label(desc) }
             

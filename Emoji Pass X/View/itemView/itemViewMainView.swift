@@ -14,8 +14,8 @@ extension ItemView {
         
         GeometryReader { geometry in
             ScrollView {
-                VStack() {
-                    HStack() {
+                VStack {
+                    HStack {
                         TextField(emoji, text: $listItem.emoji)
                             .background(labelColor2)
                             .cornerRadius(radius)

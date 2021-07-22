@@ -14,25 +14,23 @@ extension CatEditView {
         listItem.name = "All Stars"
         listItem.uuidString = "Stars"
         listItem.emoji = "⭐️"
-        security.previousEmoji =  listItem.emoji
         listItem.desc = "A store for all my favorites."
+        security.previousEmoji = listItem.emoji
     }
     
     func Everything() {
         listItem.name = "Flashlight"
         listItem.uuidString = "Everything"
         listItem.emoji = "🔦"
+        listItem.desc = "A store for all my records."
         security.previousEmoji = listItem.emoji
-        listItem.desc = "A store for all my records."      
     }
     
     func catEditViewGroup() -> some View {
         Group {
             GeometryReader { geometry in
-                
                 VStack {
                     HStack {
-                        
                         TextField(emoji, text: $listItem.emoji)
                             .background(labelColor2)
                             .cornerRadius(radius)
@@ -57,13 +55,8 @@ extension CatEditView {
                         Spacer()
                     }
                     
-                    if geometry.size.width == smallestWidth {
-                        stack(true)
-                    } else {
-                        stack(false)
-                    }
-                    
-                    
+                    geometry.size.width == smallestWidth ? stack(true) : stack(false)
+                        
                     if listItem.uuidString != "Stars" && listItem.uuidString != "Everything" {
                         
                         HStack {
@@ -75,23 +68,18 @@ extension CatEditView {
                                 .padding(.bottom, -32)
                                 .padding(.top, 16)
                             Spacer()
-                            
-                            
                         }
                         .padding(.bottom, 20)
-                        
                     }
                     
                     if security.isCategoryNew {
-                        VStack() {
-                            
+                        VStack {
                             if listItem.uuidString != "Stars" {
                                 HStack {
                                     Button(action: Stars )
                                         { Text("Create an All Stars Category") }
                                         .padding(.top, 20)
                                         .padding(.leading, 12)
-                                    
                                     Spacer()
                                 }
                             }
@@ -108,12 +96,9 @@ extension CatEditView {
                             }
                         }
                     }
-                    
-                    
                 }
                 .navigationBarTitle( "Category", displayMode: .inline)
                 .toolbar {
-                    
                     ToolbarItemGroup(placement: .navigationBarLeading) {
                         if UIDevice.current.userInterfaceIdiom == .mac || UIDevice.current.userInterfaceIdiom == .pad  {
                             Button(action: { security.isCatEditViewSaved = true; save(); } )
