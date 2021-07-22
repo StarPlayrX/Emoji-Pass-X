@@ -2,18 +2,15 @@
 //  ListItemView.swift
 //  Emoji Pass X
 //
-//  Created by StarPlayrX on 2/27/21.
+//  Created by Todd Bruss on 2/27/21.
 //
 
 import SwiftUI
-import Combine
 import UIKit
 
-
 struct ItemView: View {
-
-    @Environment(\.managedObjectContext) var managedObjectContext
     @Environment(\.presentationMode) var presentationMode
+    @Environment(\.managedObjectContext) var managedObjectContext
     @Environment(\.colorScheme) var colorScheme
     @EnvironmentObject var security: Security
     @StateObject var privateKey = privateParts()
@@ -23,7 +20,6 @@ struct ItemView: View {
 
     @State var prevEmoji  : String = ""
 
-    
     //MARK: New Password Items
     @State var pUsername: String = ""
     @State var pPassword: String = ""
@@ -48,6 +44,7 @@ struct ItemView: View {
     @State var kSeats        : String = ""
     @State var kNotes        : String = ""
 
+   
     //MARK: strings
     let name = "Name"
     let bank = "Bank Name"
@@ -96,7 +93,7 @@ struct ItemView: View {
     let smallestWidth = CGFloat(320.0)
     
     let pasteboard = UIPasteboard.general
-
+    
     var body: some View {
         ItemViewDetailView()
     }

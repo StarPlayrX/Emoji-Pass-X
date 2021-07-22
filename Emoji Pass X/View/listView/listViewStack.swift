@@ -2,7 +2,7 @@
 //  listView_.swift
 //  Emoji Pass X
 //
-//  Created by M1 on 3/27/21.
+//  Created by Todd Bruss on 3/27/21.
 //
 
 import SwiftUI
@@ -18,12 +18,10 @@ extension ListView {
             .padding(.leading, iPhoneXLeading())
             .listStyle(PlainListStyle())
         }
-        
         .navigationBarTitle(catItem.name, displayMode: .inline)
         .toolbar {
-            
             ToolbarItemGroup(placement: .navigationBarTrailing) {
-                Button(action: {  security.isEditing = !security.isEditing  })
+                Button(action: { security.isEditing = !security.isEditing  })
                 {
                     if security.isEditing  {
                         Image(systemName: "hammer")

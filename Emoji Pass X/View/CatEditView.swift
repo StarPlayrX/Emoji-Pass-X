@@ -2,16 +2,15 @@
 //  CatEditView.swift
 //  Emoji Pass X
 //
-//  Created by StarPlayrX on 2/27/21.
+//  Created by Todd Bruss on 2/27/21.
 //
 
 import SwiftUI
 import Combine
 
 struct CatEditView: View {
-    
-    @Environment(\.managedObjectContext) var managedObjectContext
     @Environment(\.presentationMode) var presentationMode
+    @Environment(\.managedObjectContext) var managedObjectContext
     @EnvironmentObject var security: Security
     @State var selectedTemplate = 1
     @ObservedObject var listItem: ListItem

@@ -2,13 +2,12 @@
 //  lockStack.swift
 //  Emoji Pass X
 //
-//  Created by M1 on 3/27/21.
+//  Created by Todd Bruss on 3/27/21.
 //
 
 import SwiftUI
 import CoreData
 import AuthenticationServices
-
 
 //MARK: lockStack
 
@@ -19,11 +18,10 @@ extension CatView {
             Text("Emoji Pass X").font(.largeTitle).minimumScaleFactor(0.75).padding(.top, 100)
             
             HStack {
-                
                 Image("Emoji Pass X_logo4")
                     .resizable()
                     .scaledToFit()
-                    .frame(width: 230.0,height:230)
+                    .frame(width: 230.0, height: 230)
                     .background(Color.clear)
             }.overlay (
                 RoundedRectangle(cornerRadius: 48)
@@ -55,11 +53,11 @@ extension CatView {
                                             break
                                         }
                                       })
-                                        .signInWithAppleButtonStyle( isGlobalDark ? .white : .black)
-                                        .overlay(
-                                        RoundedRectangle(cornerRadius: 6)
-                                            .stroke( isGlobalDark ? Color.black : Color.white, lineWidth: 2)
-                                      )
+                    .signInWithAppleButtonStyle( isGlobalDark ? .white : .black)
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 6)
+                            .stroke( isGlobalDark ? Color.black : Color.white, lineWidth: 2)
+                    )
                     .padding(.horizontal, 50)
                     .padding(.vertical, 100)
                     .frame(maxWidth: 350,  maxHeight: 250, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)

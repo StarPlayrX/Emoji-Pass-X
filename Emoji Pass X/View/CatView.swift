@@ -2,17 +2,13 @@
 //  CatView.swift
 //  Emoji Pass X
 //
-//  Created by StarPlayrX on 2/27/21.
+//  Created by Todd Bruss on 2/27/21.
 //
 import SwiftUI
-import CoreData
-import AuthenticationServices
-
 
 struct CatView: View {
     @FetchRequest(fetchRequest: ListItem.getFetchRequest()) var listItems: FetchedResults<ListItem>
 
-    
     @Environment(\.managedObjectContext) var managedObjectContext
     @State private var showingAlert = false
     @State var searchText: String = ""
@@ -40,5 +36,4 @@ struct CatView: View {
         intialView()
     }
 }
-//     var listItems =  (try? managedObjectContext.fetch(ListItem.getFetchRequest()) ) )
 

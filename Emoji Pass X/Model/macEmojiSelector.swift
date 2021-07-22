@@ -2,7 +2,7 @@
 //  macEmojiSelector.swift
 //  Emoji Pass X
 //
-//  Created by M1 on 3/28/21.
+//  Created by Todd Bruss on 3/28/21.
 //
 
 import Foundation

@@ -2,7 +2,7 @@
 //  catStack.swift
 //  Emoji Pass X
 //
-//  Created by M1 on 3/27/21.
+//  Created by Todd Bruss on 3/27/21.
 //
 
 import SwiftUI
@@ -13,22 +13,15 @@ extension CatView {
     func catViewStack() -> some View {
         Group {
             
-            let category = listItems.filter( { $0.isParent == true })
+            let category = listItems.filter({ $0.isParent == true })
             
             List {
-                
                 searchStack()
-                
-                ForEach( getList(category), id: \.self ) { item in
-                    
-                    
+                ForEach(getList(category), id: \.self) { item in
                     if !security.catLock {
-                        
-                        NavigationLink(destination: CatEditView(listItem: item) ) {
+                        NavigationLink(destination: CatEditView(listItem: item)) {
                             
                             if !item.name.isEmpty {
-                                
-                                
                                 Text("\(pencil)\(item.emoji) \(item.name)")
                                     .padding(.trailing, 18)
                                     .padding(.leading, iPhoneXCell())
@@ -39,7 +32,6 @@ extension CatView {
                                     .padding(.leading, iPhoneXCell())
                                     .font(.title)
                             }
-                            
                         }
                         .overlay (
                             HStack {
@@ -50,7 +42,6 @@ extension CatView {
                         )
                         
                     } else if item.name == newCategory || item.name.isEmpty  {
-                        
                         //let gc = getCount(a: listItems, b: item)
                         NavigationLink(destination: CatEditView(listItem: item)) {
                             Text("\(cat) \(newCategory)")
@@ -99,10 +90,12 @@ extension CatView {
                   message: Text("This category cannot be deleted."),
                   dismissButton: .default(Text("OK")) { security.isValid = false })
         })
-        .environment(\.editMode, .constant(security.isEditing ? EditMode.active : EditMode.inactive)).animation(security.isEditing ? .easeInOut : .none)
+        .environment(\.editMode,
+                     .constant(security.isEditing ? EditMode.active : EditMode.inactive))
+        .animation(security.isEditing ? .easeInOut : .none)
         .navigationBarTitle("Categories", displayMode: .inline)
         .toolbar {
-        
+            
             ToolbarItemGroup(placement: .navigationBarLeading) {
                 Button(action: { security.catLock = !security.catLock; security.isEditing = false })
                 {
@@ -116,9 +109,9 @@ extension CatView {
             
             ToolbarItemGroup(placement: .navigationBarTrailing) {
                 
-                Button(action: {  security.isEditing = !security.isEditing; security.catLock = true  })
+                Button(action: { security.isEditing = !security.isEditing; security.catLock = true })
                 {
-                    if security.isEditing  {
+                    if security.isEditing {
                         Image(systemName: "hammer")
                     } else {
                         Image(systemName: "hammer.fill")

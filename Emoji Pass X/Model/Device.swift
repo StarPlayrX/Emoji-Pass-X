@@ -2,7 +2,7 @@
 //  Device.swift
 //  Emoji Pass X
 //
-//  Created by StarPlayrX on 3/14/21.
+//  Created by Todd Bruss on 3/14/21.
 //
 
 import UIKit

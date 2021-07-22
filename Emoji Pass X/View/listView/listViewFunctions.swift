@@ -2,7 +2,7 @@
 //  listViewFunctions.swift
 //  Emoji Pass X
 //
-//  Created by M1 on 3/27/21.
+//  Created by Todd Bruss on 3/27/21.
 //
 
 import SwiftUI
@@ -10,8 +10,7 @@ import SwiftUI
 
 extension ListView {
     
-    //MARK: One Lines do not need to use return
-    
+    //MARK: One Liners do not need to use return
     func getList(_ a: [ListItem]) -> [ListItem] {
         a.filter( { "\($0.emoji)\($0.name)".lowercased().contains(searchText.lowercased()) || searchText.isEmpty } )
     }
@@ -27,7 +26,6 @@ extension ListView {
     func New() -> Button<Image> {
         Button(action: addItem) { Image(systemName: "plus") }
     }
-    
     
     func reindex() {
         // reorder items
@@ -72,12 +70,9 @@ extension ListView {
     }
     
     func deleteItem(indexSet: IndexSet) {
-        
-        var cf = coldFilter(detailListItems)
-        
-        cf = getList(cf)
-        
         var indexIsValid = false
+        var cf = coldFilter(detailListItems)
+        cf = getList(cf)
         
         if let source = indexSet.first {
             indexIsValid = cf.indices.contains(source)
@@ -109,15 +104,11 @@ extension ListView {
     }
     
     func saveItems() {
+        // When saving a Context, always use the main thread
         DispatchQueue.main.async() {
-            // do something
-            
-            hideKeyboard()
-
             if managedObjectContext.hasChanges {
                 try? managedObjectContext.save()
             }
         }
     }
 }
-

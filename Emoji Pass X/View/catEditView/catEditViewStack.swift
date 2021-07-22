@@ -2,7 +2,7 @@
 //  catEditViewStack.swift
 //  Emoji Pass X
 //
-//  Created by M1 on 3/27/21.
+//  Created by Todd Bruss on 3/27/21.
 //
 
 import SwiftUI
@@ -156,11 +156,7 @@ extension CatEditView {
                 .onAppear(perform: {
                     clearNewText()
                 })
-                .onDisappear(perform:  save )
-                .onReceive(NotificationCenter.default.publisher(for: UIApplication.didEnterBackgroundNotification)) { _ in
-                    presentationMode.wrappedValue.dismiss()
-                }
-                
+                .onDisappear(perform: save )
             }
         }
     }

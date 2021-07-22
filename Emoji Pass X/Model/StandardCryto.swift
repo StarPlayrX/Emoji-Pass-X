@@ -2,7 +2,7 @@
 //  Cryto.swift
 //  Emoji Pass X
 //
-//  Created by StarPlayrX on 11/14/20.
+//  Created by Todd Bruss on 11/14/20.
 //
 
 import CommonCrypto

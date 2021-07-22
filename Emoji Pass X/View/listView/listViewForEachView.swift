@@ -2,7 +2,7 @@
 //  listViewForEachView.swift
 //  Emoji Pass X
 //
-//  Created by M1 on 3/27/21.
+//  Created by Todd Bruss on 3/27/21.
 //
 
 import SwiftUI
@@ -47,6 +47,5 @@ extension ListView {
         .onMove(perform: moveItem)
         .padding(.trailing, 0)
         .frame(height:40)
-    }
-  
+    }  
 }

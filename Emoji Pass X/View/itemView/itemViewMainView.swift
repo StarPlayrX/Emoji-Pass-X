@@ -2,7 +2,7 @@
 //  itemViewMainView.swift
 //  Emoji Pass X
 //
-//  Created by M1 on 3/27/21.
+//  Created by Todd Bruss on 3/27/21.
 //
 
 import SwiftUI
@@ -26,12 +26,12 @@ extension ItemView {
                             .multilineTextAlignment(.center)
                             .frame(height: geometry.size.width == smallestWidth ? emojiFrameWidth - 25 : emojiFrameWidth )
                             .frame(width: geometry.size.width == smallestWidth ? emojiFrameWidth - 50 : emojiFrameWidth - 25 )
-                            .padding(.bottom, geometry.size.width == smallestWidth ? -10 : -10)
-                            .padding(.leading, geometry.size.width == smallestWidth ? 10 : 10 )
-                            .padding(.trailing, geometry.size.width == smallestWidth ? 10 : 10 )
+                            .padding(.bottom, -10)
+                            .padding(.horizontal, 10)
+                            
                         TextField(name, text: $listItem.name)
                             .font(.largeTitle)
-                            .padding(.bottom, geometry.size.width == smallestWidth ? -20 : -20)
+                            .padding(.bottom, -20)
                             .keyboardType(.asciiCapable)
                             .minimumScaleFactor(0.8)
                         Spacer()
@@ -128,6 +128,7 @@ extension ItemView {
         .onTapGesture {
             hideKeyboard()
         }.onReceive(NotificationCenter.default.publisher(for: UIApplication.didEnterBackgroundNotification)) { _ in
+            hideKeyboard()
             save()
             presentationMode.wrappedValue.dismiss()
         }

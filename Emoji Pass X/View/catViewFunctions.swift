@@ -2,7 +2,7 @@
 //  CatViewFunctions.swift
 //  Emoji Pass X
 //
-//  Created by M1 on 3/27/21.
+//  Created by Todd Bruss on 3/27/21.
 //
 
 import SwiftUI
@@ -24,20 +24,16 @@ extension CatView {
         }
     }
     
-    
     func getList(_ a: [ListItem]) -> [ListItem] {
         a.filter( { "\($0.emoji)\($0.name)".lowercased().contains(searchText.lowercased()) || searchText.isEmpty } )
     }
  
-
     //MARK: See if iCloud is available
     func checkForCloudKit() -> Bool {
         FileManager.default.ubiquityIdentityToken != nil ? false : true
     }
 
-
     func moveItem(from source: IndexSet, to destination: Int) {
-        
         var category = listItems.filter( { $0.isParent == true })
         category = getList(category)
         
@@ -70,11 +66,9 @@ extension CatView {
         
         if !indexIsValid {
             generator.notificationOccurred(.error)
-           
         }
         
         if let source = indexSet.first, let listItem = Optional(cf[source]) {
-          
             let gc = getCount(listItems, listItem)
             
             if gc.isEmpty && listItem.uuidString.count == uuidCount {
@@ -89,7 +83,6 @@ extension CatView {
             }
             
             saveItems()
-
         }
     }
     
@@ -109,9 +102,7 @@ extension CatView {
             setIsScreenDark()
         #endif
     }
-    
-   
-    
+
     func addItem() {
         let newItem = ListItem(context: managedObjectContext)
         newItem.emoji = cat
@@ -124,9 +115,6 @@ extension CatView {
     
     func saveItems() {
         DispatchQueue.main.async() {
-            
-            hideKeyboard()
-            
             if managedObjectContext.hasChanges {
                 try? managedObjectContext.save()
             }
