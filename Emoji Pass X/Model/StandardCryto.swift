@@ -22,9 +22,9 @@ func encryptData(string: String, key: Data) -> Data {
     if let secret = string.data(using: .utf8),
        let encrypted = secret.encryptAES256_CBC_PKCS7_IV(key: key) {
         return encrypted
-    } else {
-        return emptyData
     }
+    
+    return emptyData
 }
 
 func decryptData(data: Data, key: Data) -> String {
@@ -38,28 +38,28 @@ func decryptData(data: Data, key: Data) -> String {
     if let decryptedBytes = data.decryptAES256_CBC_PKCS7_IV(key: key),
        let decrypted = String(data: decryptedBytes, encoding: .utf8) {
         return decrypted
-    } else {
-        return emptyString
     }
+    
+    return emptyString
 }
 
 func crypt(operation: Int, algorithm: Int, options: Int, key: Data,
-        initializationVector: Data, dataIn: Data) -> Data? {
+           initializationVector: Data, dataIn: Data) -> Data? {
     return key.withUnsafeBytes { keyUnsafeRawBufferPointer in
         return dataIn.withUnsafeBytes { dataInUnsafeRawBufferPointer in
             return initializationVector.withUnsafeBytes { ivUnsafeRawBufferPointer in
                 // Give the data out some breathing room for PKCS7's padding.
                 let dataOutSize: Int = dataIn.count + kCCBlockSizeAES128*2
                 let dataOut = UnsafeMutableRawPointer.allocate(byteCount: dataOutSize,
-                    alignment: 1)
+                                                               alignment: 1)
                 defer { dataOut.deallocate() }
                 var dataOutMoved: Int = 0
                 let status = CCCrypt(CCOperation(operation), CCAlgorithm(algorithm),
-                    CCOptions(options),
-                    keyUnsafeRawBufferPointer.baseAddress, key.count,
-                    ivUnsafeRawBufferPointer.baseAddress,
-                    dataInUnsafeRawBufferPointer.baseAddress, dataIn.count,
-                    dataOut, dataOutSize, &dataOutMoved)
+                                     CCOptions(options),
+                                     keyUnsafeRawBufferPointer.baseAddress, key.count,
+                                     ivUnsafeRawBufferPointer.baseAddress,
+                                     dataInUnsafeRawBufferPointer.baseAddress, dataIn.count,
+                                     dataOut, dataOutSize, &dataOutMoved)
                 guard status == kCCSuccess else { return nil }
                 return Data(bytes: dataOut, count: dataOutMoved)
             }
@@ -85,11 +85,11 @@ extension Data {
         guard let iv = randomGenerateBytes(count: kCCBlockSizeAES128) else { return nil }
         // No option is needed for CBC, it is on by default.
         guard let ciphertext = crypt(operation: kCCEncrypt,
-                                    algorithm: kCCAlgorithmAES,
-                                    options: kCCOptionPKCS7Padding,
-                                    key: key,
-                                    initializationVector: iv,
-                                    dataIn: self) else { return nil }
+                                     algorithm: kCCAlgorithmAES,
+                                     options: kCCOptionPKCS7Padding,
+                                     key: key,
+                                     initializationVector: iv,
+                                     dataIn: self) else { return nil }
         return iv + ciphertext
     }
     
@@ -100,7 +100,7 @@ extension Data {
         let iv = prefix(kCCBlockSizeAES128)
         let ciphertext = suffix(from: kCCBlockSizeAES128)
         return crypt(operation: kCCDecrypt, algorithm: kCCAlgorithmAES,
-            options: kCCOptionPKCS7Padding, key: key, initializationVector: iv,
-            dataIn: ciphertext)
+                     options: kCCOptionPKCS7Padding, key: key, initializationVector: iv,
+                     dataIn: ciphertext)
     }
 }

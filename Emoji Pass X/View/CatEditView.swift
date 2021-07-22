@@ -32,7 +32,7 @@ struct CatEditView: View {
     let date = "Date"
     
     let pencil = "🐛"
-x
+
     let labelColor = Color.secondary
     var labelColor2 = Color(UIColor.systemGray3)
     
