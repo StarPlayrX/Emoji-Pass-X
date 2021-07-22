@@ -27,22 +27,23 @@ extension ItemView {
                 .foregroundColor(labelColor)
             Spacer()
             
-            if text == "pNotes" {
+            switch text {
+            case "pNotes":
                 Button(action: copyPnotes) { Image(systemName: clipBoard) }
                     .padding(.horizontal, clipPadding)
-            } else if text == "cNotes" {
+            case "cNotes":
                 Button(action: copyCnotes) { Image(systemName: clipBoard) }
                     .padding(.horizontal, clipPadding)
-            } else if text == "kNotes" {
+            case "kNotes":
                 Button(action: copyKnotes) { Image(systemName: clipBoard) }
                     .padding(.horizontal, clipPadding)
+            default:
+                Button(action: copyPnotes) { Image(systemName: clipBoard) }
+                    .padding(.horizontal, clipPadding)
             }
-            
         }
-        .padding(.horizontal, horizontal)
         .padding(.bottom, 0)
-        .padding(.leading, margin * 1.5)
-        .padding(.trailing, margin * 1.5)
+        .padding(.horizontal, horizontal + (margin * 1.5))
     }
     
     func notesEditor(_ text: String, note: Binding<String>, keyboard: UIKeyboardType, textContentType: UITextContentType, hideLabels: Bool) -> some View {

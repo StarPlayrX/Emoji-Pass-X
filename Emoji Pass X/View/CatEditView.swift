@@ -21,10 +21,6 @@ struct CatEditView: View {
     let name = "Category Name"
     let emoji = ":)"
     let newRecord = "New Category"
-    let textLimit = 1
-    
-    let pencil = "🐛"
-    
     let userName = "Username"
     let passWord = "Password"
     let enter = "Enter"
@@ -35,9 +31,12 @@ struct CatEditView: View {
     let uuid = "UUID"
     let date = "Date"
     
+    let pencil = "🐛"
+x
     let labelColor = Color.secondary
     var labelColor2 = Color(UIColor.systemGray3)
     
+    let textLimit = 1
     let margin = CGFloat(-20)
     let spacing = CGFloat(0)
     let radius = CGFloat(14)

@@ -44,17 +44,19 @@ struct ItemView: View {
     @State var kSeats        : String = ""
     @State var kNotes        : String = ""
 
-   
     //MARK: strings
-    let name = "Name"
-    let bank = "Bank Name"
     let emoji = ":)"
     let newRecord = "New Record"
+    let uuid = "UUID"
+
     let pencil = "✏️"
     
     let textLimit = 1
     let clipBoard = "doc.on.clipboard"
     let clipPadding = CGFloat(5)
+    
+    let name = "Name"
+    let bank = "Bank Name"
     
     let userName = "Username"
     let passWord = "Password"
@@ -64,7 +66,6 @@ struct ItemView: View {
     let web = "Website"
     let phone = "Phone"
     let pin = "Pin"
-    let uuid = "UUID"
     let date = "Date"
     let card = "Card Number"
     let exp = "Expiration Date"

@@ -2,13 +2,14 @@
 //  Cryto.swift
 //  Emoji Pass X
 //
-//  Created by Todd Bruss on 11/14/20.
-//
+//  crypt, randomGenerateBytes, encryptAES256_CBC_PKCS7_IV, decryptAES256_CBC_PKCS7_IV by Chris Hulbert on 2019/06/09.
+//  encryptData, decryptData by Todd Bruss
+
+// https://www.splinter.com.au/2019/06/09/pure-swift-common-crypto-aes-encryption/ by Chris Hulbert
 
 import CommonCrypto
 import Foundation
 import UIKit
-
 
 func encryptData(string: String, key: Data) -> Data {
     let emptyData = Data()
@@ -18,7 +19,8 @@ func encryptData(string: String, key: Data) -> Data {
         return emptyData
     }
     
-    if let secret = string.data(using: .utf8), let encrypted = secret.encryptAES256_CBC_PKCS7_IV(key: key) {
+    if let secret = string.data(using: .utf8),
+       let encrypted = secret.encryptAES256_CBC_PKCS7_IV(key: key) {
         return encrypted
     } else {
         return emptyData
@@ -26,14 +28,15 @@ func encryptData(string: String, key: Data) -> Data {
 }
 
 func decryptData(data: Data, key: Data) -> String {
-    let emptyString = ""
+    let emptyString = String()
     
     //MARK: Do not decrypt empty Data (Saves processing time)
     if data.isEmpty {
         return emptyString
     }
     
-    if let decryptedBytes = data.decryptAES256_CBC_PKCS7_IV(key: key), let decrypted = String(data: decryptedBytes, encoding: .utf8) {
+    if let decryptedBytes = data.decryptAES256_CBC_PKCS7_IV(key: key),
+       let decrypted = String(data: decryptedBytes, encoding: .utf8) {
         return decrypted
     } else {
         return emptyString
@@ -72,7 +75,6 @@ func randomGenerateBytes(count: Int) -> Data? {
     return Data(bytes: bytes, count: count)
 }
 
-
 extension Data {
     /// Encrypts for you with all the good options turned on: CBC, an IV, PKCS7
     /// padding (so your input data doesn't have to be any particular length).
@@ -102,5 +104,3 @@ extension Data {
             dataIn: ciphertext)
     }
 }
-
-
