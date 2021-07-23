@@ -1,5 +1,5 @@
 //
-//  clearNewTextFunction.swift
+//  itemViewClearNewTextFunction.swift
 //  Emoji Pass X
 //
 //  Created by Todd Bruss on 3/27/21.
@@ -13,16 +13,12 @@ extension ItemView {
         privateKey.parentKey = emojiParentKey()
         
         //New Item detected, so we clear this out (otherwise fill it in!)
-        if ( listItem.name == newRecord) {
+        if (listItem.name == newRecord) {
             listItem.templateId = catItem.templateId
             listItem.name = ""
-
         }
-        
-       
-        if listItem.uuidString.isEmpty {
-            listItem.uuidString = catItem.uuidString
-        }
+    
+        if listItem.uuidString.isEmpty { listItem.uuidString = catItem.uuidString }
         
         //MARK: Transition to new way
         if listItem.id.isEmpty {
@@ -36,7 +32,6 @@ extension ItemView {
             if privateKey.recordStr.isEmpty || privateKey.recordStr.count != 8 {
                 let emojiKey    = emojiRecordKey()
                 let emojiData   = createEncryptedKey(emojiKey: emojiKey)
-                
                 listItem.id  = emojiData
             }
         }
@@ -49,7 +44,7 @@ extension ItemView {
         pWebsite  = decryptData(data: listItem.pWebsite, key: privateKey.recordKey)
         pPhone    = decryptData(data: listItem.pPhone, key: privateKey.recordKey)
         pPin      = decryptData(data: listItem.pPin, key: privateKey.recordKey)
-        pNotes      = decryptData(data: listItem.pNotes, key: privateKey.recordKey)
+        pNotes    = decryptData(data: listItem.pNotes, key: privateKey.recordKey)
 
         cBankname   = decryptData(data: listItem.cBankname, key: privateKey.recordKey)
         cCardnumber = decryptData(data: listItem.cCardnumber, key: privateKey.recordKey)
@@ -64,6 +59,5 @@ extension ItemView {
         kWebaddress   = decryptData(data: listItem.kWebaddress, key: privateKey.recordKey)
         kSeats        = decryptData(data: listItem.kSeats, key: privateKey.recordKey)
         kNotes        = decryptData(data: listItem.kNotes, key: privateKey.recordKey)
-        
     }
 }

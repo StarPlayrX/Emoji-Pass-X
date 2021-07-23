@@ -1,8 +1,8 @@
 //
-//  BindingStruct.swift
+//  BindingInfoStruct.swift
 //  Emoji Pass X
 //
-//  Created by M1 on 7/22/21.
+//  Created by Todd Bruss on 7/22/21.
 //
 
 import SwiftUI

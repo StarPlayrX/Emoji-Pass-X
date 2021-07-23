@@ -31,6 +31,9 @@ struct CatEditView: View {
     let uuid = "UUID"
     let date = "Date"
     
+    let templateIds = [0, 1, 2]
+    
+    let template = ["💳 Cards", "🔒 Passwords", "🔑 Keys"]
     let pencil = "🐛"
 
     let labelColor = Color.secondary

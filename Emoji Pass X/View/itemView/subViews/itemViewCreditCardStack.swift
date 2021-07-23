@@ -12,9 +12,7 @@ extension ItemView {
     //MARK: CreditCardStack
     func creditCardStack(_ hideLabels: Bool) -> some View {
         VStack {
-            Group {
-                notesEditor("cNotes", note: $cNotes, keyboard: UIKeyboardType.alphabet, textContentType: UITextContentType.sublocality, hideLabels: hideLabels)
-            }
+            notesEditor("cNotes", note: $cNotes, keyboard: UIKeyboardType.alphabet, textContentType: UITextContentType.sublocality, hideLabels: hideLabels)
 
             let items = [
                 BindingInfo(text: bank,     bind: $cBankname,    copy: cBankname),
@@ -23,17 +21,16 @@ extension ItemView {
                 BindingInfo(text: cvc,      bind: $cCvc,         copy: cCvc),
                 BindingInfo(text: exp,      bind: $cExpdate,     copy: cExpdate)
             ]
-            Group {
-                ForEach( items, id: \.self) { item in
-                    if !hideLabels { label(item.text) }
-                    formFields(
-                        item.text,
-                        item: item.bind,
-                        keyboard: UIKeyboardType.asciiCapable,
-                        textContentType: UITextContentType.password,
-                        action: { copyToClipboard(item.copy) }
-                    )
-                }
+            
+            ForEach( items, id: \.self) { item in
+                if !hideLabels { label(item.text) }
+                formFields(
+                    item.text,
+                    item: item.bind,
+                    keyboard: UIKeyboardType.asciiCapable,
+                    textContentType: UITextContentType.password,
+                    action: {copyToClipboard(item.copy)}
+                )
             }
         }
     }

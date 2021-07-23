@@ -13,7 +13,7 @@ struct ItemView: View {
     @Environment(\.managedObjectContext) var managedObjectContext
     @Environment(\.colorScheme) var colorScheme
     @EnvironmentObject var security: Security
-    @StateObject var privateKey = privateParts()
+    @StateObject var privateKey = PrivateParts()
 
     @ObservedObject var catItem: ListItem
     @ObservedObject var listItem: ListItem
@@ -44,22 +44,23 @@ struct ItemView: View {
     @State var kSeats        : String = ""
     @State var kNotes        : String = ""
 
+    let templateIds = [0, 1, 2]
+
+    let pencil = "✏️"
+    let template = ["💳 Cards", "🔒 Passwords", "🔑 Keys"]
+
     //MARK: strings
     let emoji = ":)"
     let newRecord = "New Record"
-    let uuid = "UUID"
-
-    let pencil = "✏️"
-    
+    let uuid = "UUID"    
     let textLimit = 1
     let clipBoard = "doc.on.clipboard"
     let clipPadding = CGFloat(5)
     
-    let name = "Name"
-    let bank = "Bank Name"
-    
     let userName = "Username"
     let passWord = "Password"
+    let name = "Name"
+    let bank = "Bank Name"
     let enter = "Enter"
     let copy = "Copy"
     let desc = "Description"
@@ -96,6 +97,6 @@ struct ItemView: View {
     let pasteboard = UIPasteboard.general
     
     var body: some View {
-        ItemViewDetailView()
+        itemViewDetailView()
     }
 }

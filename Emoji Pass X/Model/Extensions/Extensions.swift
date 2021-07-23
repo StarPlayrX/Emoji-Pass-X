@@ -34,3 +34,11 @@ extension Notification.Name {
     static let save = Notification.Name("save")
     static let refresh = Notification.Name("refresh")
 }
+
+public extension UIDevice {
+    var hasNotch: Bool {
+        let bottom = UIApplication.shared.windows.filter {$0.isKeyWindow}.first?.safeAreaInsets.bottom ?? 0
+        return bottom > 0
+    }
+}
+

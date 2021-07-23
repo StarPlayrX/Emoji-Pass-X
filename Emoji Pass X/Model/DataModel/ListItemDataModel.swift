@@ -1,5 +1,5 @@
 //
-//  ListItem.swift
+//  ListItemDataModel.swift
 //  Emoji Pass X
 //
 //  Created by Todd Bruss on 2/27/21.
@@ -56,6 +56,4 @@ extension ListItem {
     }
 }
 
-let template = ["💳 Cards", "🔒 Passwords", "🔑 Keys"]
-let templateIds = [0, 1, 2]
-var isGlobalDark = true
+

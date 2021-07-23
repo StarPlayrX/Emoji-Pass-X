@@ -16,6 +16,7 @@ extension CatView {
             TextField("Search", text: $searchText)
                 .padding(.leading, iPhoneXSearch())
                 .padding(.trailing, 64)
+                .frame(height: 40.0)
                 .listRowBackground(Color(UIColor.systemBackground))
         }
         .listRowBackground(Color(UIColor.systemBackground))

@@ -86,9 +86,8 @@ extension CatView {
         }
     }
     
-    
     func setIsScreenDark() {
-        isGlobalDark = UIScreen.main.traitCollection.userInterfaceStyle == .dark
+        GlobalVariables.isGlobalDark = UIScreen.main.traitCollection.userInterfaceStyle == .dark
     }
     
     func showLockScreen() {

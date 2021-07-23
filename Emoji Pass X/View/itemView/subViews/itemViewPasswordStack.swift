@@ -11,10 +11,8 @@ extension ItemView {
     //MARK: Password Stack
     func passwordStack(_ hideLabels: Bool) -> some View {
         VStack {
-            Group {
-                notesEditor("pNotes", note: $pNotes, keyboard: UIKeyboardType.alphabet, textContentType: UITextContentType.sublocality, hideLabels: hideLabels)
-            }
-
+            notesEditor("pNotes", note: $pNotes, keyboard: UIKeyboardType.alphabet, textContentType: UITextContentType.sublocality, hideLabels: hideLabels)
+            
             let items = [
                 BindingInfo(text: userName, bind: $pUsername, copy: pUsername),
                 BindingInfo(text: web,      bind: $pWebsite,  copy: pWebsite),
@@ -22,17 +20,16 @@ extension ItemView {
                 BindingInfo(text: phone,    bind: $pPhone,    copy: pPhone),
                 BindingInfo(text: pin,      bind: $pPin,      copy: pPin)
             ]
-            Group {
-                ForEach( items, id: \.self) { item in
-                    if !hideLabels { label(item.text) }
-                    formFields(
-                        item.text,
-                        item: item.bind,
-                        keyboard: UIKeyboardType.asciiCapable,
-                        textContentType: UITextContentType.password,
-                        action: { copyToClipboard(item.copy) }
-                    )
-                }
+            
+            ForEach( items, id: \.self) { item in
+                if !hideLabels { label(item.text) }
+                formFields(
+                    item.text,
+                    item: item.bind,
+                    keyboard: UIKeyboardType.asciiCapable,
+                    textContentType: UITextContentType.password,
+                    action: { copyToClipboard(item.copy) }
+                )
             }
         }
     }
