@@ -24,6 +24,7 @@
 		2DA9AD5725EB158E00A2633F /* StandardCryto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA9AD5625EB158E00A2633F /* StandardCryto.swift */; };
 		6F08D839261399C80024B61A /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D89E0B025EAD87700939877 /* CloudKit.framework */; };
 		6F08D84F261523F90024B61A /* catViewInitialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F08D84E261523F90024B61A /* catViewInitialView.swift */; };
+		6F6A578D26AAF9A700843B1D /* CloudKitReferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F6A578C26AAF9A700843B1D /* CloudKitReferences.swift */; };
 		6F83C6F3260FCDEF007B0D8E /* catViewLockStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F83C6F2260FCDEF007B0D8E /* catViewLockStack.swift */; };
 		6F83C6FA260FD1F0007B0D8E /* catViewStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F83C6F9260FD1F0007B0D8E /* catViewStack.swift */; };
 		6F83C700260FD586007B0D8E /* SecurityClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F83C6FF260FD586007B0D8E /* SecurityClass.swift */; };
@@ -83,6 +84,7 @@
 		2DA9AD5625EB158E00A2633F /* StandardCryto.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StandardCryto.swift; sourceTree = "<group>"; };
 		6F07D6BD260A540300148869 /* NetworkExtension.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NetworkExtension.framework; path = System/Library/Frameworks/NetworkExtension.framework; sourceTree = SDKROOT; };
 		6F08D84E261523F90024B61A /* catViewInitialView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = catViewInitialView.swift; sourceTree = "<group>"; };
+		6F6A578C26AAF9A700843B1D /* CloudKitReferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudKitReferences.swift; sourceTree = "<group>"; };
 		6F83C6F2260FCDEF007B0D8E /* catViewLockStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = catViewLockStack.swift; sourceTree = "<group>"; };
 		6F83C6F9260FD1F0007B0D8E /* catViewStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = catViewStack.swift; sourceTree = "<group>"; };
 		6F83C6FF260FD586007B0D8E /* SecurityClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecurityClass.swift; sourceTree = "<group>"; };
@@ -360,8 +362,9 @@
 		6FCCF71526AA67A40032FBF5 /* DataModel */ = {
 			isa = PBXGroup;
 			children = (
-				2D89E09F25EAD68E00939877 /* ListItemDataModel.swift */,
+				6F6A578C26AAF9A700843B1D /* CloudKitReferences.swift */,
 				2D7D2E2D25EDDF0D004FDB8F /* passlist.xcdatamodeld */,
+				2D89E09F25EAD68E00939877 /* ListItemDataModel.swift */,
 			);
 			path = DataModel;
 			sourceTree = "<group>";
@@ -512,6 +515,7 @@
 				6F83C76626102E0D007B0D8E /* itemViewLicenseKeyStack.swift in Sources */,
 				6F83C73C2610251A007B0D8E /* listViewForEachView.swift in Sources */,
 				6F83C74C26102AF2007B0D8E /* itemViewClearTextFunction.swift in Sources */,
+				6F6A578D26AAF9A700843B1D /* CloudKitReferences.swift in Sources */,
 				6F83C73426101DFC007B0D8E /* listViewFunctions.swift in Sources */,
 				6FCCF6F126AA52DF0032FBF5 /* catViewNavLinkTwo.swift in Sources */,
 				6F83C76326102DD0007B0D8E /* itemViewCreditCardStack.swift in Sources */,

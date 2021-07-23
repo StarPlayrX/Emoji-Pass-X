@@ -14,6 +14,7 @@ extension ItemView {
             ScrollView {
                 VStack {
                     itemViewTextFieldStack()
+                    
                     //MARK: let template = ["💳 Cards", "🔒 Passwords", "🔑 Keys"]
                     switch listItem.templateId {
                     case 0:

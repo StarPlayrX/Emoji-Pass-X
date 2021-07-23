@@ -9,16 +9,11 @@ import UIKit
 
 import CoreData
 
-
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     override func buildMenu(with builder: UIMenuBuilder) {
         super.buildMenu(with: builder)
-
-        //builder.remove(menu: .services)
-        //builder.remove(menu: .format)
-        //builder.remove(menu: .toolbar)
         
         let refreshCommand = UIKeyCommand(input: "S", modifierFlags: [.command], action: #selector(save))
         refreshCommand.title = "Save"
@@ -26,15 +21,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         builder.insertChild(saveDataMenu, atStartOfMenu: .file)
     }
     
-    //MARK: Save Object
-    @objc func save() {
-        NotificationCenter.default.post(name: .save, object: nil)
-    }
-    
-    @objc func refresh() {
-        NotificationCenter.default.post(name: .refresh, object: nil)
-    }
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         UserDefaults.standard.set(false, forKey: "_UIConstraintBasedLayoutLogUnsatisfiable")
         GlobalVariables.isGlobalDark = UIScreen.main.traitCollection.userInterfaceStyle == .dark
@@ -46,19 +32,43 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return UISceneConfiguration(name: "Default Configuration", sessionRole: connectingSceneSession.role)
     }
 
-    func application(_ application: UIApplication, didDiscardSceneSessions sceneSessions: Set<UISceneSession>) {
+    func application(_ application: UIApplication, didDiscardSceneSessions sceneSessions: Set<UISceneSession>) {}
+    
+        
+    //MARK: CloudKit Notifications
+    @objc func save() {
+        NotificationCenter.default.post(name: .save, object: nil)
     }
 
-    // MARK: - Core Data stack
+    @objc func refresh() {
+        NotificationCenter.default.post(name: .refresh, object: nil)
+    }
 
+    // MARK: - Core Data Saving support
+    @objc func saveContext() {
+        let context = persistentContainer.viewContext
+        if context.hasChanges { try? context.save() }
+    }
+
+    @objc func processUpdate(notification: NSNotification) {
+        operationQueue.addOperation {
+            // get our context
+            let context = self.persistentContainer.viewContext
+            context.performAndWait {
+                // save if we need to save
+                if context.hasChanges {
+                    try? context.save()
+                    context.refreshAllObjects()
+                }
+            }
+        }
+    }
+    
+    // MARK: - Core Data stack
     lazy var persistentContainer: NSPersistentCloudKitContainer = {
         
         let container = NSPersistentCloudKitContainer(name: "passlist")
-    
-        guard let description = container.persistentStoreDescriptions.first else {
-            fatalError("No Descriptions found")
-        }
-        
+        guard let description = container.persistentStoreDescriptions.first else { fatalError("No Descriptions found") }
         description.setOption(true as NSObject, forKey: NSPersistentStoreRemoteChangeNotificationPostOptionKey)
         
         container.loadPersistentStores(completionHandler: { (storeDescription, error) in
@@ -70,35 +80,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         container.viewContext.automaticallyMergesChangesFromParent = true
         container.viewContext.mergePolicy = NSMergeByPropertyStoreTrumpMergePolicy
         NotificationCenter.default.addObserver(self, selector: #selector(self.processUpdate), name: .NSManagedObjectContextObjectsDidChange, object: nil)
-        
         return container
     }()
 
-    // MARK: - Core Data Saving support
-    @objc func saveContext() {
-        let context = persistentContainer.viewContext
-        if context.hasChanges {
-            try? context.save()
-
-        }
-    }
-    
-    @objc func processUpdate(notification: NSNotification) {
-        operationQueue.addOperation {
-            // get our context
-            let context = self.persistentContainer.viewContext
-            context.performAndWait {
-       
-                // save if we need to save
-                if context.hasChanges {
-                    try? context.save()
-                    context.refreshAllObjects()
-                }
-            }
-            
-        }
-    }
-    
+    // MARK: - Max concurrency
     lazy var operationQueue: OperationQueue = {
        var queue = OperationQueue()
         queue.maxConcurrentOperationCount = 100

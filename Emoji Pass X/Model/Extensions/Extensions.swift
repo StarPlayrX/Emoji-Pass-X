@@ -30,6 +30,7 @@ extension View {
     }
 }
 
+// MARK: CloudKit
 extension Notification.Name {
     static let save = Notification.Name("save")
     static let refresh = Notification.Name("refresh")
