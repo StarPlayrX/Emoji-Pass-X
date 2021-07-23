@@ -10,26 +10,30 @@ import SwiftUI
 extension ItemView {
     //MARK: licenseKeyStack
     func licenseKeyStack(_ hideLabels: Bool) -> some View {
-         VStack {
+        
+        VStack {
             Group {
                 notesEditor("kNotes", note: $kNotes, keyboard: UIKeyboardType.alphabet, textContentType: UITextContentType.sublocality, hideLabels: hideLabels)
             }
-            
+
+            let items = [
+                BindingInfo(text: keypkg,   bind: $kSoftwarepkg,  copy: kSoftwarepkg),
+                BindingInfo(text: keylic,   bind: $kLicensekey,   copy: kLicensekey),
+                BindingInfo(text: keyemail, bind: $kEmailaddress, copy: kEmailaddress),
+                BindingInfo(text: keyweb,   bind: $kWebaddress,   copy: kWebaddress),
+                BindingInfo(text: keyseats, bind: $kSeats,        copy: kSeats)
+            ]
             Group {
-                if !hideLabels { label(keypkg) }
-                formFields(keypkg, item: $kSoftwarepkg, keyboard: UIKeyboardType.asciiCapable, textContentType: UITextContentType.organizationName, action: copyUsername)
-                
-                if !hideLabels {  label(keylic) }
-                formFields(keylic, item: $kLicensekey, keyboard: UIKeyboardType.asciiCapable, textContentType: UITextContentType.givenName, action: copyKeylic)
-                
-                if !hideLabels { label(keyemail) }
-                formFields(keyemail, item: $kEmailaddress, keyboard: UIKeyboardType.asciiCapable, textContentType: UITextContentType.emailAddress, action: copyKeyemail)
-                
-                if !hideLabels { label(keyweb) }
-                formFields(keyweb, item: $kWebaddress, keyboard: UIKeyboardType.asciiCapable, textContentType: UITextContentType.URL, action: copyKeyweb)
-                
-                if !hideLabels { label(keyseats) }
-                formFields(keyseats, item: $kSeats, keyboard: UIKeyboardType.numbersAndPunctuation, textContentType: UITextContentType.nickname, action: copyKeyseats)
+                ForEach( items, id: \.self) { item in
+                    if !hideLabels { label(item.text) }
+                    formFields(
+                        item.text,
+                        item: item.bind,
+                        keyboard: UIKeyboardType.asciiCapable,
+                        textContentType: UITextContentType.password,
+                        action: { copyToClipboard(item.copy) }
+                    )
+                }
             }
         }
     }

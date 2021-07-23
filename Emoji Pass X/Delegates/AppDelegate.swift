@@ -26,7 +26,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         builder.insertChild(saveDataMenu, atStartOfMenu: .file)
     }
     
-    
     //MARK: Save Object
     @objc func save() {
         NotificationCenter.default.post(name: .save, object: nil)

@@ -7,9 +7,7 @@
 
 import SwiftUI
 
-
 extension ListView {
-    
     //MARK: One Liners do not need to use return
     func getList(_ a: [ListItem]) -> [ListItem] {
         a.filter( { "\($0.emoji)\($0.name)".lowercased().contains(searchText.lowercased()) || searchText.isEmpty } )
@@ -37,7 +35,6 @@ extension ListView {
     }
     
     func coldFilter(_ a: FetchedResults<ListItem>) -> [ListItem] {
-        
         if catItem.uuidString == "Stars" {
             return a.filter( { $0.isParent == false && $0.star == true  })
         } else if catItem.uuidString == "Everything" {
@@ -45,14 +42,11 @@ extension ListView {
         } else {
             return a.filter( { $0.uuidString == catItem.uuidString &&  $0.isParent == false  })
         }
-        
     }
     
     func moveItem(from source: IndexSet, to destination: Int) {
-        
         var item = coldFilter(detailListItems)
         item = getList(item)
-        
         item.move(fromOffsets: source, toOffset: destination)
         
         for i in 0..<item.count {
@@ -65,7 +59,6 @@ extension ListView {
                 }
             }
         }
-        
         saveItems()
     }
     
@@ -83,13 +76,15 @@ extension ListView {
             return
         }
         
-        if indexIsValid, let source = indexSet.first, let dli = Optional(cf[source]), !dli.lock {
+        if indexIsValid,
+           let source = indexSet.first,
+           let dli = Optional(cf[source]),
+           !dli.lock {
             managedObjectContext.delete(dli)
         } else {
             generator.notificationOccurred(.error)
             security.isDeleteListViewValid = true
         }
-        
         saveItems()
     }
     

@@ -21,7 +21,6 @@ extension CatEditView {
         .padding(.trailing, margin * 1.5)
     }
     
-    
     func stack(_ hideLabels: Bool) -> some View {
         VStack {
             //MARK: Description
@@ -31,9 +30,7 @@ extension CatEditView {
         }
     }
     
-    
-    func field(_ text: String, item: Binding<String>, keyboard: UIKeyboardType, textContentType: UITextContentType  ) -> some View {
-        
+    func field(_ text: String, item: Binding<String>, keyboard: UIKeyboardType, textContentType: UITextContentType ) -> some View {
         HStack(spacing: spacing) {
             TextField("\(enter) \(text)", text: item)
                 .textContentType(textContentType)
@@ -41,10 +38,7 @@ extension CatEditView {
                 .autocapitalization(.none)
                 .disableAutocorrection(true)
         }
-        .padding(.horizontal, horizontal)
         .padding(.bottom, bottom)
-        .padding(.leading, margin * 1.5)
-        .padding(.trailing, margin * 1.5)
+        .padding(.horizontal, horizontal + (margin * 1.5))
     }
-    
 }

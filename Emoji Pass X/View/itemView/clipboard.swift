@@ -15,93 +15,82 @@ extension ItemView {
         hideKeyboard()
     }
     
-    func copyPnotes() {
-        pasteboard.string = pNotes
-        hideKeyboard()
-    }
-    
-    func copyKnotes() {
-        pasteboard.string = kNotes
-        hideKeyboard()
-    }
-    
-    func copyCnotes() {
-        pasteboard.string = cNotes
-        hideKeyboard()
-    }
-    
-    func copyUsername() {
+    func copyUsernameX() {
         pasteboard.string = pUsername
-        hideKeyboard()
+        pasteboard.string = pPassword
+        pasteboard.string = pWebsite
+        pasteboard.string = pPhone
+        pasteboard.string = pPin
+        pasteboard.string = cCardnumber
+        pasteboard.string = cExpdate
+
+        pasteboard.string = cFullname
+        pasteboard.string = cCvc
+        pasteboard.string = cBankname
+
+        pasteboard.string = kLicensekey
+
+        pasteboard.string = kSoftwarepkg
+        pasteboard.string = kEmailaddress
+
+        pasteboard.string = kWebaddress
+        pasteboard.string = kSeats
+
     }
     
     func copyPass() {
-        pasteboard.string = pPassword
         hideKeyboard()
     }
     
     func copyWeb() {
-        pasteboard.string = pWebsite
         hideKeyboard()
     }
     
     func copyPhone() {
-        pasteboard.string = pPhone
         hideKeyboard()
     }
     
     func copyPin() {
-        pasteboard.string = pPin
         hideKeyboard()
     }
     
     func copyCard() {
-        pasteboard.string = cCardnumber
         hideKeyboard()
     }
     
     func copyExp() {
-        pasteboard.string = cExpdate
         hideKeyboard()
     }
     
     func copyFullName() {
-        pasteboard.string = cFullname
         hideKeyboard()
     }
     
     func copyCVC() {
-        pasteboard.string = cCvc
         hideKeyboard()
     }
     
     func copyBank() {
-        pasteboard.string = cBankname
         hideKeyboard()
     }
     
     func copyKeylic() {
-        pasteboard.string = kLicensekey
         hideKeyboard()
     }
     
     func copyKeypkg() {
-        pasteboard.string = kSoftwarepkg
         hideKeyboard()
     }
     
     func copyKeyemail() {
-        pasteboard.string = kEmailaddress
         hideKeyboard()
     }
     
     func copyKeyweb() {
-        pasteboard.string = kWebaddress
         hideKeyboard()
     }
     
     func copyKeyseats() {
-        pasteboard.string = kSeats
         hideKeyboard()
     }
     

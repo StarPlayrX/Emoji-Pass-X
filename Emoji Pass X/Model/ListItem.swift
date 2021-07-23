@@ -44,7 +44,6 @@ class ListItem: NSManagedObject {
     @NSManaged var kWebaddress: Data
     @NSManaged var kSeats: Data
     @NSManaged var kNotes: Data
-
 }
 
 extension ListItem {

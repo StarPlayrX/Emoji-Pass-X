@@ -38,5 +38,4 @@ extension ListView {
                   dismissButton: .default(Text("OK")) { security.isDeleteListViewValid = false })
         })
     }
-    
 }
