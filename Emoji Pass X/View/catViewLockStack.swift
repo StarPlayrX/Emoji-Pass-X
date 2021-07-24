@@ -25,7 +25,7 @@ extension CatView {
                     .background(Color.clear)
             }.overlay (
                 RoundedRectangle(cornerRadius: 48)
-                    .stroke( GlobalVariables.isGlobalDark  ? Color.gray : Color.white, lineWidth: 2)
+                    .stroke(  isGlobalDark  ? Color.gray : Color.white, lineWidth: 2)
             )
             
             Text(copyright).font(.callout).minimumScaleFactor(0.75).padding(.top, 10)
@@ -53,10 +53,10 @@ extension CatView {
                                             break
                                         }
                                       })
-                    .signInWithAppleButtonStyle( GlobalVariables.isGlobalDark ? .white : .black)
+                    .signInWithAppleButtonStyle( isGlobalDark ? .white : .black)
                     .overlay(
                         RoundedRectangle(cornerRadius: 6)
-                            .stroke( GlobalVariables.isGlobalDark ? Color.black : Color.white, lineWidth: 2)
+                            .stroke( isGlobalDark ? Color.black : Color.white, lineWidth: 2)
                     )
                     .padding(.horizontal, 50)
                     .padding(.vertical, 100)
@@ -107,8 +107,8 @@ extension CatView {
             }
             
         }
-        .onAppear(perform: { GlobalVariables.isGlobalDark = UIScreen.main.traitCollection.userInterfaceStyle == .dark }  )
-        .onDisappear(perform: { GlobalVariables.isGlobalDark = UIScreen.main.traitCollection.userInterfaceStyle == .dark } )
+        .onAppear(perform: { isGlobalDark = UIScreen.main.traitCollection.userInterfaceStyle == .dark }  )
+        .onDisappear(perform: { isGlobalDark = UIScreen.main.traitCollection.userInterfaceStyle == .dark } )
     }
 }
 

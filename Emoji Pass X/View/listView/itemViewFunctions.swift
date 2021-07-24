@@ -22,25 +22,29 @@ extension ItemView {
     //MARK: Function to keep text length in limits
     func limitText(_ charLimit : Int = 1 ) {
         
-        if listItem.emoji.count > charLimit {
+        if listItem.emoji.count == charLimit {
+            prevEmoji = listItem.emoji
+        } else if listItem.emoji.count > charLimit {
             let usePrefix = prevEmoji == listItem.emoji.suffix(charLimit) ? true : false
             //MARK: You can do alot with teranies. Notice how the String type is defined outside the terany
             listItem.emoji = String( usePrefix ? listItem.emoji.prefix(charLimit) : listItem.emoji.suffix(charLimit) )
+            prevEmoji = listItem.emoji
+        } else {
+            prevEmoji = listItem.emoji
         }
-        prevEmoji = listItem.emoji
     }
     
     //MARK: Consistently creates our MasterKey for the entire app
     func emojiParentKey() -> Data {
         let a = 2
         let b = 1
-        let d = Int(GlobalConstants.pool.count / 8) - a
-        var c = GlobalConstants.pool.count - b
+        let d = Int(pool.count / 8) - a
+        var c = pool.count - b
         var e = ""
         
         for _ in 1...8 {
             c -= d
-            e += GlobalConstants.pool[c]
+            e += pool[c]
         }
         
         return e.data
@@ -51,8 +55,8 @@ extension ItemView {
         var a = ""
         
         for _ in 1...8 {
-            let b = Int.random(in: 0..<GlobalConstants.pool.count)
-            a += GlobalConstants.pool[b]
+            let b = Int.random(in: 0..<pool.count)
+            a += pool[b]
         }
         
         return a

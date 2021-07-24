@@ -1,5 +1,5 @@
 //
-//  ListItemDataModel.swift
+//  ListItem.swift
 //  Emoji Pass X
 //
 //  Created by Todd Bruss on 2/27/21.
@@ -9,6 +9,7 @@ import CoreData
 
 class ListItem: NSManagedObject {
     @NSManaged var order: Int
+    //@NSManaged var dateString: String
     @NSManaged var emoji: String
     @NSManaged var name: String
     @NSManaged var templateId: Int
@@ -16,10 +17,9 @@ class ListItem: NSManagedObject {
     @NSManaged var isParent: Bool
     @NSManaged var star: Bool
     @NSManaged var lock: Bool
-    @NSManaged var desc: String
+    @NSManaged var desc: String //Cat Desc, plain text, to be used for accessibility
     
-    //MARK: Random Encrypted Private Key
-    @NSManaged var id: Data
+    @NSManaged var id: Data //Random Encrypted Private Key
   
     //MARK: Replacement Password Encrpyted Items
     @NSManaged var pUsername: Data
@@ -55,3 +55,7 @@ extension ListItem {
         }
     }
 }
+
+let template = ["💳 Cards", "🔒 Passwords", "🔑 Keys"]
+let templateIds = [0, 1, 2]
+var isGlobalDark = true

@@ -8,7 +8,7 @@
 import SwiftUI
 
 //MARK: Private Parts
-class PrivateParts: ObservableObject {
+class privateParts: ObservableObject {
     @Published var parentKey = Data()
     @Published var recordKey = Data()
     @Published var recordStr = String()

@@ -101,7 +101,9 @@ extension ListView {
     func saveItems() {
         // When saving a Context, always use the main thread
         DispatchQueue.main.async() {
-            if managedObjectContext.hasChanges { try? managedObjectContext.save() }
+            if managedObjectContext.hasChanges {
+                try? managedObjectContext.save()
+            }
         }
     }
 }

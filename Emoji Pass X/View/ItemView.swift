@@ -13,7 +13,7 @@ struct ItemView: View {
     @Environment(\.managedObjectContext) var managedObjectContext
     @Environment(\.colorScheme) var colorScheme
     @EnvironmentObject var security: Security
-    @StateObject var privateKey = PrivateParts()
+    @StateObject var privateKey = privateParts()
 
     @ObservedObject var catItem: ListItem
     @ObservedObject var listItem: ListItem
@@ -44,23 +44,22 @@ struct ItemView: View {
     @State var kSeats        : String = ""
     @State var kNotes        : String = ""
 
-    let templateIds = [0, 1, 2]
-
-    let pencil = "✏️"
-    let template = ["💳 Cards", "🔒 Passwords", "🔑 Keys"]
-
     //MARK: strings
     let emoji = ":)"
     let newRecord = "New Record"
-    let uuid = "UUID"    
+    let uuid = "UUID"
+
+    let pencil = "✏️"
+    
     let textLimit = 1
     let clipBoard = "doc.on.clipboard"
     let clipPadding = CGFloat(5)
     
-    let userName = "Username"
-    let passWord = "Password"
     let name = "Name"
     let bank = "Bank Name"
+    
+    let userName = "Username"
+    let passWord = "Password"
     let enter = "Enter"
     let copy = "Copy"
     let desc = "Description"
