@@ -38,25 +38,25 @@ extension ItemView {
                         if UIDevice.current.userInterfaceIdiom == .pad || UIDevice.current.userInterfaceIdiom == .mac {
                             geometry.size.height <= 512 ? creditCardStack(true) : creditCardStack(false)
                         } else {
-                            geometry.size.height <= 568 ? creditCardStack(!isIPhoneX()) : creditCardStack(false)
+                            geometry.size.height <= 568 ? creditCardStack(!Device().isIPhoneX()) : creditCardStack(false)
                         }
                     case 1:
                         if UIDevice.current.userInterfaceIdiom == .pad ||  UIDevice.current.userInterfaceIdiom == .mac {
                             geometry.size.height <= 512 ? passwordStack(true) : passwordStack(false)
                         } else {
-                            geometry.size.height <= 568 ? passwordStack(!isIPhoneX()) : passwordStack(false)
+                            geometry.size.height <= 568 ? passwordStack(!Device().isIPhoneX()) : passwordStack(false)
                         }
                     case 2:
                         if UIDevice.current.userInterfaceIdiom == .pad ||  UIDevice.current.userInterfaceIdiom == .mac {
                             geometry.size.height <= 512 ? licenseKeyStack(true) : licenseKeyStack(false)
                         } else {
-                            geometry.size.height <= 568 ? licenseKeyStack(!isIPhoneX()) : licenseKeyStack(false)
+                            geometry.size.height <= 568 ? licenseKeyStack(!Device().isIPhoneX()) : licenseKeyStack(false)
                         }
                     default:
                         if UIDevice.current.userInterfaceIdiom == .pad || UIDevice.current.userInterfaceIdiom == .mac {
                             geometry.size.height <= 512 ? passwordStack(true) : passwordStack(false)
                         } else {
-                            geometry.size.height <= 568 ? passwordStack(!isIPhoneX()) : passwordStack(false)
+                            geometry.size.height <= 568 ? passwordStack(!Device().isIPhoneX()) : passwordStack(false)
                         }
                     }
                 }
@@ -68,7 +68,7 @@ extension ItemView {
                             Button(action: {security.isListItemViewSaved = true; save()}) {Text("Save")}
                         }
                         if UIDevice.current.userInterfaceIdiom == .mac {
-                            Button(action: macEmojiSelector ) {Text("Emoji")}
+                            Button(action: Mac().macEmojiSelector ) {Text("Emoji")}
                         }
                     }
                     ToolbarItemGroup(placement: .navigationBarTrailing) {
@@ -97,12 +97,12 @@ extension ItemView {
             } .navigationBarTitle( "Details", displayMode: .inline)
         }
         .onTapGesture {
-            hideKeyboard()
+            //hideKeyboard()
         }
         .onReceive(NotificationCenter.default.publisher(for: UIApplication.didEnterBackgroundNotification)) { _ in
-            hideKeyboard()
-            save()
-            presentationMode.wrappedValue.dismiss()
+            //hideKeyboard()
+            //save()
+            //presentationMode.wrappedValue.dismiss()
         }
     }
 }

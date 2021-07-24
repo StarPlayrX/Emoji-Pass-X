@@ -15,7 +15,7 @@ extension ListView {
                 searchStack()
                 repeatView(detailListItems)
             }
-            .padding(.leading, iPhoneXLeading())
+            .padding(.leading, Device().iPhoneXLeading())
             .listStyle(PlainListStyle())
         }
         .navigationBarTitle(catItem.name, displayMode: .inline)

@@ -4,28 +4,27 @@
 //
 //  Created by Todd Bruss on 3/27/21.
 //
-
 import SwiftUI
 
 extension CatView {
     
-    func getCount(_ a: FetchedResults<ListItem>, _ b: ListItem) -> String {
+    func getCount(_ a: FetchedResults<ListItem>,_ b: ListItem) -> String {
         if b.uuidString == stars {
-            let j = a.filter {$0.star }.count
-            return j > 0 ? String(j) : ""
+            let j = a.filter {$0.star}.count
+            return j > 0 ? String(j) : String()
             
         } else if b.uuidString == everything {
             let j = a.filter { !$0.isParent }.count
-            return j > 0 ? String(j) : ""
+            return j > 0 ? String(j) : String()
             
         } else {
-            let j = a.filter { !$0.isParent && $0.uuidString == b.uuidString }.count
-            return j > 0 ? String(j) : ""
+            let j = a.filter {!$0.isParent && $0.uuidString == b.uuidString}.count
+            return j > 0 ? String(j) : String()
         }
     }
     
     func getList(_ a: [ListItem]) -> [ListItem] {
-        a.filter( { "\($0.emoji)\($0.name)".lowercased().contains(searchText.lowercased()) || searchText.isEmpty } )
+        a.filter({"\($0.emoji)\($0.name)".lowercased().contains(searchText.lowercased()) || searchText.isEmpty})
     }
  
     //MARK: See if iCloud is available
@@ -49,7 +48,6 @@ extension CatView {
                 }
             }
         }
-        
         saveItems()
     }
     
@@ -81,7 +79,6 @@ extension CatView {
                 generator.notificationOccurred(.error)
                 security.isValid = true
             }
-            
             saveItems()
         }
     }

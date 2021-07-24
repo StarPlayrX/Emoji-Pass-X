@@ -15,7 +15,6 @@ extension CatView {
     func catViewMain() -> some View {
         ZStack {
             NavigationView {
-            
                 //MARK: Allows a wider view on the middle column
                 if UIDevice.current.userInterfaceIdiom == .pad {
                     VStack {
@@ -29,9 +28,7 @@ extension CatView {
                                     .background(Color.clear)
                             }.overlay (
                                 RoundedRectangle(cornerRadius: 48)
-                                    .stroke( isGlobalDark  ? Color.gray : Color.white, lineWidth: 2)
-                            )
-                            
+                                    .stroke( isGlobalDark  ? Color.gray : Color.white, lineWidth: 2))
                             Text(copyright)
                                 .font(.callout)
                                 .minimumScaleFactor(0.75)
@@ -58,7 +55,7 @@ extension CatView {
                     catViewStack() //allows Wider column on iPad (workaround for SideBar bug)
                         .onDisappear(perform: saveItems)
                         .onAppear(perform: saveItems)
-                        
+                    
                     Text("")//Dummy Detail View
                 } else {
                     catViewStack()

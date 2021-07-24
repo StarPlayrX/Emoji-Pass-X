@@ -16,12 +16,12 @@ extension ListView {
                 if !item.name.isEmpty {
                     Text("\(item.emoji) \(item.name)")
                         .padding(.trailing, 18)
-                        .padding(.leading, iPhoneXCell())
+                        .padding(.leading, Device().iPhoneXCell())
                     
                 } else {
                     Text("\(item.emoji) \(newRecord)")
                         .padding(.trailing, 18)
-                        .padding(.leading, iPhoneXCell())
+                        .padding(.leading, Device().iPhoneXCell())
                 }
             }
             .isDetailLink(true)

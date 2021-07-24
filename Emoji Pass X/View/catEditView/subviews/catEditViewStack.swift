@@ -101,7 +101,7 @@ extension CatEditView {
                         }
                      
                         if UIDevice.current.userInterfaceIdiom == .mac  {
-                            Button(action: macEmojiSelector )
+                            Button(action: Mac().macEmojiSelector )
                                 { Text("Emoji") }
                         }
                     }

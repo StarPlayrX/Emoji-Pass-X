@@ -14,7 +14,7 @@ extension CatView {
     func searchStack() -> some View {
         return HStack {
             TextField("Search", text: $searchText)
-                .padding(.leading, iPhoneXSearch())
+                .padding(.leading, Device().iPhoneXSearch())
                 .padding(.trailing, 64)
                 .listRowBackground(Color(UIColor.systemBackground))
         }
@@ -27,7 +27,7 @@ extension CatView {
         .overlay (
             HStack {
                 Image(systemName: "magnifyingglass")
-                    .padding(.leading, iPhoneXMag())
+                    .padding(.leading, Device().iPhoneXMag())
                     
                 Spacer()
                     .padding(.trailing, 16)

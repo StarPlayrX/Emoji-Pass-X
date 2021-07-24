@@ -10,12 +10,12 @@ import Foundation
 extension ItemView {
     
     func createEncryptedKey(emojiKey: String) -> Data {
-        let encryptedKey = encryptData(string: emojiKey, key: privateKey.parentKey)
+        let encryptedKey = Krypto().encryptData(string: emojiKey, key: privateKey.parentKey)
         return encryptedKey
     }
     
     func decryptEncryptedKey(emojiData: Data) -> String {
-        let decryptedKey = decryptData(data: emojiData, key: privateKey.parentKey)
+        let decryptedKey = Krypto().decryptData(data: emojiData, key: privateKey.parentKey)
         return decryptedKey
     }
     
@@ -36,11 +36,12 @@ extension ItemView {
     
     //MARK: Consistently creates our MasterKey for the entire app
     func emojiParentKey() -> Data {
+        let pool = Emoji().pool
         let a = 2
         let b = 1
         let d = Int(pool.count / 8) - a
         var c = pool.count - b
-        var e = ""
+        var e = String()
         
         for _ in 1...8 {
             c -= d
@@ -52,7 +53,8 @@ extension ItemView {
     
     //MARK: Random Emoji String used for each Record
     func emojiRecordKey() -> String {
-        var a = ""
+        let pool = Emoji().pool
+        var a = String()
         
         for _ in 1...8 {
             let b = Int.random(in: 0..<pool.count)

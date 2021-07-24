@@ -23,12 +23,12 @@ extension CatView {
                             if !item.name.isEmpty {
                                 Text("\(pencil)\(item.emoji) \(item.name)")
                                     .padding(.trailing, 18)
-                                    .padding(.leading, iPhoneXCell())
+                                    .padding(.leading, Device().iPhoneXCell())
                                     .font(.title)
                             } else {
                                 Text("\(pencil)\(item.emoji) \(newCategory)")
                                     .padding(.trailing, 18)
-                                    .padding(.leading, iPhoneXCell())
+                                    .padding(.leading, Device().iPhoneXCell())
                                     .font(.title)
                             }
                         }
@@ -45,7 +45,7 @@ extension CatView {
                         NavigationLink(destination: CatEditView(listItem: item)) {
                             Text("\(cat) \(newCategory)")
                                 .padding(.trailing, 18)
-                                .padding(.leading, iPhoneXCell())
+                                .padding(.leading, Device().iPhoneXCell())
                                 .font(.title)
                         }
                         .overlay (
@@ -60,7 +60,7 @@ extension CatView {
                         NavigationLink(destination: ListView(catItem: item)) {
                             Text("\(item.emoji) \(item.name)")
                                 .padding(.trailing, 18)
-                                .padding(.leading, iPhoneXCell())
+                                .padding(.leading, Device().iPhoneXCell())
                                 .font(.title)
                         }
                         .isDetailLink(false)
@@ -78,7 +78,7 @@ extension CatView {
                 .padding(.trailing, 0)
                 .frame(height:40)
             }
-            .padding(.leading, iPhoneXLeading())
+            .padding(.leading, Device().iPhoneXLeading())
             .listStyle(PlainListStyle())
         }
         .alert(isPresented: $security.isValid, content: {
@@ -105,6 +105,5 @@ extension CatView {
                 Button(action: addItem) { Image(systemName: "plus") }
             }
         }
-        .accentColor(Color(.systemPink))
     }
 }

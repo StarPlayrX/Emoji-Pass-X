@@ -6,6 +6,8 @@
 //
 import SwiftUI
 
+// https://www.hackingwithswift.com/quick-start/swiftui/two-way-bindings-in-swiftui Two Way Bindings
+// https://samwize.com/2020/03/27/how-to-use-binding-in-swiftui/ Bindings in depth
 struct CatView: View {
     @FetchRequest(fetchRequest: ListItem.getFetchRequest()) var listItems: FetchedResults<ListItem>
     @Environment(\.managedObjectContext) var managedObjectContext
