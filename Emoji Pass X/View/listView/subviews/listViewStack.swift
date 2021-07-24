@@ -22,16 +22,13 @@ extension ListView {
         .toolbar {
             ToolbarItemGroup(placement: .navigationBarTrailing) {
                 Button(action: { security.isEditing = !security.isEditing  })
-                {
-                    if security.isEditing  {
-                        Image(systemName: "hammer")
-                    } else {
-                        Image(systemName: "hammer.fill")
-                    }
-                }
+                    { security.isEditing ? Image(systemName: "hammer") : Image(systemName: "hammer.fill") }
                 canCreate()
             }
         }
+        .buttonStyle(SystemBlueButton())
+        
+        
         .alert(isPresented: $security.isDeleteListViewValid, content: {
             Alert(title: Text("We're sorry."),
                   message: Text("This item is locked and cannot be deleted."),

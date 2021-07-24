@@ -67,6 +67,7 @@ extension ItemView {
                         if UIDevice.current.userInterfaceIdiom == .mac || UIDevice.current.userInterfaceIdiom == .pad {
                             Button(action: {security.isListItemViewSaved = true; save()}) {Text("Save")}
                         }
+                        
                         if UIDevice.current.userInterfaceIdiom == .mac {
                             Button(action: Mac().macEmojiSelector ) {Text("Emoji")}
                         }
@@ -80,7 +81,7 @@ extension ItemView {
                         }
                     }
                     ToolbarItemGroup(placement: .bottomBar) {
-                        Picker("", selection: $listItem.templateId) {
+                        Picker(String(), selection: $listItem.templateId) {
                             ForEach(templateIds, id: \.self) {
                                 geometry.size.width == smallestWidth ? Text(template[$0].prefix(1)) : Text(template[$0].prefix(6))
                             }
@@ -89,6 +90,8 @@ extension ItemView {
                         }
                     }
                 }
+                .padding(.leading, 20)
+                .buttonStyle(SystemBlueButton())
                 .alert(isPresented: $security.isListItemViewSaved, content: {
                     Alert(title: Text("Save"),
                           message: Text("Your changes have been saved."),

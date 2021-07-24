@@ -25,33 +25,27 @@ extension ItemView {
             
             switch text {
             case "pNotes":
-                Button(action: {copyToClipboard(pNotes)}) {Image(systemName: clipBoard)}
-                    .padding(.horizontal, clipPadding)
-                    .accentColor(Color(.systemBlue))
+                Button(action: {copyToClipboardII(pNotes)}) {Image(systemName: clipBoard)}
             case "cNotes":
-                Button(action: {copyToClipboard(cNotes)}) {Image(systemName: clipBoard)}
-                    .padding(.horizontal, clipPadding)
-                    .accentColor(Color(.systemBlue))
+                Button(action: {copyToClipboardII(cNotes)}) {Image(systemName: clipBoard)}
             case "kNotes":
-                Button(action: {copyToClipboard(kNotes)}) {Image(systemName: clipBoard)}
-                    .padding(.horizontal, clipPadding)
-                    .accentColor(Color(.systemBlue))
+                Button(action: {copyToClipboardII(kNotes)}) {Image(systemName: clipBoard)}
             default:
-                Button(action: {copyToClipboard(cNotes)}) {Image(systemName: clipBoard)}
-                    .padding(.horizontal, clipPadding)
-                    .accentColor(Color(.systemBlue))
+                Button(action: {copyToClipboardII(cNotes)}) {Image(systemName: clipBoard)}
             }
         }
+        .buttonStyle(SystemBlueButton())
         .padding(.bottom, 0)
-        .padding(.horizontal, horizontal + (margin * 1.5))
+        .padding(.horizontal, clipPadding + horizontal + (margin * 1.5))
     }
     
-    func notesEditor(_ text: String, note: Binding<String>, keyboard: UIKeyboardType, textContentType: UITextContentType, hideLabels: Bool) -> some View {
+    func notesEditor(_ text: String,
+                     note: Binding<String>,
+                     keyboard: UIKeyboardType,
+                     textContentType: UITextContentType, hideLabels: Bool) -> some View {
         VStack(spacing: spacing) {
             
-            if !hideLabels {
-                notesLabel(text)
-            }
+            if !hideLabels {notesLabel(text)}
             
             if !listItem.lock {
                 
@@ -92,24 +86,31 @@ extension ItemView {
         }
     }
     
-    func formField(_ label: String, boundText: Binding<String>, keyboard: UIKeyboardType, textContentType: UITextContentType, action: @escaping () -> Void ) -> some View {
-        HStack(spacing: spacing) {
-            if listItem.lock {
-                SecureField("\(enter) \(label)", text: boundText)
-                    .textContentType(textContentType)
-                    .allowsHitTesting(!listItem.lock)
-            } else {
-                TextField("\(enter) \(label)", text: boundText)
-                    .textContentType(textContentType)
-                    .keyboardType(keyboard)
-                    .autocapitalization(.none)
-                    .disableAutocorrection(true)
-                    .ignoresSafeArea(.keyboard, edges: .bottom)
+    func formField(_ label: String,
+                   boundText: Binding<String>,
+                   keyboard: UIKeyboardType,
+                   textContentType: UITextContentType,
+                   action: @escaping () -> Void ) -> some View {
+        Group {
+            HStack(spacing: spacing) {
+                if listItem.lock {
+                    SecureField("\(enter) \(label)", text: boundText)
+                        .textContentType(textContentType)
+                        .allowsHitTesting(!listItem.lock)
+                } else {
+                    TextField("\(enter) \(label)", text: boundText)
+                        .textContentType(textContentType)
+                        .keyboardType(keyboard)
+                        .autocapitalization(.none)
+                        .disableAutocorrection(true)
+                        .ignoresSafeArea(.keyboard, edges: .bottom)
+                }
+                Button(action: action) { Image(systemName: clipBoard) }.padding(.horizontal, clipPadding)
+                    .buttonStyle(SystemBlueButton())
+                
             }
-            Button(action: action) { Image(systemName: clipBoard) }.padding(.horizontal, clipPadding)
-                .accentColor(Color(.systemBlue))
+            .padding(.bottom, bottom)
+            .padding(.horizontal, horizontal + (margin * 1.5))
         }
-        .padding(.bottom, bottom)
-        .padding(.horizontal, horizontal + (margin * 1.5))
     }
 }

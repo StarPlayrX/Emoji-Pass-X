@@ -10,6 +10,14 @@ import SwiftUI
 extension ItemView {
     func copyToClipboard(_ string: String) {
         pasteboard.string = string
+        
+        #if !targetEnvironment(macCatalyst)
+            hideKeyboard()
+        #endif
+    }
+    
+    func copyToClipboardII(_ string: String) {
+        pasteboard.string = string
         hideKeyboard()
     }
 }

@@ -23,6 +23,7 @@
 		2D8D534A25F41A3B00A5F397 /* Emojis.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D8D534925F41A3B00A5F397 /* Emojis.swift */; };
 		2DA9AD5725EB158E00A2633F /* Krypto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA9AD5625EB158E00A2633F /* Krypto.swift */; };
 		6F04075F26AC9B5A00309F69 /* DataManagement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F04075E26AC9B5A00309F69 /* DataManagement.swift */; };
+		6F04076C26ACB00C00309F69 /* SystemBlueButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F04076B26ACB00C00309F69 /* SystemBlueButton.swift */; };
 		6F08D839261399C80024B61A /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D89E0B025EAD87700939877 /* CloudKit.framework */; };
 		6F08D84F261523F90024B61A /* catViewInitialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F08D84E261523F90024B61A /* catViewInitialView.swift */; };
 		6F83C6F3260FCDEF007B0D8E /* catViewLockStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F83C6F2260FCDEF007B0D8E /* catViewLockStack.swift */; };
@@ -75,6 +76,7 @@
 		2D9ADA5626038CFD00304049 /* AuthenticationServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AuthenticationServices.framework; path = System/Library/Frameworks/AuthenticationServices.framework; sourceTree = SDKROOT; };
 		2DA9AD5625EB158E00A2633F /* Krypto.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Krypto.swift; sourceTree = "<group>"; };
 		6F04075E26AC9B5A00309F69 /* DataManagement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DataManagement.swift; path = ../../../../../DataManagement.swift; sourceTree = "<group>"; };
+		6F04076B26ACB00C00309F69 /* SystemBlueButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemBlueButton.swift; sourceTree = "<group>"; };
 		6F07D6BD260A540300148869 /* NetworkExtension.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NetworkExtension.framework; path = System/Library/Frameworks/NetworkExtension.framework; sourceTree = SDKROOT; };
 		6F08D84E261523F90024B61A /* catViewInitialView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = catViewInitialView.swift; sourceTree = "<group>"; };
 		6F83C6F2260FCDEF007B0D8E /* catViewLockStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = catViewLockStack.swift; sourceTree = "<group>"; };
@@ -226,6 +228,7 @@
 				6FA9CEAB2610F58C006DBB32 /* Mac.swift */,
 				2D5DFCDE25FE6B3900561C99 /* Device.swift */,
 				2D8D534925F41A3B00A5F397 /* Emojis.swift */,
+				6F04076B26ACB00C00309F69 /* SystemBlueButton.swift */,
 			);
 			path = Structs;
 			sourceTree = "<group>";
@@ -298,8 +301,8 @@
 		6F04076926ACA78A00309F69 /* subviews */ = {
 			isa = PBXGroup;
 			children = (
-				6F83C75A26102CEC007B0D8E /* itemViewUI.swift */,
 				6F83C76926102EA5007B0D8E /* itemViewMainView.swift */,
+				6F83C75A26102CEC007B0D8E /* itemViewUI.swift */,
 				6F83C75E26102D91007B0D8E /* itemViewPasswordStack.swift */,
 				6F83C76226102DD0007B0D8E /* itemViewCreditCardStack.swift */,
 				6F83C76526102E0D007B0D8E /* itemViewLicenseKeyStack.swift */,
@@ -444,6 +447,7 @@
 				6F83C700260FD586007B0D8E /* SecurityClass.swift in Sources */,
 				2D7D2E3625EEEEAD004FDB8F /* CatView.swift in Sources */,
 				6FCCF6E226AA442B0032FBF5 /* ItemViewRecords.swift in Sources */,
+				6F04076C26ACB00C00309F69 /* SystemBlueButton.swift in Sources */,
 				6FA9CEAC2610F58C006DBB32 /* Mac.swift in Sources */,
 				2D7D2E3D25EEFED4004FDB8F /* CatEditView.swift in Sources */,
 				6F83C73F2610255D007B0D8E /* listViewStack.swift in Sources */,
@@ -621,6 +625,7 @@
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = "Emoji Pass X/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
+				"IPHONEOS_DEPLOYMENT_TARGET[sdk=macosx*]" = 14.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -649,6 +654,7 @@
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = "Emoji Pass X/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
+				"IPHONEOS_DEPLOYMENT_TARGET[sdk=macosx*]" = 14.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

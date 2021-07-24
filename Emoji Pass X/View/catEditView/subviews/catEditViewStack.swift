@@ -128,6 +128,7 @@ extension CatEditView {
                         }
                     }
                 }
+                .buttonStyle(SystemBlueButton())
                 .alert(isPresented: $security.isCatEditViewSaved, content: {
                     Alert(title: Text("Save"),
                           message: Text("Changes have been saved."),
