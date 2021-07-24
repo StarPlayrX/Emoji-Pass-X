@@ -18,49 +18,39 @@ extension ItemView {
             // MARK: There is a SwiftUI bug where keyboard is being dismissed after 1 key press when a Text Field runs in a ForEach Loop
             Group {
                 if !hideLabels {label(userName)}
-                formFields(
-                    userName,
+                formFields(userName,
                     item: $pUsername,
                     keyboard: UIKeyboardType.asciiCapable,
                     textContentType: UITextContentType.username,
-                    action: {copyToClipboard(pUsername)}
-                )
+                    action: {copyToClipboard(pUsername)})
                 
                 if !hideLabels {label(passWord)}
-                formFields(
-                    passWord,
+                formFields(passWord,
                     item: $pPassword,
                     keyboard: UIKeyboardType.asciiCapable,
                     textContentType: UITextContentType.password,
-                    action: {copyToClipboard(pPassword)}
-                )
+                    action: {copyToClipboard(pPassword)})
                 
                 if !hideLabels { label(phone) }
-                formFields(
-                    phone,
+                formFields(phone,
                     item: $pWebsite,
                     keyboard: UIKeyboardType.asciiCapable,
                     textContentType: UITextContentType.URL,
-                    action: {copyToClipboard(pPhone)}
-                )
+                    action: {copyToClipboard(pPhone)})
                 
                 if !hideLabels { label(web) }
-                formFields(
-                    web,
+                formFields(web,
                     item: $pPhone,
                     keyboard: UIKeyboardType.asciiCapable,
                     textContentType: UITextContentType.URL,
-                    action: {copyToClipboard(pWebsite)}
-                )
+                    action: {copyToClipboard(pWebsite)})
             
                 if !hideLabels { label(pin) }
-                formFields(
-                    pin,
+                formFields(pin,
                     item: $pPin,
                     keyboard: UIKeyboardType.numbersAndPunctuation,
                     textContentType: UITextContentType.oneTimeCode,
-                    action: {copyToClipboard(pPin)}
-                )
+                    action: {copyToClipboard(pPin)})
             }
         }
     }

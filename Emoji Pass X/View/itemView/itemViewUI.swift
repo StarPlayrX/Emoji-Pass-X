@@ -4,11 +4,9 @@
 //
 //  Created by M1 on 3/27/21.
 //
-
 import SwiftUI
 
 extension ItemView {
-    
     func label(_ text: String) -> some View {
         HStack(spacing: spacing) {
             Text(text)
@@ -29,16 +27,16 @@ extension ItemView {
             
             switch text {
             case "pNotes":
-                Button(action: { copyToClipboard(pNotes) }) { Image(systemName: clipBoard) }
+                Button(action: {copyToClipboard(pNotes)}) {Image(systemName: clipBoard)}
                     .padding(.horizontal, clipPadding)
             case "cNotes":
-                Button(action: { copyToClipboard(cNotes) }) { Image(systemName: clipBoard) }
+                Button(action: {copyToClipboard(cNotes)}) {Image(systemName: clipBoard)}
                     .padding(.horizontal, clipPadding)
             case "kNotes":
-                Button(action: { copyToClipboard(kNotes) }) { Image(systemName: clipBoard) }
+                Button(action: {copyToClipboard(kNotes)}) {Image(systemName: clipBoard)}
                     .padding(.horizontal, clipPadding)
             default:
-                Button(action: { copyToClipboard(cNotes) }) { Image(systemName: clipBoard) }
+                Button(action: {copyToClipboard(cNotes)}) {Image(systemName: clipBoard)}
                     .padding(.horizontal, clipPadding)
             }
         }
@@ -67,14 +65,9 @@ extension ItemView {
                         .padding(.leading, 9)
                         .padding(.trailing, 7)
                         .frame(minHeight: 45, maxHeight: 450, alignment: Alignment.topLeading )
-                        
-                        .overlay(
-                            RoundedRectangle(cornerRadius: 6)
-                                .stroke(labelColor3, lineWidth: 1)
-                        )
+                        .overlay(RoundedRectangle(cornerRadius: 6).stroke(labelColor3, lineWidth: 1))
                         .padding()
                         .padding(.leading, -4)
-                    
                 } else {
                     SecureField("",text: note)
                         .textContentType(textContentType)
@@ -97,15 +90,12 @@ extension ItemView {
     }
     
     func formFields(_ text: String, item: Binding<String>, keyboard: UIKeyboardType, textContentType: UITextContentType, action: @escaping () -> Void ) -> some View {
-        
         HStack(spacing: spacing) {
-            
             if listItem.lock {
                 SecureField("\(enter) \(text)", text: item)
                     .textContentType(textContentType)
                     .allowsHitTesting(!listItem.lock)
             } else {
-                
                 TextField("\(enter) \(text)", text: item)
                     .textContentType(textContentType)
                     .keyboardType(keyboard)
@@ -113,12 +103,9 @@ extension ItemView {
                     .disableAutocorrection(true)
                     .ignoresSafeArea(.keyboard, edges: .bottom)
             }
-            
             Button(action: action) { Image(systemName: clipBoard) }.padding(.horizontal, clipPadding)
-            
         }
         .padding(.bottom, bottom)
         .padding(.horizontal, horizontal + (margin * 1.5))
     }
-    
 }

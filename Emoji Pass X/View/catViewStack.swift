@@ -7,7 +7,6 @@
 
 import SwiftUI
 
-
 //MARK: catViewStack
 extension CatView {
     func catViewStack() -> some View {
@@ -54,7 +53,6 @@ extension CatView {
                                 Spacer()
                                 Text("\(getCount(listItems,item))")
                                     .padding(.trailing, 18)
-                                
                             }
                         )
                     } else {
@@ -71,7 +69,6 @@ extension CatView {
                                 Spacer()
                                 Text("\(getCount(listItems,item))")
                                     .padding(.trailing, 18)
-                                
                             }
                         )
                     }
@@ -83,12 +80,11 @@ extension CatView {
             }
             .padding(.leading, iPhoneXLeading())
             .listStyle(PlainListStyle())
-            
         }
         .alert(isPresented: $security.isValid, content: {
             Alert(title: Text("We're sorry."),
                   message: Text("This category cannot be deleted."),
-                  dismissButton: .default(Text("OK")) { security.isValid = false })
+                  dismissButton: .default(Text("OK")) {security.isValid = false})
         })
         .environment(\.editMode,
                      .constant(security.isEditing ? EditMode.active : EditMode.inactive))
@@ -97,30 +93,18 @@ extension CatView {
         .toolbar {
             
             ToolbarItemGroup(placement: .navigationBarLeading) {
-                Button(action: { security.catLock = !security.catLock; security.isEditing = false })
-                {
-                    if !security.catLock {
-                        Image(systemName: "lock.open")
-                    } else {
-                        Image(systemName: "lock.fill")
-                    }
+                Button(action: {security.catLock = !security.catLock; security.isEditing = false}){
+                    security.catLock ? Image(systemName: "lock.fill") : Image(systemName: "lock.open")
                 }
             }
             
             ToolbarItemGroup(placement: .navigationBarTrailing) {
-                
-                Button(action: { security.isEditing = !security.isEditing; security.catLock = true })
-                {
-                    if security.isEditing {
-                        Image(systemName: "hammer")
-                    } else {
-                        Image(systemName: "hammer.fill")
-                    }
+                Button(action: {security.isEditing = !security.isEditing; security.catLock = true}){
+                    security.isEditing ? Image(systemName: "hammer") : Image(systemName: "hammer.fill")
                 }
-                
-                Button(action: addItem)
-                    { Image(systemName: "plus") }
+                Button(action: addItem) { Image(systemName: "plus") }
             }
         }
+        .accentColor(Color(.systemPink))
     }
 }

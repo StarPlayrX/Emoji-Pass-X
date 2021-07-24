@@ -98,7 +98,6 @@ extension CatView {
                 security.isEditing = false
                 security.catLock = true
                 refreshAllObjects()
-                print("refresh")
             }
         }
     }

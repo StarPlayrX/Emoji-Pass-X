@@ -4,17 +4,13 @@
 //
 //  Created by Todd Bruss on 3/27/21.
 //
-
 import SwiftUI
 import CoreData
 import AuthenticationServices
 
-//MARK: lockStack
-
 extension CatView {
     func catViewLockStack() -> some View {
         VStack {
-            
             Text("Emoji Pass X").font(.largeTitle).minimumScaleFactor(0.75).padding(.top, 100)
             
             HStack {
@@ -25,7 +21,7 @@ extension CatView {
                     .background(Color.clear)
             }.overlay (
                 RoundedRectangle(cornerRadius: 48)
-                    .stroke(  isGlobalDark  ? Color.gray : Color.white, lineWidth: 2)
+                    .stroke(isGlobalDark ? Color.gray : Color.white, lineWidth: 2)
             )
             
             Text(copyright).font(.callout).minimumScaleFactor(0.75).padding(.top, 10)
@@ -33,14 +29,11 @@ extension CatView {
             if security.signOn && !security.isSimulator {
                 SignInWithAppleButton(.continue,
                                       onRequest: { (request) in
-                                        //Set up request
                                         //MARK: We are only using Sign on with Apple as a controlled Gateway
                                       },
                                       onCompletion: { (result) in
                                         switch result {
                                         case .success(_):
-                                            //MARK: print(authorization)
-                                            //MARK: to use authorization add: let authorization to (_)
                                             security.lockScreen = false
                                             
                                             //MARK: Due to a Sign on with Apple bug, we will only authenticate once on the front end
@@ -61,11 +54,24 @@ extension CatView {
                     .padding(.horizontal, 50)
                     .padding(.vertical, 100)
                     .frame(maxWidth: 350,  maxHeight: 250, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
-                
-                
+            } else if security.isSimulator {
+                Button("Continue") {
+                    security.doesNotHaveIcloud = checkForCloudKit()
+                    
+                    if !security.doesNotHaveIcloud {
+                        security.lockScreen = false
+                    }
+                }
+                .alert(isPresented: $security.doesNotHaveIcloud, content: {
+                    Alert(title: Text("We're sorry."),
+                          message: Text("Please go to Settings and log into your iCloud Account."),
+                          dismissButton: .default(Text("OK")) {security.doesNotHaveIcloud = false})
+                })
+                .padding(.horizontal, 50)
+                .padding(.vertical, 100)
+                .frame(maxWidth: 375, maxHeight: 266, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
             } else {
-                
-                if security.isSimulator {
+                Group {
                     Button("Continue") {
                         security.doesNotHaveIcloud = checkForCloudKit()
                         
@@ -76,40 +82,16 @@ extension CatView {
                     .alert(isPresented: $security.doesNotHaveIcloud, content: {
                         Alert(title: Text("We're sorry."),
                               message: Text("Please go to Settings and log into your iCloud Account."),
-                              dismissButton: .default(Text("OK")) { security.doesNotHaveIcloud = false })
+                              dismissButton: .default(Text("OK")) {security.doesNotHaveIcloud = false})
                     })
-                    .padding(.horizontal, 50)
-                    .padding(.vertical, 100)
                     .frame(maxWidth: 375,  maxHeight: 266, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
-                    
-                    
-                } else {
-                    Group {
-                        Button("Continue") {
-                            security.doesNotHaveIcloud = checkForCloudKit()
-                            
-                            if !security.doesNotHaveIcloud {
-                                security.lockScreen = false
-                            }
-                        }
-                        .alert(isPresented: $security.doesNotHaveIcloud, content: {
-                            Alert(title: Text("We're sorry."),
-                                  message: Text("Please go to Settings and log into your iCloud Account."),
-                                  dismissButton: .default(Text("OK")) { security.doesNotHaveIcloud = false })
-                        })
-                        .frame(maxWidth: 375,  maxHeight: 266, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
-                        .keyboardShortcut(.defaultAction)
-                    }
-                    
-                    .padding(.horizontal, 50)
-                    .padding(.vertical, 100)
+                    .keyboardShortcut(.defaultAction)
                 }
+                .padding(.horizontal, 50)
+                .padding(.vertical, 100)
             }
-            
         }
-        .onAppear(perform: { isGlobalDark = UIScreen.main.traitCollection.userInterfaceStyle == .dark }  )
-        .onDisappear(perform: { isGlobalDark = UIScreen.main.traitCollection.userInterfaceStyle == .dark } )
+        .onAppear(perform: {isGlobalDark = UIScreen.main.traitCollection.userInterfaceStyle == .dark})
+        .onDisappear(perform: {isGlobalDark = UIScreen.main.traitCollection.userInterfaceStyle == .dark})
     }
 }
-
-

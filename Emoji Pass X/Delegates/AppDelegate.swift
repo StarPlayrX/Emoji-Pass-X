@@ -55,8 +55,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let container = NSPersistentCloudKitContainer(name: "passlist")
     
-        guard let description = container.persistentStoreDescriptions.first else {
-            fatalError("No Descriptions found")
+        guard
+            let description = container.persistentStoreDescriptions.first
+        else {
+            return container
         }
         
         description.setOption(true as NSObject, forKey: NSPersistentStoreRemoteChangeNotificationPostOptionKey)
