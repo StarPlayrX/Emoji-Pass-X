@@ -13,11 +13,11 @@ func macEmojiSelector() {
         let commandControlMask = (CGEventFlags.maskCommand.rawValue | CGEventFlags.maskControl.rawValue)
         let commandControlMaskFlags = CGEventFlags(rawValue: commandControlMask)
 
-         // Press Space key once
+        // Press Space key once
         let space = CGEventSource(stateID: .hidSystemState)
         let keyDown = CGEvent(keyboardEventSource: space, virtualKey: 49 as CGKeyCode, keyDown: true)
         keyDown?.flags = commandControlMaskFlags
-        keyDown!.post(tap: .cghidEventTap)
+        keyDown?.post(tap: .cghidEventTap)
         let keyUp = CGEvent(keyboardEventSource: space, virtualKey: 49 as CGKeyCode, keyDown: false)
         keyUp?.flags = commandControlMaskFlags
         keyUp?.post(tap: .cghidEventTap)

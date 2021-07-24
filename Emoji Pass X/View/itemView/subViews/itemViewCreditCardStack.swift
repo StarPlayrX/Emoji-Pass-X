@@ -12,25 +12,51 @@ extension ItemView {
     //MARK: CreditCardStack
     func creditCardStack(_ hideLabels: Bool) -> some View {
         VStack {
-            notesEditor("cNotes", note: $cNotes, keyboard: UIKeyboardType.alphabet, textContentType: UITextContentType.sublocality, hideLabels: hideLabels)
-
-            let items = [
-                BindingInfo(text: bank,     bind: $cBankname,    copy: cBankname),
-                BindingInfo(text: card,     bind: $cCardnumber,  copy: cCardnumber),
-                BindingInfo(text: fullName, bind: $cFullname,    copy: cFullname),
-                BindingInfo(text: cvc,      bind: $cCvc,         copy: cCvc),
-                BindingInfo(text: exp,      bind: $cExpdate,     copy: cExpdate)
-            ]
+            Group {
+                notesEditor("cNotes", note: $cNotes, keyboard: UIKeyboardType.alphabet, textContentType: UITextContentType.sublocality, hideLabels: hideLabels)
+            }
             
-            ForEach( items, id: \.self) { item in
-                if !hideLabels { label(item.text) }
+            // MARK: There is a SwiftUI bug where keyboard is being dismissed after 1 key press when a Text Field runs in a ForEach Loop
+            Group {
+                if !hideLabels {label(bank)}
                 formFields(
-                    item.text,
-                    item: item.bind,
+                    bank,
+                    item: $cBankname,
                     keyboard: UIKeyboardType.asciiCapable,
-                    textContentType: UITextContentType.password,
-                    action: {copyToClipboard(item.copy)}
-                )
+                    textContentType: UITextContentType.organizationName,
+                    action: { copyToClipboard(cBankname) })
+                
+                if !hideLabels {label(card)}
+                formFields(
+                    card,
+                    item: $cCardnumber,
+                    keyboard: UIKeyboardType.numbersAndPunctuation,
+                    textContentType: UITextContentType.URL,
+                    action: {copyToClipboard(cCardnumber)})
+                
+                if !hideLabels {label(fullName)}
+                formFields(
+                    fullName,
+                    item: $cFullname,
+                    keyboard: UIKeyboardType.asciiCapable,
+                    textContentType: UITextContentType.givenName,
+                    action: {copyToClipboard(cFullname)})
+                
+                if !hideLabels {label(cvc)}
+                formFields(
+                    cvc,
+                    item: $cCvc,
+                    keyboard: UIKeyboardType.numbersAndPunctuation,
+                    textContentType: UITextContentType.oneTimeCode,
+                    action: {copyToClipboard(cCvc)})
+                
+                if !hideLabels {label(exp)}
+                formFields(
+                    exp,
+                    item: $cExpdate,
+                    keyboard: UIKeyboardType.numbersAndPunctuation,
+                    textContentType: UITextContentType.nickname,
+                    action: {copyToClipboard(cExpdate)} )
             }
         }
     }

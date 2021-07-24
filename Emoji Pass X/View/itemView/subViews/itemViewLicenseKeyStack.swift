@@ -12,28 +12,52 @@ extension ItemView {
     func licenseKeyStack(_ hideLabels: Bool) -> some View {
         
         VStack {
-            notesEditor("kNotes", note: $kNotes, keyboard: UIKeyboardType.alphabet, textContentType: UITextContentType.sublocality, hideLabels: hideLabels)
+            Group {
+                notesEditor("kNotes", note: $kNotes, keyboard: UIKeyboardType.alphabet, textContentType: UITextContentType.sublocality, hideLabels: hideLabels)
+            }
             
-            let items = [
-                BindingInfo(text: keypkg,   bind: $kSoftwarepkg,  copy: kSoftwarepkg),
-                BindingInfo(text: keylic,   bind: $kLicensekey,   copy: kLicensekey),
-                BindingInfo(text: keyemail, bind: $kEmailaddress, copy: kEmailaddress),
-                BindingInfo(text: keyweb,   bind: $kWebaddress,   copy: kWebaddress),
-                BindingInfo(text: keyseats, bind: $kSeats,        copy: kSeats)
-            ]
-            
-            ForEach( items, id: \.self) { item in
-                if !hideLabels { label(item.text) }
+            // MARK: There is a SwiftUI bug where keyboard is being dismissed after 1 key press when a Text Field runs in a ForEach Loop
+            Group {
+                if !hideLabels {label(keypkg)}
                 formFields(
-                    item.text,
-                    item: item.bind,
+                    keypkg,
+                    item: $kSoftwarepkg,
                     keyboard: UIKeyboardType.asciiCapable,
-                    textContentType: UITextContentType.password,
-                    action: { copyToClipboard(item.copy) }
-                )
+                    textContentType: UITextContentType.organizationName,
+                    action: { copyToClipboard(kSoftwarepkg) })
+                
+                if !hideLabels {label(keylic)}
+                formFields(
+                    keylic,
+                    item: $kLicensekey,
+                    keyboard: UIKeyboardType.asciiCapable,
+                    textContentType: UITextContentType.givenName,
+                    action: { copyToClipboard(kLicensekey) })
+                
+                if !hideLabels {label(keyemail)}
+                formFields(
+                    keyemail,
+                    item: $kEmailaddress,
+                    keyboard: UIKeyboardType.asciiCapable,
+                    textContentType: UITextContentType.emailAddress,
+                    action: { copyToClipboard(kEmailaddress) })
+                
+                if !hideLabels {label(keyweb)}
+                formFields(
+                    keyweb,
+                    item: $kWebaddress,
+                    keyboard: UIKeyboardType.asciiCapable,
+                    textContentType: UITextContentType.URL,
+                    action: { copyToClipboard(kWebaddress) })
+                
+                if !hideLabels {label(keyseats)}
+                formFields(
+                    keyseats,
+                    item: $kSeats,
+                    keyboard: UIKeyboardType.numbersAndPunctuation,
+                    textContentType: UITextContentType.nickname,
+                    action: { copyToClipboard(kSeats) })
             }
         }
     }
 }
-
-

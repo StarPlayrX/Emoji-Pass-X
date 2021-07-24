@@ -2,7 +2,7 @@
 //  itemViewUI.swift
 //  Emoji Pass X
 //
-//  Created by Todd Bruss on 3/27/21.
+//  Created by M1 on 3/27/21.
 //
 
 import SwiftUI
@@ -29,16 +29,16 @@ extension ItemView {
             
             switch text {
             case "pNotes":
-                Button(action: {copyToClipboard(pNotes)}) {Image(systemName: clipBoard)}
+                Button(action: { copyToClipboard(pNotes) }) { Image(systemName: clipBoard) }
                     .padding(.horizontal, clipPadding)
             case "cNotes":
-                Button(action: {copyToClipboard(cNotes)}) {Image(systemName: clipBoard)}
+                Button(action: { copyToClipboard(cNotes) }) { Image(systemName: clipBoard) }
                     .padding(.horizontal, clipPadding)
             case "kNotes":
-                Button(action: {copyToClipboard(kNotes) }) {Image(systemName: clipBoard)}
+                Button(action: { copyToClipboard(kNotes) }) { Image(systemName: clipBoard) }
                     .padding(.horizontal, clipPadding)
             default:
-                Button(action: {copyToClipboard(cNotes)}) {Image(systemName: clipBoard)}
+                Button(action: { copyToClipboard(cNotes) }) { Image(systemName: clipBoard) }
                     .padding(.horizontal, clipPadding)
             }
         }
@@ -52,9 +52,45 @@ extension ItemView {
             VStack {
                 notesLabel(text)
                 if !listItem.lock {
-                    itemViewTextEditor(text, note: note, keyboard: keyboard, textContentType: textContentType)
+                    
+                    TextEditor(text: note)
+                        .lineSpacing(4)
+                        .multilineTextAlignment(.leading)
+                        .textContentType(textContentType)
+                        .keyboardType(keyboard)
+                        .autocapitalization(.none)
+                        .disableAutocorrection(true)
+                        .ignoresSafeArea(.keyboard, edges: .bottom)
+                        .font(.body)
+                        .padding(.top, 4)
+                        .padding(.bottom, 4)
+                        .padding(.leading, 9)
+                        .padding(.trailing, 7)
+                        .frame(minHeight: 45, maxHeight: 450, alignment: Alignment.topLeading )
+                        
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 6)
+                                .stroke(labelColor3, lineWidth: 1)
+                        )
+                        .padding()
+                        .padding(.leading, -4)
+                    
                 } else {
-                    itemViewSecureField(text, note: note, textContentType: textContentType)
+                    SecureField("",text: note)
+                        .textContentType(textContentType)
+                        .multilineTextAlignment(.leading)
+                        .allowsHitTesting(!listItem.lock)
+                        .padding(.top, 7)
+                        .padding(.bottom, 1)
+                        .padding(.leading, 9)
+                        .padding(.trailing, 7)
+                        .frame(minHeight: 36, maxHeight: 360, alignment: Alignment.topLeading )
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 6)
+                                .stroke(labelColor3, lineWidth: 1)
+                        )
+                        .padding()
+                        .padding(.leading, -4)
                 }
             }
         }
@@ -69,6 +105,7 @@ extension ItemView {
                     .textContentType(textContentType)
                     .allowsHitTesting(!listItem.lock)
             } else {
+                
                 TextField("\(enter) \(text)", text: item)
                     .textContentType(textContentType)
                     .keyboardType(keyboard)
@@ -77,8 +114,7 @@ extension ItemView {
                     .ignoresSafeArea(.keyboard, edges: .bottom)
             }
             
-            Button(action: action) {Image(systemName: clipBoard)}
-                .padding(.horizontal, clipPadding)
+            Button(action: action) { Image(systemName: clipBoard) }.padding(.horizontal, clipPadding)
             
         }
         .padding(.bottom, bottom)

@@ -96,6 +96,8 @@ struct ItemView: View {
     
     let pasteboard = UIPasteboard.general
     
+   
+    
     var body: some View {
         itemViewDetailView()
     }
