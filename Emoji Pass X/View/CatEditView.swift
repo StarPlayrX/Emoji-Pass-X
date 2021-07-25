@@ -11,11 +11,12 @@ import Combine
 struct CatEditView: View {
     @Environment(\.presentationMode) var presentationMode
     @Environment(\.managedObjectContext) var managedObjectContext
+    
     @EnvironmentObject var security: Security
-    @State var selectedTemplate = 1
     @ObservedObject var listItem: ListItem
     
     @State var prevEmoji = ""
+    @State var selectedTemplate = 1
 
     //strings
     let name = "Category Name"
@@ -45,7 +46,7 @@ struct CatEditView: View {
     let emojiFontSize = CGFloat(50)
     let emojiFrameWidth = CGFloat(100)
     let emojiPaddingBottom = CGFloat(30)
-    let smallestWidth = CGFloat(320.0)
+    let smallestWidth = CGFloat(320)
     
     let pasteboard = UIPasteboard.general
     

@@ -17,26 +17,26 @@ extension ItemView {
         }
         
         //MARK: Save Encrypted Strings
-        listItem.pUsername     = krypt.encryptData(string: pUsername,     key: privateKey.recordKey)
-        listItem.pPassword     = krypt.encryptData(string: pPassword,     key: privateKey.recordKey)
-        listItem.pWebsite      = krypt.encryptData(string: pWebsite,      key: privateKey.recordKey)
-        listItem.pPhone        = krypt.encryptData(string: pPhone,        key: privateKey.recordKey)
-        listItem.pPin          = krypt.encryptData(string: pPin,          key: privateKey.recordKey)
-        listItem.pNotes        = krypt.encryptData(string: pNotes,        key: privateKey.recordKey)
+        listItem.pUsername     = krypt.encrypt(string: pUsername,     key: privateKey.recordKey, encoding: .utf8)
+        listItem.pPassword     = krypt.encrypt(string: pPassword,     key: privateKey.recordKey, encoding: .utf8)
+        listItem.pWebsite      = krypt.encrypt(string: pWebsite,      key: privateKey.recordKey, encoding: .utf8)
+        listItem.pPhone        = krypt.encrypt(string: pPhone,        key: privateKey.recordKey, encoding: .utf8)
+        listItem.pPin          = krypt.encrypt(string: pPin,          key: privateKey.recordKey, encoding: .utf8)
+        listItem.pNotes        = krypt.encrypt(string: pNotes,        key: privateKey.recordKey, encoding: .utf8)
 
-        listItem.cBankname     = krypt.encryptData(string: cBankname,     key: privateKey.recordKey)
-        listItem.cCardnumber   = krypt.encryptData(string: cCardnumber,   key: privateKey.recordKey)
-        listItem.cFullname     = krypt.encryptData(string: cFullname,     key: privateKey.recordKey)
-        listItem.cCvc          = krypt.encryptData(string: cCvc,          key: privateKey.recordKey)
-        listItem.cExpdate      = krypt.encryptData(string: cExpdate,      key: privateKey.recordKey)
-        listItem.cNotes        = krypt.encryptData(string: cNotes,        key: privateKey.recordKey)
+        listItem.cBankname     = krypt.encrypt(string: cBankname,     key: privateKey.recordKey, encoding: .utf8)
+        listItem.cCardnumber   = krypt.encrypt(string: cCardnumber,   key: privateKey.recordKey, encoding: .utf8)
+        listItem.cFullname     = krypt.encrypt(string: cFullname,     key: privateKey.recordKey, encoding: .utf8)
+        listItem.cCvc          = krypt.encrypt(string: cCvc,          key: privateKey.recordKey, encoding: .utf8)
+        listItem.cExpdate      = krypt.encrypt(string: cExpdate,      key: privateKey.recordKey, encoding: .utf8)
+        listItem.cNotes        = krypt.encrypt(string: cNotes,        key: privateKey.recordKey, encoding: .utf8)
 
-        listItem.kSoftwarepkg  = krypt.encryptData(string: kSoftwarepkg,  key: privateKey.recordKey)
-        listItem.kLicensekey   = krypt.encryptData(string: kLicensekey,   key: privateKey.recordKey)
-        listItem.kEmailaddress = krypt.encryptData(string: kEmailaddress, key: privateKey.recordKey)
-        listItem.kWebaddress   = krypt.encryptData(string: kWebaddress,   key: privateKey.recordKey)
-        listItem.kSeats        = krypt.encryptData(string: kSeats,        key: privateKey.recordKey)
-        listItem.kNotes        = krypt.encryptData(string: kNotes,        key: privateKey.recordKey)
+        listItem.kSoftwarepkg  = krypt.encrypt(string: kSoftwarepkg,  key: privateKey.recordKey, encoding: .utf8)
+        listItem.kLicensekey   = krypt.encrypt(string: kLicensekey,   key: privateKey.recordKey, encoding: .utf8)
+        listItem.kEmailaddress = krypt.encrypt(string: kEmailaddress, key: privateKey.recordKey, encoding: .utf8)
+        listItem.kWebaddress   = krypt.encrypt(string: kWebaddress,   key: privateKey.recordKey, encoding: .utf8)
+        listItem.kSeats        = krypt.encrypt(string: kSeats,        key: privateKey.recordKey, encoding: .utf8)
+        listItem.kNotes        = krypt.encrypt(string: kNotes,        key: privateKey.recordKey, encoding: .utf8)
 
         DispatchQueue.main.async() {
            

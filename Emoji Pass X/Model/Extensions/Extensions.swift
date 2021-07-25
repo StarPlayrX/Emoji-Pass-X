@@ -41,11 +41,10 @@ extension UIDevice {
 extension Data {
     var bytes: [UInt8] {[UInt8](self)}
 
-    func encryptAES256_CBC_PKCS7_IV(key: Data) -> Data? {
+    func encrypt(key: Data) -> Data? {
         let krpto = Krypto()
         
         guard
-            
             let iv = krpto.randomGenerateBytes(count: kCCBlockSizeAES128),
             
             let ciphertext =
@@ -63,7 +62,7 @@ extension Data {
         return iv + ciphertext
     }
     
-    func decryptAES256_CBC_PKCS7_IV(key: Data) -> Data? {
+    func decrypt(key: Data) -> Data? {
         let krpto = Krypto()
         
         guard

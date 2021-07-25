@@ -1,5 +1,5 @@
 //
-//  catViewSearchStack.swift
+//  catViewSsearchBar.swift
 //  Emoji Pass X
 //
 //  Created by Todd Bruss on 3/27/21.
@@ -11,7 +11,7 @@ import SwiftUI
 
 extension CatView {
     //MARK: searchStack
-    func searchStack() -> some View {
+    func catViewSsearchBar() -> some View {
         return HStack {
             TextField("Search", text: $searchText)
                 .padding(.leading, Device().iPhoneXSearch())
@@ -28,7 +28,6 @@ extension CatView {
             HStack {
                 Image(systemName: "magnifyingglass")
                     .padding(.leading, Device().iPhoneXMag())
-                    
                 Spacer()
                     .padding(.trailing, 16)
                 if isSearching {
@@ -38,7 +37,6 @@ extension CatView {
                             .padding(.trailing, 2)
                     })
                 }
-                
             }
         )
     }

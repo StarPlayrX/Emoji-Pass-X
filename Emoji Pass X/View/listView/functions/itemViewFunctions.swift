@@ -10,12 +10,12 @@ import Foundation
 extension ItemView {
     
     func createEncryptedKey(emojiKey: String) -> Data {
-        let encryptedKey = Krypto().encryptData(string: emojiKey, key: privateKey.parentKey)
+        let encryptedKey = Krypto().encrypt(string: emojiKey, key: privateKey.parentKey, encoding: .utf8)
         return encryptedKey
     }
     
     func decryptEncryptedKey(emojiData: Data) -> String {
-        let decryptedKey = Krypto().decryptData(data: emojiData, key: privateKey.parentKey)
+        let decryptedKey = Krypto().decrypt(data: emojiData, key: privateKey.parentKey, encoding: .utf8)
         return decryptedKey
     }
     

@@ -41,25 +41,25 @@ extension ItemView {
         //decrypted Key
         privateKey.recordKey = decryptEncryptedKey(emojiData: listItem.id).data
         
-        pUsername     = krypt.decryptData(data: listItem.pUsername, key: privateKey.recordKey)
-        pPassword     = krypt.decryptData(data: listItem.pPassword, key: privateKey.recordKey)
-        pWebsite      = krypt.decryptData(data: listItem.pWebsite, key: privateKey.recordKey)
-        pPhone        = krypt.decryptData(data: listItem.pPhone, key: privateKey.recordKey)
-        pPin          = krypt.decryptData(data: listItem.pPin, key: privateKey.recordKey)
-        pNotes        = krypt.decryptData(data: listItem.pNotes, key: privateKey.recordKey)
+        pUsername     = krypt.decrypt(data: listItem.pUsername,     key: privateKey.recordKey, encoding: .utf8)
+        pPassword     = krypt.decrypt(data: listItem.pPassword,     key: privateKey.recordKey, encoding: .utf8)
+        pWebsite      = krypt.decrypt(data: listItem.pWebsite,      key: privateKey.recordKey, encoding: .utf8)
+        pPhone        = krypt.decrypt(data: listItem.pPhone,        key: privateKey.recordKey, encoding: .utf8)
+        pPin          = krypt.decrypt(data: listItem.pPin,          key: privateKey.recordKey, encoding: .utf8)
+        pNotes        = krypt.decrypt(data: listItem.pNotes,        key: privateKey.recordKey, encoding: .utf8)
 
-        cBankname     = krypt.decryptData(data: listItem.cBankname, key: privateKey.recordKey)
-        cCardnumber   = krypt.decryptData(data: listItem.cCardnumber, key: privateKey.recordKey)
-        cFullname     = krypt.decryptData(data: listItem.cFullname, key: privateKey.recordKey)
-        cCvc          = krypt.decryptData(data: listItem.cCvc, key: privateKey.recordKey)
-        cExpdate      = krypt.decryptData(data: listItem.cExpdate, key: privateKey.recordKey)
-        cNotes        = krypt.decryptData(data: listItem.cNotes, key: privateKey.recordKey)
+        cBankname     = krypt.decrypt(data: listItem.cBankname,     key: privateKey.recordKey, encoding: .utf8)
+        cCardnumber   = krypt.decrypt(data: listItem.cCardnumber,   key: privateKey.recordKey, encoding: .utf8)
+        cFullname     = krypt.decrypt(data: listItem.cFullname,     key: privateKey.recordKey, encoding: .utf8)
+        cCvc          = krypt.decrypt(data: listItem.cCvc,          key: privateKey.recordKey, encoding: .utf8)
+        cExpdate      = krypt.decrypt(data: listItem.cExpdate,      key: privateKey.recordKey, encoding: .utf8)
+        cNotes        = krypt.decrypt(data: listItem.cNotes,        key: privateKey.recordKey, encoding: .utf8)
 
-        kSoftwarepkg  = krypt.decryptData(data: listItem.kSoftwarepkg, key: privateKey.recordKey)
-        kLicensekey   = krypt.decryptData(data: listItem.kLicensekey, key: privateKey.recordKey)
-        kEmailaddress = krypt.decryptData(data: listItem.kEmailaddress, key: privateKey.recordKey)
-        kWebaddress   = krypt.decryptData(data: listItem.kWebaddress, key: privateKey.recordKey)
-        kSeats        = krypt.decryptData(data: listItem.kSeats, key: privateKey.recordKey)
-        kNotes        = krypt.decryptData(data: listItem.kNotes, key: privateKey.recordKey)
+        kSoftwarepkg  = krypt.decrypt(data: listItem.kSoftwarepkg,  key: privateKey.recordKey, encoding: .utf8)
+        kLicensekey   = krypt.decrypt(data: listItem.kLicensekey,   key: privateKey.recordKey, encoding: .utf8)
+        kEmailaddress = krypt.decrypt(data: listItem.kEmailaddress, key: privateKey.recordKey, encoding: .utf8)
+        kWebaddress   = krypt.decrypt(data: listItem.kWebaddress,   key: privateKey.recordKey, encoding: .utf8)
+        kSeats        = krypt.decrypt(data: listItem.kSeats,        key: privateKey.recordKey, encoding: .utf8)
+        kNotes        = krypt.decrypt(data: listItem.kNotes,        key: privateKey.recordKey, encoding: .utf8)
     }
 }
