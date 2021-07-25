@@ -37,7 +37,7 @@ extension CatView {
                         }
                     )
                     
-                } else if item.name == newCategory || item.name.isEmpty  {
+                } else if item.name == newCategory || item.name.isEmpty || !security.catLock  {
                     NavigationLink(destination: CatEditView(listItem: item)) {
                         Text("\(cat) \(newCategory)")
                             .padding(.trailing, 18)
