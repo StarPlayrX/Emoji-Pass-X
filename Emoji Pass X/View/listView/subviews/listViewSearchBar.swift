@@ -18,7 +18,6 @@ extension ListView {
         }
         .listRowBackground(Color(UIColor.systemBackground))
         .padding(.leading, 8)
-        
         .onTapGesture( perform: {
             isSearching = true
         })
