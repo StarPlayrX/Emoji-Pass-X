@@ -330,7 +330,7 @@
 			path = functions;
 			sourceTree = "<group>";
 		};
-		6F04077526ACE19A00309F69 /* catViewLockScreen */ = {
+		6F04077526ACE19A00309F69 /* subviewsLockScreen */ = {
 			isa = PBXGroup;
 			children = (
 				6F83C6F2260FCDEF007B0D8E /* catViewLockScreen.swift */,
@@ -338,10 +338,10 @@
 				6F04077126ACE04100309F69 /* catViewSimulator.swift */,
 				6F04077326ACE14000309F69 /* catViewContinue.swift */,
 			);
-			name = catViewLockScreen;
+			name = subviewsLockScreen;
 			sourceTree = "<group>";
 		};
-		6F04077626ACE29700309F69 /* catViewMain */ = {
+		6F04077626ACE29700309F69 /* subviewsMain */ = {
 			isa = PBXGroup;
 			children = (
 				6FFC4B2526A9053700A033E9 /* catViewMain.swift */,
@@ -350,7 +350,7 @@
 				6F82D1E326ACEACE006FD559 /* catViewList.swift */,
 				6F83C70A260FDC5A007B0D8E /* catViewSearchBar.swift */,
 			);
-			name = catViewMain;
+			name = subviewsMain;
 			sourceTree = "<group>";
 		};
 		6F83C6F6260FD146007B0D8E /* View-Model */ = {
@@ -369,8 +369,8 @@
 			isa = PBXGroup;
 			children = (
 				6F08D84E261523F90024B61A /* catViewInitialView.swift */,
-				6F04077526ACE19A00309F69 /* catViewLockScreen */,
-				6F04077626ACE29700309F69 /* catViewMain */,
+				6F04077526ACE19A00309F69 /* subviewsLockScreen */,
+				6F04077626ACE29700309F69 /* subviewsMain */,
 				6F04076426ACA71900309F69 /* functions */,
 			);
 			name = catView;
