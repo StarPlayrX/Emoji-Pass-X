@@ -2,7 +2,7 @@
 //  catEditViewHeader.swift
 //  Emoji Pass X
 //
-//  Created by M1 on 7/25/21.
+//  Created by Todd Bruss on 7/25/21.
 //
 
 import SwiftUI
@@ -12,6 +12,9 @@ extension CatEditView {
     func catEditViewHeader(_ geometry: GeometryProxy) -> some View {
         HStack {
             TextField(emoji, text: $listItem.emoji)
+                .simultaneousGesture(TapGesture().onEnded {
+                    Mac().macEmojiSelector()
+                })
                 .background(labelColor2)
                 .cornerRadius(radius)
                 .fixedSize(horizontal: false, vertical: true)

@@ -15,17 +15,16 @@ extension ListView {
                 .padding(.leading, Device().iPhoneXSearch())
                 .padding(.trailing, 64)
                 .listRowBackground(Color(UIColor.systemBackground))
+                .textContentType(.nickname)
+                .keyboardType(.alphabet)
         }
         .listRowBackground(Color(UIColor.systemBackground))
         .padding(.leading, 8)
-        .onTapGesture( perform: {
-            isSearching = true
-        })
+        .onTapGesture(perform: {isSearching = true})
         .overlay (
             HStack {
                 Image(systemName: "magnifyingglass")
                     .padding(.leading, Device().iPhoneXMag())
-                
                 Spacer()
                     .padding(.trailing, 16)
                 if isSearching {
@@ -34,6 +33,7 @@ extension ListView {
                             .padding(.vertical)
                             .padding(.trailing, 2)
                     })
+                    .buttonStyle(SystemWhiteButton())
                 }
             }
         )

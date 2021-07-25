@@ -23,7 +23,7 @@
 		2D8D534A25F41A3B00A5F397 /* Emojis.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D8D534925F41A3B00A5F397 /* Emojis.swift */; };
 		2DA9AD5725EB158E00A2633F /* Krypto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA9AD5625EB158E00A2633F /* Krypto.swift */; };
 		6F04075F26AC9B5A00309F69 /* DataManagement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F04075E26AC9B5A00309F69 /* DataManagement.swift */; };
-		6F04076C26ACB00C00309F69 /* SystemBlueButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F04076B26ACB00C00309F69 /* SystemBlueButton.swift */; };
+		6F04076C26ACB00C00309F69 /* ButtonStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F04076B26ACB00C00309F69 /* ButtonStyles.swift */; };
 		6F04076E26ACDE3400309F69 /* catViewiPadPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F04076D26ACDE3400309F69 /* catViewiPadPanel.swift */; };
 		6F04077026ACDF9E00309F69 /* catViewSignOnButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F04076F26ACDF9E00309F69 /* catViewSignOnButton.swift */; };
 		6F04077226ACE04100309F69 /* catViewSimulator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F04077126ACE04100309F69 /* catViewSimulator.swift */; };
@@ -88,7 +88,7 @@
 		2D9ADA5626038CFD00304049 /* AuthenticationServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AuthenticationServices.framework; path = System/Library/Frameworks/AuthenticationServices.framework; sourceTree = SDKROOT; };
 		2DA9AD5625EB158E00A2633F /* Krypto.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Krypto.swift; sourceTree = "<group>"; };
 		6F04075E26AC9B5A00309F69 /* DataManagement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DataManagement.swift; path = ../../../../../DataManagement.swift; sourceTree = "<group>"; };
-		6F04076B26ACB00C00309F69 /* SystemBlueButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemBlueButton.swift; sourceTree = "<group>"; };
+		6F04076B26ACB00C00309F69 /* ButtonStyles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonStyles.swift; sourceTree = "<group>"; };
 		6F04076D26ACDE3400309F69 /* catViewiPadPanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = catViewiPadPanel.swift; sourceTree = "<group>"; };
 		6F04076F26ACDF9E00309F69 /* catViewSignOnButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = catViewSignOnButton.swift; sourceTree = "<group>"; };
 		6F04077126ACE04100309F69 /* catViewSimulator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = catViewSimulator.swift; sourceTree = "<group>"; };
@@ -253,7 +253,7 @@
 				6FA9CEAB2610F58C006DBB32 /* Mac.swift */,
 				2D5DFCDE25FE6B3900561C99 /* Device.swift */,
 				2D8D534925F41A3B00A5F397 /* Emojis.swift */,
-				6F04076B26ACB00C00309F69 /* SystemBlueButton.swift */,
+				6F04076B26ACB00C00309F69 /* ButtonStyles.swift */,
 				6F83C74726102A0A007B0D8E /* Clipboard.swift */,
 			);
 			path = Structs;
@@ -494,7 +494,7 @@
 				6F83C700260FD586007B0D8E /* SecurityClass.swift in Sources */,
 				2D7D2E3625EEEEAD004FDB8F /* CatView.swift in Sources */,
 				6FCCF6E226AA442B0032FBF5 /* ItemViewRecords.swift in Sources */,
-				6F04076C26ACB00C00309F69 /* SystemBlueButton.swift in Sources */,
+				6F04076C26ACB00C00309F69 /* ButtonStyles.swift in Sources */,
 				6FA9CEAC2610F58C006DBB32 /* Mac.swift in Sources */,
 				2D7D2E3D25EEFED4004FDB8F /* CatEditView.swift in Sources */,
 				6F21B2F026ADBA90009C5A9B /* catEditViewHeader.swift in Sources */,
@@ -675,7 +675,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = "Emoji Pass X/Emoji Pass X.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 60;
+				CURRENT_PROJECT_VERSION = 61;
 				DEVELOPMENT_ASSET_PATHS = "\"Emoji Pass X/Preview Content\"";
 				DEVELOPMENT_TEAM = 469UCUB275;
 				ENABLE_PREVIEWS = YES;
@@ -704,7 +704,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = "Emoji Pass X/Emoji Pass X.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 60;
+				CURRENT_PROJECT_VERSION = 61;
 				DEVELOPMENT_ASSET_PATHS = "\"Emoji Pass X/Preview Content\"";
 				DEVELOPMENT_TEAM = 469UCUB275;
 				ENABLE_PREVIEWS = YES;

@@ -23,7 +23,7 @@ struct ListView: View {
     let newRecord = "New Record"
     let pencil = "✏️"
     
-    @State var searchText: String = ""
+    @State var searchText: String = String()
     @State var isSearching = false
     @State var leader = CGFloat.zero
     

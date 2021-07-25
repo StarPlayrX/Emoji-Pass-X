@@ -20,5 +20,5 @@ public class Security: ObservableObject {
     @Published var isListItemViewSaved = false
     @Published var isItemSaved = false
     @Published var isCategoryNew = false
-    @Published var previousEmoji = ""
+    @Published var previousEmoji = String()
 }

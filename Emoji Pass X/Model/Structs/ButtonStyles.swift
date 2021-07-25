@@ -1,5 +1,5 @@
 //
-//  SystemBlueButton.swift
+//  ButtonStyles.swift
 //  Emoji Pass X
 //
 //  Created by Todd Bruss on 7/24/21.
@@ -19,3 +19,14 @@ struct SystemBlueButton: ButtonStyle {
             .animation(.easeOut(duration: 0.2), value: configuration.isPressed)
     }
 }
+
+struct SystemWhiteButton: ButtonStyle {
+    
+    func makeBody(configuration: Configuration) -> some View {
+        configuration.label
+            .scaleEffect(configuration.isPressed ? 1.25 : 1)
+            .foregroundColor(Color(.white))
+            .animation(.easeOut(duration: 0.2), value: configuration.isPressed)
+    }
+}
+

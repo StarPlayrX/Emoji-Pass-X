@@ -17,7 +17,7 @@ struct CatEditView: View {
     @EnvironmentObject var security: Security
     @ObservedObject var listItem: ListItem
     
-    @State var prevEmoji = ""
+    @State var prevEmoji = String()
     @State var selectedTemplate = 1
 
     //strings

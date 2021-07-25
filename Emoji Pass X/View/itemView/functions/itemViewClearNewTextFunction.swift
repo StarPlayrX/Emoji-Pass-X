@@ -17,7 +17,7 @@ extension ItemView {
         //New Item detected, so we clear this out (otherwise fill it in!)
         if (listItem.name == newRecord) {
             listItem.templateId = catItem.templateId
-            listItem.name = ""
+            listItem.name = String()
         }
         
         if listItem.uuidString.isEmpty { listItem.uuidString = catItem.uuidString }
@@ -37,6 +37,9 @@ extension ItemView {
                 listItem.id   = emojiData
             }
         }
+        
+        // Todo create a loop for this
+        // https://newbedev.com/loop-through-swift-struct-to-get-keys-and-values
         
         //decrypted Key
         privateKey.recordKey = decryptEncryptedKey(emojiData: listItem.id).data

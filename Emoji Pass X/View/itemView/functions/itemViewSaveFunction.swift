@@ -15,7 +15,10 @@ extension ItemView {
         if shouldHideKeyboard {
             hideKeyboard()
         }
-                
+          
+        // Todo create a loop for this
+        // https://newbedev.com/loop-through-swift-struct-to-get-keys-and-values
+        
         //MARK: Save Encrypted Strings
         listItem.pUsername     = krypt.encrypt(string: pUsername,     key: privateKey.recordKey, encoding: .utf8)
         listItem.pPassword     = krypt.encrypt(string: pPassword,     key: privateKey.recordKey, encoding: .utf8)

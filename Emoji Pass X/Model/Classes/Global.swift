@@ -2,7 +2,7 @@
 //  Global.swift
 //  Emoji Pass X
 //
-//  Created by M1 on 7/24/21.
+//  Created by Todd Bruss on 7/24/21.
 //
 
 import Foundation

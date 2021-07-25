@@ -62,7 +62,7 @@ extension ItemView {
                     .padding()
                     .padding(.leading, -4)
             } else {
-                SecureField("",text: note)
+                SecureField(String(),text: note)
                     .textContentType(textContentType)
                     .multilineTextAlignment(.leading)
                     .allowsHitTesting(!listItem.lock)

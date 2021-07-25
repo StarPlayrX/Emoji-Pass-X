@@ -7,16 +7,17 @@
 
 import SwiftUI
 
-//MARK: https://www.youtube.com/watch?v=vgvbrBX2FnE (Search Bar How to Reference in SwiftUI)
+// https://www.youtube.com/watch?v=vgvbrBX2FnE (Search Bar How to Reference in SwiftUI)
 
 extension CatView {
-    //MARK: searchStack
     func catViewSsearchBar() -> some View {
         return HStack {
             TextField("Search", text: $searchText)
                 .padding(.leading, Device().iPhoneXSearch())
                 .padding(.trailing, 64)
                 .listRowBackground(Color(UIColor.systemBackground))
+                .textContentType(.nickname)
+                .keyboardType(.alphabet)
         }
         .listRowBackground(Color(UIColor.systemBackground))
         .padding(.leading, 8)
@@ -31,11 +32,12 @@ extension CatView {
                 Spacer()
                     .padding(.trailing, 16)
                 if isSearching {
-                    Button(action: {searchText = ""; hideKeyboard()}, label: {
+                    Button(action: {searchText = String(); hideKeyboard()}, label: {
                         Image(systemName: "xmark")
                             .padding(.vertical)
                             .padding(.trailing, 2)
                     })
+                    .buttonStyle(SystemWhiteButton())
                 }
             }
         )

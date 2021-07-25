@@ -2,7 +2,7 @@
 //  catEditViewDefaultTemplate.swift
 //  Emoji Pass X
 //
-//  Created by M1 on 7/25/21.
+//  Created by Todd Bruss on 7/25/21.
 //
 
 import SwiftUI

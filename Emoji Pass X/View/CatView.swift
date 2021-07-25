@@ -23,7 +23,7 @@ struct CatView: View {
     @Environment(\.managedObjectContext) var managedObjectContext
     
     @State private var showingAlert = false
-    @State var searchText: String = ""
+    @State var searchText: String = String()
     @State var isSearching = false
     
     @StateObject var security = Security()

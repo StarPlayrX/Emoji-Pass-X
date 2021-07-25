@@ -20,31 +20,31 @@ struct ItemView: View {
     @ObservedObject var catItem: ListItem
     @ObservedObject var listItem: ListItem
 
-    @State var prevEmoji : String = ""
+    @State var prevEmoji : String = String()
 
     //MARK: New Password Items
-    @State var pUsername: String = ""
-    @State var pPassword: String = ""
-    @State var pWebsite : String = ""
-    @State var pPhone   : String = ""
-    @State var pPin     : String = ""
-    @State var pNotes   : String = ""
+    @State var pUsername: String = String()
+    @State var pPassword: String = String()
+    @State var pWebsite : String = String()
+    @State var pPhone   : String = String()
+    @State var pPin     : String = String()
+    @State var pNotes   : String = String()
 
     //MARK: New Password Items
-    @State var cBankname  : String = ""
-    @State var cCardnumber: String = ""
-    @State var cFullname  : String = ""
-    @State var cCvc       : String = ""
-    @State var cExpdate   : String = ""
-    @State var cNotes     : String = ""
+    @State var cBankname  : String = String()
+    @State var cCardnumber: String = String()
+    @State var cFullname  : String = String()
+    @State var cCvc       : String = String()
+    @State var cExpdate   : String = String()
+    @State var cNotes     : String = String()
 
     //MARK: New License Key Items
-    @State var kSoftwarepkg  : String = ""
-    @State var kLicensekey   : String = ""
-    @State var kEmailaddress : String = ""
-    @State var kWebaddress   : String = ""
-    @State var kSeats        : String = ""
-    @State var kNotes        : String = ""
+    @State var kSoftwarepkg  : String = String()
+    @State var kLicensekey   : String = String()
+    @State var kEmailaddress : String = String()
+    @State var kWebaddress   : String = String()
+    @State var kSeats        : String = String()
+    @State var kNotes        : String = String()
 
     //MARK: Constants
     let emoji = ":)"
