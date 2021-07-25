@@ -10,11 +10,11 @@ import SwiftUI
 
 struct SystemBlueButton: ButtonStyle {
     
-    let highlightColor = Color(red: 64 / 255, green: ((128 + 192) / 2) / 255, blue: 255 / 255)
+    let highlightColor = Color(red: 0.25, green: 0.6275, blue: 1)
     
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
-            .scaleEffect(configuration.isPressed ? 1.2 : 1)
+            .scaleEffect(configuration.isPressed ? 1.25 : 1)
             .foregroundColor(configuration.isPressed ? highlightColor : Color(.systemBlue))
             .animation(.easeOut(duration: 0.2), value: configuration.isPressed)
     }

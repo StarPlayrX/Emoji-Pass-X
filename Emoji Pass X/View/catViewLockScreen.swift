@@ -20,14 +20,14 @@ extension CatView {
             }
             .overlay(
                 RoundedRectangle(cornerRadius: 48)
-                    .stroke(isGlobalDark ? Color.gray : Color.white, lineWidth: 2)
+                    .stroke(Theme.isGlobalDark ? Color.gray : Color.white, lineWidth: 2)
             )
             
             Text(copyright).font(.callout).minimumScaleFactor(0.75).padding(.top, 10)
             
             if security.signOn && !security.isSimulator {
                 
-                // 1 Continue with Apple
+                // 1 Sign On | Continue with Apple
                 catViewSignOnButton()
                 
             } else if security.isSimulator {
@@ -41,7 +41,7 @@ extension CatView {
                 catViewContinue()
             }
         }
-        .onAppear(perform: {isGlobalDark = UIScreen.main.traitCollection.userInterfaceStyle == .dark})
-        .onDisappear(perform: {isGlobalDark = UIScreen.main.traitCollection.userInterfaceStyle == .dark})
+        .onAppear(perform: {Theme.isGlobalDark = UIScreen.main.traitCollection.userInterfaceStyle == .dark})
+        .onDisappear(perform: {Theme.isGlobalDark = UIScreen.main.traitCollection.userInterfaceStyle == .dark})
     }
 }

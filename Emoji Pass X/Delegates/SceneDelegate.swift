@@ -25,7 +25,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
 
     func redundant() {
-        isGlobalDark = UIScreen.main.traitCollection.userInterfaceStyle == .dark
+        Theme.isGlobalDark = UIScreen.main.traitCollection.userInterfaceStyle == .dark
         
         // Hide Keyboard on iOS devices
         if UIDevice.current.userInterfaceIdiom == .pad || UIDevice.current.userInterfaceIdiom == .phone {

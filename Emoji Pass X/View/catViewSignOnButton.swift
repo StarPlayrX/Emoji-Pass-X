@@ -32,10 +32,10 @@ extension CatView {
                     }
                 }
             )
-            .signInWithAppleButtonStyle( isGlobalDark ? .white : .black)
+            .signInWithAppleButtonStyle( Theme.isGlobalDark ? .white : .black)
             .overlay(
                 RoundedRectangle(cornerRadius: 6)
-                    .stroke( isGlobalDark ? Color.black : Color.white, lineWidth: 2)
+                    .stroke( Theme.isGlobalDark ? Color.black : Color.white, lineWidth: 2)
             )
             .padding(.horizontal, 50)
             .padding(.vertical, 100)

@@ -20,7 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         UserDefaults.standard.set(false, forKey: "_UIConstraintBasedLayoutLogUnsatisfiable")
-        isGlobalDark = UIScreen.main.traitCollection.userInterfaceStyle == .dark
+        Theme.isGlobalDark = UIScreen.main.traitCollection.userInterfaceStyle == .dark
         return true
     }
 
