@@ -28,7 +28,6 @@ extension ListView {
         }
         .buttonStyle(SystemBlueButton())
         
-        
         .alert(isPresented: $security.isDeleteListViewValid, content: {
             Alert(title: Text("We're sorry."),
                   message: Text("This item is locked and cannot be deleted."),
