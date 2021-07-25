@@ -1,5 +1,5 @@
 //
-//  listView_.swift
+//  listViewUI.swift
 //  Emoji Pass X
 //
 //  Created by Todd Bruss on 3/27/21.
@@ -9,11 +9,11 @@ import SwiftUI
 
 extension ListView {
     
-    func listViewStack() -> some View {
+    func listViewUI() -> some View {
         VStack {
             List {
                 listViewSearchBar()
-                repeatView(detailListItems)
+                listViewForEachView(detailListItems)
             }
             .padding(.leading, Device().iPhoneXLeading())
             .listStyle(PlainListStyle())
@@ -33,5 +33,6 @@ extension ListView {
                   message: Text("This item is locked and cannot be deleted."),
                   dismissButton: .default(Text("OK")) { security.isDeleteListViewValid = false })
         })
+        .animation(.default)
     }
 }

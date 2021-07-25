@@ -18,12 +18,12 @@ extension CatView {
                     NavigationLink(destination: CatEditView(listItem: item)) {
                         
                         if !item.name.isEmpty {
-                            Text("\(pencil)\(item.emoji) \(item.name)")
+                            Text("\(item.emoji) \(item.name)")
                                 .padding(.trailing, 18)
                                 .padding(.leading, Device().iPhoneXCell())
                                 .font(.title)
                         } else {
-                            Text("\(pencil)\(item.emoji) \(newCategory)")
+                            Text("\(item.emoji) \(newCategory)")
                                 .padding(.trailing, 18)
                                 .padding(.leading, Device().iPhoneXCell())
                                 .font(.title)
@@ -37,7 +37,7 @@ extension CatView {
                         }
                     )
                     
-                } else if item.name == newCategory || item.name.isEmpty || !security.catLock  {
+                } else if item.name == newCategory || item.name.isEmpty  {
                     NavigationLink(destination: CatEditView(listItem: item)) {
                         Text("\(cat) \(newCategory)")
                             .padding(.trailing, 18)

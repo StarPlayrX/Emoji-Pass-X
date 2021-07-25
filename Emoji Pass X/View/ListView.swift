@@ -35,6 +35,6 @@ struct ListView: View {
 
     //MARK: BODY
     var body: some View {
-        detailListView()
+        listView()
     }
 }

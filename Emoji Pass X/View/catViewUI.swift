@@ -23,7 +23,6 @@ extension CatView {
     
     func catViewUI() -> some View {
         Group {
-            
             catViewList()
             .alert(isPresented: $security.isValid, content: {
                 Alert(title: Text("We're sorry."),
@@ -38,14 +37,12 @@ extension CatView {
                     Button(action: stop) {
                         security.catLock ? Image(systemName: "lock.fill") : Image(systemName: "lock.open")
                     }
-
                 }
 
                 ToolbarItemGroup(placement: .navigationBarTrailing) {
                     Button(action: start) {
                         security.isEditing ? Image(systemName: "hammer") : Image(systemName: "hammer.fill")
                     }
-
                     Button(action: addItem) { Image(systemName: "plus") }
                 }
             }

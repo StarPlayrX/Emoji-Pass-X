@@ -38,5 +38,6 @@ extension ItemView {
                 .minimumScaleFactor(0.8)
             Spacer()
         }
+        
     }
 }

@@ -49,8 +49,8 @@
 		6F83C73426101DFC007B0D8E /* listViewFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F83C73326101DFC007B0D8E /* listViewFunctions.swift */; };
 		6F83C739261024B7007B0D8E /* listViewSearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F83C738261024B7007B0D8E /* listViewSearchBar.swift */; };
 		6F83C73C2610251A007B0D8E /* listViewForEachView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F83C73B2610251A007B0D8E /* listViewForEachView.swift */; };
-		6F83C73F2610255D007B0D8E /* listViewStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F83C73E2610255D007B0D8E /* listViewStack.swift */; };
-		6F83C742261025B1007B0D8E /* listViewDetailListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F83C741261025B1007B0D8E /* listViewDetailListView.swift */; };
+		6F83C73F2610255D007B0D8E /* listViewUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F83C73E2610255D007B0D8E /* listViewUI.swift */; };
+		6F83C742261025B1007B0D8E /* listView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F83C741261025B1007B0D8E /* listView.swift */; };
 		6F83C74826102A0A007B0D8E /* Clipboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F83C74726102A0A007B0D8E /* Clipboard.swift */; };
 		6F83C74C26102AF2007B0D8E /* itemViewClearNewTextFunction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F83C74B26102AF2007B0D8E /* itemViewClearNewTextFunction.swift */; };
 		6F83C75026102B6C007B0D8E /* PrivatePartsClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F83C74F26102B6C007B0D8E /* PrivatePartsClass.swift */; };
@@ -114,8 +114,8 @@
 		6F83C73326101DFC007B0D8E /* listViewFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = listViewFunctions.swift; sourceTree = "<group>"; };
 		6F83C738261024B7007B0D8E /* listViewSearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = listViewSearchBar.swift; sourceTree = "<group>"; };
 		6F83C73B2610251A007B0D8E /* listViewForEachView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = listViewForEachView.swift; sourceTree = "<group>"; };
-		6F83C73E2610255D007B0D8E /* listViewStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = listViewStack.swift; sourceTree = "<group>"; };
-		6F83C741261025B1007B0D8E /* listViewDetailListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = listViewDetailListView.swift; sourceTree = "<group>"; };
+		6F83C73E2610255D007B0D8E /* listViewUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = listViewUI.swift; sourceTree = "<group>"; };
+		6F83C741261025B1007B0D8E /* listView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = listView.swift; sourceTree = "<group>"; };
 		6F83C74726102A0A007B0D8E /* Clipboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Clipboard.swift; sourceTree = "<group>"; };
 		6F83C74B26102AF2007B0D8E /* itemViewClearNewTextFunction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = itemViewClearNewTextFunction.swift; sourceTree = "<group>"; };
 		6F83C74F26102B6C007B0D8E /* PrivatePartsClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivatePartsClass.swift; sourceTree = "<group>"; };
@@ -298,10 +298,10 @@
 		6F04076726ACA75300309F69 /* subviews */ = {
 			isa = PBXGroup;
 			children = (
-				6F83C738261024B7007B0D8E /* listViewSearchBar.swift */,
+				6F83C741261025B1007B0D8E /* listView.swift */,
+				6F83C73E2610255D007B0D8E /* listViewUI.swift */,
 				6F83C73B2610251A007B0D8E /* listViewForEachView.swift */,
-				6F83C73E2610255D007B0D8E /* listViewStack.swift */,
-				6F83C741261025B1007B0D8E /* listViewDetailListView.swift */,
+				6F83C738261024B7007B0D8E /* listViewSearchBar.swift */,
 			);
 			path = subviews;
 			sourceTree = "<group>";
@@ -498,7 +498,7 @@
 				6FA9CEAC2610F58C006DBB32 /* Mac.swift in Sources */,
 				2D7D2E3D25EEFED4004FDB8F /* CatEditView.swift in Sources */,
 				6F21B2F026ADBA90009C5A9B /* catEditViewHeader.swift in Sources */,
-				6F83C73F2610255D007B0D8E /* listViewStack.swift in Sources */,
+				6F83C73F2610255D007B0D8E /* listViewUI.swift in Sources */,
 				2D89E0A125EAD68E00939877 /* ListItem.swift in Sources */,
 				6F83C75026102B6C007B0D8E /* PrivatePartsClass.swift in Sources */,
 				6F21B2F426ADBC62009C5A9B /* catEditViewNewCategory.swift in Sources */,
@@ -506,7 +506,7 @@
 				6F83C74826102A0A007B0D8E /* Clipboard.swift in Sources */,
 				2D89E08B25EAD67600939877 /* AppDelegate.swift in Sources */,
 				6FFC4B2626A9053700A033E9 /* catViewMain.swift in Sources */,
-				6F83C742261025B1007B0D8E /* listViewDetailListView.swift in Sources */,
+				6F83C742261025B1007B0D8E /* listView.swift in Sources */,
 				6F83C75F26102D91007B0D8E /* itemViewPasswordGroup.swift in Sources */,
 				2D89E08D25EAD67600939877 /* SceneDelegate.swift in Sources */,
 				6F83C75826102C39007B0D8E /* itemViewFunctions.swift in Sources */,
@@ -675,7 +675,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = "Emoji Pass X/Emoji Pass X.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 61;
+				CURRENT_PROJECT_VERSION = 62;
 				DEVELOPMENT_ASSET_PATHS = "\"Emoji Pass X/Preview Content\"";
 				DEVELOPMENT_TEAM = 469UCUB275;
 				ENABLE_PREVIEWS = YES;
@@ -704,7 +704,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = "Emoji Pass X/Emoji Pass X.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 61;
+				CURRENT_PROJECT_VERSION = 62;
 				DEVELOPMENT_ASSET_PATHS = "\"Emoji Pass X/Preview Content\"";
 				DEVELOPMENT_TEAM = 469UCUB275;
 				ENABLE_PREVIEWS = YES;

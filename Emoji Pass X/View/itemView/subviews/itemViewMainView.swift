@@ -62,5 +62,7 @@ extension ItemView {
             save()
             presentationMode.wrappedValue.dismiss()
         }
+        .animation(.default)
+
     }
 }
