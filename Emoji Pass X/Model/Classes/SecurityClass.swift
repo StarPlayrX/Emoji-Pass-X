@@ -2,7 +2,7 @@
 //  SecurityClass.swift
 //  Emoji Pass X
 //
-//   on 3/27/21.
+//  Created by Todd Bruss on 3/27/21.
 //
 
 import Foundation

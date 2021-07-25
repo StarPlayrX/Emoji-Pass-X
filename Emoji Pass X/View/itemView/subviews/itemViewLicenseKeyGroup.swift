@@ -8,8 +8,8 @@
 import SwiftUI
 
 extension ItemView {
-    //MARK: licenseKeyStack
-    func licenseKeyStack(_ hideLabels: Bool) -> some View {
+    
+    func licenseKeyGroup(_ hideLabels: Bool) -> some View {
         
         Group {
             notesEditor(

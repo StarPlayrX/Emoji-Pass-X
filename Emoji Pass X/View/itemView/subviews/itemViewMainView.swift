@@ -13,7 +13,7 @@ extension ItemView {
             ScrollView {
                 VStack {
                     itemViewHeader(geometry: geometry)
-                    itemViewFooter(geometry: geometry)
+                    itemViewMainBody(geometry: geometry)
                 }
                 .onDisappear(perform: {save(shouldHideKeyboard: true)} )
                 .onAppear(perform: clearNewText )

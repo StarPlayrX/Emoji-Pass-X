@@ -14,8 +14,10 @@ import SwiftUI
 
 // Bindings in depth
 // https://samwize.com/2020/03/27/how-to-use-binding-in-swiftui/
+
 struct CatView: View {
-    //CoreData | CloudKit
+    
+    //CoreData + CloudKit
     @FetchRequest(fetchRequest: ListItem.getFetchRequest())
     var listItems: FetchedResults<ListItem>
     @Environment(\.managedObjectContext) var managedObjectContext

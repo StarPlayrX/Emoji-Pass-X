@@ -9,18 +9,18 @@ import SwiftUI
 import UIKit
 
 struct ItemView: View {
-    //CoreData | CloudKit
+    // CoreData + CloudKit
     @Environment(\.managedObjectContext) var managedObjectContext
 
     @Environment(\.presentationMode) var presentationMode
     @Environment(\.colorScheme) var colorScheme
+    
     @EnvironmentObject var security: Security
     @StateObject var privateKey = privateParts()
-
     @ObservedObject var catItem: ListItem
     @ObservedObject var listItem: ListItem
 
-    @State var prevEmoji  : String = ""
+    @State var prevEmoji : String = ""
 
     //MARK: New Password Items
     @State var pUsername: String = ""
@@ -46,20 +46,16 @@ struct ItemView: View {
     @State var kSeats        : String = ""
     @State var kNotes        : String = ""
 
-    //MARK: strings
+    //MARK: Constants
     let emoji = ":)"
     let newRecord = "New Record"
     let uuid = "UUID"
-
     let pencil = "✏️"
-    
     let textLimit = 1
     let clipBoard = "doc.on.clipboard"
     let clipPadding = CGFloat(5)
-    
     let name = "Name"
     let bank = "Bank Name"
-    
     let userName = "Username"
     let passWord = "Password"
     let enter = "Enter"
@@ -73,18 +69,12 @@ struct ItemView: View {
     let exp = "Expiration Date"
     let fullName = "Full Name"
     let cvc = "cvc"
-    
-    //Mark: Software Key Package
     let keypkg = "Software Package"
     let keylic = "License Key"
     let keyemail = "Email Address"
     let keyweb = "Software Web Address"
     let keyseats = "Number of Seats"
-    
     let labelColor = Color.secondary
-    var labelColor2 = Color(UIColor.systemGray3)
-    var labelColor3 = Color(UIColor.systemGray)
-    
     let margin = CGFloat(-20)
     let spacing = CGFloat(0)
     let radius = CGFloat(14)
@@ -94,11 +84,10 @@ struct ItemView: View {
     let emojiFrameWidth = CGFloat(100)
     let emojiPaddingBottom = CGFloat(30)
     let smallestWidth = CGFloat(320.0)
-    
+    let labelColor2 = Color(UIColor.systemGray3)
+    let labelColor3 = Color(UIColor.systemGray)
     let pasteboard = UIPasteboard.general
-    
-   
-    
+
     var body: some View {
         itemViewDetailView()
     }

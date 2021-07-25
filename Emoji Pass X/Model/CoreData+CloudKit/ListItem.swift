@@ -7,6 +7,7 @@
 
 import CoreData
 
+// CoreData | CloudKit | DataModel
 class ListItem: NSManagedObject {
     
     //MARK: In the clear items
@@ -46,4 +47,14 @@ class ListItem: NSManagedObject {
     @NSManaged var kWebaddress: Data
     @NSManaged var kSeats: Data
     @NSManaged var kNotes: Data
+}
+
+extension ListItem {
+    static func getFetchRequest() -> NSFetchRequest<ListItem> {
+        if let request = ListItem.fetchRequest() as? NSFetchRequest<ListItem> {
+            request.entity = ListItem.entity()
+            request.sortDescriptors = [NSSortDescriptor(key: "order", ascending: true)]
+            return request
+        }
+    }
 }

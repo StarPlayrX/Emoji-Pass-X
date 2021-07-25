@@ -1,5 +1,5 @@
 //
-//  itemViewCreditCardStack.swift
+//  passwordGroup.swift
 //  Emoji Pass X
 //
 //  Created by Todd Bruss on 3/27/21.
@@ -9,48 +9,47 @@ import SwiftUI
 
 extension ItemView {
     
-    func creditCardStack(_ hideLabels: Bool) -> some View {
+    func passwordGroup(_ hideLabels: Bool) -> some View {
         
         Group {
-            
             notesEditor(
-                "cNotes",
-                note: $cNotes,
+                "pNotes",
+                note: $pNotes,
                 keyboard: UIKeyboardType.alphabet,
                 textContentType: UITextContentType.sublocality,
                 hideLabels: hideLabels)
-         
+            
             let records : [ItemViewRecords] = [
                 ItemViewRecords(
-                    labl: bank,
-                    text: $cBankname,
-                    copy: cBankname,
+                    labl: userName,
+                    text: $pUsername,
+                    copy: pUsername,
                     keys: UIKeyboardType.asciiCapable,
-                    cntx: UITextContentType.organizationName),
+                    cntx: UITextContentType.username),
                 ItemViewRecords(
-                    labl: card,
-                    text: $cCardnumber,
-                    copy: cCardnumber,
+                    labl: passWord,
+                    text: $pPassword,
+                    copy: pPassword,
+                    keys: UIKeyboardType.asciiCapable,
+                    cntx: UITextContentType.password),
+                ItemViewRecords(
+                    labl: phone,
+                    text: $pPhone,
+                    copy: pPhone,
+                    keys: UIKeyboardType.asciiCapable,
+                    cntx: UITextContentType.URL),
+                ItemViewRecords(
+                    labl: web,
+                    text: $pWebsite,
+                    copy: pWebsite,
+                    keys: UIKeyboardType.asciiCapable,
+                    cntx: UITextContentType.telephoneNumber),
+                ItemViewRecords(
+                    labl: pin,
+                    text: $pPin,
+                    copy: pPin,
                     keys: UIKeyboardType.numbersAndPunctuation,
-                    cntx: UITextContentType.oneTimeCode),
-                ItemViewRecords(
-                    labl: fullName,
-                    text: $cFullname,
-                    copy: cFullname,
-                    keys: UIKeyboardType.asciiCapable,
-                    cntx: UITextContentType.givenName),
-                ItemViewRecords(
-                    labl: cvc,
-                    text: $cCvc,
-                    copy: cCvc,
-                    keys: UIKeyboardType.asciiCapable,
-                    cntx: UITextContentType.creditCardNumber),
-                ItemViewRecords(
-                    labl: exp,
-                    text: $cExpdate,
-                    copy: cExpdate,
-                    keys: UIKeyboardType.numbersAndPunctuation,
-                    cntx: UITextContentType.nickname)
+                    cntx: UITextContentType.oneTimeCode)
             ]
             
             // MARK: https://developer.apple.com/documentation/swiftui/foreach
@@ -70,4 +69,3 @@ extension ItemView {
         }
     }
 }
-

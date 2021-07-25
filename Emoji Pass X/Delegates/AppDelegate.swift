@@ -10,17 +10,20 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     override func buildMenu(with builder: UIMenuBuilder) {
-        super.buildMenu(with: builder)
-
-        let refreshCommand = UIKeyCommand(input: "S", modifierFlags: [.command], action: #selector(save))
-        refreshCommand.title = "Save"
-        let saveDataMenu = UIMenu(title: "Save", image: nil, identifier: UIMenu.Identifier("Save"), options: .displayInline, children: [refreshCommand])
-        builder.insertChild(saveDataMenu, atStartOfMenu: .file)
+        // Setup save menu
+        if UIDevice.current.userInterfaceIdiom == .mac {
+            super.buildMenu(with: builder)
+            let refreshCommand = UIKeyCommand(input: "S", modifierFlags: [.command], action: #selector(save))
+            refreshCommand.title = "Save"
+            let saveDataMenu = UIMenu(title: "Save", image: nil, identifier: UIMenu.Identifier("Save"), options: .displayInline, children: [refreshCommand])
+            builder.insertChild(saveDataMenu, atStartOfMenu: .file)
+        }
     }
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        
+        // Autolayout will complain less
         UserDefaults.standard.set(false, forKey: "_UIConstraintBasedLayoutLogUnsatisfiable")
-        Theme.isGlobalDark = UIScreen.main.traitCollection.userInterfaceStyle == .dark
         return true
     }
 

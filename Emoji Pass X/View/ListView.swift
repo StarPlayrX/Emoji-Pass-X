@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ListView: View {
     
-    // CoreData | CloudKit
+    // CoreData + CloudKit
     @FetchRequest(fetchRequest: ListItem.getFetchRequest())
     var detailListItems: FetchedResults<ListItem>
     @Environment(\.managedObjectContext) var managedObjectContext
