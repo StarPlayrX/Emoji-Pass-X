@@ -7,10 +7,10 @@
 
 import CoreData
 
-// CoreData | CloudKit | DataModel
+// CoreData + CloudKit + DataModel
 class ListItem: NSManagedObject {
     
-    //MARK: In the clear items
+    //MARK: - In the clear items
     @NSManaged var order: Int
     @NSManaged var emoji: String
     @NSManaged var name: String
@@ -21,10 +21,10 @@ class ListItem: NSManagedObject {
     @NSManaged var lock: Bool
     @NSManaged var desc: String
     
-    //MARK: Encrypted Private Key
+    //MARK: - Encrypted Private Key
     @NSManaged var id: Data
   
-    //MARK: Passwords Encrpyted Items
+    //MARK: - Passwords Encrpyted Items
     @NSManaged var pUsername: Data
     @NSManaged var pPassword: Data
     @NSManaged var pWebsite: Data
@@ -32,7 +32,7 @@ class ListItem: NSManagedObject {
     @NSManaged var pPin: Data
     @NSManaged var pNotes: Data
 
-    //MARK: Bank Cards Encrpyted Items
+    //MARK: - Bank Cards Encrpyted Items
     @NSManaged var cBankname: Data
     @NSManaged var cCardnumber: Data
     @NSManaged var cCvc: Data
@@ -40,7 +40,7 @@ class ListItem: NSManagedObject {
     @NSManaged var cFullname: Data
     @NSManaged var cNotes: Data
 
-    //MARK: Software Keys Encrpyted Items
+    //MARK: - Software Keys Encrpyted Items
     @NSManaged var kSoftwarepkg: Data
     @NSManaged var kLicensekey: Data
     @NSManaged var kEmailaddress: Data
