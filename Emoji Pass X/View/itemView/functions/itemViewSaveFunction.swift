@@ -15,7 +15,7 @@ extension ItemView {
         if shouldHideKeyboard {
             hideKeyboard()
         }
-        
+                
         //MARK: Save Encrypted Strings
         listItem.pUsername     = krypt.encrypt(string: pUsername,     key: privateKey.recordKey, encoding: .utf8)
         listItem.pPassword     = krypt.encrypt(string: pPassword,     key: privateKey.recordKey, encoding: .utf8)

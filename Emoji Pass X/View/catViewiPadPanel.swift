@@ -23,7 +23,7 @@ extension CatView {
                 }
                 .overlay (
                     RoundedRectangle(cornerRadius: 48)
-                        .stroke( Theme.isGlobalDark ? Color.gray : Color.white, lineWidth: 2))
+                        .stroke( Global.isGlobalDark ? Color.gray : Color.white, lineWidth: 2))
                 Text(copyright)
                     .font(.callout)
                     .minimumScaleFactor(0.75)

@@ -10,86 +10,21 @@ import Combine
 
 extension CatEditView {
     
-    func Stars() {
-        listItem.name = "All Stars"
-        listItem.uuidString = "Stars"
-        listItem.emoji = "⭐️"
-        listItem.desc = "A store for all my favorites."
-        security.previousEmoji = listItem.emoji
-    }
-    
-    func Everything() {
-        listItem.name = "Flashlight"
-        listItem.uuidString = "Everything"
-        listItem.emoji = "🔦"
-        listItem.desc = "A store for all my records."
-        security.previousEmoji = listItem.emoji
-    }
-    
     func catEditViewGroup() -> some View {
         Group {
             GeometryReader { geometry in
                 VStack {
-                    HStack {
-                        TextField(emoji, text: $listItem.emoji)
-                            .background(labelColor2)
-                            .cornerRadius(radius)
-                            .fixedSize(horizontal: false, vertical: true)
-                            .onReceive(Just(prevEmoji)) { _ in limitText() }
-                            .font(.system(size: geometry.size.width == smallestWidth ? emojiFontSize - 10 : emojiFontSize))
-                            .minimumScaleFactor(1)
-                            .multilineTextAlignment(.center)
-                            .frame(height: geometry.size.width == smallestWidth ? emojiFrameWidth - 25 : emojiFrameWidth )
-                            .frame(width: geometry.size.width == smallestWidth ? emojiFrameWidth - 50 : emojiFrameWidth - 25 )
-                            .padding(.bottom, -10)
-                            .padding(.horizontal, 10 )
-                        
-                        TextField(name, text: $listItem.name)
-                            .font(.largeTitle)
-                            .padding(.bottom, -20)
-                            .keyboardType(.asciiCapable)
-                            .minimumScaleFactor(0.8)
-                        
-                        Spacer()
-                    }
+                    
+                    catEditViewHeader(geometry)
                     
                     geometry.size.width == smallestWidth ? stack(true) : stack(false)
                         
                     if listItem.uuidString != "Stars" && listItem.uuidString != "Everything" {
-                        
-                        HStack {
-                            Text("Default template: \(Template.template[selectedTemplate]).")
-                                .padding(.horizontal, horizontal + (margin * 1.5))
-                                .foregroundColor(labelColor)
-                                .padding(.bottom, -32)
-                                .padding(.top, 16)
-                            Spacer()
-                        }
-                        .padding(.bottom, 20)
+                        catEditViewDefaultTemplate()
                     }
                     
                     if security.isCategoryNew {
-                        VStack {
-                            if listItem.uuidString != "Stars" {
-                                HStack {
-                                    Button(action: Stars )
-                                        { Text("Create an All Stars Category") }
-                                        .padding(.top, 20)
-                                        .padding(.leading, 12)
-                                    Spacer()
-                                }
-                            }
-                            
-                            if listItem.uuidString != "Everything" {
-                                HStack {
-                                    Button(action: Everything )
-                                        { Text("Create a Flashlight Category") }
-                                        .padding(.top, 20)
-                                        .padding(.leading, 12)
-                                    Spacer()
-                                }
-                            }
-                        }
+                        catEditViewNewCategory()
                     }
                 }
                 .navigationBarTitle( "Category", displayMode: .inline)
@@ -109,8 +44,8 @@ extension CatEditView {
                     ToolbarItemGroup(placement: .navigationBarTrailing) {
                         if UIDevice.current.userInterfaceIdiom == .mac || UIDevice.current.userInterfaceIdiom == .pad {
                             Picker(String(), selection: $selectedTemplate) {
-                                ForEach(Template.templateIds, id: \.self) {
-                                    geometry.size.width == smallestWidth ? Text(Template.template[$0].prefix(1)) : Text(Template.template[$0].prefix(6))
+                                ForEach(Global.templateIds, id: \.self) {
+                                    geometry.size.width == smallestWidth ? Text(Global.template[$0].prefix(1)) : Text(Global.template[$0].prefix(6))
                                 }
                                 .font(.largeTitle)
                                 .pickerStyle(SegmentedPickerStyle())
@@ -120,8 +55,8 @@ extension CatEditView {
                     
                     ToolbarItemGroup(placement: .bottomBar) {
                         Picker(String(), selection: $selectedTemplate) {
-                            ForEach(Template.templateIds, id: \.self) {
-                                geometry.size.width == smallestWidth ? Text(Template.template[$0].prefix(1)) : Text(Template.template[$0].prefix(6))
+                            ForEach(Global.templateIds, id: \.self) {
+                                geometry.size.width == smallestWidth ? Text(Global.template[$0].prefix(1)) : Text(Global.template[$0].prefix(6))
                             }
                             .font(.largeTitle)
                             .pickerStyle(SegmentedPickerStyle())

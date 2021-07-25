@@ -8,7 +8,8 @@
 import SwiftUI
 
 extension CatEditView {
-    //MARK: Function to keep text length in limits
+    
+    // Rolls back Emojis to 1 character
     func limitText(_ charLimit : Int = 1 ) {
         if listItem.emoji.count > charLimit {
             let usePrefix = prevEmoji == listItem.emoji.suffix(charLimit)
@@ -38,5 +39,21 @@ extension CatEditView {
         _ = (listItem.name == newRecord || listItem.name.isEmpty) ?
             (listItem.name = "", security.isCategoryNew = true) :
             (listItem.name = listItem.name, security.isCategoryNew = false)
+    }
+    
+    func Stars() {
+        listItem.name = "All Stars"
+        listItem.uuidString = "Stars"
+        listItem.emoji = "⭐️"
+        listItem.desc = "A store for all my favorites."
+        security.previousEmoji = listItem.emoji
+    }
+    
+    func Everything() {
+        listItem.name = "Flashlight"
+        listItem.uuidString = "Everything"
+        listItem.emoji = "🔦"
+        listItem.desc = "A store for all my records."
+        security.previousEmoji = listItem.emoji
     }
 }

@@ -13,17 +13,21 @@ extension ItemView {
             Text("Notes")
                 .foregroundColor(labelColor)
             Spacer()
+                            
+            let clip = Clipboard()
             
             switch text {
             case "pNotes":
-                Button(action: {copyToClipboardII(pNotes)}) {Image(systemName: clipBoard)}
+                Button(action: {clip.copyToClipBoard(pNotes, hide: true)}) {Image(systemName: clipBoard)}
             case "cNotes":
-                Button(action: {copyToClipboardII(cNotes)}) {Image(systemName: clipBoard)}
+                Button(action: {clip.copyToClipBoard(cNotes, hide: true)}) {Image(systemName: clipBoard)}
             case "kNotes":
-                Button(action: {copyToClipboardII(kNotes)}) {Image(systemName: clipBoard)}
+                Button(action: {clip.copyToClipBoard(kNotes, hide: true)}) {Image(systemName: clipBoard)}
             default:
-                Button(action: {copyToClipboardII(cNotes)}) {Image(systemName: clipBoard)}
+                Button(action: {clip.copyToClipBoard(cNotes, hide: true)}) {Image(systemName: clipBoard)}
             }
+            
+
         }
         .buttonStyle(SystemBlueButton())
         .padding(.bottom, 0)

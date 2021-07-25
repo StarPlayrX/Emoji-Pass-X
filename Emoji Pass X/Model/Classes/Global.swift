@@ -7,12 +7,8 @@
 
 import Foundation
 
-public class Theme: ObservableObject {
+public class Global {
     static var isGlobalDark = true
-
-}
-
-public class Template {
     static let template = ["💳 Cards", "🔒 Passwords", "🔑 Keys"]
     static let templateIds = [0, 1, 2]
 }

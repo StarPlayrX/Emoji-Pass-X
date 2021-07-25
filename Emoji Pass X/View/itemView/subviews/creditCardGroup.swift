@@ -65,7 +65,7 @@ extension ItemView {
                     boundText: record.text,
                     keyboard: record.keys,
                     textContentType: record.cntx,
-                    action: {copyToClipboard(record.copy)})
+                    action: {Clipboard().copyToClipBoard(record.copy, hide: false)})
             }
         }
     }

@@ -8,7 +8,7 @@
 import SwiftUI
 
 extension ListView {
-    //MARK: One Liners do not need to use return
+
     func getList(_ a: [ListItem]) -> [ListItem] {
         a.filter( { "\($0.emoji)\($0.name)".lowercased().contains(searchText.lowercased()) || searchText.isEmpty } )
     }
@@ -99,7 +99,7 @@ extension ListView {
     }
     
     func saveItems() {
-        // When saving a Context, always use the main thread
+        // When saving a Context, always use the main thread to avoid collisions
         DispatchQueue.main.async() {
             if managedObjectContext.hasChanges {
                 try? managedObjectContext.save()

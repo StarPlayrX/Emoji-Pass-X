@@ -86,7 +86,6 @@ struct ItemView: View {
     let smallestWidth = CGFloat(320.0)
     let labelColor2 = Color(UIColor.systemGray3)
     let labelColor3 = Color(UIColor.systemGray)
-    let pasteboard = UIPasteboard.general
 
     var body: some View {
         itemViewDetailView()
