@@ -8,6 +8,7 @@
 import SwiftUI
 import Foundation
 import CommonCrypto
+import CoreData
 
 public extension UITextField {
     override var textInputMode: UITextInputMode? {
@@ -82,5 +83,15 @@ extension Data {
                 key: key,
                 initializationVector: iv,
                 dataIn: ciphertext)
+    }
+}
+
+extension ListItem {
+    static func getFetchRequest() -> NSFetchRequest<ListItem> {
+        if let request = ListItem.fetchRequest() as? NSFetchRequest<ListItem> {
+            request.entity = ListItem.entity()
+            request.sortDescriptors = [NSSortDescriptor(key: "order", ascending: true)]
+            return request
+        }
     }
 }

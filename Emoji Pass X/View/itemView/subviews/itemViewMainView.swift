@@ -37,8 +37,8 @@ extension ItemView {
                     }
                     ToolbarItemGroup(placement: .bottomBar) {
                         Picker(String(), selection: $listItem.templateId) {
-                            ForEach(templateIds, id: \.self) {
-                                geometry.size.width == smallestWidth ? Text(template[$0].prefix(1)) : Text(template[$0].prefix(6))
+                            ForEach(Template.templateIds, id: \.self) {
+                                geometry.size.width == smallestWidth ? Text(Template.template[$0].prefix(1)) : Text(Template.template[$0].prefix(6))
                             }
                             .font(.largeTitle)
                             .pickerStyle(SegmentedPickerStyle())

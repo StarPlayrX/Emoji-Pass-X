@@ -1,5 +1,5 @@
 //
-//  listViewSearchView.swift
+//  listViewSearchBar.swift
 //  Emoji Pass X
 //
 //  Created by Todd Bruss on 3/27/21.
@@ -9,8 +9,7 @@ import SwiftUI
 
 extension ListView {
     
-    //MARK: searchStack
-    func searchStack() -> some View {
+    func listViewSearchBar() -> some View {
         HStack {
             TextField("Search", text: $searchText)
                 .padding(.leading, Device().iPhoneXSearch())
@@ -31,7 +30,7 @@ extension ListView {
                 Spacer()
                     .padding(.trailing, 16)
                 if isSearching {
-                    Button(action: {searchText = ""; hideKeyboard()}, label: {
+                    Button(action: {searchText = String(); hideKeyboard()}, label: {
                         Image(systemName: "xmark")
                             .padding(.vertical)
                             .padding(.trailing, 2)

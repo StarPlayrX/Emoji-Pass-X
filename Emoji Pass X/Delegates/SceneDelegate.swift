@@ -24,30 +24,33 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         }
     }
 
-    func sceneDidDisconnect(_ scene: UIScene) {}
+    func redundant() {
+        isGlobalDark = UIScreen.main.traitCollection.userInterfaceStyle == .dark
+        
+        // Hide Keyboard on iOS devices
+        if UIDevice.current.userInterfaceIdiom == .pad || UIDevice.current.userInterfaceIdiom == .phone {
+            UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+        }
+    }
+    
+    func sceneDidDisconnect(_ scene: UIScene) {
+        redundant()
+    }
 
     func sceneDidBecomeActive(_ scene: UIScene) {
-        isGlobalDark = UIScreen.main.traitCollection.userInterfaceStyle == .dark
-        hideKeyboard()
+        redundant()
     }
 
     func sceneWillResignActive(_ scene: UIScene) {
-        isGlobalDark = UIScreen.main.traitCollection.userInterfaceStyle == .dark
-        hideKeyboard()
+        redundant()
     }
 
     func sceneWillEnterForeground(_ scene: UIScene) {
-        isGlobalDark = UIScreen.main.traitCollection.userInterfaceStyle == .dark
-        hideKeyboard()
+        redundant()
     }
 
     func sceneDidEnterBackground(_ scene: UIScene) {
-        isGlobalDark = UIScreen.main.traitCollection.userInterfaceStyle == .dark
-        hideKeyboard()
-    }
-    
-    func hideKeyboard() {
-       UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+        redundant()
     }
 }
 

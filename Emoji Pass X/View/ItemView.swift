@@ -9,8 +9,10 @@ import SwiftUI
 import UIKit
 
 struct ItemView: View {
-    @Environment(\.presentationMode) var presentationMode
+    //CoreData | CloudKit
     @Environment(\.managedObjectContext) var managedObjectContext
+
+    @Environment(\.presentationMode) var presentationMode
     @Environment(\.colorScheme) var colorScheme
     @EnvironmentObject var security: Security
     @StateObject var privateKey = privateParts()

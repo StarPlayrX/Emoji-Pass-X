@@ -8,6 +8,8 @@
 import CoreData
 
 class ListItem: NSManagedObject {
+    
+    //MARK: In the clear items
     @NSManaged var order: Int
     @NSManaged var emoji: String
     @NSManaged var name: String
@@ -17,9 +19,11 @@ class ListItem: NSManagedObject {
     @NSManaged var star: Bool
     @NSManaged var lock: Bool
     @NSManaged var desc: String
+    
+    //MARK: Encrypted Private Key
     @NSManaged var id: Data
   
-    //MARK: Replacement Password Encrpyted Items
+    //MARK: Passwords Encrpyted Items
     @NSManaged var pUsername: Data
     @NSManaged var pPassword: Data
     @NSManaged var pWebsite: Data
@@ -27,7 +31,7 @@ class ListItem: NSManagedObject {
     @NSManaged var pPin: Data
     @NSManaged var pNotes: Data
 
-    //MARK: Replacement Card Encrpyted Items
+    //MARK: Bank Cards Encrpyted Items
     @NSManaged var cBankname: Data
     @NSManaged var cCardnumber: Data
     @NSManaged var cCvc: Data
@@ -35,7 +39,7 @@ class ListItem: NSManagedObject {
     @NSManaged var cFullname: Data
     @NSManaged var cNotes: Data
 
-    //MARK: Replacement Keys Encrpyted Items
+    //MARK: Software Keys Encrpyted Items
     @NSManaged var kSoftwarepkg: Data
     @NSManaged var kLicensekey: Data
     @NSManaged var kEmailaddress: Data
@@ -43,17 +47,3 @@ class ListItem: NSManagedObject {
     @NSManaged var kSeats: Data
     @NSManaged var kNotes: Data
 }
-
-extension ListItem {
-    static func getFetchRequest() -> NSFetchRequest<ListItem> {
-        if let request = ListItem.fetchRequest() as? NSFetchRequest<ListItem> {
-            request.entity = ListItem.entity()
-            request.sortDescriptors = [NSSortDescriptor(key: "order", ascending: true)]
-            return request
-        }
-    }
-}
-
-let template = ["💳 Cards", "🔒 Passwords", "🔑 Keys"]
-let templateIds = [0, 1, 2]
-var isGlobalDark = true

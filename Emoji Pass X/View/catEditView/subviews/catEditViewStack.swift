@@ -58,7 +58,7 @@ extension CatEditView {
                     if listItem.uuidString != "Stars" && listItem.uuidString != "Everything" {
                         
                         HStack {
-                            Text("Default template: \(template[selectedTemplate]).")
+                            Text("Default template: \(Template.template[selectedTemplate]).")
                                 .padding(.horizontal, horizontal + (margin * 1.5))
                                 .foregroundColor(labelColor)
                                 .padding(.bottom, -32)
@@ -108,9 +108,9 @@ extension CatEditView {
                     
                     ToolbarItemGroup(placement: .navigationBarTrailing) {
                         if UIDevice.current.userInterfaceIdiom == .mac || UIDevice.current.userInterfaceIdiom == .pad {
-                            Picker("", selection: $selectedTemplate) {
-                                ForEach(templateIds, id: \.self) {
-                                    geometry.size.width == smallestWidth ? Text(template[$0].prefix(1)) : Text(template[$0].prefix(6))
+                            Picker(String(), selection: $selectedTemplate) {
+                                ForEach(Template.templateIds, id: \.self) {
+                                    geometry.size.width == smallestWidth ? Text(Template.template[$0].prefix(1)) : Text(Template.template[$0].prefix(6))
                                 }
                                 .font(.largeTitle)
                                 .pickerStyle(SegmentedPickerStyle())
@@ -119,9 +119,9 @@ extension CatEditView {
                     }
                     
                     ToolbarItemGroup(placement: .bottomBar) {
-                        Picker("", selection: $selectedTemplate) {
-                            ForEach(templateIds, id: \.self) {
-                                geometry.size.width == smallestWidth ? Text(template[$0].prefix(1)) : Text(template[$0].prefix(6))
+                        Picker(String(), selection: $selectedTemplate) {
+                            ForEach(Template.templateIds, id: \.self) {
+                                geometry.size.width == smallestWidth ? Text(Template.template[$0].prefix(1)) : Text(Template.template[$0].prefix(6))
                             }
                             .font(.largeTitle)
                             .pickerStyle(SegmentedPickerStyle())

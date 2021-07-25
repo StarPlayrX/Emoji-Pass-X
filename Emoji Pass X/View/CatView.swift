@@ -6,14 +6,24 @@
 //
 import SwiftUI
 
-// https://www.hackingwithswift.com/quick-start/swiftui/two-way-bindings-in-swiftui Two Way Bindings
-// https://samwize.com/2020/03/27/how-to-use-binding-in-swiftui/ Bindings in depth
+// Creating and Combining Views
+// https://developer.apple.com/tutorials/swiftui/creating-and-combining-views
+
+// Two Way Bindings
+// https://www.hackingwithswift.com/quick-start/swiftui/two-way-bindings-in-swiftui
+
+// Bindings in depth
+// https://samwize.com/2020/03/27/how-to-use-binding-in-swiftui/
 struct CatView: View {
-    @FetchRequest(fetchRequest: ListItem.getFetchRequest()) var listItems: FetchedResults<ListItem>
+    //CoreData | CloudKit
+    @FetchRequest(fetchRequest: ListItem.getFetchRequest())
+    var listItems: FetchedResults<ListItem>
     @Environment(\.managedObjectContext) var managedObjectContext
+    
     @State private var showingAlert = false
     @State var searchText: String = ""
     @State var isSearching = false
+    
     @StateObject var security = Security()
     
     let name = "Name"
@@ -36,3 +46,10 @@ struct CatView: View {
     }
 }
 
+struct ContentView_Previews: PreviewProvider {
+    static var previews: some View {
+        Text("Welcome\n\nApple Natives")
+            .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
+            .multilineTextAlignment(.center)
+    }
+}

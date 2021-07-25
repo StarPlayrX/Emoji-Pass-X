@@ -12,7 +12,7 @@ extension ListView {
     func listViewStack() -> some View {
         VStack {
             List {
-                searchStack()
+                listViewSearchBar()
                 repeatView(detailListItems)
             }
             .padding(.leading, Device().iPhoneXLeading())
