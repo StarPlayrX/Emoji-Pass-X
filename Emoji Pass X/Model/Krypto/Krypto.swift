@@ -4,10 +4,8 @@
 //
 //  Created by Todd Bruss on 3/27/21.
 //
-
-import CommonCrypto
 import Foundation
-import UIKit
+import CommonCrypto
 
 protocol KryptoProtocol {
     func createEncryptedKey(emojiKey: String, key: Data) -> Data
@@ -17,17 +15,17 @@ protocol KryptoProtocol {
     func emojiParentKey() -> Data
     func emojiRecordKey() -> String
     func krypt(operation: Int, algorithm: Int, options: Int, key: Data, initializationVector: Data, dataIn: Data) -> Data?
-    func randomGenerateBytes(count: Int) -> Data?
+    func rndBytes(count: Int) -> Data?
 }
 
-struct Krypto {
+struct Krypto : KryptoProtocol {
     func createEncryptedKey(emojiKey: String, key: Data) -> Data {
-        let encryptedKey = Krypto().encrypt(string: emojiKey, key: key, encoding: .utf8)
+        let encryptedKey = encrypt(string: emojiKey, key: key, encoding: .utf8)
         return encryptedKey
     }
     
     func decryptEncryptedKey(emojiData: Data, key: Data) -> String {
-        let decryptedKey = Krypto().decrypt(data: emojiData, key: key, encoding: .utf8)
+        let decryptedKey = decrypt(data: emojiData, key: key, encoding: .utf8)
         return decryptedKey
     }
     

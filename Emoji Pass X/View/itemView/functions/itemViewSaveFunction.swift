@@ -21,6 +21,8 @@ extension ItemView {
         // save our encrypted data
         for child in mirror.children  {
             if let value = child.value as? String, !value.isEmpty, let key = child.label {
+                
+                // Encrypts 16 items and saves them via listItem 
                 let enKrypt = krypt.encrypt(string: value, key: privateKey.recordKey, encoding: .utf8)
                 listItem.setValue(enKrypt, forKey: key)
             }
