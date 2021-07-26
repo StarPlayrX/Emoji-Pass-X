@@ -9,42 +9,18 @@ import UIKit
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
+    let mac = Mac()
+    
     //MARK: Save Object
     @objc func save() {
         NotificationCenter.default.post(name: .save, object: nil)
     }
     
-    func buildMenu(_ builder: UIMenuBuilder){
-        if UIDevice.current.userInterfaceIdiom == .mac {
-            
-            let input = "S"
-            let saves = "Save"
-            
-            let refreshCommand = UIKeyCommand(
-                input: input,
-                modifierFlags: [.command],
-                action: #selector(save)
-            )
-            
-            refreshCommand.title = saves
-            
-            let saveDataMenu = UIMenu(
-                title: saves,
-                image: nil,
-                identifier: UIMenu.Identifier(saves),
-                options: .displayInline,
-                children: [refreshCommand]
-            )
-            
-            builder.insertChild(saveDataMenu, atStartOfMenu: .file)
-        }
-    }
-    
     override func buildMenu(with builder: UIMenuBuilder) {
         super.buildMenu(with: builder)
-        
+
         // Setup save menu
-        buildMenu(builder)
+        mac.buildMenu(builder)
     }
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
@@ -58,8 +34,5 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return UISceneConfiguration(name: "Default Configuration", sessionRole: connectingSceneSession.role)
     }
 
-    func application(_ application: UIApplication, didDiscardSceneSessions sceneSessions: Set<UISceneSession>) {
-    }
-    
-  
+    func application(_ application: UIApplication, didDiscardSceneSessions sceneSessions: Set<UISceneSession>) {}
 }
