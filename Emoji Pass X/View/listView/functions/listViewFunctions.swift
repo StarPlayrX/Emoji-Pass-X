@@ -7,15 +7,32 @@
 
 import SwiftUI
 
-extension ListView {
+protocol ListProtocol {
+    func getList(_ a: [ListItem], _ search: String) -> [ListItem]
+}
 
-    func getList(_ a: [ListItem]) -> [ListItem] {
-        a.filter( { "\($0.emoji)\($0.name)".lowercased().contains(searchText.lowercased()) || searchText.isEmpty } )
+struct ListStruct {
+    func getList(_ a: [ListItem], _ search: String) -> [ListItem] {
+        a.filter( {"\($0.emoji)\($0.name)".lowercased().contains(search.lowercased()) || search.isEmpty} )
     }
     
-    func canEdit() -> EditButton? {
-        coldFilter(detailListItems).isEmpty ? nil : EditButton()
+    // This may not be in use
+    func canEdit(listItems: FetchedResults<ListItem>, catItem: ListItem) -> EditButton? {
+        coldFilter(listItems, catItem: catItem).isEmpty ? nil : EditButton()
     }
+    
+    func coldFilter(_ a: FetchedResults<ListItem>, catItem: ListItem) -> [ListItem] {
+        if catItem.uuidString == "Stars" {
+            return a.filter({$0.isParent == false && $0.star == true})
+        } else if catItem.uuidString == "Everything" {
+            return a.filter({$0.isParent == false})
+        } else {
+            return a.filter({$0.uuidString == catItem.uuidString && $0.isParent == false})
+        }
+    }
+}
+
+extension ListView {
     
     func canCreate() -> Button<Image>? {
         catItem.uuidString != "Stars" && catItem.uuidString != "Everything" ? New() : nil
@@ -45,8 +62,9 @@ extension ListView {
     }
     
     func moveItem(from source: IndexSet, to destination: Int) {
+        let list = ListStruct()
         var item = coldFilter(detailListItems)
-        item = getList(item)
+        item = list.getList(item, searchText)
         item.move(fromOffsets: source, toOffset: destination)
         
         for i in 0..<item.count {
@@ -63,9 +81,11 @@ extension ListView {
     }
     
     func deleteItem(indexSet: IndexSet) {
+        let list = ListStruct()
+
         var indexIsValid = false
         var cf = coldFilter(detailListItems)
-        cf = getList(cf)
+        cf = list.getList(cf, searchText)
         
         if let source = indexSet.first {
             indexIsValid = cf.indices.contains(source)

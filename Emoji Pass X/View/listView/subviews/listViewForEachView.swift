@@ -9,8 +9,8 @@ import SwiftUI
 
 extension ListView {
     func listViewForEachView(_ a:  FetchedResults<ListItem>) -> some View {
-        
-        ForEach(getList(coldFilter(a)) , id: \.self) { item in
+                
+        ForEach(ListStruct().getList(coldFilter(a), searchText) , id: \.self) { item in
             NavigationLink(destination: ItemView(catItem: catItem, listItem: item)) {
                 
                 if !item.name.isEmpty {
