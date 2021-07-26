@@ -8,16 +8,43 @@ import UIKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
-    override func buildMenu(with builder: UIMenuBuilder) {
-        // Setup save menu
+    
+    //MARK: Save Object
+    @objc func save() {
+        NotificationCenter.default.post(name: .save, object: nil)
+    }
+    
+    func buildMenu(_ builder: UIMenuBuilder){
         if UIDevice.current.userInterfaceIdiom == .mac {
-            super.buildMenu(with: builder)
-            let refreshCommand = UIKeyCommand(input: "S", modifierFlags: [.command], action: #selector(save))
-            refreshCommand.title = "Save"
-            let saveDataMenu = UIMenu(title: "Save", image: nil, identifier: UIMenu.Identifier("Save"), options: .displayInline, children: [refreshCommand])
+            
+            let input = "S"
+            let saves = "Save"
+            
+            let refreshCommand = UIKeyCommand(
+                input: input,
+                modifierFlags: [.command],
+                action: #selector(save)
+            )
+            
+            refreshCommand.title = saves
+            
+            let saveDataMenu = UIMenu(
+                title: saves,
+                image: nil,
+                identifier: UIMenu.Identifier(saves),
+                options: .displayInline,
+                children: [refreshCommand]
+            )
+            
             builder.insertChild(saveDataMenu, atStartOfMenu: .file)
         }
+    }
+    
+    override func buildMenu(with builder: UIMenuBuilder) {
+        super.buildMenu(with: builder)
+        
+        // Setup save menu
+        buildMenu(builder)
     }
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
@@ -34,8 +61,5 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didDiscardSceneSessions sceneSessions: Set<UISceneSession>) {
     }
     
-    //MARK: Save Object
-    @objc func save() {
-        NotificationCenter.default.post(name: .save, object: nil)
-    }
+  
 }

@@ -6,8 +6,9 @@
 //
 
 import Foundation
+import UIKit
 
-struct Mac {
+class Mac {
     func macEmojiSelector() {
         #if targetEnvironment(macCatalyst)
             let commandControlMask = (CGEventFlags.maskCommand.rawValue | CGEventFlags.maskControl.rawValue)
