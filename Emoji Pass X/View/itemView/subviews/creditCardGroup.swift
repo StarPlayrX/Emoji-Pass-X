@@ -25,31 +25,31 @@ extension ItemView {
                     text: $record.cBankname,
                     copy: record.cBankname,
                     keys: UIKeyboardType.asciiCapable,
-                    cntx: UITextContentType.organizationName),
+                    type: UITextContentType.organizationName),
                 ItemViewRecords(
                     labl: card,
                     text: $record.cCardnumber,
                     copy: record.cCardnumber,
                     keys: UIKeyboardType.numbersAndPunctuation,
-                    cntx: UITextContentType.oneTimeCode),
+                    type: UITextContentType.oneTimeCode),
                 ItemViewRecords(
                     labl: fullName,
                     text: $record.cFullname,
                     copy: record.cFullname,
                     keys: UIKeyboardType.asciiCapable,
-                    cntx: UITextContentType.givenName),
+                    type: UITextContentType.givenName),
                 ItemViewRecords(
                     labl: cvc,
                     text: $record.cCvc,
                     copy: record.cCvc,
                     keys: UIKeyboardType.asciiCapable,
-                    cntx: UITextContentType.creditCardNumber),
+                    type: UITextContentType.creditCardNumber),
                 ItemViewRecords(
                     labl: exp,
                     text: $record.cExpdate,
                     copy: record.cExpdate,
                     keys: UIKeyboardType.numbersAndPunctuation,
-                    cntx: UITextContentType.nickname)
+                    type: UITextContentType.nickname)
             ]
             
             // MARK: https://developer.apple.com/documentation/swiftui/foreach
@@ -63,7 +63,7 @@ extension ItemView {
                     record.labl,
                     boundText: record.text,
                     keyboard: record.keys,
-                    textContentType: record.cntx,
+                    textContentType: record.type,
                     action: {Clipboard().copyToClipBoard(record.copy, hide: false)})
             }
         }

@@ -13,7 +13,7 @@ struct ItemViewRecords: Identifiable {
     var text: Binding<String>
     var copy: String
     var keys: UIKeyboardType
-    var cntx: UITextContentType
+    var type: UITextContentType
     var id: String { labl }
 }
 

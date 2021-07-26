@@ -25,31 +25,31 @@ extension ItemView {
                     text: $record.pUsername,
                     copy: record.pUsername,
                     keys: UIKeyboardType.asciiCapable,
-                    cntx: UITextContentType.username),
+                    type: UITextContentType.username),
                 ItemViewRecords(
                     labl: passWord,
                     text: $record.pPassword,
                     copy: record.pPassword,
                     keys: UIKeyboardType.asciiCapable,
-                    cntx: UITextContentType.password),
+                    type: UITextContentType.password),
                 ItemViewRecords(
                     labl: phone,
                     text: $record.pPhone,
                     copy: record.pPhone,
                     keys: UIKeyboardType.asciiCapable,
-                    cntx: UITextContentType.URL),
+                    type: UITextContentType.URL),
                 ItemViewRecords(
                     labl: web,
                     text: $record.pWebsite,
                     copy: record.pWebsite,
                     keys: UIKeyboardType.asciiCapable,
-                    cntx: UITextContentType.telephoneNumber),
+                    type: UITextContentType.telephoneNumber),
                 ItemViewRecords(
                     labl: pin,
                     text: $record.pPin,
                     copy: record.pPin,
                     keys: UIKeyboardType.numbersAndPunctuation,
-                    cntx: UITextContentType.oneTimeCode)
+                    type: UITextContentType.oneTimeCode)
             ]
             
             // MARK: https://developer.apple.com/documentation/swiftui/foreach
@@ -63,7 +63,7 @@ extension ItemView {
                     record.labl,
                     boundText: record.text,
                     keyboard: record.keys,
-                    textContentType: record.cntx,
+                    textContentType: record.type,
                     action: {Clipboard().copyToClipBoard(record.copy, hide: false)})
             }
         }
