@@ -24,7 +24,8 @@ extension ItemView {
         
         if listItem.uuidString.isEmpty {listItem.uuidString = catItem.uuidString}
         
-        //MARK: Transition to new way
+        //MARK: - listItem.id = our Encrypted Key
+        //MARK: Each Record has its own Encrpytion Key and get's encrypted with our Private Key
         if listItem.id.isEmpty {
             let emojiKey    = emojiRecordKey()
             let emojiData   = createEncryptedKey(emojiKey: emojiKey)
