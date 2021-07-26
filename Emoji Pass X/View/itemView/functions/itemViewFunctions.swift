@@ -9,16 +9,6 @@ import Foundation
 
 extension ItemView {
     
-    func createEncryptedKey(emojiKey: String) -> Data {
-        let encryptedKey = Krypto().encrypt(string: emojiKey, key: privateKey.parentKey, encoding: .utf8)
-        return encryptedKey
-    }
-    
-    func decryptEncryptedKey(emojiData: Data) -> String {
-        let decryptedKey = Krypto().decrypt(data: emojiData, key: privateKey.parentKey, encoding: .utf8)
-        return decryptedKey
-    }
-    
     //MARK: Function to keep text length in limits
     func limitText(_ charLimit : Int = 1 ) {
         if listItem.emoji.count > charLimit {
@@ -26,35 +16,5 @@ extension ItemView {
             listItem.emoji = String( usePrefix ? listItem.emoji.prefix(charLimit) : listItem.emoji.suffix(charLimit) )
         }
         prevEmoji = listItem.emoji
-    }
-    
-    //MARK: Consistently creates our MasterKey for the entire app
-    func emojiParentKey() -> Data {
-        let pool = Emoji().pool
-        let a = 2
-        let b = 1
-        let d = Int(pool.count / 8) - a
-        var c = pool.count - b
-        var e = String()
-        
-        for _ in 1...8 {
-            c -= d
-            e += pool[c]
-        }
-        
-        return e.data
-    }
-    
-    //MARK: Random Emoji String used for each Record
-    func emojiRecordKey() -> String {
-        let pool = Emoji().pool
-        var a = String()
-        
-        for _ in 1...8 {
-            let b = Int.random(in: 0..<pool.count)
-            a += pool[b]
-        }
-        
-        return a
     }
 }

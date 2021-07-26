@@ -1,5 +1,5 @@
 //
-//  Krypto.swift
+//  KryptoClass.swift
 //  Emoji Pass X
 //
 //  Created by Todd Bruss on 3/27/21.
@@ -9,7 +9,23 @@ import CommonCrypto
 import Foundation
 import UIKit
 
-class Krypto {
+protocol KryptoProtocol {
+    func createEncryptedKey(emojiKey: String, key: Data) -> Data
+    func decryptEncryptedKey(emojiData: Data, key: Data) -> String
+    func emojiParentKey() -> Data
+}
+
+struct Krypto {
+    func createEncryptedKey(emojiKey: String, key: Data) -> Data {
+        let encryptedKey = Krypto().encrypt(string: emojiKey, key: key, encoding: .utf8)
+        return encryptedKey
+    }
+    
+    func decryptEncryptedKey(emojiData: Data, key: Data) -> String {
+        let decryptedKey = Krypto().decrypt(data: emojiData, key: key, encoding: .utf8)
+        return decryptedKey
+    }
+    
     func encrypt(string: String, key: Data, encoding: String.Encoding) -> Data {
         guard !string.isEmpty,
               let secret = string.data(using: encoding),
@@ -31,6 +47,37 @@ class Krypto {
         
         return decrypted
     }
+    
+    //MARK: - Consistently creates our MasterKey for the entire app
+    func emojiParentKey() -> Data {
+        let pool = Emoji().pool
+        let a = 2
+        let b = 1
+        let d = Int(pool.count / 8) - a
+        var c = pool.count - b
+        var e = String()
+        
+        for _ in 1...8 {
+            c -= d
+            e += pool[c]
+        }
+        
+        return e.data
+    }
+    
+    //MARK: - Random Emoji String used for each Record
+    func emojiRecordKey() -> String {
+        let pool = Emoji().pool
+        var a = String()
+        
+        for _ in 1...8 {
+            let b = Int.random(in: 0..<pool.count)
+            a += pool[b]
+        }
+        
+        return a
+    }
+    
     
     // https://www.splinter.com.au/2019/06/09/pure-swift-common-crypto-aes-encryption/ Chris Hulbert
     
