@@ -13,13 +13,13 @@ extension Data {
     var bytes: [UInt8] {[UInt8](self)}
 
     func encrypt(key: Data) -> Data? {
-        let krpto = Krypto()
+        let krypto = Krypto()
         
         guard
-            let iv = krpto.randomGenerateBytes(count: kCCBlockSizeAES128),
+            let iv = krypto.rndBytes(count: kCCBlockSizeAES128),
             
-            let ciphertext =
-                krpto.crypt(
+            let cipher =
+                krypto.krypt(
                     operation: kCCEncrypt,
                     algorithm: kCCAlgorithmAES,
                     options:   kCCOptionPKCS7Padding,
@@ -30,11 +30,11 @@ extension Data {
             return nil
         }
         
-        return iv + ciphertext
+        return iv + cipher
     }
     
     func decrypt(key: Data) -> Data? {
-        let krpto = Krypto()
+        let krypto = Krypto()
         
         guard
             count > kCCBlockSizeAES128
@@ -46,7 +46,7 @@ extension Data {
         let ciphertext = suffix(from: kCCBlockSizeAES128)
         
         return
-            krpto.crypt(
+            krypto.krypt(
                 operation: kCCDecrypt,
                 algorithm: kCCAlgorithmAES,
                 options: kCCOptionPKCS7Padding,

@@ -12,7 +12,12 @@ import UIKit
 protocol KryptoProtocol {
     func createEncryptedKey(emojiKey: String, key: Data) -> Data
     func decryptEncryptedKey(emojiData: Data, key: Data) -> String
+    func encrypt(string: String, key: Data, encoding: String.Encoding) -> Data
+    func decrypt(data: Data, key: Data, encoding: String.Encoding) -> String
     func emojiParentKey() -> Data
+    func emojiRecordKey() -> String
+    func krypt(operation: Int, algorithm: Int, options: Int, key: Data, initializationVector: Data, dataIn: Data) -> Data?
+    func randomGenerateBytes(count: Int) -> Data?
 }
 
 struct Krypto {
@@ -81,7 +86,7 @@ struct Krypto {
     
     // https://www.splinter.com.au/2019/06/09/pure-swift-common-crypto-aes-encryption/ Chris Hulbert
     
-    func crypt(operation: Int, algorithm: Int, options: Int, key: Data, initializationVector: Data, dataIn: Data) -> Data? {
+    func krypt(operation: Int, algorithm: Int, options: Int, key: Data, initializationVector: Data, dataIn: Data) -> Data? {
         
         key.withUnsafeBytes { keyUnsafeRawBufferPointer in
             dataIn.withUnsafeBytes { dataInUnsafeRawBufferPointer in
@@ -121,7 +126,7 @@ struct Krypto {
         }
     }
     
-    func randomGenerateBytes(count: Int) -> Data? {
+    func rndBytes(count: Int) -> Data? {
         let bytes = UnsafeMutableRawPointer.allocate(byteCount: count, alignment: 1)
         defer { bytes.deallocate() }
         
