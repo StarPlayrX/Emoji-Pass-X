@@ -1,5 +1,5 @@
 # Emoji-Pass-X
-The best Top Secret Password Manager for iOS and macOS.
+A Top Secret Password Manager for iOS, iPadOS and macOS.
 Every record has its own encrpytion key.
 That key is encrypted with a private key based on a unqiue algorithm.
 Data is encrypted end-ot-end by Apple using the user's iCloud account.
