@@ -16,7 +16,7 @@ struct ItemView: View {
     @Environment(\.colorScheme) var colorScheme
     
     @EnvironmentObject var security: Security
-    @StateObject var privateKey = privateParts()
+    @StateObject var privateKey = PrivateKeys()
     @ObservedObject var catItem: ListItem
     @ObservedObject var listItem: ListItem
 

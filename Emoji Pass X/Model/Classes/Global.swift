@@ -4,7 +4,6 @@
 //
 //  Created by Todd Bruss on 7/24/21.
 //
-
 import Foundation
 
 public class Global {
