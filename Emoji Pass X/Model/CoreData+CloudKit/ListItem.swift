@@ -9,7 +9,7 @@ import CoreData
 
 // CoreData + CloudKit + DataModel
 class ListItem: NSManagedObject {
-    
+
     //MARK: - In the clear items
     @NSManaged var order: Int
     @NSManaged var emoji: String

@@ -4,12 +4,12 @@
 //
 //  Created by Todd Bruss on 3/27/21.
 //
-
 import SwiftUI
 
 extension ItemView {
     
-    func clearNewText() {
+    func load() {
+        
         let krypt = Krypto()
         
         privateKey.parentKey = emojiParentKey()
@@ -37,13 +37,13 @@ extension ItemView {
                 listItem.id   = emojiData
             }
         }
-        
-        // Todo create a loop for this
-        // https://newbedev.com/loop-through-swift-struct-to-get-keys-and-values
-        
-        //decrypted Key
+            
+        // Decrypted Key
         privateKey.recordKey = decryptEncryptedKey(emojiData: listItem.id).data
         
+        // MARK: - ToDo: Adopt the Record struct in ItemView then we can loop over and fill in the data
+        // https://newbedev.com/loop-through-swift-struct-to-get-keys-and-values
+
         pUsername     = krypt.decrypt(data: listItem.pUsername,     key: privateKey.recordKey, encoding: .utf8)
         pPassword     = krypt.decrypt(data: listItem.pPassword,     key: privateKey.recordKey, encoding: .utf8)
         pWebsite      = krypt.decrypt(data: listItem.pWebsite,      key: privateKey.recordKey, encoding: .utf8)

@@ -16,7 +16,7 @@ extension ItemView {
                     itemViewMainBody(geometry: geometry)
                 }
                 .onDisappear(perform: {save(shouldHideKeyboard: true)} )
-                .onAppear(perform: clearNewText )
+                .onAppear(perform: load )
                 .toolbar {
                     ToolbarItemGroup(placement: .navigationBarLeading) {
                         if UIDevice.current.userInterfaceIdiom == .mac || UIDevice.current.userInterfaceIdiom == .pad {

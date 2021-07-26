@@ -10,8 +10,7 @@ import SwiftUI
 struct ListView: View {
     
     // CoreData + CloudKit
-    @FetchRequest(fetchRequest: ListItem.getFetchRequest())
-    var detailListItems: FetchedResults<ListItem>
+    @FetchRequest(fetchRequest: ListItem.getFetchRequest())var detailListItems: FetchedResults<ListItem>
     @Environment(\.managedObjectContext) var managedObjectContext
 
     @Environment(\.presentationMode) var presentationMode

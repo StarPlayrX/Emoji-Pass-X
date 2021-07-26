@@ -18,8 +18,7 @@ import SwiftUI
 struct CatView: View {
     
     //CoreData + CloudKit
-    @FetchRequest(fetchRequest: ListItem.getFetchRequest())
-    var listItems: FetchedResults<ListItem>
+    @FetchRequest(fetchRequest: ListItem.getFetchRequest())var listItems: FetchedResults<ListItem>
     @Environment(\.managedObjectContext) var managedObjectContext
     
     @State private var showingAlert = false

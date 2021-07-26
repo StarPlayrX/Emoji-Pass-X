@@ -34,11 +34,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
     
     func sceneDidDisconnect(_ scene: UIScene) {
-        redundant()
     }
 
     func sceneDidBecomeActive(_ scene: UIScene) {
-        redundant()
     }
 
     func sceneWillResignActive(_ scene: UIScene) {
@@ -50,7 +48,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
 
     func sceneDidEnterBackground(_ scene: UIScene) {
-        redundant()
     }
 }
 
