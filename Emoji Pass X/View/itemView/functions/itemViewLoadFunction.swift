@@ -25,14 +25,15 @@ extension ItemView {
         if listItem.uuidString.isEmpty {listItem.uuidString = catItem.uuidString}
         
         //MARK: - listItem.id = our Encrypted Key
-        //MARK: Each Record has its own Encrpytion Key and get's encrypted with our Private Key
+        /// Each Record has its own Encrpytion Key and get's encrypted with our Private Key
         if listItem.id.isEmpty {
-            let emojiKey    = emojiRecordKey()
-            let emojiData   = createEncryptedKey(emojiKey: emojiKey)
+            let emojiKey         = emojiRecordKey()
+            let emojiData        = createEncryptedKey(emojiKey: emojiKey)
             privateKey.recordStr = decryptEncryptedKey(emojiData: emojiData)
-            listItem.id  = emojiData
+            listItem.id          = emojiData
         } else {
             privateKey.recordStr = decryptEncryptedKey(emojiData: listItem.id)
+            
             if privateKey.recordStr.isEmpty || privateKey.recordStr.count != 8 {
                 let emojiKey  = emojiRecordKey()
                 let emojiData = createEncryptedKey(emojiKey: emojiKey)
@@ -40,7 +41,7 @@ extension ItemView {
             }
         }
         
-        // Decrypted Key
+        // Decrypted Record Key
         privateKey.recordKey = decryptEncryptedKey(emojiData: listItem.id).data
         
         // https://newbedev.com/loop-through-swift-struct-to-get-keys-and-values
