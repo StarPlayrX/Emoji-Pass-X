@@ -9,33 +9,21 @@ import SwiftUI
 
 protocol ListProtocol {
     func getList(_ a: [ListItem], _ search: String) -> [ListItem]
-    func canEdit(listItems: FetchedResults<ListItem>, catItem: ListItem) -> EditButton?
-    func coldFilter(_ a: FetchedResults<ListItem>, catItem: ListItem) -> [ListItem]
 }
 
-// MARK: - To do Migrate ListView functions to ListStruct to be allow it to be testable
 struct ListStruct : ListProtocol {
     func getList(_ a: [ListItem], _ search: String) -> [ListItem] {
         a.filter( {"\($0.emoji)\($0.name)".lowercased().contains(search.lowercased()) || search.isEmpty} )
     }
-    
-    func canEdit(listItems: FetchedResults<ListItem>, catItem: ListItem) -> EditButton? {
-        coldFilter(listItems, catItem: catItem).isEmpty ? nil : EditButton()
-    }
-    
-    func coldFilter(_ a: FetchedResults<ListItem>, catItem: ListItem) -> [ListItem] {
-        if catItem.uuidString == "Stars" {
-            return a.filter({$0.isParent == false && $0.star == true})
-        } else if catItem.uuidString == "Everything" {
-            return a.filter({$0.isParent == false})
-        } else {
-            return a.filter({$0.uuidString == catItem.uuidString && $0.isParent == false})
-        }
-    }
 }
 
+// MARK: - To do Migrate ListView functions to ListStruct to be allow it to be testable
 extension ListView {
 
+    func canEdit() -> EditButton? {
+        coldFilter(detailListItems).isEmpty ? nil : EditButton()
+    }
+    
     func canCreate() -> Button<Image>? {
         catItem.uuidString != "Stars" && catItem.uuidString != "Everything" ? New() : nil
     }
