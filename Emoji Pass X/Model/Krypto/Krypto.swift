@@ -93,29 +93,30 @@ struct Krypto : KryptoProtocol {
                     let dataOutSize: Int = dataIn.count + kCCBlockSizeAES128 * 2
                     
                     let dataOut = UnsafeMutableRawPointer.allocate(
-                            byteCount: dataOutSize,
-                            alignment: 1)
+                        byteCount: dataOutSize,
+                        alignment: 1)
                     defer {dataOut.deallocate()}
                     
                     var dataOutMoved: Int = 0
                     
                     guard
                         let success =
-                            Optional(CCCrypt(
-                                        CCOperation(operation),
-                                        CCAlgorithm(algorithm),
-                                        CCOptions(options),
-                                        keyUnsafeRawBufferPointer.baseAddress,
-                                        key.count,
-                                        ivUnsafeRawBufferPointer.baseAddress,
-                                        dataInUnsafeRawBufferPointer.baseAddress,
-                                        dataIn.count,
-                                        dataOut,
-                                        dataOutSize,
-                                        &dataOutMoved)),
+                            Optional(
+                                CCCrypt(
+                                    CCOperation(operation),
+                                    CCAlgorithm(algorithm),
+                                    CCOptions(options),
+                                    keyUnsafeRawBufferPointer.baseAddress,
+                                    key.count,
+                                    ivUnsafeRawBufferPointer.baseAddress,
+                                    dataInUnsafeRawBufferPointer.baseAddress,
+                                    dataIn.count,
+                                    dataOut,
+                                    dataOutSize,
+                                    &dataOutMoved)),
                         success == kCCSuccess
                     else {
-                         return nil
+                        return nil
                     }
                     
                     return Data(bytes: dataOut, count: dataOutMoved)

@@ -219,8 +219,8 @@
 		2D89E0C025EB0BB400939877 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				6FD29CBF26AF00AB003687C9 /* Krypto */,
 				6F04075D26AC9B2A00309F69 /* CoreData+CloudKit */,
+				6FD29CBF26AF00AB003687C9 /* Krypto */,
 				6F04076126AC9FF400309F69 /* Structs */,
 				6F04076026AC9FE500309F69 /* Classes */,
 				6F04076226ACA67B00309F69 /* Extensions */,
