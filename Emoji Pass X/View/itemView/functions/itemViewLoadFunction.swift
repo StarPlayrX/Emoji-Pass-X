@@ -44,6 +44,8 @@ extension ItemView {
         privateKey.recordKey = decryptEncryptedKey(emojiData: listItem.id).data
         
         // https://newbedev.com/loop-through-swift-struct-to-get-keys-and-values
+        
+        // Load our decrypted data
         let mirror = Mirror(reflecting: record)
         
         for child in mirror.children  {

@@ -33,6 +33,8 @@ class Krypto {
     }
     
     // https://www.splinter.com.au/2019/06/09/pure-swift-common-crypto-aes-encryption/ Chris Hulbert
+    
+    // we simplified this the best we could. It would be great to remove the nesting 
     func crypt(operation: Int, algorithm: Int, options: Int, key: Data, initializationVector: Data, dataIn: Data) -> Data? {
         
         key.withUnsafeBytes { keyUnsafeRawBufferPointer in

@@ -18,6 +18,7 @@ extension ItemView {
         // https://newbedev.com/loop-through-swift-struct-to-get-keys-and-values
         let mirror = Mirror(reflecting: record)
         
+        // save our encrypted data
         for child in mirror.children  {
             if let value = child.value as? String, !value.isEmpty, let key = child.label {
                 let enKrypt = krypt.encrypt(string: value, key: privateKey.recordKey, encoding: .utf8)
