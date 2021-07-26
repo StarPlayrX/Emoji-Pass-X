@@ -15,12 +15,12 @@ extension ItemView {
                     itemViewHeader(geometry: geometry)
                     itemViewMainBody(geometry: geometry)
                 }
-                .onDisappear(perform: {save(shouldHideKeyboard: true)} )
-                .onAppear(perform: load )
+                .onDisappear(perform: {save(shouldHideKeyboard: true, record)} )
+                .onAppear(perform: {load(rec: record)} )
                 .toolbar {
                     ToolbarItemGroup(placement: .navigationBarLeading) {
                         if UIDevice.current.userInterfaceIdiom == .mac || UIDevice.current.userInterfaceIdiom == .pad {
-                            Button(action: {security.isListItemViewSaved = true; save()}) {Text("Save")}
+                            Button(action: {security.isListItemViewSaved = true; save(record)}) {Text("Save")}
                         }
                         
                         if UIDevice.current.userInterfaceIdiom == .mac {
@@ -28,10 +28,10 @@ extension ItemView {
                         }
                     }
                     ToolbarItemGroup(placement: .navigationBarTrailing) {
-                        Button(action: {listItem.lock = !listItem.lock;save()}){
+                        Button(action: {listItem.lock = !listItem.lock;save(record)}){
                             listItem.lock ? Image(systemName: "lock.fill") : Image(systemName: "lock.open")
                         }
-                        Button(action: {listItem.star = !listItem.star;save()}){
+                        Button(action: {listItem.star = !listItem.star;save(record)}){
                             listItem.star ? Image(systemName: "star.fill") : Image(systemName: "star")
                         }
                     }
@@ -59,7 +59,7 @@ extension ItemView {
         }
         .onReceive(NotificationCenter.default.publisher(for: UIApplication.didEnterBackgroundNotification)) { _ in
             hideKeyboard()
-            save()
+            save(record)
             presentationMode.wrappedValue.dismiss()
         }
         .animation(.default)

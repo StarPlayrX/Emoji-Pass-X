@@ -14,7 +14,7 @@ extension ItemView {
         Group {
             notesEditor(
                 "kNotes",
-                note: $kNotes,
+                note: $record.kNotes,
                 keyboard: UIKeyboardType.alphabet,
                 textContentType: UITextContentType.sublocality,
                 hideLabels: hideLabels)
@@ -22,32 +22,32 @@ extension ItemView {
             let records : [ItemViewRecords] = [
                 ItemViewRecords(
                     labl: keypkg,
-                    text: $kSoftwarepkg,
-                    copy: kSoftwarepkg,
+                    text: $record.kSoftwarepkg,
+                    copy: record.kSoftwarepkg,
                     keys: UIKeyboardType.asciiCapable,
                     cntx: UITextContentType.organizationName),
                 ItemViewRecords(
                     labl: keylic,
-                    text: $kLicensekey,
-                    copy: kLicensekey,
+                    text: $record.kLicensekey,
+                    copy: record.kLicensekey,
                     keys: UIKeyboardType.asciiCapable,
                     cntx: UITextContentType.givenName),
                 ItemViewRecords(
                     labl: keyemail,
-                    text: $kEmailaddress,
-                    copy: kEmailaddress,
+                    text: $record.kEmailaddress,
+                    copy: record.kEmailaddress,
                     keys: UIKeyboardType.asciiCapable,
                     cntx: UITextContentType.emailAddress),
                 ItemViewRecords(
                     labl: keyweb,
-                    text: $kWebaddress,
-                    copy: kWebaddress,
+                    text: $record.kWebaddress,
+                    copy: record.kWebaddress,
                     keys: UIKeyboardType.asciiCapable,
                     cntx: UITextContentType.URL),
                 ItemViewRecords(
                     labl: keyseats,
-                    text: $kSeats,
-                    copy: kSeats,
+                    text: $record.kSeats,
+                    copy: record.kSeats,
                     keys: UIKeyboardType.numbersAndPunctuation,
                     cntx: UITextContentType.nickname)
             ]

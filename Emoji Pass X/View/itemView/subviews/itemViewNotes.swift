@@ -18,13 +18,13 @@ extension ItemView {
             
             switch text {
             case "pNotes":
-                Button(action: {clip.copyToClipBoard(pNotes, hide: true)}) {Image(systemName: clipBoard)}
+                Button(action: {clip.copyToClipBoard(record.pNotes, hide: true)}) {Image(systemName: clipBoard)}
             case "cNotes":
-                Button(action: {clip.copyToClipBoard(cNotes, hide: true)}) {Image(systemName: clipBoard)}
+                Button(action: {clip.copyToClipBoard(record.cNotes, hide: true)}) {Image(systemName: clipBoard)}
             case "kNotes":
-                Button(action: {clip.copyToClipBoard(kNotes, hide: true)}) {Image(systemName: clipBoard)}
+                Button(action: {clip.copyToClipBoard(record.kNotes, hide: true)}) {Image(systemName: clipBoard)}
             default:
-                Button(action: {clip.copyToClipBoard(cNotes, hide: true)}) {Image(systemName: clipBoard)}
+                Button(action: {clip.copyToClipBoard(record.cNotes, hide: true)}) {Image(systemName: clipBoard)}
             }
             
 

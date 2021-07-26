@@ -21,31 +21,8 @@ struct ItemView: View {
     @ObservedObject var listItem: ListItem
 
     @State var prevEmoji : String = String()
-
-    //MARK: New Password Items
-    @State var pUsername: String = String()
-    @State var pPassword: String = String()
-    @State var pWebsite : String = String()
-    @State var pPhone   : String = String()
-    @State var pPin     : String = String()
-    @State var pNotes   : String = String()
-
-    //MARK: New Password Items
-    @State var cBankname  : String = String()
-    @State var cCardnumber: String = String()
-    @State var cFullname  : String = String()
-    @State var cCvc       : String = String()
-    @State var cExpdate   : String = String()
-    @State var cNotes     : String = String()
-
-    //MARK: New License Key Items
-    @State var kSoftwarepkg  : String = String()
-    @State var kLicensekey   : String = String()
-    @State var kEmailaddress : String = String()
-    @State var kWebaddress   : String = String()
-    @State var kSeats        : String = String()
-    @State var kNotes        : String = String()
-
+    @State var record = Record()
+    
     //MARK: Constants
     let emoji = ":)"
     let newRecord = "New Record"

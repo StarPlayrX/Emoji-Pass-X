@@ -12,10 +12,9 @@ extension ItemView {
     func creditCardGroup(_ hideLabels: Bool) -> some View {
         
         Group {
-            
             notesEditor(
                 "cNotes",
-                note: $cNotes,
+                note: $record.cNotes,
                 keyboard: UIKeyboardType.alphabet,
                 textContentType: UITextContentType.sublocality,
                 hideLabels: hideLabels)
@@ -23,32 +22,32 @@ extension ItemView {
             let records : [ItemViewRecords] = [
                 ItemViewRecords(
                     labl: bank,
-                    text: $cBankname,
-                    copy: cBankname,
+                    text: $record.cBankname,
+                    copy: record.cBankname,
                     keys: UIKeyboardType.asciiCapable,
                     cntx: UITextContentType.organizationName),
                 ItemViewRecords(
                     labl: card,
-                    text: $cCardnumber,
-                    copy: cCardnumber,
+                    text: $record.cCardnumber,
+                    copy: record.cCardnumber,
                     keys: UIKeyboardType.numbersAndPunctuation,
                     cntx: UITextContentType.oneTimeCode),
                 ItemViewRecords(
                     labl: fullName,
-                    text: $cFullname,
-                    copy: cFullname,
+                    text: $record.cFullname,
+                    copy: record.cFullname,
                     keys: UIKeyboardType.asciiCapable,
                     cntx: UITextContentType.givenName),
                 ItemViewRecords(
                     labl: cvc,
-                    text: $cCvc,
-                    copy: cCvc,
+                    text: $record.cCvc,
+                    copy: record.cCvc,
                     keys: UIKeyboardType.asciiCapable,
                     cntx: UITextContentType.creditCardNumber),
                 ItemViewRecords(
                     labl: exp,
-                    text: $cExpdate,
-                    copy: cExpdate,
+                    text: $record.cExpdate,
+                    copy: record.cExpdate,
                     keys: UIKeyboardType.numbersAndPunctuation,
                     cntx: UITextContentType.nickname)
             ]

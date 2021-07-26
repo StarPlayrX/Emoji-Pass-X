@@ -14,7 +14,7 @@ extension ItemView {
         Group {
             notesEditor(
                 "pNotes",
-                note: $pNotes,
+                note: $record.pNotes,
                 keyboard: UIKeyboardType.alphabet,
                 textContentType: UITextContentType.sublocality,
                 hideLabels: hideLabels)
@@ -22,32 +22,32 @@ extension ItemView {
             let records : [ItemViewRecords] = [
                 ItemViewRecords(
                     labl: userName,
-                    text: $pUsername,
-                    copy: pUsername,
+                    text: $record.pUsername,
+                    copy: record.pUsername,
                     keys: UIKeyboardType.asciiCapable,
                     cntx: UITextContentType.username),
                 ItemViewRecords(
                     labl: passWord,
-                    text: $pPassword,
-                    copy: pPassword,
+                    text: $record.pPassword,
+                    copy: record.pPassword,
                     keys: UIKeyboardType.asciiCapable,
                     cntx: UITextContentType.password),
                 ItemViewRecords(
                     labl: phone,
-                    text: $pPhone,
-                    copy: pPhone,
+                    text: $record.pPhone,
+                    copy: record.pPhone,
                     keys: UIKeyboardType.asciiCapable,
                     cntx: UITextContentType.URL),
                 ItemViewRecords(
                     labl: web,
-                    text: $pWebsite,
-                    copy: pWebsite,
+                    text: $record.pWebsite,
+                    copy: record.pWebsite,
                     keys: UIKeyboardType.asciiCapable,
                     cntx: UITextContentType.telephoneNumber),
                 ItemViewRecords(
                     labl: pin,
-                    text: $pPin,
-                    copy: pPin,
+                    text: $record.pPin,
+                    copy: record.pPin,
                     keys: UIKeyboardType.numbersAndPunctuation,
                     cntx: UITextContentType.oneTimeCode)
             ]
