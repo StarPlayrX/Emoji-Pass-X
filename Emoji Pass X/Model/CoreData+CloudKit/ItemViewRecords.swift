@@ -5,7 +5,7 @@
 //  Created by Todd Bruss on 7/26/21.
 //
 
-import Foundation
+import SwiftUI
 
 /// This is used on our ItemView's Records / UI
 struct ItemViewRecords: Identifiable {
