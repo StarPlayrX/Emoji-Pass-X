@@ -19,32 +19,32 @@ extension ItemView {
                 textContentType: UITextContentType.sublocality,
                 hideLabels: hideLabels)
          
-            let records : [ItemViewRecords] = [
-                ItemViewRecords(
+            let records : [ItemViewItems] = [
+                ItemViewItems(
                     labl: bank,
                     text: $record.cBankname,
                     copy: record.cBankname,
                     keys: UIKeyboardType.asciiCapable,
                     type: UITextContentType.organizationName),
-                ItemViewRecords(
+                ItemViewItems(
                     labl: card,
                     text: $record.cCardnumber,
                     copy: record.cCardnumber,
                     keys: UIKeyboardType.numbersAndPunctuation,
                     type: UITextContentType.oneTimeCode),
-                ItemViewRecords(
+                ItemViewItems(
                     labl: fullName,
                     text: $record.cFullname,
                     copy: record.cFullname,
                     keys: UIKeyboardType.asciiCapable,
                     type: UITextContentType.givenName),
-                ItemViewRecords(
+                ItemViewItems(
                     labl: cvc,
                     text: $record.cCvc,
                     copy: record.cCvc,
                     keys: UIKeyboardType.asciiCapable,
                     type: UITextContentType.creditCardNumber),
-                ItemViewRecords(
+                ItemViewItems(
                     labl: exp,
                     text: $record.cExpdate,
                     copy: record.cExpdate,

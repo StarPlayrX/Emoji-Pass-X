@@ -19,32 +19,32 @@ extension ItemView {
                 textContentType: UITextContentType.sublocality,
                 hideLabels: hideLabels)
             
-            let records : [ItemViewRecords] = [
-                ItemViewRecords(
+            let records : [ItemViewItems] = [
+                ItemViewItems(
                     labl: userName,
                     text: $record.pUsername,
                     copy: record.pUsername,
                     keys: UIKeyboardType.asciiCapable,
                     type: UITextContentType.username),
-                ItemViewRecords(
+                ItemViewItems(
                     labl: passWord,
                     text: $record.pPassword,
                     copy: record.pPassword,
                     keys: UIKeyboardType.asciiCapable,
                     type: UITextContentType.password),
-                ItemViewRecords(
+                ItemViewItems(
                     labl: phone,
                     text: $record.pPhone,
                     copy: record.pPhone,
                     keys: UIKeyboardType.asciiCapable,
                     type: UITextContentType.URL),
-                ItemViewRecords(
+                ItemViewItems(
                     labl: web,
                     text: $record.pWebsite,
                     copy: record.pWebsite,
                     keys: UIKeyboardType.asciiCapable,
                     type: UITextContentType.telephoneNumber),
-                ItemViewRecords(
+                ItemViewItems(
                     labl: pin,
                     text: $record.pPin,
                     copy: record.pPin,

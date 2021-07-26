@@ -22,7 +22,6 @@
 		2D89E0A225EAD68E00939877 /* ItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D89E0A025EAD68E00939877 /* ItemView.swift */; };
 		2D8D534A25F41A3B00A5F397 /* Emojis.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D8D534925F41A3B00A5F397 /* Emojis.swift */; };
 		2DA9AD5725EB158E00A2633F /* Krypto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA9AD5625EB158E00A2633F /* Krypto.swift */; };
-		6F04075F26AC9B5A00309F69 /* DataManagement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F04075E26AC9B5A00309F69 /* DataManagement.swift */; };
 		6F04076C26ACB00C00309F69 /* ButtonStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F04076B26ACB00C00309F69 /* ButtonStyles.swift */; };
 		6F04076E26ACDE3400309F69 /* catViewiPadPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F04076D26ACDE3400309F69 /* catViewiPadPanel.swift */; };
 		6F04077026ACDF9E00309F69 /* catViewSignOnButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F04076F26ACDF9E00309F69 /* catViewSignOnButton.swift */; };
@@ -64,7 +63,8 @@
 		6FA9CEAC2610F58C006DBB32 /* Mac.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FA9CEAB2610F58C006DBB32 /* Mac.swift */; };
 		6FCCF6E226AA442B0032FBF5 /* Record.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FCCF6E126AA442B0032FBF5 /* Record.swift */; };
 		6FD29CC326AF0143003687C9 /* KryptoExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FD29CC226AF0143003687C9 /* KryptoExtension.swift */; };
-		6FD29CC526AF182C003687C9 /* ItemViewRecords.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FD29CC426AF182C003687C9 /* ItemViewRecords.swift */; };
+		6FD29CC526AF182C003687C9 /* ItemViewItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FD29CC426AF182C003687C9 /* ItemViewItems.swift */; };
+		6FD29CC726AF31BC003687C9 /* DataManagement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FD29CC626AF31BC003687C9 /* DataManagement.swift */; };
 		6FFC4B2626A9053700A033E9 /* catViewMain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FFC4B2526A9053700A033E9 /* catViewMain.swift */; };
 /* End PBXBuildFile section */
 
@@ -89,7 +89,6 @@
 		2D8D534925F41A3B00A5F397 /* Emojis.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Emojis.swift; sourceTree = "<group>"; };
 		2D9ADA5626038CFD00304049 /* AuthenticationServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AuthenticationServices.framework; path = System/Library/Frameworks/AuthenticationServices.framework; sourceTree = SDKROOT; };
 		2DA9AD5625EB158E00A2633F /* Krypto.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Krypto.swift; sourceTree = "<group>"; };
-		6F04075E26AC9B5A00309F69 /* DataManagement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DataManagement.swift; path = ../../../../../DataManagement.swift; sourceTree = "<group>"; };
 		6F04076B26ACB00C00309F69 /* ButtonStyles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonStyles.swift; sourceTree = "<group>"; };
 		6F04076D26ACDE3400309F69 /* catViewiPadPanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = catViewiPadPanel.swift; sourceTree = "<group>"; };
 		6F04076F26ACDF9E00309F69 /* catViewSignOnButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = catViewSignOnButton.swift; sourceTree = "<group>"; };
@@ -131,7 +130,8 @@
 		6FA9CEAB2610F58C006DBB32 /* Mac.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mac.swift; sourceTree = "<group>"; };
 		6FCCF6E126AA442B0032FBF5 /* Record.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Record.swift; sourceTree = "<group>"; };
 		6FD29CC226AF0143003687C9 /* KryptoExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KryptoExtension.swift; sourceTree = "<group>"; };
-		6FD29CC426AF182C003687C9 /* ItemViewRecords.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemViewRecords.swift; sourceTree = "<group>"; };
+		6FD29CC426AF182C003687C9 /* ItemViewItems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemViewItems.swift; sourceTree = "<group>"; };
+		6FD29CC626AF31BC003687C9 /* DataManagement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataManagement.swift; sourceTree = "<group>"; };
 		6FFC4B2526A9053700A033E9 /* catViewMain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = catViewMain.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -235,9 +235,9 @@
 			children = (
 				2D7D2E2D25EDDF0D004FDB8F /* passlist.xcdatamodeld */,
 				2D89E09F25EAD68E00939877 /* ListItem.swift */,
-				6F04075E26AC9B5A00309F69 /* DataManagement.swift */,
 				6FCCF6E126AA442B0032FBF5 /* Record.swift */,
-				6FD29CC426AF182C003687C9 /* ItemViewRecords.swift */,
+				6FD29CC426AF182C003687C9 /* ItemViewItems.swift */,
+				6FD29CC626AF31BC003687C9 /* DataManagement.swift */,
 			);
 			path = "CoreData+CloudKit";
 			sourceTree = "<group>";
@@ -503,7 +503,6 @@
 				6F04077026ACDF9E00309F69 /* catViewSignOnButton.swift in Sources */,
 				6F04077226ACE04100309F69 /* catViewSimulator.swift in Sources */,
 				2D5DFCDF25FE6B3900561C99 /* Device.swift in Sources */,
-				6F04075F26AC9B5A00309F69 /* DataManagement.swift in Sources */,
 				2DA9AD5725EB158E00A2633F /* Krypto.swift in Sources */,
 				6F83C700260FD586007B0D8E /* Security.swift in Sources */,
 				2D7D2E3625EEEEAD004FDB8F /* CatView.swift in Sources */,
@@ -516,7 +515,7 @@
 				2D89E0A125EAD68E00939877 /* ListItem.swift in Sources */,
 				6F83C75026102B6C007B0D8E /* PrivateKeys.swift in Sources */,
 				6F21B2F426ADBC62009C5A9B /* catEditViewNewCategory.swift in Sources */,
-				6FD29CC526AF182C003687C9 /* ItemViewRecords.swift in Sources */,
+				6FD29CC526AF182C003687C9 /* ItemViewItems.swift in Sources */,
 				6FD29CC326AF0143003687C9 /* KryptoExtension.swift in Sources */,
 				6F21B2EE26AD1319009C5A9B /* Global.swift in Sources */,
 				6F83C74826102A0A007B0D8E /* Clipboard.swift in Sources */,
@@ -547,6 +546,7 @@
 				6F83C73426101DFC007B0D8E /* listViewFunctions.swift in Sources */,
 				6F83C76326102DD0007B0D8E /* creditCardGroup.swift in Sources */,
 				6F82D1EA26ACF1F4006FD559 /* itemViewRecords.swift in Sources */,
+				6FD29CC726AF31BC003687C9 /* DataManagement.swift in Sources */,
 				6F83C6F3260FCDEF007B0D8E /* catViewLockScreen.swift in Sources */,
 				2D89E08F25EAD67600939877 /* ListView.swift in Sources */,
 				6F21B2F226ADBBD3009C5A9B /* catEditViewDefaultTemplate.swift in Sources */,
