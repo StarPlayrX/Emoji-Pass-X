@@ -33,6 +33,7 @@ extension ListView {
                   message: Text("This item is locked and cannot be deleted."),
                   dismissButton: .default(Text("OK")) { security.isDeleteListViewValid = false })
         })
-        .animation(.default)
+        .transition(.opacity)
+        .animation(.none)
     }
 }

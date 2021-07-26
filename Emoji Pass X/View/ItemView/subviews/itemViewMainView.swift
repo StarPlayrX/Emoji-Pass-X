@@ -8,6 +8,7 @@ import SwiftUI
 import Combine
 
 extension ItemView {
+
     func itemViewDetailView() -> some View {
         GeometryReader { geometry in
             ScrollView {
@@ -28,13 +29,17 @@ extension ItemView {
                         }
                     }
                     ToolbarItemGroup(placement: .navigationBarTrailing) {
-                        Button(action: {listItem.lock = !listItem.lock;save(record)}){
-                            listItem.lock ? Image(systemName: "lock.fill") : Image(systemName: "lock.open")
+                        Group {
+                            Button(action: {listItem.lock = !listItem.lock;save(record)}){
+                                listItem.lock ? Image(systemName: "lock.fill") : Image(systemName: "lock.open")
+                            }
+                            Button(action: {listItem.star = !listItem.star;save(record)}){
+                                listItem.star ? Image(systemName: "star.fill") : Image(systemName: "star")
+                            }
                         }
-                        Button(action: {listItem.star = !listItem.star;save(record)}){
-                            listItem.star ? Image(systemName: "star.fill") : Image(systemName: "star")
-                        }
+                        .buttonStyle(SystemBlueButton())
                     }
+
                     ToolbarItemGroup(placement: .bottomBar) {
                         Picker(String(), selection: $listItem.templateId) {
                             ForEach(Global.templateIds, id: \.self) {
@@ -44,9 +49,9 @@ extension ItemView {
                             .pickerStyle(SegmentedPickerStyle())
                         }
                     }
+
                 }
                 .padding(.leading, 20)
-                .buttonStyle(SystemBlueButton())
                 .alert(isPresented: $security.isListItemViewSaved, content: {
                     Alert(title: Text("Save"),
                           message: Text("Your changes have been saved."),
@@ -62,7 +67,7 @@ extension ItemView {
             save(record)
             presentationMode.wrappedValue.dismiss()
         }
-        .animation(.default)
-
+        .transition(.opacity)
+        .animation(.none)
     }
 }

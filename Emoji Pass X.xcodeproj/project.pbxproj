@@ -370,16 +370,16 @@
 		6F83C6F6260FD146007B0D8E /* View-Model */ = {
 			isa = PBXGroup;
 			children = (
-				6F83C71926101A01007B0D8E /* catView */,
-				6F83C71A26101A1D007B0D8E /* catEditView */,
-				6F83C73226101DDC007B0D8E /* listView */,
-				6F83C746261029DC007B0D8E /* itemView */,
+				6F83C71926101A01007B0D8E /* CatView */,
+				6F83C71A26101A1D007B0D8E /* CatEditView */,
+				6F83C73226101DDC007B0D8E /* ListView */,
+				6F83C746261029DC007B0D8E /* ItemView */,
 			);
 			name = "View-Model";
 			path = View;
 			sourceTree = "<group>";
 		};
-		6F83C71926101A01007B0D8E /* catView */ = {
+		6F83C71926101A01007B0D8E /* CatView */ = {
 			isa = PBXGroup;
 			children = (
 				6F08D84E261523F90024B61A /* catViewInitialView.swift */,
@@ -387,34 +387,34 @@
 				6F04077626ACE29700309F69 /* subviewsMain */,
 				6F04076426ACA71900309F69 /* functions */,
 			);
-			name = catView;
+			name = CatView;
 			sourceTree = "<group>";
 		};
-		6F83C71A26101A1D007B0D8E /* catEditView */ = {
+		6F83C71A26101A1D007B0D8E /* CatEditView */ = {
 			isa = PBXGroup;
 			children = (
 				6F04076526ACA73E00309F69 /* subviews */,
 				6F04076626ACA74600309F69 /* functions */,
 			);
-			path = catEditView;
+			path = CatEditView;
 			sourceTree = "<group>";
 		};
-		6F83C73226101DDC007B0D8E /* listView */ = {
+		6F83C73226101DDC007B0D8E /* ListView */ = {
 			isa = PBXGroup;
 			children = (
 				6F04076726ACA75300309F69 /* subviews */,
 				6F04076826ACA75F00309F69 /* functions */,
 			);
-			path = listView;
+			path = ListView;
 			sourceTree = "<group>";
 		};
-		6F83C746261029DC007B0D8E /* itemView */ = {
+		6F83C746261029DC007B0D8E /* ItemView */ = {
 			isa = PBXGroup;
 			children = (
 				6F04076926ACA78A00309F69 /* subviews */,
 				6F04076A26ACA79900309F69 /* functions */,
 			);
-			path = itemView;
+			path = ItemView;
 			sourceTree = "<group>";
 		};
 		6FD29CBF26AF00AB003687C9 /* Krypto */ = {
@@ -697,7 +697,6 @@
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = "Emoji Pass X/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
-				"IPHONEOS_DEPLOYMENT_TARGET[sdk=macosx*]" = 14.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -726,7 +725,6 @@
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = "Emoji Pass X/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
-				"IPHONEOS_DEPLOYMENT_TARGET[sdk=macosx*]" = 14.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

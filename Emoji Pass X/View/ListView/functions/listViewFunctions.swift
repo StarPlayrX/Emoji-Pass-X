@@ -36,10 +36,6 @@ struct ListStruct : ListProtocol {
 
 extension ListView {
 
-    func canEdit() -> EditButton? {
-        coldFilter(detailListItems).isEmpty ? nil : EditButton()
-    }
-    
     func canCreate() -> Button<Image>? {
         catItem.uuidString != "Stars" && catItem.uuidString != "Everything" ? New() : nil
     }
