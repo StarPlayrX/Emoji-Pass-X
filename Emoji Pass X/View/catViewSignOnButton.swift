@@ -38,8 +38,8 @@ extension CatView {
                     .stroke( Global.isGlobalDark ? Color.black : Color.white, lineWidth: 2)
             )
             .padding(.horizontal, 50)
-            .padding(.vertical, 100)
-            .frame(maxWidth: 350, maxHeight: 250, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)            
+            .padding(.vertical, 90)
+            .frame(width: 320, height: 230, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
         }
     }
 }

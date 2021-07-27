@@ -26,7 +26,8 @@ struct CatView: View {
     @State private var showingAlert = false
     @State var searchText: String = String()
     @State var isSearching = false
-    @State var updater: Bool = false
+    @State var continueUpdater: Bool = false
+    @State var imageUpdater: Bool = false
 
     @StateObject var security = Security()
 

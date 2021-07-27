@@ -17,13 +17,12 @@ extension CatView {
                     security.lockScreen = false
                 }
             }
-            .onAppear(perform: {updater.toggle()})
             .alert(isPresented: $security.doesNotHaveIcloud, content: {
                 Alert(title: Text("We're sorry."),
                       message: Text("Please go to Settings and log into your iCloud Account."),
                       dismissButton: .default(Text("OK")) {security.doesNotHaveIcloud = false})
             })
-            .frame(maxWidth: 375,  maxHeight: 266, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+            .frame(maxWidth: continueUpdater ? 375 : 373,  maxHeight: continueUpdater ? 266 : 264, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
             .keyboardShortcut(.defaultAction)
         }
         .padding(.horizontal, 50)

@@ -5,6 +5,7 @@
 //  Created by Todd Bruss on 3/27/21.
 //
 import SwiftUI
+import CoreData
 
 protocol CatProtocol {
     func checkForCloudKit() -> Bool
@@ -78,10 +79,45 @@ struct CatStruct {
         newItem.order = (listItems.last?.order ?? 0) + 1
         self.saveItems(managedObjectContext)
     }
+
+
 }
 
 
 extension CatView {
+
+    func deleteItem(indexSet: IndexSet) {
+
+        var cf = listItems.filter( { $0.isParent == true })
+        cf = catStruct.getList(cf, searchText)
+
+        var indexIsValid = false
+
+        if let source = indexSet.first {
+            indexIsValid = cf.indices.contains(source)
+        }
+
+        if !indexIsValid {
+            UINotificationFeedbackGenerator().notificationOccurred(.error)
+        }
+
+        if let source = indexSet.first, let listItem = Optional(cf[source]) {
+            let gc = catStruct.getCount(listItems, listItem)
+            let uuidCount = 36
+
+            if gc.isEmpty && listItem.uuidString.count == uuidCount {
+                managedObjectContext.delete(listItem)
+            } else if listItem.uuidString ==  CategoryType.stars.rawValue {
+                managedObjectContext.delete(listItem)
+            } else if listItem.uuidString ==  CategoryType.everything.rawValue {
+                managedObjectContext.delete(listItem)
+            } else {
+                UINotificationFeedbackGenerator().notificationOccurred(.error)
+                security.isValid = true
+            }
+            catStruct.saveItems(managedObjectContext)
+        }
+    }
 
     func moveItem(from source: IndexSet, to destination: Int) {
         var category = listItems.filter( { $0.isParent == true })
@@ -102,35 +138,5 @@ extension CatView {
         catStruct.saveItems(managedObjectContext)
     }
     
-    func deleteItem(indexSet: IndexSet) {
-        
-        var cf = listItems.filter( { $0.isParent == true  })
-        cf = catStruct.getList(cf, searchText)
-        
-        var indexIsValid = false
-        
-        if let source = indexSet.first {
-            indexIsValid = cf.indices.contains(source)
-        }
-        
-        if !indexIsValid {
-            generator.notificationOccurred(.error)
-        }
-        
-        if let source = indexSet.first, let listItem = Optional(cf[source]) {
-            let gc = catStruct.getCount(listItems, listItem)
-            
-            if gc.isEmpty && listItem.uuidString.count == uuidCount {
-                managedObjectContext.delete(listItem)
-            } else if listItem.uuidString == stars {
-                managedObjectContext.delete(listItem)
-            } else if listItem.uuidString == everything {
-                managedObjectContext.delete(listItem)
-            } else {
-                generator.notificationOccurred(.error)
-                security.isValid = true
-            }
-            catStruct.saveItems(managedObjectContext)
-        }
-    }
+
 }
