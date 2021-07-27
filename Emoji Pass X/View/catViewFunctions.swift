@@ -7,6 +7,8 @@
 import SwiftUI
 import CoreData
 
+// https://www.raywenderlich.com/9335365-core-data-with-swiftui-tutorial-getting-started
+
 protocol CatProtocol {
     func checkForCloudKit() -> Bool
     func setIsScreenDark()
@@ -15,6 +17,7 @@ protocol CatProtocol {
     func getList(_ a: [ListItem],_ searchText: String) -> [ListItem]
     func saveItems(_ managedObjectContext: NSManagedObjectContext)
     func addItem(_ managedObjectContext: NSManagedObjectContext,_ listItems: FetchedResults<ListItem>)
+    func deleteItem(indexSet: IndexSet)
 }
 
 struct CatStruct {
@@ -80,10 +83,15 @@ struct CatStruct {
         self.saveItems(managedObjectContext)
     }
 
+    
+    func deleteItem(indexSet: IndexSet) {
+
+    }
+
 
 }
 
-
+// needs refactoring
 extension CatView {
 
     func deleteItem(indexSet: IndexSet) {
