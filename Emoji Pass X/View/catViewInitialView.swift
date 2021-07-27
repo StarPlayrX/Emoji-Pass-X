@@ -18,12 +18,13 @@ extension CatView {
             // Ternary does not work here. Don't know why?
 
             // macOS has a drawing issue on the second go, currently doing the signOn once until it's fixed.
-            // when fixed remove !security.signOn
+            // when fixed remove security.signOn
             if security.lockScreen && security.signOn {
                 
                 // Lock Screen
                 catViewLockScreen()
                     .onAppear(perform: {catStruct.showLockScreen(security: security)})
+                    .animation(.easeInOut(duration: 1.0))
 
             } else {
                 
