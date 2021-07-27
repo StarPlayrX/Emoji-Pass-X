@@ -35,18 +35,18 @@ extension CatView {
         .onAppear(perform: saveItems)
         .onDisappear(perform: saveItems)
         .onReceive(NotificationCenter.default.publisher(for: UIApplication.didEnterBackgroundNotification)) { _ in
-            showLockScreen()
+            catStruct.showLockScreen(security: security)
             DispatchQueue.main.async() {
                 saveItems()
                 hideKeyboard()
-                setIsScreenDark()
+                catStruct.setIsScreenDark()
             }
         }
         .onReceive(NotificationCenter.default.publisher(for: UIApplication.willEnterForegroundNotification)) { _ in
             DispatchQueue.main.async() {
                 saveItems()
                 hideKeyboard()
-                setIsScreenDark()
+                catStruct.setIsScreenDark()
             }
         }
         .onReceive(NotificationCenter.default.publisher(for: .save)) { _ in

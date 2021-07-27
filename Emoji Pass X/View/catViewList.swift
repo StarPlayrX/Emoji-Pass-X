@@ -11,9 +11,9 @@ extension CatView {
         List {
             let category = listItems.filter({ $0.isParent == true })
             
-            catViewSsearchBar()
+            catViewSearchBar()
             
-            ForEach(getList(category), id: \.self) { item in
+            ForEach(catStruct.getList(category, searchText), id: \.self) { item in
                 if !security.catLock {
                     NavigationLink(destination: CatEditView(listItem: item)) {
                         
@@ -32,7 +32,7 @@ extension CatView {
                     .overlay (
                         HStack {
                             Spacer()
-                            Text("\(getCount(listItems,item))")
+                            Text("\(catStruct.getCount(listItems,item))")
                                 .padding(.trailing, 18)
                         }
                     )
@@ -47,7 +47,7 @@ extension CatView {
                     .overlay (
                         HStack {
                             Spacer()
-                            Text("\(getCount(listItems,item))")
+                            Text("\(catStruct.getCount(listItems,item))")
                                 .padding(.trailing, 18)
                         }
                     )
@@ -63,7 +63,7 @@ extension CatView {
                     .overlay (
                         HStack {
                             Spacer()
-                            Text("\(getCount(listItems,item))")
+                            Text("\(catStruct.getCount(listItems,item))")
                                 .padding(.trailing, 18)
                         }
                     )

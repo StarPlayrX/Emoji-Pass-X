@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		18043CFD26AFAD10006252E4 /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18043CFC26AFAD10006252E4 /* Enums.swift */; };
 		2D5DFCDF25FE6B3900561C99 /* Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D5DFCDE25FE6B3900561C99 /* Device.swift */; };
 		2D7D2E2F25EDDF0D004FDB8F /* passlist.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2D7D2E2D25EDDF0D004FDB8F /* passlist.xcdatamodeld */; };
 		2D7D2E3625EEEEAD004FDB8F /* CatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D7D2E3525EEEEAD004FDB8F /* CatView.swift */; };
@@ -69,6 +70,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		18043CFC26AFAD10006252E4 /* Enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
 		2D5DFCDE25FE6B3900561C99 /* Device.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Device.swift; sourceTree = "<group>"; };
 		2D7D2E2E25EDDF0D004FDB8F /* OrderedList.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = OrderedList.xcdatamodel; sourceTree = "<group>"; };
 		2D7D2E3525EEEEAD004FDB8F /* CatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatView.swift; sourceTree = "<group>"; };
@@ -147,6 +149,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		18043CFB26AFACED006252E4 /* Enums */ = {
+			isa = PBXGroup;
+			children = (
+				18043CFC26AFAD10006252E4 /* Enums.swift */,
+			);
+			path = Enums;
+			sourceTree = "<group>";
+		};
 		2D89E07E25EAD67600939877 = {
 			isa = PBXGroup;
 			children = (
@@ -225,6 +235,7 @@
 				6FD29CBF26AF00AB003687C9 /* Krypto */,
 				6F04076126AC9FF400309F69 /* Structs */,
 				6F04076026AC9FE500309F69 /* Classes */,
+				18043CFB26AFACED006252E4 /* Enums */,
 				6F04076226ACA67B00309F69 /* Extensions */,
 			);
 			path = Model;
@@ -542,6 +553,7 @@
 				6F83C703260FD615007B0D8E /* catViewFunctions.swift in Sources */,
 				6F83C76626102E0D007B0D8E /* itemViewLicenseKeyGroup.swift in Sources */,
 				6F83C73C2610251A007B0D8E /* listViewForEachView.swift in Sources */,
+				18043CFD26AFAD10006252E4 /* Enums.swift in Sources */,
 				6F83C74C26102AF2007B0D8E /* itemViewLoadFunction.swift in Sources */,
 				6F83C73426101DFC007B0D8E /* listViewFunctions.swift in Sources */,
 				6F83C76326102DD0007B0D8E /* creditCardGroup.swift in Sources */,

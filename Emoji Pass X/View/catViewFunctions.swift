@@ -6,35 +6,57 @@
 //
 import SwiftUI
 
-extension CatView {
-    
-    func getCount(_ a: FetchedResults<ListItem>,_ b: ListItem) -> String {
-        if b.uuidString == stars {
+protocol CatProtocol {
+    func getCount(_ a: FetchedResults<ListItem>, _ b: ListItem) -> String
+}
+
+struct CatStruct {
+    func checkForCloudKit() -> Bool {
+        FileManager.default.ubiquityIdentityToken == nil
+    }
+
+    func setIsScreenDark() {
+        Global.isGlobalDark = UIScreen.main.traitCollection.userInterfaceStyle == .dark
+    }
+
+    func showLockScreen(security: Security) {
+        // dismiss keyboard
+        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+
+        security.lockScreen = true
+
+        #if targetEnvironment(simulator)
+            security.isSimulator = true
+        #else
+            security.isSimulator = false
+            self.setIsScreenDark()
+        #endif
+    }
+
+    func getCount(_ a: FetchedResults<ListItem>, _ b: ListItem) -> String {
+        if b.uuidString == CategoryType.stars.rawValue {
             let j = a.filter {$0.star}.count
             return j > 0 ? String(j) : String()
-            
-        } else if b.uuidString == everything {
-            let j = a.filter { !$0.isParent }.count
+        } else if b.uuidString == CategoryType.everything.rawValue {
+            let j = a.filter {!$0.isParent}.count
             return j > 0 ? String(j) : String()
-            
         } else {
             let j = a.filter {!$0.isParent && $0.uuidString == b.uuidString}.count
             return j > 0 ? String(j) : String()
         }
     }
-    
-    func getList(_ a: [ListItem]) -> [ListItem] {
+
+    func getList(_ a: [ListItem], _ searchText: String) -> [ListItem] {
         a.filter({"\($0.emoji)\($0.name)".lowercased().contains(searchText.lowercased()) || searchText.isEmpty})
     }
- 
-    //MARK: See if iCloud is available
-    func checkForCloudKit() -> Bool {
-        FileManager.default.ubiquityIdentityToken != nil ? false : true
-    }
+}
+
+
+extension CatView {
 
     func moveItem(from source: IndexSet, to destination: Int) {
         var category = listItems.filter( { $0.isParent == true })
-        category = getList(category)
+        category = catStruct.getList(category, searchText)
         
         category.move(fromOffsets: source, toOffset: destination)
         
@@ -54,7 +76,7 @@ extension CatView {
     func deleteItem(indexSet: IndexSet) {
         
         var cf = listItems.filter( { $0.isParent == true  })
-        cf = getList(cf)
+        cf = catStruct.getList(cf, searchText)
         
         var indexIsValid = false
         
@@ -67,7 +89,7 @@ extension CatView {
         }
         
         if let source = indexSet.first, let listItem = Optional(cf[source]) {
-            let gc = getCount(listItems, listItem)
+            let gc = catStruct.getCount(listItems, listItem)
             
             if gc.isEmpty && listItem.uuidString.count == uuidCount {
                 managedObjectContext.delete(listItem)
@@ -81,21 +103,6 @@ extension CatView {
             }
             saveItems()
         }
-    }
-    
-    func setIsScreenDark() {
-        Global.isGlobalDark = UIScreen.main.traitCollection.userInterfaceStyle == .dark
-    }
-    
-    func showLockScreen() {
-        security.lockScreen = true
-        hideKeyboard()
-        #if targetEnvironment(simulator)
-            security.isSimulator = true
-        #else
-            security.isSimulator = false
-            setIsScreenDark()
-        #endif
     }
 
     func addItem() {

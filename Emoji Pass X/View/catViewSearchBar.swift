@@ -1,5 +1,5 @@
 //
-//  catViewSsearchBar.swift
+//  catViewSearchBar.swift
 //  Emoji Pass X
 //
 //  Created by Todd Bruss on 3/27/21.
@@ -10,7 +10,7 @@ import SwiftUI
 // https://www.youtube.com/watch?v=vgvbrBX2FnE (Search Bar How to Reference in SwiftUI)
 
 extension CatView {
-    func catViewSsearchBar() -> some View {
+    func catViewSearchBar() -> some View {
         return HStack {
             TextField("Search", text: $searchText)
                 .padding(.leading, Device().iPhoneXSearch())

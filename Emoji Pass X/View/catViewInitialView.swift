@@ -20,7 +20,7 @@ extension CatView {
                 
                 // Lock Screen
                 catViewLockScreen()
-                    .onAppear(perform: showLockScreen)
+                    .onAppear(perform: {catStruct.showLockScreen(security: security)})
                 
             } else {
                 
