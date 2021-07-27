@@ -54,7 +54,7 @@ struct CatView: View {
 var mockView: some View {
     Group {
         VStack {
-            Text("Emoji Pass!X X").font(.largeTitle).minimumScaleFactor(0.75).padding(.top, 50)
+            Text("Emoji Pass  X").font(.largeTitle).minimumScaleFactor(0.75).padding(.top, 50)
 
             HStack {
                 Image("Emoji Pass X_logo4")

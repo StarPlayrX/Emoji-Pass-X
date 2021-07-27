@@ -7,7 +7,12 @@
 import SwiftUI
 
 protocol CatProtocol {
+    func checkForCloudKit() -> Bool
+    func setIsScreenDark()
+    func showLockScreen(security: Security)
     func getCount(_ a: FetchedResults<ListItem>, _ b: ListItem) -> String
+    func getList(_ a: [ListItem], _ searchText: String) -> [ListItem]
+    func saveItems(_ managedObjectContext: NSManagedObjectContext)
 }
 
 struct CatStruct {
@@ -49,6 +54,14 @@ struct CatStruct {
     func getList(_ a: [ListItem], _ searchText: String) -> [ListItem] {
         a.filter({"\($0.emoji)\($0.name)".lowercased().contains(searchText.lowercased()) || searchText.isEmpty})
     }
+
+    func saveItems(_ managedObjectContext: NSManagedObjectContext) {
+        DispatchQueue.main.async() {
+            if managedObjectContext.hasChanges {
+                try? managedObjectContext.save()
+            }
+        }
+    }
 }
 
 
@@ -70,7 +83,7 @@ extension CatView {
                 }
             }
         }
-        saveItems()
+        catStruct.saveItems(managedObjectContext)
     }
     
     func deleteItem(indexSet: IndexSet) {
@@ -101,25 +114,17 @@ extension CatView {
                 generator.notificationOccurred(.error)
                 security.isValid = true
             }
-            saveItems()
+            catStruct.saveItems(managedObjectContext)
         }
     }
 
-    func addItem() {
+    func addItem(_ managedObjectContext: NSManagedObjectContext) {
         let newItem = ListItem(context: managedObjectContext)
         newItem.emoji = cat
         newItem.name = newCategory
         newItem.isParent = true
         newItem.uuidString = UUID().uuidString
         newItem.order = (listItems.last?.order ?? 0) + 1
-        saveItems()
+        catStruct.saveItems(managedObjectContext)
     }
-    
-    func saveItems() {
-        DispatchQueue.main.async() {
-            if managedObjectContext.hasChanges {
-                try? managedObjectContext.save()
-            }
-        }
-    } 
 }

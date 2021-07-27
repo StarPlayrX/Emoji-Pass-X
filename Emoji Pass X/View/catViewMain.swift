@@ -18,8 +18,8 @@ extension CatView {
                     // 2 mainView
                     // This allows Wider column on iPad. Workaround for SideBar bug.
                     catViewUI()
-                        .onDisappear(perform: saveItems)
-                        .onAppear(perform: saveItems)
+                        .onDisappear(perform: {catStruct.saveItems(managedObjectContext)})
+                        .onAppear(perform: {catStruct.saveItems(managedObjectContext)})
                     
                     // 3 Dummy Detail View
                     Text(String())
@@ -32,19 +32,19 @@ extension CatView {
         }
         .navigationViewStyle(DoubleColumnNavigationViewStyle())
         .environmentObject(security)
-        .onAppear(perform: saveItems)
-        .onDisappear(perform: saveItems)
+        .onAppear(perform: {catStruct.saveItems(managedObjectContext)})
+        .onDisappear(perform: {catStruct.saveItems(managedObjectContext)})
         .onReceive(NotificationCenter.default.publisher(for: UIApplication.didEnterBackgroundNotification)) { _ in
             catStruct.showLockScreen(security: security)
             DispatchQueue.main.async() {
-                saveItems()
+                catStruct.saveItems(managedObjectContext)
                 hideKeyboard()
                 catStruct.setIsScreenDark()
             }
         }
         .onReceive(NotificationCenter.default.publisher(for: UIApplication.willEnterForegroundNotification)) { _ in
             DispatchQueue.main.async() {
-                saveItems()
+                catStruct.saveItems(managedObjectContext)
                 hideKeyboard()
                 catStruct.setIsScreenDark()
             }
@@ -53,7 +53,7 @@ extension CatView {
             DispatchQueue.main.async() {
                 security.isEditing = false
                 security.catLock = true
-                saveItems()
+                catStruct.saveItems(managedObjectContext)
                 refreshAllObjects()
             }
         }
