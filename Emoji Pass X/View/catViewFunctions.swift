@@ -13,6 +13,7 @@ protocol CatProtocol {
     func getCount(_ a: FetchedResults<ListItem>, _ b: ListItem) -> String
     func getList(_ a: [ListItem], _ searchText: String) -> [ListItem]
     func saveItems(_ managedObjectContext: NSManagedObjectContext)
+    func addItem(_ managedObjectContext: NSManagedObjectContext, _ listItems: FetchedResults<ListItem>)
 }
 
 struct CatStruct {
@@ -61,6 +62,21 @@ struct CatStruct {
                 try? managedObjectContext.save()
             }
         }
+    }
+
+    func addItem(_ managedObjectContext: NSManagedObjectContext, _ listItems: FetchedResults<ListItem>) {
+
+        // Todo: Create an Enum for these
+        let cat = "🐛"
+        let newCategory = "New Category"
+
+        let newItem = ListItem(context: managedObjectContext)
+        newItem.emoji = cat
+        newItem.name = newCategory
+        newItem.isParent = true
+        newItem.uuidString = UUID().uuidString
+        newItem.order = (listItems.last?.order ?? 0) + 1
+        self.saveItems(managedObjectContext)
     }
 }
 
@@ -118,13 +134,5 @@ extension CatView {
         }
     }
 
-    func addItem(_ managedObjectContext: NSManagedObjectContext) {
-        let newItem = ListItem(context: managedObjectContext)
-        newItem.emoji = cat
-        newItem.name = newCategory
-        newItem.isParent = true
-        newItem.uuidString = UUID().uuidString
-        newItem.order = (listItems.last?.order ?? 0) + 1
-        catStruct.saveItems(managedObjectContext)
-    }
+
 }

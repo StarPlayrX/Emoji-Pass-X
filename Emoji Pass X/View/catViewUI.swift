@@ -43,7 +43,7 @@ extension CatView {
                     Button(action: start) {
                         security.isEditing ? Image(systemName: "hammer") : Image(systemName: "hammer.fill")
                     }
-                    Button(action: {addItem(managedObjectContext)}) { Image(systemName: "plus") }
+                    Button(action: {catStruct.addItem(managedObjectContext, listItems)}) { Image(systemName: "plus") }
                 }
             }
             .animation(security.haltAnimations ? .none : .easeInOut)
