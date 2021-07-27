@@ -17,6 +17,7 @@ extension CatView {
                     security.lockScreen = false
                 }
             }
+            .onAppear(perform: {updater.toggle()})
             .alert(isPresented: $security.doesNotHaveIcloud, content: {
                 Alert(title: Text("We're sorry."),
                       message: Text("Please go to Settings and log into your iCloud Account."),

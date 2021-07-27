@@ -14,14 +14,14 @@ extension CatView {
     
     func intialView() -> some View {
         Group {
-            
+
             // Ternary does not work here. Don't know why?
             if security.lockScreen {
                 
                 // Lock Screen
                 catViewLockScreen()
                     .onAppear(perform: {catStruct.showLockScreen(security: security)})
-                
+
             } else {
                 
                 // Main Screen

@@ -22,26 +22,37 @@ extension CatView {
                 RoundedRectangle(cornerRadius: 48)
                     .stroke(Global.isGlobalDark ? Color.gray : Color.white, lineWidth: 2)
             )
-            
+
             Text(copyright).font(.callout).minimumScaleFactor(0.75).padding(.top, 10)
             
             if security.signOn && !security.isSimulator {
                 
                 // 1 Sign On | Continue with Apple
                 catViewSignOnButton()
-                
+                    .transition(.slide)
+
+
             } else if security.isSimulator {
                 
                 // 2 Skip Sign On in Simulator
                 catViewSimulator()
-                
+                    .transition(.slide)
+
+
             } else {
                 
                 // 3 Continue button
                 catViewContinue()
+                    .transition(.slide)
+
             }
         }
+        .transition(.scale)
+        .animation(.linear)
+        .transition(.opacity)
+
         .onAppear(perform: {Global.isGlobalDark = UIScreen.main.traitCollection.userInterfaceStyle == .dark})
         .onDisappear(perform: {Global.isGlobalDark = UIScreen.main.traitCollection.userInterfaceStyle == .dark})
     }
+
 }

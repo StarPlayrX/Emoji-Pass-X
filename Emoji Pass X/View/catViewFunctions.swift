@@ -10,10 +10,10 @@ protocol CatProtocol {
     func checkForCloudKit() -> Bool
     func setIsScreenDark()
     func showLockScreen(security: Security)
-    func getCount(_ a: FetchedResults<ListItem>, _ b: ListItem) -> String
-    func getList(_ a: [ListItem], _ searchText: String) -> [ListItem]
+    func getCount(_ a: FetchedResults<ListItem>,_ b: ListItem) -> String
+    func getList(_ a: [ListItem],_ searchText: String) -> [ListItem]
     func saveItems(_ managedObjectContext: NSManagedObjectContext)
-    func addItem(_ managedObjectContext: NSManagedObjectContext, _ listItems: FetchedResults<ListItem>)
+    func addItem(_ managedObjectContext: NSManagedObjectContext,_ listItems: FetchedResults<ListItem>)
 }
 
 struct CatStruct {
@@ -133,6 +133,4 @@ extension CatView {
             catStruct.saveItems(managedObjectContext)
         }
     }
-
-
 }
