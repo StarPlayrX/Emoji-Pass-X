@@ -6,7 +6,8 @@
 //
 import SwiftUI
 import CoreData
-
+import Foundation
+import Cocoa
 // https://www.raywenderlich.com/9335365-core-data-with-swiftui-tutorial-getting-started
 
 protocol CatProtocol {
@@ -17,7 +18,6 @@ protocol CatProtocol {
     func getList(_ a: [ListItem],_ searchText: String) -> [ListItem]
     func saveItems(_ managedObjectContext: NSManagedObjectContext)
     func addItem(_ managedObjectContext: NSManagedObjectContext,_ listItems: FetchedResults<ListItem>)
-    func deleteItem(indexSet: IndexSet)
 }
 
 struct CatStruct {
@@ -30,9 +30,6 @@ struct CatStruct {
     }
 
     func showLockScreen(security: Security) {
-        // dismiss keyboard
-        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
-
         security.lockScreen = true
 
         #if targetEnvironment(simulator)
@@ -83,10 +80,45 @@ struct CatStruct {
         self.saveItems(managedObjectContext)
     }
 
-    
-    func deleteItem(indexSet: IndexSet) {
 
-    }
+    func deleteThisItem(_ indexSet: IndexSet,
+                    listItems: FetchedResults<ListItem>,
+                    managedObjectContext: NSManagedObjectContext,
+                    security: Security,
+                    searchText: String) {
+       var cf = listItems.filter( { $0.isParent == true })
+       cf = getList(cf, searchText)
+
+       var indexIsValid = false
+
+       if let source = indexSet.first{
+           indexIsValid = cf.indices.contains(source)
+       }
+
+       if !indexIsValid {
+           UINotificationFeedbackGenerator().notificationOccurred(.error)
+       }
+
+       if let source = indexSet.first, let listItem = Optional(cf[source]) {
+           let gc = getCount(listItems, listItem)
+           let uuidCount = 36
+
+           if gc.isEmpty && listItem.uuidString.count == uuidCount {
+               managedObjectContext.delete(listItem)
+           } else if listItem.uuidString ==  CategoryType.stars.rawValue {
+               managedObjectContext.delete(listItem)
+           } else if listItem.uuidString ==  CategoryType.everything.rawValue {
+               managedObjectContext.delete(listItem)
+           } else {
+               UINotificationFeedbackGenerator().notificationOccurred(.error)
+               security.isValid = true
+           }
+           saveItems(managedObjectContext)
+       }
+   }
+
+
+
 
 
 }
@@ -94,37 +126,15 @@ struct CatStruct {
 // needs refactoring
 extension CatView {
 
+    // indexSet is inferred
     func deleteItem(indexSet: IndexSet) {
-
-        var cf = listItems.filter( { $0.isParent == true })
-        cf = catStruct.getList(cf, searchText)
-
-        var indexIsValid = false
-
-        if let source = indexSet.first {
-            indexIsValid = cf.indices.contains(source)
-        }
-
-        if !indexIsValid {
-            UINotificationFeedbackGenerator().notificationOccurred(.error)
-        }
-
-        if let source = indexSet.first, let listItem = Optional(cf[source]) {
-            let gc = catStruct.getCount(listItems, listItem)
-            let uuidCount = 36
-
-            if gc.isEmpty && listItem.uuidString.count == uuidCount {
-                managedObjectContext.delete(listItem)
-            } else if listItem.uuidString ==  CategoryType.stars.rawValue {
-                managedObjectContext.delete(listItem)
-            } else if listItem.uuidString ==  CategoryType.everything.rawValue {
-                managedObjectContext.delete(listItem)
-            } else {
-                UINotificationFeedbackGenerator().notificationOccurred(.error)
-                security.isValid = true
-            }
-            catStruct.saveItems(managedObjectContext)
-        }
+        catStruct.deleteThisItem(
+            indexSet,
+            listItems: listItems,
+            managedObjectContext: managedObjectContext,
+            security: security,
+            searchText: searchText
+        )
     }
 
     func moveItem(from source: IndexSet, to destination: Int) {

@@ -26,8 +26,6 @@ struct CatView: View {
     @State private var showingAlert = false
     @State var searchText: String = String()
     @State var isSearching = false
-    @State var continueUpdater: Bool = false
-    @State var imageUpdater: Bool = false
 
     @StateObject var security = Security()
 
@@ -53,6 +51,7 @@ struct CatView: View {
     }
 }
 
+/*
 var mockView: some View {
     Group {
         VStack {
@@ -82,3 +81,4 @@ struct ContentView_Previews: PreviewProvider {
         mockView
     }
 }
+*/

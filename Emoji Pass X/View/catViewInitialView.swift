@@ -16,7 +16,10 @@ extension CatView {
         Group {
 
             // Ternary does not work here. Don't know why?
-            if security.lockScreen {
+
+            // macOS has a drawing issue on the second go, currently doing the signOn once until it's fixed.
+            // when fixed remove !security.signOn
+            if security.lockScreen && security.signOn {
                 
                 // Lock Screen
                 catViewLockScreen()

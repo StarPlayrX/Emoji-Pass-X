@@ -22,7 +22,9 @@ extension CatView {
                       message: Text("Please go to Settings and log into your iCloud Account."),
                       dismissButton: .default(Text("OK")) {security.doesNotHaveIcloud = false})
             })
-            .frame(maxWidth: continueUpdater ? 375 : 373,  maxHeight: continueUpdater ? 266 : 264, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+            .scaleEffect()
+            .frame(maxWidth: 375,  maxHeight: 266, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+            .minimumScaleFactor(0.99)
             .keyboardShortcut(.defaultAction)
         }
         .padding(.horizontal, 50)
