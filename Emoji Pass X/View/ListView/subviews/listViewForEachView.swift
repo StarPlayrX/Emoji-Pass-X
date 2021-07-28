@@ -10,7 +10,7 @@ import SwiftUI
 extension ListView {
     func listViewForEachView(_ a:  FetchedResults<ListItem>) -> some View {
                 
-        ForEach(ListStruct().getList(coldFilter(a), searchText) , id: \.self) { item in
+        ForEach(listStruct.getList(listStruct.coldFilter(a,catItem), searchText) , id: \.self) { item in
             NavigationLink(destination: ItemView(catItem: catItem, listItem: item)) {
                 
                 if !item.name.isEmpty {
@@ -37,8 +37,8 @@ extension ListView {
                     }
                 }
             )
-            .onDisappear(perform: saveItems )
-            .onAppear(perform: saveItems )     
+            .onDisappear(perform: {listStruct.saveItems(managedObjectContext)})
+            .onAppear(perform: {listStruct.saveItems(managedObjectContext)})
             .font(.title)
             .listRowBackground(Color(UIColor.systemBackground))
             

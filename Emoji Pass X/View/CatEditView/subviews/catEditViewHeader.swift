@@ -4,11 +4,11 @@
 //
 //  Created by Todd Bruss on 7/25/21.
 //
-
 import SwiftUI
 import Combine
 
 extension CatEditView {
+
     func catEditViewHeader(_ geometry: GeometryProxy) -> some View {
         HStack {
             TextField(emoji, text: $listItem.emoji)
@@ -18,7 +18,7 @@ extension CatEditView {
                 .background(labelColor2)
                 .cornerRadius(radius)
                 .fixedSize(horizontal: false, vertical: true)
-                .onReceive(Just(prevEmoji)) { _ in limitText() }
+                .onReceive(Just(prevEmoji)) { _ in prevEmoji = LimitEmoji().limitText(1, listItem, prevEmoji)}
                 .font(.system(size: geometry.size.width == smallestWidth ? emojiFontSize - 10 : emojiFontSize))
                 .minimumScaleFactor(1)
                 .multilineTextAlignment(.center)

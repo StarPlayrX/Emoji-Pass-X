@@ -1,5 +1,5 @@
 //
-//  CatViewFunctions.swift
+//  catViewStruct+Functions.swift
 //  Emoji Pass X
 //
 //  Created by Todd Bruss on 3/27/21.
@@ -7,7 +7,7 @@
 import SwiftUI
 import CoreData
 import Foundation
-import Cocoa
+
 // https://www.raywenderlich.com/9335365-core-data-with-swiftui-tutorial-getting-started
 
 protocol CatProtocol {
@@ -18,6 +18,19 @@ protocol CatProtocol {
     func getList(_ a: [ListItem],_ searchText: String) -> [ListItem]
     func saveItems(_ managedObjectContext: NSManagedObjectContext)
     func addItem(_ managedObjectContext: NSManagedObjectContext,_ listItems: FetchedResults<ListItem>)
+
+    func deleteThisItem(_ indexSet: IndexSet,
+                        listItems: FetchedResults<ListItem>,
+                        managedObjectContext: NSManagedObjectContext,
+                        security: Security,
+                        searchText: String)
+
+    func moveThisItem(source: IndexSet,
+                      destination: Int,
+                      listItems: FetchedResults<ListItem>,
+                      managedObjectContext: NSManagedObjectContext,
+                      security: Security,
+                      searchText: String)
 }
 
 struct CatStruct {
@@ -80,7 +93,6 @@ struct CatStruct {
         self.saveItems(managedObjectContext)
     }
 
-
     func deleteThisItem(_ indexSet: IndexSet,
                     listItems: FetchedResults<ListItem>,
                     managedObjectContext: NSManagedObjectContext,
@@ -117,14 +129,38 @@ struct CatStruct {
        }
    }
 
+    func moveThisItem(source: IndexSet,
+                      destination: Int,
+                      listItems: FetchedResults<ListItem>,
+                      managedObjectContext: NSManagedObjectContext,
+                      security: Security,
+                      searchText: String) {
 
+        var category = listItems.filter( { $0.isParent == true })
+        category = getList(category, searchText)
 
+        category.move(fromOffsets: source, toOffset: destination)
 
+        for i in 0..<category.count {
+            category[i].order = i
 
+            for j in 0..<listItems.count {
+                if category[i].uuidString == listItems[j].uuidString {
+                    listItems[j].order = category[i].order
+                    break
+                }
+            }
+        }
+        saveItems(managedObjectContext)
+    }
 }
 
-// needs refactoring
-extension CatView {
+protocol CatViewProtocol {
+    func deleteItem(indexSet: IndexSet)
+    func moveItem(from source: IndexSet, to destination: Int)
+}
+
+extension CatView: CatViewProtocol {
 
     // indexSet is inferred
     func deleteItem(indexSet: IndexSet) {
@@ -138,23 +174,12 @@ extension CatView {
     }
 
     func moveItem(from source: IndexSet, to destination: Int) {
-        var category = listItems.filter( { $0.isParent == true })
-        category = catStruct.getList(category, searchText)
-        
-        category.move(fromOffsets: source, toOffset: destination)
-        
-        for i in 0..<category.count {
-            category[i].order = i
-            
-            for j in 0..<listItems.count {
-                if category[i].uuidString == listItems[j].uuidString {
-                    listItems[j].order = category[i].order
-                    break
-                }
-            }
-        }
-        catStruct.saveItems(managedObjectContext)
+        catStruct.moveThisItem(
+            source: source,
+            destination: destination,
+            listItems: listItems,
+            managedObjectContext: managedObjectContext,
+            security: security,
+            searchText: searchText)
     }
-    
-
 }

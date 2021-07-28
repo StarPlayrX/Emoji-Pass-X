@@ -20,6 +20,7 @@ struct CatEditView: View {
     @State var prevEmoji = String()
     @State var selectedTemplate = 1
 
+    let catEditStruct = CatEditStruct()
     //strings
     let name = "Category Name"
     let emoji = ":)"
@@ -49,9 +50,7 @@ struct CatEditView: View {
     let emojiFrameWidth = CGFloat(100)
     let emojiPaddingBottom = CGFloat(30)
     let smallestWidth = CGFloat(320)
-    
-    let pasteboard = UIPasteboard.general
-    
+        
     //MARK: Body View
     var body: some View {
         catEditViewGroup()

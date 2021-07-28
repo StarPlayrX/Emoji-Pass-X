@@ -10,12 +10,16 @@ import SwiftUI
 struct ListView: View {
     
     // CoreData + CloudKit
-    @FetchRequest(fetchRequest: ListItem.getFetchRequest())var detailListItems: FetchedResults<ListItem>
+    @FetchRequest(fetchRequest: ListItem.getFetchRequest())
+    var detailListItems: FetchedResults<ListItem>
+    
     @Environment(\.managedObjectContext) var managedObjectContext
 
     @Environment(\.presentationMode) var presentationMode
     @ObservedObject var catItem: ListItem
     @EnvironmentObject var security: Security
+
+    let listStruct = ListStruct()
     
     let name = "Name"
     let emoji = ":)"

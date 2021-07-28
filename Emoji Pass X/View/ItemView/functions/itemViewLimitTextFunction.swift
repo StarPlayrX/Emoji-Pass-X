@@ -7,14 +7,3 @@
 
 import Foundation
 
-extension ItemView {
-    
-    //MARK: Function to keep emoji icon length within limits
-    func limitText(_ charLimit : Int = 1 ) {
-        if listItem.emoji.count > charLimit {
-            let usePrefix = prevEmoji == listItem.emoji.suffix(charLimit)
-            listItem.emoji = String(usePrefix ? listItem.emoji.prefix(charLimit) : listItem.emoji.suffix(charLimit))
-        }
-        prevEmoji = listItem.emoji
-    }
-}

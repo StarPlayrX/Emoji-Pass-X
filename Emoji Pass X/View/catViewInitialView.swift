@@ -24,7 +24,6 @@ extension CatView {
                 // Lock Screen
                 catViewLockScreen()
                     .onAppear(perform: {catStruct.showLockScreen(security: security)})
-                    .animation(.easeInOut(duration: 1.0))
 
             } else {
                 

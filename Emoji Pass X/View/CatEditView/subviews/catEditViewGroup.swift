@@ -31,7 +31,7 @@ extension CatEditView {
                 .toolbar {
                     ToolbarItemGroup(placement: .navigationBarLeading) {
                         if UIDevice.current.userInterfaceIdiom == .mac || UIDevice.current.userInterfaceIdiom == .pad  {
-                            Button(action: { security.isCatEditViewSaved = true; save() } )
+                            Button(action: { security.isCatEditViewSaved = true; catEditStruct.save(listItem,managedObjectContext,selectedTemplate) } )
                                     { Text("Save") }
                         }
                      
@@ -69,9 +69,9 @@ extension CatEditView {
                           dismissButton: .default(Text("OK")) { security.isCatEditViewSaved = false })
                 })
                 .onAppear(perform: {
-                    clearNewText()
+                    catEditStruct.createNewCategory(listItem, security)
                 })
-                .onDisappear(perform: save )
+                .onDisappear(perform: {catEditStruct.save(listItem,managedObjectContext,selectedTemplate)})
             }
         }
     }

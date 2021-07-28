@@ -23,7 +23,7 @@ extension ListView {
             ToolbarItemGroup(placement: .navigationBarTrailing) {
                 Button(action: { security.isEditing = !security.isEditing  })
                     { security.isEditing ? Image(systemName: "hammer") : Image(systemName: "hammer.fill") }
-                canCreate()
+                canCreate(catItem: catItem)
             }
         }
         .buttonStyle(SystemBlueButton())
