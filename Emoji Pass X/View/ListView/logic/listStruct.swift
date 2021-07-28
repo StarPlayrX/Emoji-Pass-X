@@ -1,5 +1,5 @@
 //
-//  listViewFunctions.swift
+//  listStruct.swift
 //  Emoji Pass X
 //
 //  Created by Todd Bruss on 3/27/21.
@@ -116,23 +116,5 @@ struct ListStruct : ListProtocol {
         newItem.uuidString = catItem.uuidString
         newItem.order = (detailListItems.last?.order ?? 0) + 1
         saveItems(managedObjectContext)
-    }
-}
-
-extension ListView {
-    func canCreate(catItem: ListItem) -> Button<Image>? {
-        catItem.uuidString != "Stars" && catItem.uuidString != "Everything" ? New() : nil
-    }
-
-    func New() -> Button<Image> {
-        Button(action: {listStruct.addItem(catItem, managedObjectContext, detailListItems)}) {Image(systemName: "plus")}
-    }
-
-    func moveItem(from source: IndexSet, to destination: Int) {
-        listStruct.moveThisItem(source, destination, detailListItems, managedObjectContext, catItem, searchText)
-    }
-
-    func deleteItem(indexSet: IndexSet) {
-        listStruct.deleteThisItem(indexSet, detailListItems, catItem, managedObjectContext, security, searchText)
     }
 }

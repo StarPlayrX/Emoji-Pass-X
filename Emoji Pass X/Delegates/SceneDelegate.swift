@@ -17,8 +17,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
         if let windowScene = scene as? UIWindowScene {
             let window = UIWindow(windowScene: windowScene)
-            windowScene.sizeRestrictions?.minimumSize = CGSize(width: 1100, height: 700)
-            windowScene.sizeRestrictions?.maximumSize = CGSize(width: 1100, height: 700)
+            windowScene.sizeRestrictions?.minimumSize = CGSize(width: 900, height: 600)
 
             window.rootViewController = UIHostingController(rootView: contentView)
             self.window = window
@@ -26,31 +25,19 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         }
     }
 
-    func redundant() {
+    func transitionAppState() {
         Global.isGlobalDark = UIScreen.main.traitCollection.userInterfaceStyle == .dark
         
         // Hide Keyboard on iOS devices
         if UIDevice.current.userInterfaceIdiom == .pad || UIDevice.current.userInterfaceIdiom == .phone {
-            UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+            HideKeys().hideKeyboard()
         }
     }
     
-    func sceneDidDisconnect(_ scene: UIScene) {
-    }
-
-    func sceneDidBecomeActive(_ scene: UIScene) {
-    }
-
-    func sceneWillResignActive(_ scene: UIScene) {
-        redundant()
-    }
-
     func sceneWillEnterForeground(_ scene: UIScene) {
-        redundant()
+        transitionAppState()
     }
 
-    func sceneDidEnterBackground(_ scene: UIScene) {
-    }
 }
 
 

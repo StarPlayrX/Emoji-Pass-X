@@ -19,13 +19,9 @@ struct CatEditStruct {
         if listItem.uuidString.isEmpty {listItem.uuidString = UUID().uuidString}
 
         DispatchQueue.main.async() {
-            hideKeyboard()
-            if managedObjectContext.hasChanges { try? managedObjectContext.save() }
+            HideKeys().hideKeyboard()
+            if managedObjectContext.hasChanges {try? managedObjectContext.save()}
         }
-    }
-
-    func hideKeyboard() {
-        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
     }
 
     func createNewCategory(_ listItem: ListItem,_ security: Security) {

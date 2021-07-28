@@ -38,14 +38,14 @@ extension CatView {
             catStruct.showLockScreen(security: security)
             DispatchQueue.main.async() {
                 catStruct.saveItems(managedObjectContext)
-                hideKeyboard()
+                HideKeys().hideKeyboard()
                 catStruct.setIsScreenDark()
             }
         }
         .onReceive(NotificationCenter.default.publisher(for: UIApplication.willEnterForegroundNotification)) { _ in
             DispatchQueue.main.async() {
                 catStruct.saveItems(managedObjectContext)
-                hideKeyboard()
+                HideKeys().hideKeyboard()
                 catStruct.setIsScreenDark()
             }
         }

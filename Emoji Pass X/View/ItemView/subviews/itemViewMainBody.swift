@@ -7,7 +7,7 @@
 import SwiftUI
 
 extension ItemView {
-    func itemViewMainBody(geometry: GeometryProxy) -> some View {
+    func itemViewMainBody(_ geometry: GeometryProxy) -> some View {
         Group {
             let device = UIDevice.current.userInterfaceIdiom
             let small = CGFloat(512)

@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		18043CFD26AFAD10006252E4 /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18043CFC26AFAD10006252E4 /* Enums.swift */; };
 		18E35A7226B0F82E00FF19D2 /* LimitEmoji.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E35A7126B0F82E00FF19D2 /* LimitEmoji.swift */; };
+		18E35A7626B0FAAC00FF19D2 /* listFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E35A7526B0FAAC00FF19D2 /* listFunctions.swift */; };
+		18E35A7826B0FAE900FF19D2 /* catFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E35A7726B0FAE900FF19D2 /* catFunctions.swift */; };
+		18E35A7A26B1067500FF19D2 /* HideKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E35A7926B1067500FF19D2 /* HideKeys.swift */; };
+		18E35A7F26B109A800FF19D2 /* MockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E35A7E26B109A800FF19D2 /* MockView.swift */; };
 		2D5DFCDF25FE6B3900561C99 /* Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D5DFCDE25FE6B3900561C99 /* Device.swift */; };
 		2D7D2E2F25EDDF0D004FDB8F /* passlist.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2D7D2E2D25EDDF0D004FDB8F /* passlist.xcdatamodeld */; };
 		2D7D2E3625EEEEAD004FDB8F /* CatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D7D2E3525EEEEAD004FDB8F /* CatView.swift */; };
@@ -30,7 +34,7 @@
 		6F04077226ACE04100309F69 /* catViewSimulator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F04077126ACE04100309F69 /* catViewSimulator.swift */; };
 		6F04077426ACE14000309F69 /* catViewContinue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F04077326ACE14000309F69 /* catViewContinue.swift */; };
 		6F08D839261399C80024B61A /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D89E0B025EAD87700939877 /* CloudKit.framework */; };
-		6F08D84F261523F90024B61A /* catViewInitialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F08D84E261523F90024B61A /* catViewInitialView.swift */; };
+		6F08D84F261523F90024B61A /* CatParentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F08D84E261523F90024B61A /* CatParentView.swift */; };
 		6F21B2EE26AD1319009C5A9B /* Global.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F21B2ED26AD1319009C5A9B /* Global.swift */; };
 		6F21B2F026ADBA90009C5A9B /* catEditViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F21B2EF26ADBA90009C5A9B /* catEditViewHeader.swift */; };
 		6F21B2F226ADBBD3009C5A9B /* catEditViewDefaultTemplate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F21B2F126ADBBD3009C5A9B /* catEditViewDefaultTemplate.swift */; };
@@ -42,20 +46,20 @@
 		6F83C6F3260FCDEF007B0D8E /* catViewLockScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F83C6F2260FCDEF007B0D8E /* catViewLockScreen.swift */; };
 		6F83C6FA260FD1F0007B0D8E /* catViewUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F83C6F9260FD1F0007B0D8E /* catViewUI.swift */; };
 		6F83C700260FD586007B0D8E /* Security.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F83C6FF260FD586007B0D8E /* Security.swift */; };
-		6F83C703260FD615007B0D8E /* catViewStruct+Functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F83C702260FD615007B0D8E /* catViewStruct+Functions.swift */; };
+		6F83C703260FD615007B0D8E /* catStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F83C702260FD615007B0D8E /* catStruct.swift */; };
 		6F83C70B260FDC5A007B0D8E /* catViewSearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F83C70A260FDC5A007B0D8E /* catViewSearchBar.swift */; };
 		6F83C717261019E9007B0D8E /* catEditViewGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F83C716261019E9007B0D8E /* catEditViewGroup.swift */; };
-		6F83C71C26101A9B007B0D8E /* catEditViewStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F83C71B26101A9B007B0D8E /* catEditViewStruct.swift */; };
+		6F83C71C26101A9B007B0D8E /* catEditStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F83C71B26101A9B007B0D8E /* catEditStruct.swift */; };
 		6F83C72026101AC7007B0D8E /* catEditViewSomeViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F83C71F26101AC7007B0D8E /* catEditViewSomeViews.swift */; };
-		6F83C73426101DFC007B0D8E /* listViewFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F83C73326101DFC007B0D8E /* listViewFunctions.swift */; };
+		6F83C73426101DFC007B0D8E /* listStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F83C73326101DFC007B0D8E /* listStruct.swift */; };
 		6F83C739261024B7007B0D8E /* listViewSearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F83C738261024B7007B0D8E /* listViewSearchBar.swift */; };
 		6F83C73C2610251A007B0D8E /* listViewForEachView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F83C73B2610251A007B0D8E /* listViewForEachView.swift */; };
 		6F83C73F2610255D007B0D8E /* listViewUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F83C73E2610255D007B0D8E /* listViewUI.swift */; };
 		6F83C742261025B1007B0D8E /* listView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F83C741261025B1007B0D8E /* listView.swift */; };
 		6F83C74826102A0A007B0D8E /* Clipboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F83C74726102A0A007B0D8E /* Clipboard.swift */; };
-		6F83C74C26102AF2007B0D8E /* itemViewLoadFunction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F83C74B26102AF2007B0D8E /* itemViewLoadFunction.swift */; };
+		6F83C74C26102AF2007B0D8E /* LoadItemStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F83C74B26102AF2007B0D8E /* LoadItemStruct.swift */; };
 		6F83C75026102B6C007B0D8E /* PrivateKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F83C74F26102B6C007B0D8E /* PrivateKeys.swift */; };
-		6F83C75426102BEF007B0D8E /* itemViewSaveFunction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F83C75326102BEF007B0D8E /* itemViewSaveFunction.swift */; };
+		6F83C75426102BEF007B0D8E /* SaveItemStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F83C75326102BEF007B0D8E /* SaveItemStruct.swift */; };
 		6F83C75B26102CEC007B0D8E /* itemViewNotes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F83C75A26102CEC007B0D8E /* itemViewNotes.swift */; };
 		6F83C75F26102D91007B0D8E /* itemViewPasswordGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F83C75E26102D91007B0D8E /* itemViewPasswordGroup.swift */; };
 		6F83C76326102DD0007B0D8E /* creditCardGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F83C76226102DD0007B0D8E /* creditCardGroup.swift */; };
@@ -72,6 +76,10 @@
 /* Begin PBXFileReference section */
 		18043CFC26AFAD10006252E4 /* Enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
 		18E35A7126B0F82E00FF19D2 /* LimitEmoji.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LimitEmoji.swift; sourceTree = "<group>"; };
+		18E35A7526B0FAAC00FF19D2 /* listFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = listFunctions.swift; sourceTree = "<group>"; };
+		18E35A7726B0FAE900FF19D2 /* catFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = catFunctions.swift; sourceTree = "<group>"; };
+		18E35A7926B1067500FF19D2 /* HideKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HideKeys.swift; sourceTree = "<group>"; };
+		18E35A7E26B109A800FF19D2 /* MockView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockView.swift; sourceTree = "<group>"; };
 		2D5DFCDE25FE6B3900561C99 /* Device.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Device.swift; sourceTree = "<group>"; };
 		2D7D2E2E25EDDF0D004FDB8F /* OrderedList.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = OrderedList.xcdatamodel; sourceTree = "<group>"; };
 		2D7D2E3525EEEEAD004FDB8F /* CatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatView.swift; sourceTree = "<group>"; };
@@ -98,7 +106,7 @@
 		6F04077126ACE04100309F69 /* catViewSimulator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = catViewSimulator.swift; sourceTree = "<group>"; };
 		6F04077326ACE14000309F69 /* catViewContinue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = catViewContinue.swift; sourceTree = "<group>"; };
 		6F07D6BD260A540300148869 /* NetworkExtension.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NetworkExtension.framework; path = System/Library/Frameworks/NetworkExtension.framework; sourceTree = SDKROOT; };
-		6F08D84E261523F90024B61A /* catViewInitialView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = catViewInitialView.swift; sourceTree = "<group>"; };
+		6F08D84E261523F90024B61A /* CatParentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatParentView.swift; sourceTree = "<group>"; };
 		6F21B2ED26AD1319009C5A9B /* Global.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Global.swift; sourceTree = "<group>"; };
 		6F21B2EF26ADBA90009C5A9B /* catEditViewHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = catEditViewHeader.swift; sourceTree = "<group>"; };
 		6F21B2F126ADBBD3009C5A9B /* catEditViewDefaultTemplate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = catEditViewDefaultTemplate.swift; sourceTree = "<group>"; };
@@ -110,20 +118,20 @@
 		6F83C6F2260FCDEF007B0D8E /* catViewLockScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = catViewLockScreen.swift; sourceTree = "<group>"; };
 		6F83C6F9260FD1F0007B0D8E /* catViewUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = catViewUI.swift; sourceTree = "<group>"; };
 		6F83C6FF260FD586007B0D8E /* Security.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Security.swift; sourceTree = "<group>"; };
-		6F83C702260FD615007B0D8E /* catViewStruct+Functions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "catViewStruct+Functions.swift"; sourceTree = "<group>"; };
+		6F83C702260FD615007B0D8E /* catStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = catStruct.swift; sourceTree = "<group>"; };
 		6F83C70A260FDC5A007B0D8E /* catViewSearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = catViewSearchBar.swift; sourceTree = "<group>"; };
 		6F83C716261019E9007B0D8E /* catEditViewGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = catEditViewGroup.swift; sourceTree = "<group>"; };
-		6F83C71B26101A9B007B0D8E /* catEditViewStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = catEditViewStruct.swift; sourceTree = "<group>"; };
+		6F83C71B26101A9B007B0D8E /* catEditStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = catEditStruct.swift; sourceTree = "<group>"; };
 		6F83C71F26101AC7007B0D8E /* catEditViewSomeViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = catEditViewSomeViews.swift; sourceTree = "<group>"; };
-		6F83C73326101DFC007B0D8E /* listViewFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = listViewFunctions.swift; sourceTree = "<group>"; };
+		6F83C73326101DFC007B0D8E /* listStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = listStruct.swift; sourceTree = "<group>"; };
 		6F83C738261024B7007B0D8E /* listViewSearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = listViewSearchBar.swift; sourceTree = "<group>"; };
 		6F83C73B2610251A007B0D8E /* listViewForEachView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = listViewForEachView.swift; sourceTree = "<group>"; };
 		6F83C73E2610255D007B0D8E /* listViewUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = listViewUI.swift; sourceTree = "<group>"; };
 		6F83C741261025B1007B0D8E /* listView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = listView.swift; sourceTree = "<group>"; };
 		6F83C74726102A0A007B0D8E /* Clipboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Clipboard.swift; sourceTree = "<group>"; };
-		6F83C74B26102AF2007B0D8E /* itemViewLoadFunction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = itemViewLoadFunction.swift; sourceTree = "<group>"; };
+		6F83C74B26102AF2007B0D8E /* LoadItemStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadItemStruct.swift; sourceTree = "<group>"; };
 		6F83C74F26102B6C007B0D8E /* PrivateKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivateKeys.swift; sourceTree = "<group>"; };
-		6F83C75326102BEF007B0D8E /* itemViewSaveFunction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = itemViewSaveFunction.swift; sourceTree = "<group>"; };
+		6F83C75326102BEF007B0D8E /* SaveItemStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveItemStruct.swift; sourceTree = "<group>"; };
 		6F83C75A26102CEC007B0D8E /* itemViewNotes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = itemViewNotes.swift; sourceTree = "<group>"; };
 		6F83C75E26102D91007B0D8E /* itemViewPasswordGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = itemViewPasswordGroup.swift; sourceTree = "<group>"; };
 		6F83C76226102DD0007B0D8E /* creditCardGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = creditCardGroup.swift; sourceTree = "<group>"; };
@@ -155,6 +163,14 @@
 				18043CFC26AFAD10006252E4 /* Enums.swift */,
 			);
 			path = Enums;
+			sourceTree = "<group>";
+		};
+		18E35A7B26B107DE00FF19D2 /* parentView */ = {
+			isa = PBXGroup;
+			children = (
+				6F08D84E261523F90024B61A /* CatParentView.swift */,
+			);
+			name = parentView;
 			sourceTree = "<group>";
 		};
 		2D89E07E25EAD67600939877 = {
@@ -220,6 +236,7 @@
 		2D89E0BF25EB0BAE00939877 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				18E35A7E26B109A800FF19D2 /* MockView.swift */,
 				2D7D2E3525EEEEAD004FDB8F /* CatView.swift */,
 				2D7D2E3C25EEFED4004FDB8F /* CatEditView.swift */,
 				2D89E08E25EAD67600939877 /* ListView.swift */,
@@ -272,6 +289,7 @@
 				6F04076B26ACB00C00309F69 /* ButtonStyles.swift */,
 				6F83C74726102A0A007B0D8E /* Clipboard.swift */,
 				18E35A7126B0F82E00FF19D2 /* LimitEmoji.swift */,
+				18E35A7926B1067500FF19D2 /* HideKeys.swift */,
 			);
 			path = Structs;
 			sourceTree = "<group>";
@@ -284,12 +302,13 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
-		6F04076426ACA71900309F69 /* Struct+Functions */ = {
+		6F04076426ACA71900309F69 /* logic */ = {
 			isa = PBXGroup;
 			children = (
-				6F83C702260FD615007B0D8E /* catViewStruct+Functions.swift */,
+				6F83C702260FD615007B0D8E /* catStruct.swift */,
+				18E35A7726B0FAE900FF19D2 /* catFunctions.swift */,
 			);
-			name = "Struct+Functions";
+			name = logic;
 			sourceTree = "<group>";
 		};
 		6F04076526ACA73E00309F69 /* subviews */ = {
@@ -304,12 +323,12 @@
 			path = subviews;
 			sourceTree = "<group>";
 		};
-		6F04076626ACA74600309F69 /* Struct */ = {
+		6F04076626ACA74600309F69 /* logic */ = {
 			isa = PBXGroup;
 			children = (
-				6F83C71B26101A9B007B0D8E /* catEditViewStruct.swift */,
+				6F83C71B26101A9B007B0D8E /* catEditStruct.swift */,
 			);
-			path = Struct;
+			path = logic;
 			sourceTree = "<group>";
 		};
 		6F04076726ACA75300309F69 /* subviews */ = {
@@ -323,12 +342,13 @@
 			path = subviews;
 			sourceTree = "<group>";
 		};
-		6F04076826ACA75F00309F69 /* functions */ = {
+		6F04076826ACA75F00309F69 /* logic */ = {
 			isa = PBXGroup;
 			children = (
-				6F83C73326101DFC007B0D8E /* listViewFunctions.swift */,
+				6F83C73326101DFC007B0D8E /* listStruct.swift */,
+				18E35A7526B0FAAC00FF19D2 /* listFunctions.swift */,
 			);
-			path = functions;
+			path = logic;
 			sourceTree = "<group>";
 		};
 		6F04076926ACA78A00309F69 /* subviews */ = {
@@ -346,13 +366,13 @@
 			path = subviews;
 			sourceTree = "<group>";
 		};
-		6F04076A26ACA79900309F69 /* functions */ = {
+		6F04076A26ACA79900309F69 /* logic */ = {
 			isa = PBXGroup;
 			children = (
-				6F83C74B26102AF2007B0D8E /* itemViewLoadFunction.swift */,
-				6F83C75326102BEF007B0D8E /* itemViewSaveFunction.swift */,
+				6F83C74B26102AF2007B0D8E /* LoadItemStruct.swift */,
+				6F83C75326102BEF007B0D8E /* SaveItemStruct.swift */,
 			);
-			path = functions;
+			path = logic;
 			sourceTree = "<group>";
 		};
 		6F04077526ACE19A00309F69 /* subviewsLockScreen */ = {
@@ -393,10 +413,10 @@
 		6F83C71926101A01007B0D8E /* CatView */ = {
 			isa = PBXGroup;
 			children = (
-				6F08D84E261523F90024B61A /* catViewInitialView.swift */,
+				18E35A7B26B107DE00FF19D2 /* parentView */,
 				6F04077526ACE19A00309F69 /* subviewsLockScreen */,
 				6F04077626ACE29700309F69 /* subviewsMain */,
-				6F04076426ACA71900309F69 /* Struct+Functions */,
+				6F04076426ACA71900309F69 /* logic */,
 			);
 			name = CatView;
 			sourceTree = "<group>";
@@ -405,7 +425,7 @@
 			isa = PBXGroup;
 			children = (
 				6F04076526ACA73E00309F69 /* subviews */,
-				6F04076626ACA74600309F69 /* Struct */,
+				6F04076626ACA74600309F69 /* logic */,
 			);
 			path = CatEditView;
 			sourceTree = "<group>";
@@ -414,7 +434,7 @@
 			isa = PBXGroup;
 			children = (
 				6F04076726ACA75300309F69 /* subviews */,
-				6F04076826ACA75F00309F69 /* functions */,
+				6F04076826ACA75F00309F69 /* logic */,
 			);
 			path = ListView;
 			sourceTree = "<group>";
@@ -423,7 +443,7 @@
 			isa = PBXGroup;
 			children = (
 				6F04076926ACA78A00309F69 /* subviews */,
-				6F04076A26ACA79900309F69 /* functions */,
+				6F04076A26ACA79900309F69 /* logic */,
 			);
 			path = ItemView;
 			sourceTree = "<group>";
@@ -509,6 +529,7 @@
 			files = (
 				6F82D1EC26ACF2A0006FD559 /* itemViewMainBody.swift in Sources */,
 				2D7D2E2F25EDDF0D004FDB8F /* passlist.xcdatamodeld in Sources */,
+				18E35A7626B0FAAC00FF19D2 /* listFunctions.swift in Sources */,
 				2D7D2E3A25EEFDA7004FDB8F /* Extensions.swift in Sources */,
 				2D89E0A225EAD68E00939877 /* ItemView.swift in Sources */,
 				6F04077026ACDF9E00309F69 /* catViewSignOnButton.swift in Sources */,
@@ -530,6 +551,7 @@
 				6FD29CC326AF0143003687C9 /* KryptoExtension.swift in Sources */,
 				6F21B2EE26AD1319009C5A9B /* Global.swift in Sources */,
 				6F83C74826102A0A007B0D8E /* Clipboard.swift in Sources */,
+				18E35A7A26B1067500FF19D2 /* HideKeys.swift in Sources */,
 				2D89E08B25EAD67600939877 /* AppDelegate.swift in Sources */,
 				6FFC4B2626A9053700A033E9 /* catViewMain.swift in Sources */,
 				6F83C742261025B1007B0D8E /* listView.swift in Sources */,
@@ -543,19 +565,21 @@
 				6F83C6FA260FD1F0007B0D8E /* catViewUI.swift in Sources */,
 				18E35A7226B0F82E00FF19D2 /* LimitEmoji.swift in Sources */,
 				6F04076E26ACDE3400309F69 /* catViewiPadPanel.swift in Sources */,
+				18E35A7F26B109A800FF19D2 /* MockView.swift in Sources */,
 				6F83C72026101AC7007B0D8E /* catEditViewSomeViews.swift in Sources */,
 				6F83C76A26102EA5007B0D8E /* itemViewMainView.swift in Sources */,
 				6F83C70B260FDC5A007B0D8E /* catViewSearchBar.swift in Sources */,
-				6F83C75426102BEF007B0D8E /* itemViewSaveFunction.swift in Sources */,
+				18E35A7826B0FAE900FF19D2 /* catFunctions.swift in Sources */,
+				6F83C75426102BEF007B0D8E /* SaveItemStruct.swift in Sources */,
 				6F83C75B26102CEC007B0D8E /* itemViewNotes.swift in Sources */,
-				6F08D84F261523F90024B61A /* catViewInitialView.swift in Sources */,
-				6F83C71C26101A9B007B0D8E /* catEditViewStruct.swift in Sources */,
-				6F83C703260FD615007B0D8E /* catViewStruct+Functions.swift in Sources */,
+				6F08D84F261523F90024B61A /* CatParentView.swift in Sources */,
+				6F83C71C26101A9B007B0D8E /* catEditStruct.swift in Sources */,
+				6F83C703260FD615007B0D8E /* catStruct.swift in Sources */,
 				6F83C76626102E0D007B0D8E /* itemViewLicenseKeyGroup.swift in Sources */,
 				6F83C73C2610251A007B0D8E /* listViewForEachView.swift in Sources */,
 				18043CFD26AFAD10006252E4 /* Enums.swift in Sources */,
-				6F83C74C26102AF2007B0D8E /* itemViewLoadFunction.swift in Sources */,
-				6F83C73426101DFC007B0D8E /* listViewFunctions.swift in Sources */,
+				6F83C74C26102AF2007B0D8E /* LoadItemStruct.swift in Sources */,
+				6F83C73426101DFC007B0D8E /* listStruct.swift in Sources */,
 				6F83C76326102DD0007B0D8E /* creditCardGroup.swift in Sources */,
 				6F82D1EA26ACF1F4006FD559 /* itemViewRecords.swift in Sources */,
 				6FD29CC726AF31BC003687C9 /* DataManagement.swift in Sources */,
@@ -703,7 +727,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = "Emoji Pass X/Emoji Pass X.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 72;
+				CURRENT_PROJECT_VERSION = 73;
 				DEVELOPMENT_ASSET_PATHS = "\"Emoji Pass X/Preview Content\"";
 				DEVELOPMENT_TEAM = 469UCUB275;
 				ENABLE_PREVIEWS = YES;
@@ -731,7 +755,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = "Emoji Pass X/Emoji Pass X.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 72;
+				CURRENT_PROJECT_VERSION = 73;
 				DEVELOPMENT_ASSET_PATHS = "\"Emoji Pass X/Preview Content\"";
 				DEVELOPMENT_TEAM = 469UCUB275;
 				ENABLE_PREVIEWS = YES;

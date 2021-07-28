@@ -22,13 +22,6 @@ extension StringProtocol {
     var bytes: [UInt8] {.init(utf8)}
 }
 
-// Will Hide the keyboard on iOS
-public extension View {
-    func hideKeyboard() {
-        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
-    }
-}
-
 // Notification Names
 extension Notification.Name {
     static let save = Notification.Name("save")

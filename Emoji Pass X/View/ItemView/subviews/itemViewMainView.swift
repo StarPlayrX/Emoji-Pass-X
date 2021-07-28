@@ -9,19 +9,23 @@ import Combine
 
 extension ItemView {
 
+    func save(_ shouldHideKeyBoard: Bool) {
+        SaveItemStruct().save(shouldHideKeyBoard, record, privateKey, listItem, managedObjectContext)
+    }
+
     func itemViewDetailView() -> some View {
         GeometryReader { geometry in
             ScrollView {
                 VStack {
-                    itemViewHeader(geometry: geometry)
-                    itemViewMainBody(geometry: geometry)
+                    itemViewHeader(geometry)
+                    itemViewMainBody(geometry)
                 }
-                .onDisappear(perform: {save(shouldHideKeyboard: true, record)} )
-                .onAppear(perform: {load(rec: record)} )
+                .onDisappear(perform: {save(true)} )
+                .onAppear(perform: {record = LoadItemStruct().load(privateKey, listItem, catItem, record)})
                 .toolbar {
                     ToolbarItemGroup(placement: .navigationBarLeading) {
                         if UIDevice.current.userInterfaceIdiom == .mac || UIDevice.current.userInterfaceIdiom == .pad {
-                            Button(action: {security.isListItemViewSaved = true; save(record)}) {Text("Save")}
+                            Button(action: {security.isListItemViewSaved = true; save(false)}) {Text("Save")}
                         }
                         
                         if UIDevice.current.userInterfaceIdiom == .mac {
@@ -30,10 +34,10 @@ extension ItemView {
                     }
                     ToolbarItemGroup(placement: .navigationBarTrailing) {
                         Group {
-                            Button(action: {listItem.lock = !listItem.lock;save(record)}){
+                            Button(action: {listItem.lock = !listItem.lock;save(false)}){
                                 listItem.lock ? Image(systemName: "lock.fill") : Image(systemName: "lock.open")
                             }
-                            Button(action: {listItem.star = !listItem.star;save(record)}){
+                            Button(action: {listItem.star = !listItem.star;save(false)}){
                                 listItem.star ? Image(systemName: "star.fill") : Image(systemName: "star")
                             }
                         }
@@ -60,11 +64,10 @@ extension ItemView {
             } .navigationBarTitle( "Details", displayMode: .inline)
         }
         .onTapGesture {
-            hideKeyboard()
+            HideKeys().hideKeyboard()
         }
         .onReceive(NotificationCenter.default.publisher(for: UIApplication.didEnterBackgroundNotification)) { _ in
-            hideKeyboard()
-            save(record)
+            save(true)
             presentationMode.wrappedValue.dismiss()
         }
         .transition(.opacity)

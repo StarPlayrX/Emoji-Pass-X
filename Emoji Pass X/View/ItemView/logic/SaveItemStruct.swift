@@ -6,16 +6,27 @@
 //
 
 import SwiftUI
+import CoreData
 
-extension ItemView {
-    
-    func save(shouldHideKeyboard: Bool = false, _ record: Record) {
-    
+// https://newbedev.com/loop-through-swift-struct-to-get-keys-and-values
+
+struct SaveItemStruct {
+
+  
+    func save(
+        _ shouldHideKeyboard: Bool = false,
+        _ record: Record,
+        _ privateKey: PrivateKeys,
+        _ listItem: ListItem,
+        _ managedObjectContext: NSManagedObjectContext) {
+
+        let newRecord = "New Record"
+        let pencil = "✏️"
+
         let krypt = Krypto()
         
-        if shouldHideKeyboard {hideKeyboard()}
-        
-        // https://newbedev.com/loop-through-swift-struct-to-get-keys-and-values
+        if shouldHideKeyboard {HideKeys().hideKeyboard()}
+
         let mirror = Mirror(reflecting: record)
         
         // save our encrypted data
@@ -35,3 +46,4 @@ extension ItemView {
         }
     }
 }
+

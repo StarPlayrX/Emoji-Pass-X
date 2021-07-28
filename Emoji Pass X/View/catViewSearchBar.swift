@@ -32,7 +32,7 @@ extension CatView {
                 Spacer()
                     .padding(.trailing, 16)
                 if isSearching {
-                    Button(action: {searchText = String(); hideKeyboard()}, label: {
+                    Button(action: {searchText = String(); HideKeys().hideKeyboard()}, label: {
                         Image(systemName: "xmark")
                             .padding(.vertical)
                             .padding(.trailing, 2)

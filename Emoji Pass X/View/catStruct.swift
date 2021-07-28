@@ -1,5 +1,5 @@
 //
-//  catViewStruct+Functions.swift
+//  catStruct.swift
 //  Emoji Pass X
 //
 //  Created by Todd Bruss on 3/27/21.
@@ -46,10 +46,10 @@ struct CatStruct {
         security.lockScreen = true
 
         #if targetEnvironment(simulator)
-            security.isSimulator = true
+        security.isSimulator = true
         #else
-            security.isSimulator = false
-            self.setIsScreenDark()
+        security.isSimulator = false
+        self.setIsScreenDark()
         #endif
     }
 
@@ -93,41 +93,42 @@ struct CatStruct {
         self.saveItems(managedObjectContext)
     }
 
-    func deleteThisItem(_ indexSet: IndexSet,
-                    listItems: FetchedResults<ListItem>,
-                    managedObjectContext: NSManagedObjectContext,
-                    security: Security,
-                    searchText: String) {
-       var cf = listItems.filter( { $0.isParent == true })
-       cf = getList(cf, searchText)
+    func deleteThisItem(
+        _ indexSet: IndexSet,
+        listItems: FetchedResults<ListItem>,
+        managedObjectContext: NSManagedObjectContext,
+        security: Security,
+        searchText: String) {
+        var cf = listItems.filter( { $0.isParent == true })
+        cf = getList(cf, searchText)
 
-       var indexIsValid = false
+        var indexIsValid = false
 
-       if let source = indexSet.first{
-           indexIsValid = cf.indices.contains(source)
-       }
+        if let source = indexSet.first{
+            indexIsValid = cf.indices.contains(source)
+        }
 
-       if !indexIsValid {
-           UINotificationFeedbackGenerator().notificationOccurred(.error)
-       }
+        if !indexIsValid {
+            UINotificationFeedbackGenerator().notificationOccurred(.error)
+        }
 
-       if let source = indexSet.first, let listItem = Optional(cf[source]) {
-           let gc = getCount(listItems, listItem)
-           let uuidCount = 36
+        if let source = indexSet.first, let listItem = Optional(cf[source]) {
+            let gc = getCount(listItems, listItem)
+            let uuidCount = 36
 
-           if gc.isEmpty && listItem.uuidString.count == uuidCount {
-               managedObjectContext.delete(listItem)
-           } else if listItem.uuidString ==  CategoryType.stars.rawValue {
-               managedObjectContext.delete(listItem)
-           } else if listItem.uuidString ==  CategoryType.everything.rawValue {
-               managedObjectContext.delete(listItem)
-           } else {
-               UINotificationFeedbackGenerator().notificationOccurred(.error)
-               security.isValid = true
-           }
-           saveItems(managedObjectContext)
-       }
-   }
+            if gc.isEmpty && listItem.uuidString.count == uuidCount {
+                managedObjectContext.delete(listItem)
+            } else if listItem.uuidString ==  CategoryType.stars.rawValue {
+                managedObjectContext.delete(listItem)
+            } else if listItem.uuidString ==  CategoryType.everything.rawValue {
+                managedObjectContext.delete(listItem)
+            } else {
+                UINotificationFeedbackGenerator().notificationOccurred(.error)
+                security.isValid = true
+            }
+            saveItems(managedObjectContext)
+        }
+    }
 
     func moveThisItem(source: IndexSet,
                       destination: Int,
@@ -155,31 +156,3 @@ struct CatStruct {
     }
 }
 
-protocol CatViewProtocol {
-    func deleteItem(indexSet: IndexSet)
-    func moveItem(from source: IndexSet, to destination: Int)
-}
-
-extension CatView: CatViewProtocol {
-
-    // indexSet is inferred
-    func deleteItem(indexSet: IndexSet) {
-        catStruct.deleteThisItem(
-            indexSet,
-            listItems: listItems,
-            managedObjectContext: managedObjectContext,
-            security: security,
-            searchText: searchText
-        )
-    }
-
-    func moveItem(from source: IndexSet, to destination: Int) {
-        catStruct.moveThisItem(
-            source: source,
-            destination: destination,
-            listItems: listItems,
-            managedObjectContext: managedObjectContext,
-            security: security,
-            searchText: searchText)
-    }
-}

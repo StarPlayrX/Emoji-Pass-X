@@ -16,7 +16,7 @@ extension ListView {
         .animation(security.isEditing ? .easeInOut : .default)
         .onReceive(NotificationCenter.default.publisher(for: UIApplication.didEnterBackgroundNotification)) { _ in
             DispatchQueue.main.async() {
-                hideKeyboard()
+                HideKeys().hideKeyboard()
                 listStruct.saveItems(managedObjectContext) 
                 presentationMode.wrappedValue.dismiss()
             }

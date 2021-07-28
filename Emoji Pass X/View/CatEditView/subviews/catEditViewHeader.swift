@@ -8,7 +8,6 @@ import SwiftUI
 import Combine
 
 extension CatEditView {
-
     func catEditViewHeader(_ geometry: GeometryProxy) -> some View {
         HStack {
             TextField(emoji, text: $listItem.emoji)
@@ -25,7 +24,7 @@ extension CatEditView {
                 .frame(height: geometry.size.width == smallestWidth ? emojiFrameWidth - 25 : emojiFrameWidth )
                 .frame(width: geometry.size.width == smallestWidth ? emojiFrameWidth - 50 : emojiFrameWidth - 25 )
                 .padding(.bottom, -10)
-                .padding(.horizontal, 10 )
+                .padding(.horizontal, 10)
             
             TextField(name, text: $listItem.name)
                 .font(.largeTitle)
