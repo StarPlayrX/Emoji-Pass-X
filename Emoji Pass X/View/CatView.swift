@@ -6,8 +6,8 @@
 //
 import SwiftUI
 
-// Creating and Combining Views
-// https://developer.apple.com/tutorials/swiftui/creating-and-combining-views
+// SwiftUI Apple Tutorials
+// https://developer.apple.com/tutorials/swiftui/
 
 // Two Way Bindings
 // https://www.hackingwithswift.com/quick-start/swiftui/two-way-bindings-in-swiftui
@@ -22,7 +22,8 @@ struct CatView: View {
     var listItems: FetchedResults<ListItem>
     
     @Environment(\.managedObjectContext) var managedObjectContext
-    
+
+    // @State and @Binding prefixes offer two way binding in your apps
     @State private var showingAlert = false
     @State var searchText: String = String()
     @State var isSearching = false
