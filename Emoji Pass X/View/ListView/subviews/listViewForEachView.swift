@@ -19,7 +19,7 @@ extension ListView {
                         .padding(.leading, Device().iPhoneXCell())
                     
                 } else {
-                    Text("\(item.emoji) \(newRecord)")
+                    Text("\(item.emoji) \(ListStrings.newRecord.rawValue)")
                         .padding(.trailing, 18)
                         .padding(.leading, Device().iPhoneXCell())
                 }

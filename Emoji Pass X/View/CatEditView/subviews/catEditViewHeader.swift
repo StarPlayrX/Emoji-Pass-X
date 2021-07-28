@@ -10,7 +10,7 @@ import Combine
 extension CatEditView {
     func catEditViewHeader(_ geometry: GeometryProxy) -> some View {
         HStack {
-            TextField(emoji, text: $listItem.emoji)
+            TextField(CategoryStrings.emoji.rawValue, text: $listItem.emoji)
                 .simultaneousGesture(TapGesture().onEnded {
                     Mac().macEmojiSelector()
                 })
@@ -26,7 +26,7 @@ extension CatEditView {
                 .padding(.bottom, -10)
                 .padding(.horizontal, 10)
             
-            TextField(name, text: $listItem.name)
+            TextField(CategoryStrings.name.rawValue, text: $listItem.name)
                 .font(.largeTitle)
                 .padding(.bottom, -20)
                 .keyboardType(.asciiCapable)

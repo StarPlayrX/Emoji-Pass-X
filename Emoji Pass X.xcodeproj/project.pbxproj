@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		18043CFD26AFAD10006252E4 /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18043CFC26AFAD10006252E4 /* Enums.swift */; };
+		18B1924026B224D80016E3E9 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B1923F26B224D80016E3E9 /* Colors.swift */; };
 		18E35A7226B0F82E00FF19D2 /* LimitEmoji.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E35A7126B0F82E00FF19D2 /* LimitEmoji.swift */; };
 		18E35A7626B0FAAC00FF19D2 /* listFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E35A7526B0FAAC00FF19D2 /* listFunctions.swift */; };
 		18E35A7826B0FAE900FF19D2 /* catFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E35A7726B0FAE900FF19D2 /* catFunctions.swift */; };
@@ -75,6 +76,7 @@
 
 /* Begin PBXFileReference section */
 		18043CFC26AFAD10006252E4 /* Enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
+		18B1923F26B224D80016E3E9 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		18E35A7126B0F82E00FF19D2 /* LimitEmoji.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LimitEmoji.swift; sourceTree = "<group>"; };
 		18E35A7526B0FAAC00FF19D2 /* listFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = listFunctions.swift; sourceTree = "<group>"; };
 		18E35A7726B0FAE900FF19D2 /* catFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = catFunctions.swift; sourceTree = "<group>"; };
@@ -290,6 +292,7 @@
 				6F83C74726102A0A007B0D8E /* Clipboard.swift */,
 				18E35A7126B0F82E00FF19D2 /* LimitEmoji.swift */,
 				18E35A7926B1067500FF19D2 /* HideKeys.swift */,
+				18B1923F26B224D80016E3E9 /* Colors.swift */,
 			);
 			path = Structs;
 			sourceTree = "<group>";
@@ -569,6 +572,7 @@
 				6F83C72026101AC7007B0D8E /* catEditViewSomeViews.swift in Sources */,
 				6F83C76A26102EA5007B0D8E /* itemViewMainView.swift in Sources */,
 				6F83C70B260FDC5A007B0D8E /* catViewSearchBar.swift in Sources */,
+				18B1924026B224D80016E3E9 /* Colors.swift in Sources */,
 				18E35A7826B0FAE900FF19D2 /* catFunctions.swift in Sources */,
 				6F83C75426102BEF007B0D8E /* SaveItemStruct.swift in Sources */,
 				6F83C75B26102CEC007B0D8E /* itemViewNotes.swift in Sources */,

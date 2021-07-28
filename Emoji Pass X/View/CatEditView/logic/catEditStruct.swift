@@ -11,11 +11,9 @@ import CoreData
 struct CatEditStruct {
     func save(_ listItem: ListItem,_ managedObjectContext: NSManagedObjectContext,_ selectedTemplate: Int ) {
         listItem.templateId = selectedTemplate
-        let newRecord = "New Category"
-        let catepillar = "🐛"
 
-        if listItem.name.isEmpty       {listItem.name       = newRecord}
-        if listItem.emoji.isEmpty      {listItem.emoji      = catepillar}
+        if listItem.name.isEmpty       {listItem.name       = CategoryStrings.newCategory.rawValue}
+        if listItem.emoji.isEmpty      {listItem.emoji      = CategoryStrings.caterpillar.rawValue}
         if listItem.uuidString.isEmpty {listItem.uuidString = UUID().uuidString}
 
         DispatchQueue.main.async() {

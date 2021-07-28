@@ -21,9 +21,9 @@ extension CatView {
         security.catLock = true
     }
     
-    func catViewUI() -> some View {
+    func catViewUI(detailListItems: FetchedResults<ListItem>) -> some View {
         Group {
-            catViewList()
+            catViewList(detailListItems: detailListItems)
             .alert(isPresented: $security.isValid, content: {
                 Alert(title: Text("We're sorry."),
                       message: Text("This category cannot be deleted."),

@@ -20,9 +20,6 @@ struct SaveItemStruct {
         _ listItem: ListItem,
         _ managedObjectContext: NSManagedObjectContext) {
 
-        let newRecord = "New Record"
-        let pencil = "✏️"
-
         let krypt = Krypto()
         
         if shouldHideKeyboard {HideKeys().hideKeyboard()}
@@ -41,8 +38,8 @@ struct SaveItemStruct {
         
         DispatchQueue.main.async() {
             if managedObjectContext.hasChanges {try? managedObjectContext.save()}
-            listItem.name.isEmpty  ? (listItem.name  = newRecord) : (listItem.name  = listItem.name)
-            listItem.emoji.isEmpty ? (listItem.emoji = pencil)    : (listItem.emoji = listItem.emoji)
+            listItem.name.isEmpty  ? (listItem.name  = ItemStrings.newRecord.rawValue) : (listItem.name  = listItem.name)
+            listItem.emoji.isEmpty ? (listItem.emoji = ItemStrings.pencil.rawValue)    : (listItem.emoji = listItem.emoji)
         }
     }
 }

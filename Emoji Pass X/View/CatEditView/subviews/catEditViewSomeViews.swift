@@ -24,15 +24,15 @@ extension CatEditView {
     func stack(_ hideLabels: Bool) -> some View {
         VStack {
             //MARK: Description
-            if !hideLabels { label(desc) }
+            if !hideLabels { label(CategoryStrings.desc.rawValue) }
             
-            field(desc, item: $listItem.desc, keyboard: UIKeyboardType.asciiCapable, textContentType: UITextContentType.organizationName)
+            field(CategoryStrings.desc.rawValue, item: $listItem.desc, keyboard: UIKeyboardType.asciiCapable, textContentType: UITextContentType.organizationName)
         }
     }
     
     func field(_ text: String, item: Binding<String>, keyboard: UIKeyboardType, textContentType: UITextContentType ) -> some View {
         HStack(spacing: spacing) {
-            TextField("\(enter) \(text)", text: item)
+            TextField("\(CategoryStrings.enter.rawValue) \(text)", text: item)
                 .textContentType(textContentType)
                 .keyboardType(keyboard)
                 .autocapitalization(.none)

@@ -7,7 +7,7 @@
 import SwiftUI
 
 extension CatView {
-    func catViewMain() -> some View {
+    func catViewMain(detailListItems: FetchedResults<ListItem>) -> some View {
         ZStack {
             NavigationView {
                 if UIDevice.current.userInterfaceIdiom == .pad {
@@ -17,7 +17,7 @@ extension CatView {
                     
                     // 2 mainView
                     // This allows Wider column on iPad. Workaround for SideBar bug.
-                    catViewUI()
+                    catViewUI(detailListItems: detailListItems)
                         .onDisappear(perform: {catStruct.saveItems(managedObjectContext)})
                         .onAppear(perform: {catStruct.saveItems(managedObjectContext)})
                     
@@ -26,7 +26,7 @@ extension CatView {
                 } else {
                     
                     // 1 mainView
-                    catViewUI()
+                    catViewUI(detailListItems: detailListItems)
                 }
             }
         }

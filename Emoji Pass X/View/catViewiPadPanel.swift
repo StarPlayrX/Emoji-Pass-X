@@ -24,7 +24,7 @@ extension CatView {
                 .overlay (
                     RoundedRectangle(cornerRadius: 48)
                         .stroke( Global.isGlobalDark ? Color.gray : Color.white, lineWidth: 2))
-                Text(copyright)
+                Text(AppStrings.copyright.rawValue)
                     .font(.callout)
                     .minimumScaleFactor(0.75)
                     .padding(.horizontal, 30)

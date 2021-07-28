@@ -12,7 +12,7 @@ extension CatView {
         managedObjectContext.refreshAllObjects()
     }
     
-    func catParentView() -> some View {
+    func catParentView(detailListItems: FetchedResults<ListItem>) -> some View {
         Group {
 
             // Ternary does not work here. Don't know why?
@@ -28,7 +28,7 @@ extension CatView {
             } else {
                 
                 // Main Screen
-                catViewMain()
+                catViewMain(detailListItems: detailListItems)
                     .onAppear(perform: HideKeys().hideKeyboard)
             }
         }

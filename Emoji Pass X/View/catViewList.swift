@@ -7,7 +7,7 @@
 import SwiftUI
 
 extension CatView {
-    func catViewList() -> some View {
+    func catViewList(detailListItems: FetchedResults<ListItem>) -> some View {
         List {
             let category = listItems.filter({ $0.isParent == true })
             
@@ -23,7 +23,7 @@ extension CatView {
                                 .padding(.leading, Device().iPhoneXCell())
                                 .font(.title)
                         } else {
-                            Text("\(item.emoji) \(newCategory)")
+                            Text("\(item.emoji) \(CategoryStrings.newCategory.rawValue)")
                                 .padding(.trailing, 18)
                                 .padding(.leading, Device().iPhoneXCell())
                                 .font(.title)
@@ -37,9 +37,9 @@ extension CatView {
                         }
                     )
                     
-                } else if item.name == newCategory || item.name.isEmpty  {
+                } else if item.name == CategoryStrings.newRecord.rawValue || item.name.isEmpty  {
                     NavigationLink(destination: CatEditView(listItem: item)) {
-                        Text("\(cat) \(newCategory)")
+                        Text("\(CategoryStrings.caterpillar.rawValue) \(CategoryStrings.newRecord.rawValue)")
                             .padding(.trailing, 18)
                             .padding(.leading, Device().iPhoneXCell())
                             .font(.title)
@@ -53,7 +53,7 @@ extension CatView {
                     )
                 } else {
                     //let gc = getCount(a: listItems, b: item)
-                    NavigationLink(destination: ListView(catItem: item)) {
+                    NavigationLink(destination: ListView(catItem: item, detailListItems: detailListItems)) {
                         Text("\(item.emoji) \(item.name)")
                             .padding(.trailing, 18)
                             .padding(.leading, Device().iPhoneXCell())
@@ -71,7 +71,7 @@ extension CatView {
             }
             .onDelete(perform: security.isEditing ? deleteItem : nil )
             .onMove(perform: moveItem)
-            .padding(.trailing, 0)
+           // .padding(.trailing, 0)
             .frame(height:40)
         }
         .padding(.leading, Device().iPhoneXLeading())

@@ -110,8 +110,8 @@ struct ListStruct : ListProtocol {
                  _ managedObjectContext: NSManagedObjectContext,
                  _ detailListItems: FetchedResults<ListItem>) {
         let newItem = ListItem(context: managedObjectContext)
-        newItem.emoji = "✏️"
-        newItem.name = "New Record"
+        newItem.emoji = ListStrings.pencil.rawValue
+        newItem.name = ListStrings.newRecord.rawValue
         newItem.isParent = false
         newItem.uuidString = catItem.uuidString
         newItem.order = (detailListItems.last?.order ?? 0) + 1

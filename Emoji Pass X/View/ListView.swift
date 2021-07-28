@@ -10,7 +10,6 @@ import SwiftUI
 struct ListView: View {
     
     // CoreData + CloudKit
-    @FetchRequest(fetchRequest: ListItem.getFetchRequest())
     var detailListItems: FetchedResults<ListItem>
     
     @Environment(\.managedObjectContext) var managedObjectContext
@@ -21,23 +20,18 @@ struct ListView: View {
 
     let listStruct = ListStruct()
     
-    let name = "Name"
-    let emoji = ":)"
-    let newRecord = "New Record"
-    let pencil = "✏️"
-    
+
     @State var searchText: String = String()
     @State var isSearching = false
     @State var leader = CGFloat.zero
-    
-    let generator = UINotificationFeedbackGenerator()
-    
-    init(catItem: ListItem) {
+
+    init(catItem: ListItem, detailListItems: FetchedResults<ListItem>) {
         self.catItem = catItem
+        self.detailListItems = detailListItems
     }
 
     //MARK: BODY
     var body: some View {
-        listView()
+        listView(detailListItems: detailListItems)
     }
 }

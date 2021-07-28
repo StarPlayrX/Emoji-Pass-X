@@ -21,21 +21,6 @@ struct CatEditView: View {
     @State var selectedTemplate = 1
 
     let catEditStruct = CatEditStruct()
-    //strings
-    let name = "Category Name"
-    let emoji = ":)"
-    let newRecord = "New Category"
-    let userName = "Username"
-    let passWord = "Password"
-    let enter = "Enter"
-    let copy = "Copy"
-    let desc = "Description"
-    let phone = "Phone"
-    let pin = "Pin"
-    let uuid = "UUID"
-    let date = "Date"
-    
-    let pencil = "🐛"
 
     let labelColor = Color.secondary
     var labelColor2 = Color(UIColor.systemGray3)

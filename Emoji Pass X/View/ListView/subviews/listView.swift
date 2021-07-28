@@ -8,7 +8,7 @@
 import SwiftUI
 
 extension ListView {
-    func listView() -> some View {
+    func listView(detailListItems: FetchedResults<ListItem>) -> some View {
         ZStack {
             listViewUI()
         }

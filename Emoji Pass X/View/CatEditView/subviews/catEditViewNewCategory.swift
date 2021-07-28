@@ -13,7 +13,7 @@ extension CatEditView {
             if listItem.uuidString != "Stars" {
                 HStack {
                     Button(action: {catEditStruct.Stars(listItem, security)})
-                        { Text("Create an All Stars Category") }
+                        {Text("Create an All Stars Category")}
                         .padding(.top, 20)
                         .padding(.leading, 12)
                     Spacer()
@@ -23,7 +23,7 @@ extension CatEditView {
             if listItem.uuidString != "Everything" {
                 HStack {
                     Button(action: {catEditStruct.Everything(listItem, security)})
-                        { Text("Create a Flashlight Category") }
+                        {Text("Create a Flashlight Category")}
                         .padding(.top, 20)
                         .padding(.leading, 12)
                     Spacer()
@@ -32,4 +32,3 @@ extension CatEditView {
         }
     }
 }
-

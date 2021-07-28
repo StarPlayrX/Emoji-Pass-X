@@ -32,23 +32,9 @@ struct CatView: View {
 
     let catStruct = CatStruct()
 
-    let name = "Name"
-    let emoji = ":)"
-    let newCategory = "New Category"
-    let stars = "Stars"
-    let everything = "Everything"
-    let uuidCount = 36
-    let generator = UINotificationFeedbackGenerator()
-    let copyright = "© 2021 Todd Bruss"
-    
-    let cat = "🐛"
-    let pencil = "✏️"
-    let star = "⭐️"
-    let magnifier = "🔍"
-
     //MARK: Main Body Content View
     var body: some View {
-        catParentView()
+        catParentView(detailListItems: listItems )
     }
 }
 

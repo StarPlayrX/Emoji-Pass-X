@@ -10,7 +10,7 @@ import Combine
 extension ItemView {
     func itemViewHeader(_ geometry: GeometryProxy) -> some View {
         HStack {
-            TextField(emoji, text: $listItem.emoji)
+            TextField(ItemStrings.emoji.rawValue, text: $listItem.emoji)
                 .simultaneousGesture(TapGesture().onEnded {
                     Mac().macEmojiSelector()
                 })

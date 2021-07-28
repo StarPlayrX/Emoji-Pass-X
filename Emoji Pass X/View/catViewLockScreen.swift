@@ -27,7 +27,10 @@ extension CatView {
                 )
                 .animation(!security.haltLockScreenAnimation ? .easeInOut(duration: 1.0).repeatForever(autoreverses: true) : (nil))
 
-            Text(copyright).font(.callout).minimumScaleFactor(0.75).padding(.top, 10)
+            Text(AppStrings.copyright.rawValue)
+                .font(.callout)
+                .minimumScaleFactor(0.75)
+                .padding(.top, 10)
 
             if security.signOn && !security.isSimulator {
                 // 1 Sign On | Continue with Apple

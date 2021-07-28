@@ -24,10 +24,7 @@ struct ItemView: View {
     @State var record = Record()
     
     //MARK: Constants
-    let emoji = ":)"
-    let newRecord = "New Record"
     let uuid = "UUID"
-    let pencil = "✏️"
     let textLimit = 1
     let clipBoard = "doc.on.clipboard"
     let clipPadding = CGFloat(5)
