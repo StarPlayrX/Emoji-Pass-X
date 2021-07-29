@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct Colors {
-    static var secondaryX = Color.secondary
-    static var systemGray3X = Color(UIColor.systemGray3)
+    static var secondary = Color.secondary
+    static var systemGray = Color(UIColor.systemGray)
+    static var systemGray3 = Color(UIColor.systemGray3)
 }

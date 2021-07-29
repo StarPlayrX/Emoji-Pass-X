@@ -42,4 +42,9 @@ enum ItemStrings: String {
     case newRecord = "New Record"
 }
 
-
+enum NotesStrings: String {
+    case Notes = "Notes"
+    case cNotes = "cNotes"
+    case pNotes = "pNotes"
+    case kNotes = "kNotes"
+}

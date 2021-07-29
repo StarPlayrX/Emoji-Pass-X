@@ -6,12 +6,9 @@
 //
 
 import SwiftUI
-import Combine
 
 struct CatEditView: View {
     @Environment(\.presentationMode) var presentationMode
-    
-    //CoreData + CloudKit
     @Environment(\.managedObjectContext) var managedObjectContext
     
     @EnvironmentObject var security: Security
@@ -21,20 +18,16 @@ struct CatEditView: View {
     @State var selectedTemplate = 1
 
     let catEditStruct = CatEditStruct()
-
-    let labelColor = Color.secondary
-    var labelColor2 = Color(UIColor.systemGray3)
     
-    let textLimit = 1
-    let margin = CGFloat(-20)
-    let spacing = CGFloat(0)
-    let radius = CGFloat(14)
-    let bottom = CGFloat(10)
-    let horizontal = CGFloat(40)
-    let emojiFontSize = CGFloat(50)
-    let emojiFrameWidth = CGFloat(100)
-    let emojiPaddingBottom = CGFloat(30)
-    let smallestWidth = CGFloat(320)
+    let margin             = Floats.ui.margin
+    let spacing            = Floats.ui.spacing
+    let radius             = Floats.ui.radius
+    let bottom             = Floats.ui.bottom
+    let horizontal         = Floats.ui.horizontal
+    let emojiFontSize      = Floats.ui.emojiFontSize
+    let emojiFrameWidth    = Floats.ui.emojiFrameWidth
+    let emojiPaddingBottom = Floats.ui.emojiPaddingBottom
+    let smallestWidth      = Floats.ui.smallestWidth
         
     //MARK: Body View
     var body: some View {

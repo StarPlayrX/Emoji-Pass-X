@@ -12,7 +12,7 @@ extension CatEditView {
         HStack {
             Text("Default template: \(Global.template[selectedTemplate]).")
                 .padding(.horizontal, horizontal + (margin * 1.5))
-                .foregroundColor(labelColor)
+                .foregroundColor(Colors.secondary)
                 .padding(.bottom, -32)
                 .padding(.top, 16)
             Spacer()

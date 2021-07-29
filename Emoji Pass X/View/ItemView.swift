@@ -24,42 +24,50 @@ struct ItemView: View {
     @State var record = Record()
     
     //MARK: Constants
-    let uuid = "UUID"
-    let textLimit = 1
-    let clipBoard = "doc.on.clipboard"
-    let clipPadding = CGFloat(5)
-    let name = "Name"
-    let bank = "Bank Name"
-    let userName = "Username"
-    let passWord = "Password"
-    let enter = "Enter"
-    let copy = "Copy"
-    let desc = "Description"
-    let web = "Website"
-    let phone = "Phone"
-    let pin = "Pin"
-    let date = "Date"
-    let card = "Card Number"
-    let exp = "Expiration Date"
-    let fullName = "Full Name"
-    let cvc = "cvc"
-    let keypkg = "Software Package"
-    let keylic = "License Key"
-    let keyemail = "Email Address"
-    let keyweb = "Software Web Address"
-    let keyseats = "Number of Seats"
-    let labelColor = Color.secondary
-    let margin = CGFloat(-20)
-    let spacing = CGFloat(0)
-    let radius = CGFloat(14)
-    let bottom = CGFloat(10)
-    let horizontal = CGFloat(40)
-    let emojiFontSize = CGFloat(50)
-    let emojiFrameWidth = CGFloat(100)
-    let emojiPaddingBottom = CGFloat(30)
-    let smallestWidth = CGFloat(320.0)
-    let labelColor2 = Color(UIColor.systemGray3)
-    let labelColor3 = Color(UIColor.systemGray)
+    let name     = Labels.str.name
+    let bank     = Labels.str.bank
+    let userName = Labels.str.userName
+    let passWord = Labels.str.passWord
+    let enter    = Labels.str.enter
+    let copy     = Labels.str.copy
+    let desc     = Labels.str.desc
+    let web      = Labels.str.web
+    let phone    = Labels.str.phone
+    let pin      = Labels.str.pin
+    let date     = Labels.str.date
+    let card     = Labels.str.card
+    let exp      = Labels.str.exp
+    let fullName = Labels.str.fullName
+    let cvc      = Labels.str.cvc
+    let keypkg   = Labels.str.keypkg
+    let keylic   = Labels.str.keylic
+    let keyemail = Labels.str.keyemail
+    let keyweb   = Labels.str.keyweb
+    let keyseats = Labels.str.keyseats
+
+    let clipBoard   = Images.img.clipBoard
+    let clipPadding = Floats.ui.clipPadding
+
+    let margin             = Floats.ui.margin
+    let spacing            = Floats.ui.spacing
+    let radius             = Floats.ui.radius
+    let bottom             = Floats.ui.bottom
+    let horizontal         = Floats.ui.horizontal
+    let emojiFontSize      = Floats.ui.emojiFontSize
+    let emojiFrameWidth    = Floats.ui.emojiFrameWidth
+    let emojiPaddingBottom = Floats.ui.emojiPaddingBottom
+    let smallestWidth      = Floats.ui.smallestWidth
+
+    let minus10            = Floats.ui.minus10
+    let minus20            = Floats.ui.minus20
+    let point8             = Floats.ui.point8
+    let uno                = Floats.ui.uno
+    let dos                = Floats.ui.dos
+    let onePt5             = Floats.ui.onePt5
+    let ten                = Floats.ui.ten
+    let twenty             = Floats.ui.twenty
+    let quarter            = Floats.ui.quarter
+    let half               = Floats.ui.half
 
     var body: some View {
         itemViewDetailView()

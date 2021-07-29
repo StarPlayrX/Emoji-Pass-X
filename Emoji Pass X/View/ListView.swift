@@ -19,11 +19,9 @@ struct ListView: View {
     @EnvironmentObject var security: Security
 
     let listStruct = ListStruct()
-    
 
     @State var searchText: String = String()
     @State var isSearching = false
-    @State var leader = CGFloat.zero
 
     init(catItem: ListItem, detailListItems: FetchedResults<ListItem>) {
         self.catItem = catItem

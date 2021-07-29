@@ -6,7 +6,7 @@
 //
 import Foundation
 
-public class Global {
+struct Global {
     static var isGlobalDark = true
     static let template = ["💳 Cards", "🔒 Passwords", "🔑 Keys"]
     static let templateIds = [0, 1, 2]

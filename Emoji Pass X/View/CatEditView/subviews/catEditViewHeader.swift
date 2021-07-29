@@ -14,7 +14,7 @@ extension CatEditView {
                 .simultaneousGesture(TapGesture().onEnded {
                     Mac().macEmojiSelector()
                 })
-                .background(labelColor2)
+                .background(Colors.systemGray3)
                 .cornerRadius(radius)
                 .fixedSize(horizontal: false, vertical: true)
                 .onReceive(Just(prevEmoji)) { _ in prevEmoji = LimitEmoji().limitText(1, listItem, prevEmoji)}

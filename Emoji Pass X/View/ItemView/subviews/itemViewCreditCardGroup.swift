@@ -1,10 +1,9 @@
 //
-//  creditCardGroup.swift
+//  itemViewCreditCardGroup.swift
 //  Emoji Pass X
 //
 //  Created by Todd Bruss on 3/27/21.
 //
-
 import SwiftUI
 
 extension ItemView {
@@ -13,7 +12,7 @@ extension ItemView {
         
         Group {
             notesEditor(
-                "cNotes",
+                NotesStrings.cNotes.rawValue,
                 note: $record.cNotes,
                 keyboard: UIKeyboardType.alphabet,
                 textContentType: UITextContentType.sublocality,

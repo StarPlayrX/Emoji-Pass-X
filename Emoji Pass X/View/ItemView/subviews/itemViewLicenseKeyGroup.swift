@@ -4,7 +4,6 @@
 //
 //  Created by Todd Bruss on 3/27/21.
 //
-
 import SwiftUI
 
 extension ItemView {
@@ -13,7 +12,7 @@ extension ItemView {
         
         Group {
             notesEditor(
-                "kNotes",
+                NotesStrings.pNotes.rawValue,
                 note: $record.kNotes,
                 keyboard: UIKeyboardType.alphabet,
                 textContentType: UITextContentType.sublocality,

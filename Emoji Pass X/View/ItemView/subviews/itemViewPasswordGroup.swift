@@ -1,10 +1,9 @@
 //
-//  passwordGroup.swift
+//  itemViewPasswordGroup.swift
 //  Emoji Pass X
 //
 //  Created by Todd Bruss on 3/27/21.
 //
-
 import SwiftUI
 
 extension ItemView {
@@ -13,7 +12,7 @@ extension ItemView {
         
         Group {
             notesEditor(
-                "pNotes",
+                NotesStrings.pNotes.rawValue,
                 note: $record.pNotes,
                 keyboard: UIKeyboardType.alphabet,
                 textContentType: UITextContentType.sublocality,

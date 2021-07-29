@@ -5,7 +5,6 @@
 //  Created by Todd Bruss on 3/27/21.
 //
 import SwiftUI
-import Combine
 
 extension ItemView {
 
@@ -55,11 +54,11 @@ extension ItemView {
                     }
 
                 }
-                .padding(.leading, 20)
+                .padding(.leading, twenty)
                 .alert(isPresented: $security.isListItemViewSaved, content: {
                     Alert(title: Text("Save"),
                           message: Text("Your changes have been saved."),
-                          dismissButton: .default(Text("OK")) { security.isListItemViewSaved = false })
+                          dismissButton: .default(Text("OK")) {security.isListItemViewSaved = false})
                 })
             } .navigationBarTitle( "Details", displayMode: .inline)
         }

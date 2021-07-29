@@ -10,24 +10,22 @@ extension ItemView {
     
     func notesLabel(_ text: String) -> some View {
         HStack(spacing: spacing) {
-            Text("Notes")
-                .foregroundColor(labelColor)
+            Text(NotesStrings.Notes.rawValue)
+                .foregroundColor(Colors.secondary)
             Spacer()
                             
             let clip = Clipboard()
             
             switch text {
-            case "pNotes":
+            case NotesStrings.pNotes.rawValue:
                 Button(action: {clip.copyToClipBoard(record.pNotes, hide: true)}) {Image(systemName: clipBoard)}
-            case "cNotes":
+            case NotesStrings.cNotes.rawValue:
                 Button(action: {clip.copyToClipBoard(record.cNotes, hide: true)}) {Image(systemName: clipBoard)}
-            case "kNotes":
+            case NotesStrings.kNotes.rawValue:
                 Button(action: {clip.copyToClipBoard(record.kNotes, hide: true)}) {Image(systemName: clipBoard)}
             default:
                 Button(action: {clip.copyToClipBoard(record.cNotes, hide: true)}) {Image(systemName: clipBoard)}
             }
-            
-
         }
         .buttonStyle(SystemBlueButton())
         .padding(.bottom, 0)
@@ -58,7 +56,7 @@ extension ItemView {
                     .padding(.leading, 9)
                     .padding(.trailing, 7)
                     .frame(minHeight: 45, maxHeight: 450, alignment: Alignment.topLeading )
-                    .overlay(RoundedRectangle(cornerRadius: 6).stroke(labelColor3, lineWidth: 1))
+                    .overlay(RoundedRectangle(cornerRadius: 6).stroke(Colors.systemGray3, lineWidth: 1))
                     .padding()
                     .padding(.leading, -4)
             } else {
@@ -73,7 +71,7 @@ extension ItemView {
                     .frame(minHeight: 36, maxHeight: 360, alignment: Alignment.topLeading )
                     .overlay(
                         RoundedRectangle(cornerRadius: 6)
-                            .stroke(labelColor3, lineWidth: 1)
+                            .stroke(Colors.systemGray3, lineWidth: 1)
                     )
                     .padding()
                     .padding(.leading, -4)

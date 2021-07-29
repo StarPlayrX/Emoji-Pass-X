@@ -36,10 +36,9 @@ extension CatView {
                                 .padding(.trailing, 18)
                         }
                     )
-                    
-                } else if item.name == CategoryStrings.newRecord.rawValue || item.name.isEmpty  {
+                } else if item.name == CategoryStrings.newCategory.rawValue || item.name.isEmpty  {
                     NavigationLink(destination: CatEditView(listItem: item)) {
-                        Text("\(CategoryStrings.caterpillar.rawValue) \(CategoryStrings.newRecord.rawValue)")
+                        Text("\(CategoryStrings.newCategory.rawValue) \(CategoryStrings.newCategory.rawValue)")
                             .padding(.trailing, 18)
                             .padding(.leading, Device().iPhoneXCell())
                             .font(.title)

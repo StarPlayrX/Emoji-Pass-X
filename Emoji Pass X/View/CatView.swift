@@ -17,13 +17,12 @@ import SwiftUI
 
 struct CatView: View {
     
-    //CoreData + CloudKit
+    // CoreData + CloudKit
     @FetchRequest(fetchRequest: ListItem.getFetchRequest())
     var listItems: FetchedResults<ListItem>
     
     @Environment(\.managedObjectContext) var managedObjectContext
 
-    // @State and @Binding prefixes offer two way binding in your apps
     @State private var showingAlert = false
     @State var searchText: String = String()
     @State var isSearching = false

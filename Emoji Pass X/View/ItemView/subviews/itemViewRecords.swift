@@ -4,21 +4,20 @@
 //
 //  Created by Todd Bruss on 7/24/21.
 //
-
 import SwiftUI
 
 extension ItemView {
-    
+
     func label(_ text: String) -> some View {
         HStack(spacing: spacing) {
             Text(text)
-                .foregroundColor(labelColor)
+                .foregroundColor(Colors.secondary)
             Spacer()
         }
-        .padding(.bottom, bottom / 2)
-        .padding(.horizontal, horizontal + (margin * 1.5))
+        .padding(.bottom, bottom / dos)
+        .padding(.horizontal, horizontal + (margin * onePt5))
     }
-    
+
     func formField(_ label: String,
                    boundText: Binding<String>,
                    keyboard: UIKeyboardType,
@@ -43,7 +42,7 @@ extension ItemView {
                     .buttonStyle(SystemBlueButton())
             }
             .padding(.bottom, bottom)
-            .padding(.horizontal, horizontal + (margin * 1.5))
+            .padding(.horizontal, horizontal + (margin * onePt5))
         }
     }
 }

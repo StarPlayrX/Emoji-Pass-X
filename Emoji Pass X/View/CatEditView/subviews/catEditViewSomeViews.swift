@@ -12,7 +12,7 @@ extension CatEditView {
     func label(_ text: String) -> some View {
         HStack(spacing: spacing) {
             Text(text)
-                .foregroundColor(labelColor)
+                .foregroundColor(Colors.secondary)
             Spacer()
         }
         .padding(.horizontal, horizontal)
