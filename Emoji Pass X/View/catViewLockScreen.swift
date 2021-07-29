@@ -25,7 +25,8 @@ extension CatView {
                     RoundedRectangle(cornerRadius: 48)
                         .stroke(Global.isGlobalDark ? Color.gray : Color.white, lineWidth: 2)
                 )
-                .animation(!security.haltLockScreenAnimation ? .easeInOut(duration: 1.0).repeatForever(autoreverses: true) : (nil))
+                .animation(security.lockScreen ? .easeInOut(duration: 1.0).repeatForever(autoreverses: true) : (nil))
+                .animation(security.lockScreen ? .spring(response: 1.0, dampingFraction: 0.1, blendDuration: 0.25).repeatForever(autoreverses: true) : (nil))
 
             Text(AppStrings.copyright.rawValue)
                 .font(.callout)

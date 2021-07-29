@@ -32,13 +32,15 @@ extension CatEditView {
                         if UIDevice.current.userInterfaceIdiom == .mac || UIDevice.current.userInterfaceIdiom == .pad  {
                             Button(action: { security.isCatEditViewSaved = true; catEditStruct.save(listItem,managedObjectContext,selectedTemplate) } )
                                     { Text("Save") }
+
                         }
-                     
+
                         if UIDevice.current.userInterfaceIdiom == .mac  {
                             Button(action: Mac().macEmojiSelector )
                                 { Text("Emoji") }
                         }
                     }
+
                     
                     ToolbarItemGroup(placement: .navigationBarTrailing) {
                         if UIDevice.current.userInterfaceIdiom == .mac || UIDevice.current.userInterfaceIdiom == .pad {
@@ -62,6 +64,7 @@ extension CatEditView {
                         }
                     }
                 }
+                
                 .alert(isPresented: $security.isCatEditViewSaved, content: {
                     Alert(title: Text("Save"),
                           message: Text("Changes have been saved."),
@@ -70,6 +73,7 @@ extension CatEditView {
                 .onAppear(perform: {
                     catEditStruct.createNewCategory(listItem, security)
                 })
+                
                 .onDisappear(perform: {catEditStruct.save(listItem,managedObjectContext,selectedTemplate)})
             }
         }

@@ -33,7 +33,7 @@ struct CatView: View {
 
     //MARK: Main Body Content View
     var body: some View {
-        catParentView(detailListItems: listItems )
+        catParentView(detailListItems: listItems)
     }
 }
 

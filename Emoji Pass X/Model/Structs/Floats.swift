@@ -5,7 +5,7 @@
 //  Created by Todd Bruss on 7/28/21.
 //
 
-import Foundation
+import SwiftUI
 
 struct Floats {
     static let ui = Floats()

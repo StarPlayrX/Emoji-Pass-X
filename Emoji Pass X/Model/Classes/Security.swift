@@ -11,7 +11,6 @@ public class Security: ObservableObject {
     @Published var signOn = true
     @Published var catLock = true
     @Published var haltAnimations = true
-    @Published var haltLockScreenAnimation = false
     @Published var doesNotHaveIcloud = false
     @Published var isSimulator = false
     @Published var isValid = false
