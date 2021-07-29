@@ -37,8 +37,6 @@ extension CatEditView {
                         }
                     }
 
-
-
                     ToolbarItemGroup(placement: .bottomBar) {
                         Picker(String(), selection: $selectedTemplate) {
                             ForEach(Global.templateIds, id: \.self) {

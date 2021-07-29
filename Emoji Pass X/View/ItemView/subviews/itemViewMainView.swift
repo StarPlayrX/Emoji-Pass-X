@@ -42,6 +42,16 @@ extension ItemView {
                         }
                         .buttonStyle(SystemBlueButton())
                     }
+
+                    ToolbarItemGroup(placement: .bottomBar) {
+                        Picker(String(), selection: $selectedTemplate) {
+                            ForEach(Global.templateIds, id: \.self) {
+                                geometry.size.width == smallestWidth ? Text(Global.template[$0].prefix(1)) : Text(Global.template[$0].prefix(6))
+                            }
+                            .font(.largeTitle)
+                            .pickerStyle(SegmentedPickerStyle())
+                        }
+                    }
                 }
                 .padding(.leading, twenty)
                 .alert(isPresented: $security.isListItemViewSaved, content: {

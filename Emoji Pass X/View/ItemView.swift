@@ -22,6 +22,8 @@ struct ItemView: View {
 
     @State var prevEmoji : String = String()
     @State var record = Record()
+
+    @State var selectedTemplate = 1
     
     //MARK: Constants
     let name     = Labels.str.name
