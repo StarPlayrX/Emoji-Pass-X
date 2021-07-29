@@ -19,6 +19,7 @@ extension CatView {
                         
                         if !item.name.isEmpty {
                             Text("\(item.emoji) \(item.name)")
+
                                 .padding(.trailing, 18)
                                 .padding(.leading, Device().iPhoneXCell())
                                 .font(.title)
@@ -33,6 +34,7 @@ extension CatView {
                         HStack {
                             Spacer()
                             Text("\(catStruct.getCount(listItems,item))")
+                                .foregroundColor(.orange)
                                 .padding(.trailing, 18)
                         }
                     )
