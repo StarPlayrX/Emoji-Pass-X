@@ -23,6 +23,14 @@ extension ItemView {
                 .onAppear(perform: {record = LoadItemStruct().load(privateKey, listItem, catItem, record)})
                 .toolbar {
 
+                    ToolbarItemGroup(placement: .navigationBarLeading) {
+                        if UIDevice.current.userInterfaceIdiom == .pad {
+                            Button(action: {security.isListItemViewSaved = true; save(false)}) {Text("Save")}
+                                .buttonStyle(SystemBlueButton())
+
+                        }
+                    }
+
                     ToolbarItemGroup(placement: .navigationBarTrailing) {
                         Group {
                             Button(action: {listItem.lock = !listItem.lock;save(false)}){

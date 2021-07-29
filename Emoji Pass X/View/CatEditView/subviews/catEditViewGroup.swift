@@ -28,7 +28,14 @@ extension CatEditView {
                 }
                 .navigationBarTitle( "Category", displayMode: .inline)
                 .toolbar {
-         
+
+                    ToolbarItemGroup(placement: .navigationBarLeading) {
+                        if UIDevice.current.userInterfaceIdiom == .pad  {
+                            Button(action: { security.isCatEditViewSaved = true; catEditStruct.save(listItem,managedObjectContext,selectedTemplate) } )
+                                    { Text("Save") }
+                                    .buttonStyle(SystemBlueButton())
+                        }
+
                     ToolbarItemGroup(placement: .bottomBar) {
                         Picker(String(), selection: $selectedTemplate) {
                             ForEach(Global.templateIds, id: \.self) {
