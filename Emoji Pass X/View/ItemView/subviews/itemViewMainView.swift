@@ -44,7 +44,7 @@ extension ItemView {
                     }
 
                     ToolbarItemGroup(placement: .bottomBar) {
-                        Picker(String(), selection: $selectedTemplate) {
+                        Picker(String(), selection: $listItem.templateId) {
                             ForEach(Global.templateIds, id: \.self) {
                                 geometry.size.width == smallestWidth ? Text(Global.template[$0].prefix(1)) : Text(Global.template[$0].prefix(6))
                             }

@@ -24,6 +24,7 @@ struct CatEditStruct {
 
     func createNewCategory(_ listItem: ListItem,_ security: Security) {
         if listItem.uuidString.isEmpty { listItem.uuidString = UUID().uuidString }
+        listItem.templateId = 1
         let newCategory = "New Category"
         _ = (listItem.name == newCategory || listItem.name.isEmpty) ?
             (listItem.name = String(), security.isCategoryNew = true) :

@@ -84,6 +84,7 @@ struct CatStruct {
         let cat = "🐛"
         let newCategory = "New Category"
 
+
         let newItem = ListItem(context: managedObjectContext)
         newItem.emoji = cat
         newItem.name = newCategory
