@@ -14,8 +14,8 @@ extension ItemView {
                 .foregroundColor(Colors.secondary)
             Spacer()
         }
-        .padding(.bottom, bottom / dos)
-        .padding(.horizontal, horizontal + (margin * onePt5))
+        .padding(.bottom, bottom / 2)
+        .padding(.horizontal, horizontal + (margin * 1.5))
     }
 
     func formField(_ label: String,
@@ -42,7 +42,7 @@ extension ItemView {
                     .buttonStyle(SystemBlueButton())
             }
             .padding(.bottom, bottom)
-            .padding(.horizontal, horizontal + (margin * onePt5))
+            .padding(.horizontal, horizontal + (margin * 1.5))
         }
     }
 }

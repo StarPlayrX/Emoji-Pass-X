@@ -60,17 +60,6 @@ struct ItemView: View {
     let emojiPaddingBottom = Floats.ui.emojiPaddingBottom
     let smallestWidth      = Floats.ui.smallestWidth
 
-    let minus10            = Floats.ui.minus10
-    let minus20            = Floats.ui.minus20
-    let point8             = Floats.ui.point8
-    let uno                = Floats.ui.uno
-    let dos                = Floats.ui.dos
-    let onePt5             = Floats.ui.onePt5
-    let ten                = Floats.ui.ten
-    let twenty             = Floats.ui.twenty
-    let quarter            = Floats.ui.quarter
-    let half               = Floats.ui.half
-
     var body: some View {
         itemViewDetailView()
     }

@@ -17,20 +17,20 @@ extension ItemView {
                 .background(Colors.systemGray3)
                 .cornerRadius(radius)
                 .fixedSize(horizontal: false, vertical: true)
-                .onReceive(Just(prevEmoji)) { _ in prevEmoji = LimitEmoji().limitText(Int(uno), listItem, prevEmoji)}
-                .font(.system(size: geometry.size.width == smallestWidth ? emojiFontSize - ten : emojiFontSize))
-                .minimumScaleFactor(uno)
+                .onReceive(Just(prevEmoji)) { _ in prevEmoji = LimitEmoji().limitText(1, listItem, prevEmoji)}
+                .font(.system(size: geometry.size.width == smallestWidth ? emojiFontSize - 10 : emojiFontSize))
+                .minimumScaleFactor(1)
                 .multilineTextAlignment(.center)
-                .frame(height: geometry.size.width == smallestWidth ? emojiFrameWidth - quarter : emojiFrameWidth )
-                .frame(width: geometry.size.width == smallestWidth ? emojiFrameWidth - half : emojiFrameWidth - quarter )
-                .padding(.bottom, minus10)
-                .padding(.horizontal, ten)
+                .frame(height: geometry.size.width == smallestWidth ? emojiFrameWidth - 25 : emojiFrameWidth )
+                .frame(width: geometry.size.width == smallestWidth ? emojiFrameWidth - 50 : emojiFrameWidth - 25 )
+                .padding(.bottom, -10)
+                .padding(.horizontal, 10)
 
             TextField(name, text: $listItem.name)
                 .font(.largeTitle)
-                .padding(.bottom, minus20)
+                .padding(.bottom, -20)
                 .keyboardType(.asciiCapable)
-                .minimumScaleFactor(point8)
+                .minimumScaleFactor(0.8)
 
             Spacer()
         }

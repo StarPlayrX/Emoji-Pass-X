@@ -27,7 +27,6 @@ extension ItemView {
                         if UIDevice.current.userInterfaceIdiom == .pad {
                             Button(action: {security.isListItemViewSaved = true; save(false)}) {Text("Save")}
                                 .buttonStyle(SystemBlueButton())
-
                         }
                     }
 
@@ -53,7 +52,7 @@ extension ItemView {
                         }
                     }
                 }
-                .padding(.leading, twenty)
+                .padding(.leading, 20)
                 .alert(isPresented: $security.isListItemViewSaved, content: {
                     Alert(title: Text("Save"),
                           message: Text("Your changes have been saved."),
