@@ -9,7 +9,7 @@ import SwiftUI
 
 extension ListView {
     func canCreate(catItem: ListItem) -> Button<Image>? {
-        catItem.uuidString != "Stars" && catItem.uuidString != "Everything" ? New() : nil
+        catItem.uuidString != CategoryType.stars.rawValue && catItem.uuidString != CategoryType.everything.rawValue ? New() : nil
     }
 
     func New() -> Button<Image> {

@@ -10,7 +10,7 @@ import SwiftUI
 extension CatEditView {
     func catEditViewNewCategory() -> some View {
         VStack {
-            if listItem.uuidString != "Stars" {
+            if listItem.uuidString != CategoryType.stars.rawValue  {
                 HStack {
                     Button(action: {catEditStruct.Stars(listItem, security)})
                         {Text("Create an All Stars Category")}
@@ -20,7 +20,7 @@ extension CatEditView {
                 }
             }
             
-            if listItem.uuidString != "Everything" {
+            if listItem.uuidString != CategoryType.everything.rawValue  {
                 HStack {
                     Button(action: {catEditStruct.Everything(listItem, security)})
                         {Text("Create a Flashlight Category")}

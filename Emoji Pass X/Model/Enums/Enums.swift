@@ -8,9 +8,9 @@
 import SwiftUI
 
 enum CategoryType: String {
-    case stars = "stars"
-    case everything = "everything"
-    case other = "other"
+    case stars = "Stars"
+    case everything = "Everything"
+    case other = "Other"
 }
 
 enum AppStrings: String {

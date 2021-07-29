@@ -32,7 +32,7 @@ struct CatEditStruct {
 
     func Stars(_ listItem: ListItem,_ security: Security) {
         listItem.name = "All Stars"
-        listItem.uuidString = "Stars"
+        listItem.uuidString = CategoryType.stars.rawValue
         listItem.emoji = "⭐️"
         listItem.desc = "A store for all my favorites."
         security.previousEmoji = listItem.emoji
@@ -40,7 +40,7 @@ struct CatEditStruct {
 
     func Everything(_ listItem: ListItem,_ security: Security) {
         listItem.name = "Flashlight"
-        listItem.uuidString = "Everything"
+        listItem.uuidString = CategoryType.everything.rawValue 
         listItem.emoji = "🔦"
         listItem.desc = "A store for all my records."
         security.previousEmoji = listItem.emoji

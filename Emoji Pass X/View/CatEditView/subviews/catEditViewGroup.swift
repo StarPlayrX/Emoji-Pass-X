@@ -18,7 +18,7 @@ extension CatEditView {
                     
                     geometry.size.width == smallestWidth ? stack(true) : stack(false)
                         
-                    if listItem.uuidString != "Stars" && listItem.uuidString != "Everything" {
+                    if listItem.uuidString != CategoryType.stars.rawValue && listItem.uuidString != CategoryType.everything.rawValue  {
                         catEditViewDefaultTemplate()
                     }
                     

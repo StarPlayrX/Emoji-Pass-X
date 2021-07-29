@@ -22,9 +22,9 @@ struct ListStruct : ListProtocol {
     }
 
     func coldFilter(_ a: FetchedResults<ListItem>,_ catItem: ListItem) -> [ListItem] {
-        if catItem.uuidString == "Stars" {
+        if catItem.uuidString == CategoryType.stars.rawValue {
             return a.filter( { $0.isParent == false && $0.star == true  })
-        } else if catItem.uuidString == "Everything" {
+        } else if catItem.uuidString == CategoryType.everything.rawValue {
             return a.filter( { $0.isParent == false  })
         } else {
             return a.filter( { $0.uuidString == catItem.uuidString &&  $0.isParent == false  })
