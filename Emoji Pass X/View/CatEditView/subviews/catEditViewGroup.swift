@@ -28,32 +28,7 @@ extension CatEditView {
                 }
                 .navigationBarTitle( "Category", displayMode: .inline)
                 .toolbar {
-                    ToolbarItemGroup(placement: .navigationBarLeading) {
-                        if UIDevice.current.userInterfaceIdiom == .mac || UIDevice.current.userInterfaceIdiom == .pad  {
-                            Button(action: { security.isCatEditViewSaved = true; catEditStruct.save(listItem,managedObjectContext,selectedTemplate) } )
-                                    { Text("Save") }
-
-                        }
-
-                        if UIDevice.current.userInterfaceIdiom == .mac  {
-                            Button(action: Mac().macEmojiSelector )
-                                { Text("Emoji") }
-                        }
-                    }
-
-                    
-                    ToolbarItemGroup(placement: .navigationBarTrailing) {
-                        if UIDevice.current.userInterfaceIdiom == .mac || UIDevice.current.userInterfaceIdiom == .pad {
-                            Picker(String(), selection: $selectedTemplate) {
-                                ForEach(Global.templateIds, id: \.self) {
-                                    geometry.size.width == smallestWidth ? Text(Global.template[$0].prefix(1)) : Text(Global.template[$0].prefix(6))
-                                }
-                                .font(.largeTitle)
-                                .pickerStyle(SegmentedPickerStyle())
-                            }
-                        }
-                    }
-                    
+         
                     ToolbarItemGroup(placement: .bottomBar) {
                         Picker(String(), selection: $selectedTemplate) {
                             ForEach(Global.templateIds, id: \.self) {
