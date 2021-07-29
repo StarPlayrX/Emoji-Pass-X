@@ -34,6 +34,7 @@ extension CatView {
                 .padding(.top, 10)
 
             if security.signOn && !security.isSimulator {
+
                 // 1 Sign On | Continue with Apple
                 catViewSignOnButton()
 
@@ -46,8 +47,6 @@ extension CatView {
                 
                 // 3 Continue button
                 catViewContinue()
-
-
             }
         }
         .animation(.easeOut(duration: 0.75))
@@ -55,8 +54,4 @@ extension CatView {
         .onAppear(perform: {Global.isGlobalDark = UIScreen.main.traitCollection.userInterfaceStyle == .dark})
         .onDisappear(perform: {Global.isGlobalDark = UIScreen.main.traitCollection.userInterfaceStyle == .dark})
     }
-
 }
-
-
-
