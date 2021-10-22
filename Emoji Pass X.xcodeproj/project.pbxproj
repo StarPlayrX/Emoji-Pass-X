@@ -199,6 +199,7 @@
 		2D89E08925EAD67600939877 /* Emoji Pass X */ = {
 			isa = PBXGroup;
 			children = (
+				2D89E08C25EAD67600939877 /* SceneDelegate.swift */,
 				2D89E0AD25EAD87500939877 /* Emoji Pass X.entitlements */,
 				2D89E0BE25EB0BA600939877 /* Delegates */,
 				2D89E0C025EB0BB400939877 /* Model */,
@@ -234,7 +235,6 @@
 			isa = PBXGroup;
 			children = (
 				2D89E08A25EAD67600939877 /* AppDelegate.swift */,
-				2D89E08C25EAD67600939877 /* SceneDelegate.swift */,
 			);
 			path = Delegates;
 			sourceTree = "<group>";
