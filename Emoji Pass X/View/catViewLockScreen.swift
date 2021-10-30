@@ -32,8 +32,12 @@ extension CatView {
                 .font(.callout)
                 .minimumScaleFactor(0.75)
                 .padding(.top, 10)
+            
+            if  UIDevice.current.userInterfaceIdiom == .mac  {
+                
+                catViewContinue()
 
-            if security.signOn && !security.isSimulator {
+            } else if security.signOn && !security.isSimulator {
 
                 // 1 Sign On | Continue with Apple
                 catViewSignOnButton()
