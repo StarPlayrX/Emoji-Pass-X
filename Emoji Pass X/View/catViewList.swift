@@ -34,7 +34,7 @@ extension CatView {
                         HStack {
                             Spacer()
                             Text("\(catStruct.getCount(listItems,item))")
-                                .foregroundColor(.orange)
+                                .foregroundColor(.blue)
                                 .padding(.trailing, 18)
                         }
                     )

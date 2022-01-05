@@ -199,7 +199,6 @@
 		2D89E08925EAD67600939877 /* Emoji Pass X */ = {
 			isa = PBXGroup;
 			children = (
-				2D89E08C25EAD67600939877 /* SceneDelegate.swift */,
 				2D89E0AD25EAD87500939877 /* Emoji Pass X.entitlements */,
 				2D89E0BE25EB0BA600939877 /* Delegates */,
 				2D89E0C025EB0BB400939877 /* Model */,
@@ -234,6 +233,7 @@
 		2D89E0BE25EB0BA600939877 /* Delegates */ = {
 			isa = PBXGroup;
 			children = (
+				2D89E08C25EAD67600939877 /* SceneDelegate.swift */,
 				2D89E08A25EAD67600939877 /* AppDelegate.swift */,
 			);
 			path = Delegates;
@@ -739,17 +739,18 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = "Emoji Pass X/Emoji Pass X.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 78;
+				CURRENT_PROJECT_VERSION = 82;
 				DEVELOPMENT_ASSET_PATHS = "\"Emoji Pass X/Preview Content\"";
 				DEVELOPMENT_TEAM = 469UCUB275;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = "Emoji Pass X/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
+				"IPHONEOS_DEPLOYMENT_TARGET[sdk=macosx*]" = 14.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.7;
+				MARKETING_VERSION = 1.0.4;
 				PRODUCT_BUNDLE_IDENTIFIER = com.brusstodd.EmojiPass;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTS_MACCATALYST = YES;
@@ -767,17 +768,18 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = "Emoji Pass X/Emoji Pass X.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 78;
+				CURRENT_PROJECT_VERSION = 82;
 				DEVELOPMENT_ASSET_PATHS = "\"Emoji Pass X/Preview Content\"";
 				DEVELOPMENT_TEAM = 469UCUB275;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = "Emoji Pass X/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
+				"IPHONEOS_DEPLOYMENT_TARGET[sdk=macosx*]" = 14.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.7;
+				MARKETING_VERSION = 1.0.4;
 				PRODUCT_BUNDLE_IDENTIFIER = com.brusstodd.EmojiPass;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTS_MACCATALYST = YES;

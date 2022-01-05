@@ -6,7 +6,11 @@
 //
 import SwiftUI
 
+
+
 extension CatView {
+
+    
     func catViewLockScreen() -> some View {
         Group {
             Text("Emoji Pass X")
@@ -33,10 +37,10 @@ extension CatView {
                 .minimumScaleFactor(0.75)
                 .padding(.top, 10)
             
-            if  UIDevice.current.userInterfaceIdiom == .mac  {
-                
-                catViewContinue()
-
+            if UIDevice.current.userInterfaceIdiom == .mac  {
+            
+                macAuth()
+              
             } else if security.signOn && !security.isSimulator {
 
                 // 1 Sign On | Continue with Apple
