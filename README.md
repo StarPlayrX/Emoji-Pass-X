@@ -10,4 +10,4 @@ Disclaimer: If you do not purchase from the AppStore, iCloudKit data protection 
 
 We may one day include an in-app subscribtion to keep secondary backup and history. This future feature will be for premium users only and will not be open sourced.
 
-For now no personal data is stored outside the user's control.
+No personal data is stored outside the user's control.
