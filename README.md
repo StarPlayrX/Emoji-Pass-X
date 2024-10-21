@@ -12,14 +12,14 @@ We may one day include an in-app subscribtion to keep secondary backup and histo
 
 No personal data is stored outside the user's control.
 
-
+---
 
 Emoji-Pass-X Source Code License Agreement
 
 Copyright (c) 2009 - 2024, Todd Bruss. All Rights Reserved.
 Only Todd Bruss may submit this code to  AppStore.
 
-This license governs the use of the UFO Emoji source code, located at https://github.com/StarPlayrX/UFOEmoji2020. By accessing or viewing the source code, you agree to the following terms:
+This license governs the use of the Emoji Pass X source code, located at https://github.com/StarPlayrX/UFOEmoji2020. By accessing or viewing the source code, you agree to the following terms:
 
 1. Prohibited Use
 The source code is provided for reference and personal review only.
