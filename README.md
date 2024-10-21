@@ -11,3 +11,33 @@ Disclaimer: If you do not purchase from the AppStore, iCloudKit data protection 
 We may one day include an in-app subscribtion to keep secondary backup and history. This future feature will be for premium users only and will not be open sourced.
 
 No personal data is stored outside the user's control.
+
+
+
+Emoji-Pass-X Source Code License Agreement
+
+Copyright (c) 2009 - 2024, Todd Bruss. All Rights Reserved.
+Only Todd Bruss may submit this code to  AppStore.
+
+This license governs the use of the UFO Emoji source code, located at https://github.com/StarPlayrX/UFOEmoji2020. By accessing or viewing the source code, you agree to the following terms:
+
+1. Prohibited Use
+The source code is provided for reference and personal review only.
+You may not copy, distribute, modify, reproduce, publish, sublicense, or use the source code for any purpose.
+Commercial, non-commercial, and educational use of the source code is strictly prohibited.
+
+2. No Redistribution or Derivative Works
+You may not distribute, transfer, or create derivative works from any part of the source code.
+Reverse engineering, decompiling, or otherwise extracting the code for use in other projects is not permitted.
+
+3. No License to Use in Products
+This license does not grant permission to integrate or incorporate the source code into any software, product, or project, including open-source or proprietary applications.
+
+4. Termination of Access
+Access to the source code may be revoked at any time at the sole discretion of the author, Todd Bruss. Any unauthorized use will result in legal action.
+
+5. Disclaimer
+The source code is provided "as-is" without any warranties, including but not limited to implied warranties of merchantability, fitness for a particular purpose, or non-infringement.
+
+6. Copyright Notice
+All copyright and intellectual property rights in the source code remain with Todd Bruss.
